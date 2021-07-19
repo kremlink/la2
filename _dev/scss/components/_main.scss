@@ -1,0 +1,304 @@
+@include exports("@path:components\_main.scss"){/*@path:components\_main.scss*/
+  .overlay-block{
+    @include abs($t:0,$b:0,$l:0,$r:0);
+    z-index:1;
+    visibility:hidden;
+    &.shown{
+      visibility:visible;
+    }
+
+    .ov-wrap{
+      width:100%;
+      height:56.25vw; //h:w=9/16
+      max-height:100vh;
+      max-width:177.7777vh; //16/9=1.778
+      z-index:1;
+      opacity:0;
+      pointer-events:none;
+      @include center();
+      @include trs('opacity #{$anim} ease-in-out');
+      &.shown{
+        pointer-events:auto;
+        opacity:1;
+      }
+      &.start{
+
+      }
+
+    }
+  }
+  .ov-inner{
+    @include center();
+    opacity:0;
+    pointer-events:none;
+    @include trs('opacity #{$anim} ease-in-out');
+    &.shown{
+      pointer-events:auto;
+      opacity:1;
+    }
+    &.hi-bye{
+      width:50%;
+      padding:0 40% 0 10%;
+      position:absolute;
+      .text{
+        font-size:1em;
+        color:#fff;
+      }
+      .infogr{
+        margin-top:2em;
+        height:5em;
+        background:#eee;
+        @include flx(display,flex);
+        @include flx(align-items,center);
+        @include flx(justify-content,center);
+      }
+    }
+    &.int{
+
+    }
+  }
+  .hi-bye-btn{
+    width:10em;
+    height:104/468*10em;
+    @include center($r:10%);
+    cursor:pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  //test
+  .hoverable{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    @media(min-width:1025px){
+      &:hover{
+        img{
+          opacity:0;
+          &+img{
+            opacity:1;
+          }
+        }
+      }
+    }
+    img{
+      @include abs($l:0,$t:0);
+      width:100%;
+      height:100%;
+      &+img{
+        opacity:0;
+      }
+    }
+  }
+
+  .special-btns{
+    @include abs($l:4em,$t:0);
+    height:4em;
+    z-index:2;
+    display:none;
+    .start &{
+      display:block;
+    }
+    .return{
+      @include abs($l:-8em,$t:0);
+      width:4em;
+      height:100%;
+      display:none;
+    }
+    input{
+      opacity:0;
+      @include abs($l:-4em,$t:0);
+      width:4em;
+      height:100%;
+      cursor:pointer;
+      @media(min-width:1025px){
+        &:hover{
+          &~.sp-toggle .hoverable img{
+            opacity:0;
+            &+img{
+              opacity:1;
+            }
+          }
+        }
+      }
+      &:checked{
+        &~.sp-toggle{
+          .hoverable{
+            &:nth-child(1){
+              display:none;
+            }
+            &:nth-child(2){
+              display:block;
+            }
+          }
+        }
+        &~.step-btns{
+          @include flx(display,flex);
+        }
+      }
+    }
+    .step-btns{
+      padding:0 2em;
+      height:85%;
+      display:none;
+      background:rgb(86,78,67);
+      border-top:3px solid rgb(65, 59, 50);
+      position:relative;
+      &:before{
+        content:'';
+        @include abs($t:-3px,$l:100%,$r:-3px,$b:3px);
+        background:rgb(86,78,67);
+        border-top:3px solid rgb(65, 59, 50);
+      }
+    }
+    .sp-toggle{
+      @include abs($l:-4em,$t:0,$b:0);
+      width:4em;
+      pointer-events:none;
+      .hoverable{
+        height:100%;
+        &:nth-child(2){
+          display:none;
+        }
+      }
+    }
+    .int-ind-back{
+      cursor:pointer;
+      width:3.5em;
+      color:rgb(176,172,164);
+      font-size:1em;
+      opacity:.4;
+      pointer-events:none;
+      position:relative;
+      &.enabled{
+        opacity:1;
+        pointer-events:auto;
+      }
+      span{
+        @include center();
+      }
+    }
+  }
+  //other
+  .loader-pop{
+    @include abs($l:0,$r:0,$t:0,$b:0);
+    @include trs('opacity #{$anim} ease-in-out');
+    z-index:1;
+    background:#000;
+
+    .loaded &{
+      opacity:0;
+      pointer-events:none;
+    }
+    .l{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:url(#{$path}loader.png) center no-repeat;
+    }
+  }
+  .orientation-pop{
+    color:#fff;
+    @include abs($l:0,$r:0,$t:0,$b:0);
+    background:#000;
+    opacity:0;
+    visibility:hidden;
+    font-size:30px;
+    line-height:30px;
+    z-index:1;
+    @include flx(justify-content,center);
+    @include flx(align-items,center);
+    .too-small &{
+      opacity:1;
+      visibility:visible;
+    }
+    .bg{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:url(#{$path}circus.svg) center/cover no-repeat;
+    }
+    .text{
+      @include center();
+      width:80%;
+    }
+  }
+  .start-pop{
+    @include abs($l:0,$r:0,$t:0,$b:0);
+    @include flx(display,flex);
+    @include flx(flex-flow,'row wrap');
+    background:url(#{$path}circus.svg) center/cover no-repeat;
+    z-index:1;
+    @include trs('opacity #{$anim} ease-in-out');
+    font-size:0.6em;
+    .start &{
+      opacity:0;
+      pointer-events:none;
+    }
+    .text{
+      margin-top:10em;
+      width:100%;
+      color:#fff;
+      text-align:center;
+    }
+    .icons{
+      margin:-3em 10% 0 10%;
+      width:80%;
+      @include flx(display,flex);
+      @include flx(justify-content,center);
+      @include flx(align-items,center);
+      img{
+        width:20em;
+        margin:0 10em;
+        &:nth-child(2){
+          display:none;
+        }
+        @include med(-400px){
+          &:nth-child(2){
+            display:block;
+          }
+        }
+      }
+    }
+    .start{
+      width:30em;
+      height:104/468*30em;
+      margin:auto auto 0 auto;
+      position:relative;
+      cursor:pointer;
+    }
+  }
+  .s-ctrls{
+    @include abs($l:0,$t:0);
+    $h:3.25em;
+    height:$h;
+    @include flx(display,flex);
+    cursor:pointer;
+    z-index:1;
+    .clr{
+      width:105/114*$h;
+      display:none;
+      position:relative;
+      margin-left:-1px;
+      #wrap:not(.start) &{
+        //display:block;
+      }
+    }
+    .continue{
+      width:510/114*$h;
+      display:none;
+      position:relative;
+      .goOn:not(.start) &{
+        display:block;
+      }
+    }
+  }
+
+  .smooth{
+    width:100%;
+    height:100%;
+    opacity:0;
+    pointer-events:none;
+    @include abs($l:0,$t:0);
+    &.shown{
+      opacity:1;
+      pointer-events:auto;
+    }
+  }
+}

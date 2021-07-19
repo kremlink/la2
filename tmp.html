@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		<title></title>
+		<meta name="Keywords" content="" />
+		<meta name="Description" content="" />
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<style>
+			body{
+				margin:0;
+			}
+			.container{
+				overflow-x:hidden;
+			}
+			.all{
+				background:linear-gradient(0deg,#000,#fff);
+				max-width:1000px;
+				margin: 0 auto;
+			}
+			.shifter{
+				height:1500px;
+			}
+			#scroll{
+				width: 150%;
+				display:flex;
+				height: 100px;
+				position:relative;
+			}
+			#scroll div{
+				width:calc(150% / 6);
+				background: #f00;
+				border: 1px solid #0f0;
+			}
+		</style>
+	</head>
+	<body>
+
+
+
+		<div class="container">
+			<div class="all">
+				<!--просто отбивающий блок, имитирующий прочие блоки верстки-->
+				<div class="shifter"></div>
+				<!--наш двигающийся блок-->
+				<div id="scroll">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<!--просто отбивающий блок, имитирующий прочие блоки верстки-->
+				<div class="shifter"></div>
+			</div>
+		</div>
+
+
+
+		<script>
+			let win=$(window),
+					wH=win.height(),
+					mover=$('#scroll'),
+			        mH=mover.height();
+
+			//для девайсов, у которых экран более 600. изменить значение на то, где при адаптиве из колонки в строку блок превращается
+			if(matchMedia('(min-width:600px)').matches)
+			{
+				win.on('scroll',()=>{
+					let wS=win.scrollTop(),
+							mO=mover.offset().top,
+							left;
+
+					left=(mO+mH-wS-wH)*50/(wH-mH);
+					if(left>0)
+						left=0;
+					if(left<-50)
+						left=-50;
+					mover.css('left',left+'%');
+				});
+			}
+		</script>
+	</body>
+</html>
