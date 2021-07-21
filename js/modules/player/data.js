@@ -13,7 +13,6 @@ export const data={
   goOn:'.continue',
   extTemplate:'#ext-player-template',
   $extra:'.special-btns',
-  $smooth:'.smooth',
   shownCls:'shown'
  }
 };

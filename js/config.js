@@ -14,9 +14,9 @@ export let config={
  sound:{
   template:'<audio src="../sounds/<%= src %>.mp3" preload="auto" <%= loop?"loop":"" %>></audio>'
  },
- /*redirect:{//needed?
+ redirect:{
    '1':'end.php'
-  },*/
+  },
  'player':{
   quality:[
    {
@@ -38,16 +38,12 @@ export let config={
    //tmpl:'videos/<%= spec %>/<%= src %>.mp4'
   },
   data:{
-   '1':[//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
-    {
-     base:{
-      src:'oceans',
-      timecodes:[
-       {start:1,invoked:false,data:{interactive:'Start'}}
-      ]
-     }
-    }
-   ]
+   '1':{
+    src:'oceans',
+    timecodes:[
+     {start:1,back:0.5,invoked:false,data:{interactive:'Start'}}
+    ]
+   }//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
   }
  },
  interactives:{

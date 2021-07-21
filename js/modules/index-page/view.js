@@ -82,7 +82,7 @@ export let Index=Backbone.View.extend({
   let ls=lsMgr.getData();
 
   this.$el.addClass(data.view.startCls);
-  this.main.player.setGoOn(ls.data[epIndex].phase);
+  this.main.player.setGoOn();
   this.main.player.play({time:ls.data[epIndex].savedTime});
   this.main.player.setStepsChoose();
  },

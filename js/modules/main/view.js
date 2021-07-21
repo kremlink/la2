@@ -2,13 +2,11 @@ import {SoundMgr} from '../soundMgr/view.js';
 import {LsMgr} from '../lsMgr/view.js';
 
 import {StartView} from '../start/view.js';
-import {UPopView} from '../u-pop/view.js';
 
 import {data as dat} from './data.js';
 
 let Interactives={
- Start:StartView,
- UPop:UPopView
+ Start:StartView
 };
 
 let app,
@@ -20,8 +18,9 @@ export let MainView=Backbone.View.extend({
  events:events,
  el:data.view.el,
  goOn:false,
+ delayedPTimer:null,
  interactives:{},
- initialize:function(opts){
+ initialize:function(opts){console.log(opts);
   let throttle=_.throttle((opts)=>this.saveTimeAndPhase(opts),data.throttle,{leading:false});
 
   app=opts.app;
@@ -45,125 +44,43 @@ export let MainView=Backbone.View.extend({
   let ls=this.lsMgr.getData();
 
   ls.data[epIndex].savedTime=opts.currTime;
-  ls.data[epIndex].phase=opts.phase;
   this.lsMgr.setData(ls);
- },
- hide:function(){
-  this.$el.removeClass(data.view.shownCls);
-  app.get('aggregator').trigger('player:rewind',false);
-  for(let x of Object.values(this.interactives))
-   x.toggle(false);
  },
  setGoOn:function(){
   this.goOn=true;
  },
- toggle:function({show:show,correct:correct,opts}){
-  let d=this.player.getData(),
-      ls=this.lsMgr.getData(),
-      int;
+ toggle:function({show:show,opts}){
+  let timecodeData=this.player.getData().timecodes;
 
   app.get('aggregator').trigger('main:toggle',!show);
 
   if(show)
   {
-   this.player.pause();
+   if(~timecodeData.delayedPause)
+    this.delayedPTimer=setTimeout(()=>app.get('aggregator').trigger('player:pause'),timecodeData.delayedPause?timecodeData.delayedPause*1000:0);
   }else
   {
-   if(d.phase.type==='base')
-   {
-    int=~d.phase.index?
-        d.pData[d.phase.step][d.phase.type].timecodes[d.phase.index].data.interactive:
-        d.pData[d.phase.step][d.phase.type].end.data.interactive;
-    if(int==='Start')
-    {
-     this.player.play();
-    }else//choose pop
-    {
-     ls.data[epIndex].correct=correct;
-     this.lsMgr.setData(ls);
-
-     this.player.changeData({index:opts.index,type:'choose'});
-     this.player.changeSrc(d.pData[d.phase.step][d.phase.type][d.phase.index].src);
-     //this.player.play();
-    }
-   }else
-   {
-    if(ls.data[epIndex].correct)
-    {
-     if(d.phase.step===d.pData.length-1)
-     {
-      this.lsMgr.resetData();
-      location.reload();
-     }else
-     {
-      ls.data[epIndex].correct=false;
-      this.lsMgr.setData(ls);
-
-      this.player.changeData({step:d.phase.step+1,index:-1,type:'base'});
-      this.player.changeSrc(d.pData[d.phase.step][d.phase.type].src);
-      //this.player.play();
-      this.player.setStepsChoose();
-     }
-    }else
-    {
-     this.player.changeData({rewind:true});
-     this.player.changeSrc(d.pData[d.phase.step][d.phase.type][d.phase.index].rewind);
-     //this.player.play({time:d.pData[d.phase.step][d.phase.type].rewindTime});
-     app.get('aggregator').trigger('player:rewind',true);
-    }
-   }
+   clearTimeout(this.delayedPTimer);
+   //setTimeout(()=>app.get('aggregator').trigger('player:pause'),data.time);else
+   app.get('aggregator').trigger('player:play',{time:opts.end?timecodeData.data[opts.end]:
+     (!('end' in timecodeData)?-1:timecodeData.end)});
   }
 
-  this.$el.toggleClass(data.view.shownCls,show);
+  this.$el.toggleClass(timecodeData.noAnim?data.view.noAnimCls:data.view.shownCls,show);
  },
  step:function(){
-  let d=this.player.getData(),
-      ls=this.lsMgr.getData(),
-      tItem,
-      int;
+  let timecodeData=this.player.getData().timecodes,
+      int=timecodeData.data.interactive;
 
-  if(d.phase.type==='base')
+  if(timecodeData.checkpoint)
   {
-   tItem=~d.phase.index?d.pData[d.phase.step][d.phase.type].timecodes[d.phase.index]:d.pData[d.phase.step][d.phase.type].end;
-
-
-   int=tItem.data.interactive;
-
-   if(int!=='Start'||int==='Start'&&!ls.user.name)
-   {
-    if(!this.interactives[int])
-     this.interactives[int]=new Interactives[int]({app:app,data:d});else
-     this.interactives[int].toggle(true);
-    this.toggle({show:true});
-   }
-
-   /*if(int!=='Start')
-   {
-    app.get('aggregator').trigger('player:rewind',false);
-    this.player.changeData({rewind:false});
-   }*/
+   app.get('aggregator').trigger('timer:update',timecodeData);
   }else
   {
-   if(d.phase.rewind)
-   {
-    this.player.changeData({rewind:false,type:'base',index:-1});
-    this.player.changeSrc(d.pData[d.phase.step][d.phase.type].src,'end');
-    app.get('aggregator').trigger('player:rewind',false);
-   }else
-   {
-    this.toggle({show:true});
-
-    int=d.pData[d.phase.step][d.phase.type][d.phase.index].data.interactive;
-    if(!this.interactives[int])
-     this.interactives[int]=new Interactives[int]({app:app,data:d});else
-     this.interactives[int].toggle(true,ls.data[epIndex].correct);
-
-    if(d.phase.step===d.pData.length-1&&ls.data[epIndex].correct&&!ls.data[epIndex].saved)
-    {
-     ls.data[epIndex].saved=true;
-     this.lsMgr.setData(ls);
-    }
-   }
+   if(!this.interactives[int])
+    this.interactives[int]=new Interactives[int]({app:app,data:d});else
+    this.interactives[int].toggle(true);
+   this.toggle({show:true});
   }
  }
 });
