@@ -10,12 +10,16 @@ events[`mouseenter.base ${data.events.click}`]='btnHover';
 export let BaseIntView=Backbone.View.extend({
  events:events,
  phase:0,
+ data:{},
  initialize:function(opts){
   app=opts.app;
 
   this.$block=this.$(data.view.block);
 
   this.toggle(true);
+ },
+ setData:function(k,v){
+  this.data[k]=v;
  },
  next:function(){
   this.$block.eq(this.phase).removeClass(data.view.shownCls);
@@ -31,15 +35,15 @@ export let BaseIntView=Backbone.View.extend({
  btnHover:function(){
   app.get('aggregator').trigger('sound','btn-h');
  },
- away:function(correct=false,opts){
-  app.get('aggregator').trigger('interactive:toggle',{show:false,correct:correct,opts:opts});
+ away:function(){
+  app.get('aggregator').trigger('interactive:toggle',{show:false,opts:this.data});
   this.toggle(false);
  },
  toggle:function(f){
   if(f)
   {
    this.phase=0;
-   this.$block.eq(this.phase).addClass(data.view.shownCls);
+   this.$block.removeClass(data.view.shownCls).eq(this.phase).addClass(data.view.shownCls);
   }
   this.$el.toggleClass(data.view.shownCls,f);
   app.get('aggregator').trigger(f?'sound':'unsound','bg');

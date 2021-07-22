@@ -75,7 +75,7 @@ export let Index=Backbone.View.extend({
   }
 
   $.when(wait).then(()=>{
-   this.main.player=new PlayerView({app:app,lsMgr:lsMgr});
+   this.main.addPlayer(new PlayerView({app:app,lsMgr:lsMgr}));
   });
  },
  goOn:function(){
@@ -84,7 +84,6 @@ export let Index=Backbone.View.extend({
   this.$el.addClass(data.view.startCls);
   this.main.player.setGoOn();
   this.main.player.play({time:ls.data[epIndex].savedTime});
-  this.main.player.setStepsChoose();
  },
  clr:function(){
   lsMgr.resetData(true);
@@ -102,25 +101,12 @@ export let Index=Backbone.View.extend({
  start:function(){
   this.$el.addClass(data.view.startCls);
   lsMgr.resetData();
-  this.main.player.setStepsChoose();
   this.main.player.play();
   app.get('aggregator').trigger('sound','btn');
  },
- pause:function(){
-  let d=this.main.player.getData(),
-      int;
-
-  if(d.phase.type==='base')
-  {
-   int=~d.phase.index?
-       d.pData[d.phase.step][d.phase.type].timecodes[d.phase.index].data.interactive:
-       d.pData[d.phase.step][d.phase.type].end.data.interactive;
-   if(int!=='Start'||int==='Start'&&!lsMgr.getData().user)
-    this.$el.addClass(data.view.pauseCls);
-  }else
-  {
+ pause:function(opts){
+  if(!opts.data.checkpoint)
    this.$el.addClass(data.view.pauseCls);
-  }
  },
  play:function(){
   this.$el.removeClass(data.view.pauseCls);

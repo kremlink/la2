@@ -62,14 +62,13 @@ export let PlayerView=Backbone.View.extend({
   let index=$(e.currentTarget).index();
 
   this.pData.timecodes.forEach((o,i)=>{
-   if(index>=i)
+   if(index<=i)
     o.invoked=false;
   });
   app.get('aggregator').trigger('player:back');
-  this.setStepsChoose();
   this.setPausable(true);
 
-  this.play({time:this.pData.timecodes[index].start});
+  this.play({time:this.pData.timecodes[index].back});
  },
  changeSrc:function(src){
   let ind=this.qual.findIndex((o)=>matchMedia(o.width).matches);
@@ -84,12 +83,17 @@ export let PlayerView=Backbone.View.extend({
   this.player.src(this.qual);
  },
  getData:function(){
-  return {
-   pData:this.pData
-  };
+  return this.pData;
  },
- setStepsChoose:function(){
-  let choose=0;//TODO:do it
+ setStepsChoose:function(ind){
+  let choose=(()=>{
+   let arr=[];
+
+   for (let i=0;i<this.pData.timecodes.length;i++)
+    arr[i]=ind>=i;
+
+   return arr;
+  })();
 
   this.$extra.html(this.extTemplate({choose:choose}));
  },
@@ -101,6 +105,7 @@ export let PlayerView=Backbone.View.extend({
   let touched={};
 
   this.setElement(data.view.el);
+  this.$el.append(this.$extra);
   this.changeSrc(this.pData.src);
 
   this.player.controlBar.addChild('QualitySelector');
@@ -132,11 +137,12 @@ export let PlayerView=Backbone.View.extend({
    let curr=this.player.currentTime();
 
    app.get('aggregator').trigger('player:timeupdate',curr);
-   this.pData.timecodes.forEach((o)=>{
+   this.pData.timecodes.forEach((o,i)=>{
     if((o.start<0?curr>this.player.duration()+o.start:curr>o.start)&&!o.invoked)
     {
-     app.get('aggregator').trigger('player:interactive',o);
+     app.get('aggregator').trigger('player:interactive',{data:o,index:i});
      o.invoked=true;
+     this.setStepsChoose(i);
     }
    });
   });
@@ -165,7 +171,7 @@ export let PlayerView=Backbone.View.extend({
   if(~time)
   {
    this.player.currentTime(time);
-   this.timecodes.forEach((o)=>{
+   this.pData.timecodes.forEach((o)=>{
     if(this.goOn)
     {
      if(time>o.start)

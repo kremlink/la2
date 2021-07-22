@@ -7,7 +7,7 @@ let app,
 
 events[`click ${data.events.test}`]='click';
 
-export let StartView=BaseIntView.extend({
+export let ForkView=BaseIntView.extend({
  events:function(){
   return _.extend({},BaseIntView.prototype.events,events);
  },
@@ -27,7 +27,9 @@ export let StartView=BaseIntView.extend({
   BaseIntView.prototype.toggle.apply(this,arguments);
  },*/
  click:function(){
-  this.next();
+  //this.setData('time',this.opts.data.data.alt);//if failed
+  this.away();
+
   /*if(app.get('lib.utils.form.validate')({check:this.$inp,data:data.view.vData,error:(obj)=>obj.addClass(data.view.errCls)}))
   {
    app.get('aggregator').trigger('board:user',Object.fromEntries(this.$inp.serializeArray().map(({name,value})=>[name,value])));

@@ -487,11 +487,11 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
   transition: opacity 0.3s ease-in-out;
 }
 .ov-inner.shown {
-  pointer-events: auto;
+  visibility: visible;
   opacity: 1;
 }
 .ov-inner.hi-bye {

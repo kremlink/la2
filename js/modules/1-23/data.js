@@ -3,6 +3,6 @@ export const data={
   'test':'.int div'
  },
  view:{
-  el:'.ov-wrap.start'
+  el:'.ov-wrap.fork'
  }
 };

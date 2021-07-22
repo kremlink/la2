@@ -1,12 +1,14 @@
 import {SoundMgr} from '../soundMgr/view.js';
 import {LsMgr} from '../lsMgr/view.js';
 
-import {StartView} from '../start/view.js';
+import {ForkView} from '../1-23/view.js';
+import {PackingView} from '../1-25/view.js';
 
 import {data as dat} from './data.js';
 
 let Interactives={
- Start:StartView
+ Fork:ForkView,
+ Packing:PackingView
 };
 
 let app,
@@ -17,10 +19,12 @@ let app,
 export let MainView=Backbone.View.extend({
  events:events,
  el:data.view.el,
+ player:null,
  goOn:false,
  delayedPTimer:null,
+ intData:null,
  interactives:{},
- initialize:function(opts){console.log(opts);
+ initialize:function(opts){
   let throttle=_.throttle((opts)=>this.saveTimeAndPhase(opts),data.throttle,{leading:false});
 
   app=opts.app;
@@ -40,6 +44,14 @@ export let MainView=Backbone.View.extend({
 
   new SoundMgr({app:app});
  },
+ hide:function(){
+  this.$el.removeClass(data.view.shownCls);
+  for(let x of Object.values(this.interactives))
+   x.toggle(false);
+ },
+ addPlayer:function(P){
+  this.player=P;
+ },
  saveTimeAndPhase:function(opts){
   let ls=this.lsMgr.getData();
 
@@ -50,35 +62,35 @@ export let MainView=Backbone.View.extend({
   this.goOn=true;
  },
  toggle:function({show:show,opts}){
-  let timecodeData=this.player.getData().timecodes;
+  let tD=this.intData.data;
 
   app.get('aggregator').trigger('main:toggle',!show);
 
   if(show)
   {
-   if(~timecodeData.delayedPause)
-    this.delayedPTimer=setTimeout(()=>app.get('aggregator').trigger('player:pause'),timecodeData.delayedPause?timecodeData.delayedPause*1000:0);
+   if(~tD.delayedPause)
+    this.delayedPTimer=setTimeout(()=>this.player.pause(),tD.delayedPause?tD.delayedPause*1000:0);
   }else
   {
    clearTimeout(this.delayedPTimer);
-   //setTimeout(()=>app.get('aggregator').trigger('player:pause'),data.time);else
-   app.get('aggregator').trigger('player:play',{time:opts.end?timecodeData.data[opts.end]:
-     (!('end' in timecodeData)?-1:timecodeData.end)});
+   this.player.play({time:opts.time?opts.time:(!('end' in tD)?-1:tD.end)});
   }
 
-  this.$el.toggleClass(timecodeData.noAnim?data.view.noAnimCls:data.view.shownCls,show);
+  this.$el.toggleClass(tD.noAnim?data.view.noAnimCls:data.view.shownCls,show);
  },
- step:function(){
-  let timecodeData=this.player.getData().timecodes,
-      int=timecodeData.data.interactive;
+ step:function(opts){
+  let tD=opts.data,
+      int=tD.data.interactive;
 
-  if(timecodeData.checkpoint)
+  this.intData=opts;
+
+  if(tD.checkpoint)
   {
-   app.get('aggregator').trigger('timer:update',timecodeData);
+   app.get('aggregator').trigger('timer:update',tD);
   }else
   {
    if(!this.interactives[int])
-    this.interactives[int]=new Interactives[int]({app:app,data:d});else
+    this.interactives[int]=new Interactives[int]({app:app,data:tD});else
     this.interactives[int].toggle(true);
    this.toggle({show:true});
   }

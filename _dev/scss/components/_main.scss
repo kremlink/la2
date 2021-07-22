@@ -24,16 +24,18 @@
       &.start{
 
       }
+      &.packing{
 
+      }
     }
   }
   .ov-inner{
     @include center();
     opacity:0;
-    pointer-events:none;
+    visibility:hidden;
     @include trs('opacity #{$anim} ease-in-out');
     &.shown{
-      pointer-events:auto;
+      visibility:visible;
       opacity:1;
     }
     &.hi-bye{
