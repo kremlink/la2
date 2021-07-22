@@ -167,13 +167,15 @@ export let PlayerView=Backbone.View.extend({
    this.play();else
    this.pause();
  },
- play:function({time=-1}={}){
+ play:function({time=-1,interactive=-1}={}){
   if(~time)
   {
    this.player.currentTime(time);
    this.pData.timecodes.forEach((o)=>{
     if(this.goOn)
     {
+     if(~interactive)
+      time=this.pData.timecodes[interactive].start;
      if(time>o.start)
       o.invoked=true;
     }else

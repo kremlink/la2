@@ -19,7 +19,7 @@ export let LsMgr=Backbone.View.extend({
    let ls=this.getData();
 
    if(!ls.data[epIndex])
-    ls.data[epIndex]={};
+    ls.data[epIndex]={interactive:-1};
 
    this.setData(ls);
   }
@@ -29,13 +29,13 @@ export let LsMgr=Backbone.View.extend({
   {
    localStorage.setItem(data.name,JSON.stringify({
     user:{},
-    data:{[epIndex]:{}}
+    data:{[epIndex]:{interactive:-1}}
    }));
   }else
   {
    let ls=this.getData();
 
-   ls.data[epIndex]={};
+   ls.data[epIndex]={interactive:-1};
    this.setData(ls);
   }
  },

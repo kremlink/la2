@@ -52,30 +52,34 @@ export let MainView=Backbone.View.extend({
  addPlayer:function(P){
   this.player=P;
  },
- saveTimeAndPhase:function(opts){
+ saveTimeAndPhase:function(currTime){
   let ls=this.lsMgr.getData();
 
-  ls.data[epIndex].savedTime=opts.currTime;
+  ls.data[epIndex].savedTime=currTime;
   this.lsMgr.setData(ls);
  },
  setGoOn:function(){
   this.goOn=true;
  },
  toggle:function({show:show,opts}){
-  let tD=this.intData.data;
+  let tD=this.intData.data,
+      ls=this.lsMgr.getData();
 
   app.get('aggregator').trigger('main:toggle',!show);
 
   if(show)
   {
+   ls.data[epIndex].interactive=this.intData.index;
    if(~tD.delayedPause)
     this.delayedPTimer=setTimeout(()=>this.player.pause(),tD.delayedPause?tD.delayedPause*1000:0);
   }else
   {
+   ls.data[epIndex].interactive=-1;
    clearTimeout(this.delayedPTimer);
    this.player.play({time:opts.time?opts.time:(!('end' in tD)?-1:tD.end)});
   }
 
+  this.lsMgr.setData(ls);
   this.$el.toggleClass(tD.noAnim?data.view.noAnimCls:data.view.shownCls,show);
  },
  step:function(opts){

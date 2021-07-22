@@ -79,11 +79,11 @@ export let Index=Backbone.View.extend({
   });
  },
  goOn:function(){
-  let ls=lsMgr.getData();
+  let ls=lsMgr.getData().data[epIndex];
 
   this.$el.addClass(data.view.startCls);
   this.main.player.setGoOn();
-  this.main.player.play({time:ls.data[epIndex].savedTime});
+  this.main.player.play({time:ls.savedTime,interactive:ls.interactive});
  },
  clr:function(){
   lsMgr.resetData(true);
