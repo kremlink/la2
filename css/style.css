@@ -2,7 +2,7 @@
 /*@path:core\_base.scss*/
 /*@path:core\_mixins.scss*/
 /*@path:core\_exts.scss*/
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
 .board-page {
   box-sizing: border-box;
 }
@@ -422,7 +422,7 @@ html {
 
 body {
   height: 100%;
-  font: 1.575vw/1.25 "Press Start 2P", sans-serif;
+  font: 1.575vw/1.25 "Open Sans", sans-serif;
   background: #000;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -463,7 +463,8 @@ body {
 .overlay-block.shown {
   visibility: visible;
 }
-.overlay-block .ov-wrap {
+
+.ov-wrap {
   width: 100%;
   height: 56.25vw;
   max-height: 100vh;
@@ -471,21 +472,62 @@ body {
   z-index: 1;
   opacity: 0;
   pointer-events: none;
+  color: #fff;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease-in-out;
 }
-.overlay-block .ov-wrap.shown {
+.ov-wrap.shown {
   pointer-events: auto;
   opacity: 1;
+}
+.ov-wrap.fork.vanish .h + .btn {
+  visibility: hidden;
+}
+.ov-wrap.fork .int {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  text-align: center;
+}
+.ov-wrap.fork .h {
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 1.8em;
+}
+.ov-wrap.fork .btn {
+  margin: 6em 6em 0 6em;
+  position: relative;
+  width: 18em;
+  cursor: pointer;
+}
+.ov-wrap.fork .l {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4.5em;
+}
+.ov-wrap.fork .btn-h {
+  height: 4em;
+  line-height: 4em;
+  margin-bottom: 2em;
+  position: relative;
+}
+.ov-wrap.fork .btn-h div {
+  font-size: 1.3em;
+}
+.ov-wrap.fork .btn-sh {
+  font-size: 0.8em;
+  pointer-events: none;
 }
 .ov-inner {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out;
@@ -511,6 +553,13 @@ body {
   align-items: center;
   justify-content: center;
 }
+.bg-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: center/cover no-repeat;
+}
+
 .hi-bye-btn {
   width: 10em;
   height: 2.2222222222em;
@@ -520,6 +569,19 @@ body {
   transform: translate(0, -50%);
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.the-prog {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0.5em;
+  background: linear-gradient(90deg, #DF8998, #E5B99D 90%);
+}
+.the-prog.shown {
+  width: 100%;
+  transition: width 5s linear;
 }
 
 .hoverable {
@@ -789,7 +851,7 @@ body {
 .video-js {
   width: 100%;
   height: 100%;
-  font-family: "Press Start 2P", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #b0aca4;
 }
 .nope .video-js {

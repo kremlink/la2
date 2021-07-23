@@ -41,8 +41,8 @@ export let config={
    '1':{
     src:'oceans',
     timecodes:[
-     {start:1,back:0.5,invoked:false,data:{interactive:'Fork',alt:3}},
-     {start:3,back:2,invoked:false,data:{interactive:'Packing'}}
+     {start:.2,back:0.5,invoked:false,data:{interactive:'Fork',alt:3}}//,
+     //{start:3,back:2,invoked:false,data:{interactive:'Packing'}}
     ]
    }//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
   }

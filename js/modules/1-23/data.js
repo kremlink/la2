@@ -1,8 +1,12 @@
 export const data={
  events:{
-  'test':'.int div'
+  'click':'.btn'
  },
  view:{
-  el:'.ov-wrap.fork'
- }
+  el:'.ov-wrap.fork',
+  $lottie:'.l',
+  $prog:'.the-prog',
+  vanishCls:'vanish'
+ },
+ vanish:2//dom index
 };

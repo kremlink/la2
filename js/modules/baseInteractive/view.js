@@ -11,6 +11,7 @@ export let BaseIntView=Backbone.View.extend({
  events:events,
  phase:0,
  data:{},
+ shownCls:data.view.shownCls,
  initialize:function(opts){
   app=opts.app;
 
@@ -22,9 +23,9 @@ export let BaseIntView=Backbone.View.extend({
   this.data[k]=v;
  },
  next:function(){
-  this.$block.eq(this.phase).removeClass(data.view.shownCls);
+  this.$block.eq(this.phase).removeClass(this.shownCls);
   this.phase++;
-  this.$block.eq(this.phase).addClass(data.view.shownCls);
+  this.$block.eq(this.phase).addClass(this.shownCls);
  },
  btnClick:function(){
   app.get('aggregator').trigger('sound','btn');
@@ -43,9 +44,10 @@ export let BaseIntView=Backbone.View.extend({
   if(f)
   {
    this.phase=0;
-   this.$block.removeClass(data.view.shownCls).eq(this.phase).addClass(data.view.shownCls);
+   this.$block.removeClass(this.shownCls).eq(this.phase).addClass(this.shownCls);
+   this.data={};
   }
-  this.$el.toggleClass(data.view.shownCls,f);
+  this.$el.toggleClass(this.shownCls,f);
   app.get('aggregator').trigger(f?'sound':'unsound','bg');
  }
 });

@@ -6,31 +6,69 @@
     &.shown{
       visibility:visible;
     }
-
-    .ov-wrap{
-      width:100%;
-      height:56.25vw; //h:w=9/16
-      max-height:100vh;
-      max-width:177.7777vh; //16/9=1.778
-      z-index:1;
-      opacity:0;
-      pointer-events:none;
-      @include center();
-      @include trs('opacity #{$anim} ease-in-out');
-      &.shown{
-        pointer-events:auto;
-        opacity:1;
+  }
+  .ov-wrap{
+    width:100%;
+    height:56.25vw; //h:w=9/16
+    max-height:100vh;
+    max-width:177.7777vh; //16/9=1.778
+    z-index:1;
+    opacity:0;
+    pointer-events:none;
+    color:#fff;
+    @include center();
+    @include trs('opacity #{$anim} ease-in-out');
+    &.shown{
+      pointer-events:auto;
+      opacity:1;
+    }
+    //---
+    &.fork{
+      &.vanish .h+.btn{
+        visibility:hidden;
       }
-      &.start{
-
+      .int{
+        @include flx(display,flex);
+        @include flx(flex-flow,'row wrap');
+        @include flx(justify-content,center);
+        text-align:center;
       }
-      &.packing{
-
+      .h{
+        text-transform:uppercase;
+        width:100%;
+        font-size:1.8em;
       }
+      .btn{
+        margin:6em 6em 0 6em;
+        position:relative;
+        width:18em;
+        cursor:pointer;
+      }
+      .l{
+        @include abs($l:0,$r:0);
+        height:130/520*18em;
+      }
+      .btn-h{
+        height:4em;
+        line-height:4em;
+        margin-bottom:2em;
+        position:relative;
+        div{
+          font-size:1.3em;
+        }
+      }
+      .btn-sh{
+        font-size:.8em;
+        pointer-events:none;
+      }
+    }
+    &.packing{
+
     }
   }
   .ov-inner{
     @include center();
+    width:100%;
     opacity:0;
     visibility:hidden;
     @include trs('opacity #{$anim} ease-in-out');
@@ -59,6 +97,13 @@
 
     }
   }
+  //---
+  .bg-img{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:center/cover no-repeat;
+  }
   .hi-bye-btn{
     width:10em;
     height:104/468*10em;
@@ -66,7 +111,16 @@
     cursor:pointer;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
-  //test
+  .the-prog{
+    @include abs($l:0,$b:0);
+    width:0;
+    height:.5em;
+    background:linear-gradient(90deg,#DF8998,#E5B99D 90%);
+    &.shown{
+      width:100%;
+      @include trs('width 5s linear');
+    }
+  }
   .hoverable{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     @media(min-width:1025px){

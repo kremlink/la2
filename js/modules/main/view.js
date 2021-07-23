@@ -43,6 +43,9 @@ export let MainView=Backbone.View.extend({
   $(window).on('visibilitychange pagehide',()=>app.get('aggregator').trigger('page:state'));
 
   new SoundMgr({app:app});
+
+  //testing
+
  },
  hide:function(){
   this.$el.removeClass(data.view.shownCls);
