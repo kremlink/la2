@@ -1,4 +1,5 @@
 import {data as dat} from './data.js';
+import {lottie as lData} from './lottie.js';
 
 let app,
     events={},
@@ -18,6 +19,15 @@ export let BaseIntView=Backbone.View.extend({
   this.$block=this.$(data.view.block);
 
   this.toggle(true);
+  this.$(data.view.$lottie).each(function(){
+   lottie.loadAnimation({
+    container:this,
+    renderer:'svg',
+    loop:true,
+    autoplay:true,
+    animationData:lData
+   });
+  });
  },
  setData:function(k,v){
   this.data[k]=v;

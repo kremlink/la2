@@ -4,6 +4,7 @@ export const data={
  },
  view:{
   block:'.ov-inner',
-  shownCls:'shown'
+  shownCls:'shown',
+  $lottie:'.hi-bye-btn .l'
  }
 };

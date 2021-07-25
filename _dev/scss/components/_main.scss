@@ -27,7 +27,8 @@
       &.vanish .h+.btn{
         visibility:hidden;
       }
-      .int{
+      .ov-inner{
+        @include center();
         @include flx(display,flex);
         @include flx(flex-flow,'row wrap');
         @include flx(justify-content,center);
@@ -63,11 +64,13 @@
       }
     }
     &.packing{
-
+      .ov-inner{
+        height:100%;
+      }
     }
   }
   .ov-inner{
-    @include center();
+    position:absolute;
     width:100%;
     opacity:0;
     visibility:hidden;
@@ -77,25 +80,34 @@
       opacity:1;
     }
     &.hi-bye{
-      width:50%;
-      padding:0 40% 0 10%;
-      position:absolute;
+      .ov-cont{
+        @include center();
+        width:47.4%;
+        padding:0 35% 0 17.6%;
+      }
+      .h{
+        text-transform:uppercase;
+        width:100%;
+        font-size:1.4em;
+      }
       .text{
-        font-size:1em;
-        color:#fff;
+        margin-top:4.5em;
+        font-size:.7em;
       }
       .infogr{
-        margin-top:2em;
-        height:5em;
-        background:#eee;
-        @include flx(display,flex);
-        @include flx(align-items,center);
-        @include flx(justify-content,center);
+        margin-top:3em;
+        height:7em;
+        img{
+          height:100%;
+        }
       }
     }
     &.int{
 
     }
+  }
+  .ov-cont{
+
   }
   //---
   .bg-img{
@@ -105,11 +117,25 @@
     background:center/cover no-repeat;
   }
   .hi-bye-btn{
-    width:10em;
-    height:104/468*10em;
-    @include center($r:10%);
+    width:11em;
+    height:192/100*4em;
+    @include center($r:3%);
     cursor:pointer;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+    @include flx(display,flex);
+    @include flx(align-items,center);
+    span{
+      text-transform:uppercase;
+      font-size:1.4em;
+      background:linear-gradient(90deg,#DF8998,#E5B99D 90%);
+      -webkit-text-fill-color:transparent;
+      -webkit-background-clip:text;
+    }
+    .l{
+      @include abs($r:0,$t:0);
+      width:4em;
+      height:100%;
+    }
   }
   .the-prog{
     @include abs($l:0,$b:0);
