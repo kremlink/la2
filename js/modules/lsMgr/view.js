@@ -24,6 +24,14 @@ export let LsMgr=Backbone.View.extend({
    this.setData(ls);
   }
  },
+ sendData:function(cb,ini=false){
+  let ls=this.getData();
+
+  fetch(data.url+JSON.stringify({ini:ini,user:ls.user,episode:epIndex,data:ls.data[epIndex].gameData}),{
+   method:'get',
+   credentials:'include'
+  }).then((r)=>{return r.json()}).then(cb);
+ },
  resetData:function(resetUser=false){
   if(resetUser)
   {

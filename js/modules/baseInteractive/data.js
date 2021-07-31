@@ -1,10 +1,10 @@
 export const data={
  events:{
-  'click':'.hi-bye-btn'
+  'click':'.h-b-btn'
  },
  view:{
   block:'.ov-inner',
   shownCls:'shown',
-  $lottie:'.hi-bye-btn .l'
+  $lottie:'.h-b-l'
  }
 };

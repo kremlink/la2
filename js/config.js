@@ -1,7 +1,8 @@
 export let config={
  metrika:{name:64365469},
  ls:{
-  name:'la-vid'
+  name:'la-vid',
+  url:'php.php?data='
  },
  'index':{
   preload:{

@@ -30,11 +30,6 @@ export let Index=Backbone.View.extend({
   new Metrika({app:app});
   this.main=new MainView({app:app});
 
-  lsMgr=this.main.lsMgr;
-
-  if(lsMgr.getData().data[epIndex].savedTime)
-   this.$el.addClass(data.view.goOnCls);
-
   this.$el.toggleClass(data.view.tooSmallCls,mob);
   $(window).on('resize',_.debounce(()=>{
    mob=!matchMedia(data.minViewport).matches;
@@ -44,12 +39,25 @@ export let Index=Backbone.View.extend({
   document.addEventListener('contextmenu',e=>e.preventDefault());
   this.listenTo(app.get('aggregator'),'player:ready',this.loaded);
   //this.listenTo(app.get('aggregator'),'player:fs',this.fs);
-  this.listenTo(app.get('aggregator'),'timer:show',this.timer);
   this.listenTo(app.get('aggregator'),'player:interactive',this.pause);
   this.listenTo(app.get('aggregator'),'player:play',this.play);
-  this.listenTo(app.get('aggregator'),'player:rewind',this.disable);
 
-  this.prepare();
+  lsMgr=this.main.lsMgr;
+
+  lsMgr.sendData((r)=>{
+   let lsData=lsMgr.getData();
+
+   if(lsData.data[epIndex].savedTime||r.savedTime)
+    this.$el.addClass(data.view.goOnCls);
+
+   if(r.savedTime)
+   {
+    lsData.data[epIndex].savedTime=r.savedTime;
+    lsMgr.setData(lsData);
+   }
+
+   this.prepare();
+  },true);
  },
  prepare:function(){//inconsistent loadeddata event with multiple videos
   let imgs,
@@ -95,9 +103,6 @@ export let Index=Backbone.View.extend({
  },
  disable:function(f){
   this.$el.toggleClass(data.view.nopeCls,f);
- },
- timer:function(){
-  this.$el.addClass(data.view.timerCls);
  },
  start:function(){
   this.$el.addClass(data.view.startCls);
