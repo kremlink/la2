@@ -18,7 +18,11 @@ export let PackingView=BaseIntView.extend({
  },
  iTemplate:_.template($(data.view.itemTmpl).html()),
  el:data.view.el,
+ waiting:false,
+ index:0,
  initialize:function(opts){
+  let self=this;
+
   app=opts.app;
   data=app.configure({start:dat}).start;
 
@@ -29,7 +33,22 @@ export let PackingView=BaseIntView.extend({
    data:data
   }]);
 
-  this.$itemCont=this.$(data.view.$itemCont).prepend(this.$items=$(this.iTemplate({items:data.items})));
+  this.$itemCont=this.$(data.view.$itemCont).prepend(this.$items=$(this.iTemplate({items:data.items})).filter(function(){
+   return this.nodeType!==3;
+  }));
+
+  this.$items.on('transitionend',(e)=>{
+   if(e.originalEvent.propertyName===data.view.fakeTrs)
+   {
+    this.$items.eq(this.index).removeClass(this.shownCls);
+    this.waiting=false;
+    this.$items.eq(++this.index).addClass(this.shownCls);
+    //console.log(i);
+    //console.log(self.$items.eq(i+1).css(data.view.fakeTrs));
+   }
+  });
+
+  this.next();//TODO:remove
  },
  lHover:function(){
   this.$el.addClass(data.view.itemLCls);
@@ -41,7 +60,11 @@ export let PackingView=BaseIntView.extend({
   this.$el.removeClass(data.view.itemLCls+' '+data.view.itemRCls);
  },
  lClick:function(){
-
+  if(!this.waiting)
+  {
+   this.$el.addClass(data.view.itemPutCls).removeClass(data.view.itemLCls);
+   this.waiting=true;
+  }
  },
  rClick:function(){
 

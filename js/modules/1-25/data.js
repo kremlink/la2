@@ -8,7 +8,9 @@ export const data={
   $itemCont:'.int .ov-cont',
   itemTmpl:'#i-1-25-item-template',
   itemLCls:'item-l',
-  itemRCls:'item-r'
+  itemRCls:'item-r',
+  itemPutCls:'item-put',
+  fakeTrs:'text-indent'
  },
- items:[{h:'Аптечка',desc:'Описание вещи, всякие разные слова и знаки препинания'},{h:'Что-то еще',desc:'Описание вещи'}]
+ items:[{h:'Аптечка',desc:'Описание вещи, всякие разные слова и знаки препинания',yep:true},{h:'Что-то еще',desc:'Описание вещи'}]
 };

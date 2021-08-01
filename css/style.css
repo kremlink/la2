@@ -526,11 +526,22 @@ body {
   font-size: 0.8em;
   pointer-events: none;
 }
-.ov-wrap.packing.item-l .i-img img {
+.ov-wrap.packing.item-l .item.shown .i-img img {
   transform: translate(-2em, 0) rotate(-15deg);
 }
-.ov-wrap.packing.item-r .i-img img {
+.ov-wrap.packing.item-r .item.shown .i-img img {
   transform: translate(2em, 0) rotate(15deg);
+}
+.ov-wrap.packing.item-put .item.shown {
+  text-indent: 1px;
+}
+.ov-wrap.packing.item-put .item.shown img {
+  opacity: 0;
+  filter: grayscale(1);
+  transform: translate(-20em, 0);
+}
+.ov-wrap.packing.item-put .item.shown .i-h, .ov-wrap.packing.item-put .item.shown .i-desc {
+  opacity: 0;
 }
 .ov-wrap.packing .ov-inner {
   height: 100%;
@@ -582,13 +593,14 @@ body {
   color: rgba(255, 255, 255, 0.8);
   z-index: 1;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
 }
 .ov-wrap.packing .item.shown {
   opacity: 1;
+  transition: text-indent 0.3s ease-in-out 0.6s,opacity 0.3s ease-in-out;
 }
-.ov-wrap.packing .item.shown img {
-  transition: all 0.3s ease-in-out;
+.ov-wrap.packing .item img {
+  transition: transform 0.3s ease-in-out,filter 0.6s ease-in-out,opacity 0.3s ease-in-out 0.6s;
 }
 .ov-wrap.packing .i-h {
   position: absolute;
@@ -596,6 +608,7 @@ body {
   text-align: center;
   text-transform: uppercase;
   font-weight: 300;
+  transition: opacity 0.3s ease-in-out;
 }
 .ov-wrap.packing .i-img {
   position: absolute;
@@ -617,6 +630,7 @@ body {
   width: 80%;
   text-align: center;
   font-size: 0.6em;
+  transition: opacity 0.3s ease-in-out;
 }
 .ov-wrap.packing .arr {
   --w:40em;
