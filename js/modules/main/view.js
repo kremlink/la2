@@ -3,12 +3,14 @@ import {LsMgr} from '../lsMgr/view.js';
 
 import {ForkView} from '../1-23/view.js';
 import {PackingView} from '../1-25/view.js';
+import {TeamView} from '../1-30/view.js';
 
 import {data as dat} from './data.js';
 
 let Interactives={
  Fork:ForkView,
- Packing:PackingView
+ Packing:PackingView,
+ Team:TeamView
 };
 
 let app,

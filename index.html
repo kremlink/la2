@@ -138,6 +138,58 @@
                         </div>
                     </div>
                 </div>
+                <div class="ov-wrap team">
+                    <div class="ov-inner hi-bye">
+                        <div class="bg-img" style="background-image: url(images/1-30/1-30-bg.jpg);"></div>
+                        <div class="ov-cont">
+                            <div class="h-b-h">Avenger assemble</div>
+                            <div class="h-b-text">
+                                It is a long established fact that a reader will be distracted <br/>by the readable content of a page when looking at its layout.
+                                <br/><br/>
+                                The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English
+                            </div>
+                            <div class="h-b-infogr">
+                                <img src="images/1-25/1-25-intro-pic.png" alt=""/>
+                            </div>
+                            <div class="h-b-btn">
+                                <span>Начать</span>
+                                <div class="h-b-l"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ov-inner int">
+                        <div class="bg-img" style="background-image: url(images/1-30/1-30-bg.jpg);">
+                            <div class="ov-cont">
+                                <div class="left">
+                                    <div class="l"></div>
+                                    <div class="l-h"><span>В другой раз</span></div>
+                                </div>
+                                <div class="right">
+                                    <div class="l"></div>
+                                    <div class="r-h"><span>Подключаются к поиску</span></div>
+                                    <div class="r-ctr"><span></span></div>
+                                </div>
+                                <img src="images/1-25/1-25-arrows.svg" alt="" class="arr"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ov-inner hi-bye">
+                        <div class="bg-img" style="background-image: url(images/1-30/1-30-bg.jpg);"></div>
+                        <div class="ov-cont">
+                            <div class="h-b-h">Конечный заголовок</div>
+                            <div class="h-b-text">
+                                Описание конечного блока интерактива
+                            </div>
+                            <div class="h-b-infogr">
+                                <img src="images/1-25/1-25-intro-pic.png" alt=""/>
+                            </div>
+                            <div class="h-b-btn">
+                                <span>Далее</span>
+                                <div class="h-b-l"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="start-pop">
                 <div class="text">
@@ -169,6 +221,15 @@
             </div>
             <div class="special-btns"></div>
 		</div>
+    <script type="text/template" id="i-1-30-item-template">
+        <% for(let i=0;i<items.length;i++){%>
+        <div class="item<%= !i?' shown':'' %>">
+            <div class="i-img">
+                <img src="images/1-25/1-25-obj<%= i+1 %>.png" alt=""/>
+            </div>
+        </div>
+        <% } %>
+    </script>
     <script type="text/template" id="i-1-25-item-template">
         <% for(let i=0;i<items.length;i++){%>
         <div class="item<%= !i?' shown':'' %>">

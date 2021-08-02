@@ -43,7 +43,8 @@ export let config={
     src:'oceans',
     timecodes:[
      //{start:.2,back:0.5,invoked:false,data:{interactive:'Fork',alt:3}}//,
-     {start:.2,back:0.5,invoked:false,data:{interactive:'Packing'}}
+     //{start:.2,back:0.5,invoked:false,data:{interactive:'Packing'}}
+     {start:.2,back:0.5,invoked:false,data:{interactive:'Team'}}
     ]
    }//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
   }

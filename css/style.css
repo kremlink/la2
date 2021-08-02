@@ -488,16 +488,16 @@ body {
   font-size: 0.8em;
   pointer-events: none;
 }
-.ov-wrap.packing.item-l .item:not(.putL):not(.putR) img {
+.ov-wrap.packing.item-l .item:not(.putL):not(.putR) img, .ov-wrap.team.item-l .item:not(.putL):not(.putR) img {
   transform: translate(-2em, 0) rotate(-15deg);
 }
-.ov-wrap.packing.item-r .item:not(.putL):not(.putR) img {
+.ov-wrap.packing.item-r .item:not(.putL):not(.putR) img, .ov-wrap.team.item-r .item:not(.putL):not(.putR) img {
   transform: translate(2em, 0) rotate(15deg);
 }
-.ov-wrap.packing .ov-inner {
+.ov-wrap.packing .ov-inner, .ov-wrap.team .ov-inner {
   height: 100%;
 }
-.ov-wrap.packing .ov-cont {
+.ov-wrap.packing .ov-cont, .ov-wrap.team .ov-cont {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -505,79 +505,100 @@ body {
   width: 100%;
   height: 70%;
 }
-.ov-wrap.packing .ov-cont.phase2 {
-  height: 100%;
-}
-.ov-wrap.packing .left, .ov-wrap.packing .right {
+.ov-wrap.packing .left, .ov-wrap.packing .right, .ov-wrap.team .left, .ov-wrap.team .right {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 28%;
   cursor: pointer;
 }
-.ov-wrap.packing .right {
+.ov-wrap.packing .right, .ov-wrap.team .right {
   right: 0;
 }
-.ov-wrap.packing .l {
+.ov-wrap.packing .l, .ov-wrap.team .l {
   position: absolute;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
 }
-.ov-wrap.packing .l-h, .ov-wrap.packing .r-h, .ov-wrap.packing .r-ctr {
+.ov-wrap.packing .ov-cont.phase2, .ov-wrap.team .ov-cont.phase2 {
+  height: 100%;
+}
+.ov-wrap.packing .l-h, .ov-wrap.packing .r-h, .ov-wrap.packing .r-ctr, .ov-wrap.team .l-h, .ov-wrap.team .r-h, .ov-wrap.team .r-ctr {
   color: #DF8998;
   position: absolute;
   top: -1.5em;
   right: 1.5em;
 }
-.ov-wrap.packing .l-h span, .ov-wrap.packing .r-h span, .ov-wrap.packing .r-ctr span {
+.ov-wrap.packing .l-h span, .ov-wrap.packing .r-h span, .ov-wrap.packing .r-ctr span, .ov-wrap.team .l-h span, .ov-wrap.team .r-h span, .ov-wrap.team .r-ctr span {
   font-size: 0.7em;
 }
-.ov-wrap.packing .r-h {
+.ov-wrap.packing .r-h, .ov-wrap.team .r-h {
   right: auto;
   left: 1.5em;
 }
-.ov-wrap.packing .item {
+.ov-wrap.packing .item, .ov-wrap.team .item {
   position: absolute;
   left: 25%;
   top: 0;
   right: 25%;
   bottom: 0;
-  color: rgba(255, 255, 255, 0.5);
   z-index: 1;
   opacity: 0;
   pointer-events: none;
   text-indent: 0;
 }
-.ov-wrap.packing .item.shown {
+.ov-wrap.packing .item.shown, .ov-wrap.team .item.shown {
   opacity: 1;
   transition: text-indent 0.3s ease-in-out 0.6s,opacity 0.3s ease-in-out;
 }
-.ov-wrap.packing .item.putL {
+.ov-wrap.packing .item.putL, .ov-wrap.team .item.putL {
   text-indent: 1px;
 }
-.ov-wrap.packing .item.putL img {
+.ov-wrap.packing .item.putL img, .ov-wrap.team .item.putL img {
   opacity: 0;
   filter: grayscale(1);
   transform: translate(-20em, 0);
 }
-.ov-wrap.packing .item.putL .i-h, .ov-wrap.packing .item.putL .i-desc {
-  opacity: 0;
-}
-.ov-wrap.packing .item.putR {
+.ov-wrap.packing .item.putR, .ov-wrap.team .item.putR {
   text-indent: 1px;
 }
-.ov-wrap.packing .item.putR img {
+.ov-wrap.packing .item.putR img, .ov-wrap.team .item.putR img {
   opacity: 0;
   filter: grayscale(1);
   transform: translate(20em, 0);
 }
-.ov-wrap.packing .item.putR .i-h, .ov-wrap.packing .item.putR .i-desc {
-  opacity: 0;
-}
-.ov-wrap.packing .item img {
+.ov-wrap.packing .item img, .ov-wrap.team .item img {
   transition: transform 0.3s ease-in-out,filter 0.6s ease-in-out,opacity 0.3s ease-in-out 0.6s;
+}
+.ov-wrap.packing .i-img, .ov-wrap.team .i-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.ov-wrap.packing .i-img img, .ov-wrap.team .i-img img {
+  width: 100%;
+}
+.ov-wrap.packing .arr, .ov-wrap.team .arr {
+  --w:40em;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--w);
+  height: calc(43 / 112 * var(--w));
+  pointer-events: none;
+}
+.ov-wrap.packing .item {
+  color: rgba(255, 255, 255, 0.5);
+}
+.ov-wrap.packing .item.putL .i-h, .ov-wrap.packing .item.putL .i-desc, .ov-wrap.packing .item.putR .i-h, .ov-wrap.packing .item.putR .i-desc {
+  opacity: 0;
 }
 .ov-wrap.packing .i-h {
   position: absolute;
@@ -588,18 +609,6 @@ body {
   font-size: 1.2em;
   transition: opacity 0.3s ease-in-out;
 }
-.ov-wrap.packing .i-img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 50%;
-  display: flex;
-  align-items: center;
-}
-.ov-wrap.packing .i-img img {
-  width: 100%;
-}
 .ov-wrap.packing .i-desc {
   position: absolute;
   left: 50%;
@@ -609,16 +618,6 @@ body {
   text-align: center;
   font-size: 0.6em;
   transition: opacity 0.3s ease-in-out;
-}
-.ov-wrap.packing .arr {
-  --w:40em;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: var(--w);
-  height: calc(43 / 112 * var(--w));
-  pointer-events: none;
 }
 .ov-wrap.packing .score {
   position: absolute;
@@ -668,7 +667,6 @@ body {
   opacity: 1;
   visibility: visible;
 }
-
 /*@path:components\_footer.scss*/
 /*@path:components\_header.scss*/
 /*@path:components\_main.scss*/

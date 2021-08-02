@@ -48,7 +48,7 @@
       }
     }
 
-    &.packing{
+    &.packing,&.team{
       &.item-l .item:not(.putL):not(.putR) img{
         transform:translate(-2em, 0) rotate(-15deg);
       }
@@ -60,15 +60,10 @@
       .ov-inner{
         height:100%;
       }
-
       .ov-cont{
         @include center();
         width:100%;
         height:70%;
-
-        &.phase2{
-          height:100%;
-        }
       }
 
       .left, .right{
@@ -83,6 +78,10 @@
 
       .l{
         @include abs($l:0, $r:0, $t:0, $b:0);
+      }
+
+      .ov-cont.phase2{
+        height:100%;
       }
 
       .l-h, .r-h, .r-ctr{
@@ -101,7 +100,6 @@
 
       .item{
         @include abs($t:0, $b:0, $l:25%, $r:25%);
-        color:rgba(#fff, 0.5);
         z-index:1;
         opacity:0;
         pointer-events:none;
@@ -120,10 +118,6 @@
             filter:grayscale(1);
             transform:translate(-20em, 0);
           }
-
-          .i-h, .i-desc{
-            opacity:0;
-          }
         }
 
         &.putR{
@@ -134,25 +128,11 @@
             filter:grayscale(1);
             transform:translate(20em, 0);
           }
-
-          .i-h, .i-desc{
-            opacity:0;
-          }
         }
 
         img{
           @include trs('transform #{$anim} ease-in-out,filter #{$anim*2} ease-in-out,opacity #{$anim} ease-in-out #{$anim*2}');
         }
-      }
-
-      .i-h{
-        position:absolute;
-        width:100%;
-        text-align:center;
-        text-transform:uppercase;
-        font-weight:300;
-        font-size:1.2em;
-        @include trs('opacity #{$anim} ease-in-out');
       }
 
       .i-img{
@@ -166,20 +146,41 @@
         }
       }
 
-      .i-desc{
-        @include center($b:1em);
-        width:80%;
-        text-align:center;
-        font-size:.6em;
-        @include trs('opacity #{$anim} ease-in-out');
-      }
-
       .arr{
         --w:40em;
         @include center();
         width:var(--w);
         height:calc(43 / 112 * var(--w));
         pointer-events:none;
+      }
+    }
+    &.packing{
+      .item{
+        color:rgba(#fff, 0.5);
+
+        &.putL,&.putR{
+          .i-h, .i-desc{
+            opacity:0;
+          }
+        }
+      }
+
+      .i-h{
+        position:absolute;
+        width:100%;
+        text-align:center;
+        text-transform:uppercase;
+        font-weight:300;
+        font-size:1.2em;
+        @include trs('opacity #{$anim} ease-in-out');
+      }
+
+      .i-desc{
+        @include center($b:1em);
+        width:80%;
+        text-align:center;
+        font-size:.6em;
+        @include trs('opacity #{$anim} ease-in-out');
       }
 
       .score{
@@ -228,6 +229,9 @@
           visibility:visible;
         }
       }
+    }
+    &.team{
+
     }
   }
 }
