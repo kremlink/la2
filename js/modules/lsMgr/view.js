@@ -23,14 +23,14 @@ export let LsMgr=Backbone.View.extend({
 
    this.setData(ls);
   }
- },
- sendData:function(cb,ini=false){
-  let ls=this.getData();
 
-  fetch(data.url+JSON.stringify({ini:ini,user:ls.user,episode:epIndex,data:ls.data[epIndex].gameData}),{//"gameData":{"1-23":[1]}
+  this.listenTo(app.get('aggregator'),'ls:save',this.sendData);
+ },
+ sendData:function(opts={interactive:null,value:null,cb:null}){
+  fetch(data.url+JSON.stringify({episode:epIndex,interactive:opts.interactive,value:opts.value}),{
    method:'get',
    credentials:'include'
-  }).then((r)=>{return r.json()}).then(cb);
+  }).then((r)=>{return r.json()}).then(opts.cb);
  },
  resetData:function(resetUser=false){
   if(resetUser)

@@ -3,10 +3,6 @@
 /*@path:core\_mixins.scss*/
 /*@path:core\_exts.scss*/
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
-.board-page {
-  box-sizing: border-box;
-}
-
 /*@path:base\_vars.scss*/
 /*@path:base\_normalize.scss*/
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
@@ -448,41 +444,7 @@ body {
 }
 
 /*@path:base\_exts.scss*/
-/*@path:components\_footer.scss*/
-/*@path:components\_header.scss*/
-/*@path:components\_main.scss*/
-.overlay-block {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  visibility: hidden;
-}
-.overlay-block.shown {
-  visibility: visible;
-}
-
-.ov-wrap {
-  width: 100%;
-  height: 56.25vw;
-  max-height: 100vh;
-  max-width: 177.7777vh;
-  z-index: 1;
-  opacity: 0;
-  pointer-events: none;
-  color: #fff;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease-in-out;
-}
-.ov-wrap.shown {
-  pointer-events: auto;
-  opacity: 1;
-}
+/*@path:components\_ep1.scss*/
 .ov-wrap.fork.vanish .h + .btn {
   visibility: hidden;
 }
@@ -544,9 +506,7 @@ body {
   height: 70%;
 }
 .ov-wrap.packing .ov-cont.phase2 {
-  width: 70%;
-  height: 90%;
-  background: rgba(255, 255, 255, 0.3);
+  height: 100%;
 }
 .ov-wrap.packing .left, .ov-wrap.packing .right {
   position: absolute;
@@ -657,7 +617,7 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   width: var(--w);
-  height: calc(43/112*var(--w));
+  height: calc(43 / 112 * var(--w));
   pointer-events: none;
 }
 .ov-wrap.packing .score {
@@ -695,6 +655,54 @@ body {
 }
 .ov-wrap.packing .s-descr {
   font-size: 0.5em;
+}
+.ov-wrap.packing .circle {
+  position: absolute;
+  width: 8em;
+  height: 8em;
+  opacity: 0;
+  cursor: pointer;
+  visibility: hidden;
+}
+.ov-wrap.packing .circle.shown {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*@path:components\_footer.scss*/
+/*@path:components\_header.scss*/
+/*@path:components\_main.scss*/
+.overlay-block {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  visibility: hidden;
+}
+.overlay-block.shown {
+  visibility: visible;
+}
+
+.ov-wrap {
+  width: 100%;
+  height: 56.25vw;
+  max-height: 100vh;
+  max-width: 177.7777vh;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out;
+}
+.ov-wrap.shown {
+  pointer-events: auto;
+  opacity: 1;
 }
 
 .ov-inner {
@@ -1279,384 +1287,6 @@ body {
   display: flex;
   visibility: visible;
   opacity: 1;
-}
-
-/*@path:partials\_board.scss*/
-body.board #wrap {
-  background: #000 url(https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/episode1/loader-bg.svg) center/cover no-repeat;
-  height: auto;
-  min-height: 100%;
-}
-
-.board-page {
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 50px 12px 0 12px;
-  font-size: 16px;
-  color: #fff;
-  position: relative;
-}
-@media (min-width: 1000px) {
-  .board-page {
-    padding: 50px 30px 0 30px;
-  }
-}
-.board-page .lisaref {
-  background: #ff771a;
-  padding: 4px 4px 0 0;
-  height: 32px;
-  line-height: 36px;
-  text-align: right;
-  position: absolute;
-  left: 46px;
-  top: 0;
-  right: 12px;
-  text-decoration: none;
-  color: #fff;
-}
-.board-page .lisaref:before {
-  content: "";
-  width: 144px;
-  height: 26px;
-  background: url(../images/board/board-la-logo.svg) no-repeat;
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  transform: translate(0, -50%);
-}
-.board-page .lisaref div {
-  margin-left: auto;
-  width: 140px;
-  line-height: 14px;
-  font-size: 14px;
-}
-@media (min-width: 1000px) {
-  .board-page .lisaref {
-    left: 30px;
-    right: 30px;
-    padding: 12px 8px 0 0;
-    height: 24px;
-  }
-  .board-page .lisaref div {
-    font-size: 20px;
-    width: auto;
-  }
-}
-.board-page .menu {
-  position: absolute;
-  z-index: 1;
-}
-.board-page .menu .drop {
-  font-size: 16px;
-  text-transform: uppercase;
-  color: #fff;
-  width: 178px;
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: -99999px;
-}
-.board-page .menu.open .drop {
-  left: 0;
-}
-.board-page .menu .drop ul {
-  background: #1b1a1d;
-  border: 2px solid #fff;
-  padding: 10px 0;
-  margin: 0;
-  list-style-type: none;
-}
-.board-page .menu .drop ul li {
-  padding: 5px 0;
-}
-.board-page .menu .drop ul li a {
-  position: relative;
-  display: block;
-  padding: 3px 25px;
-  color: inherit;
-  text-decoration: none;
-}
-.board-page .menu .drop ul li a:before {
-  content: "";
-  position: absolute;
-  width: 5px;
-  height: 2px;
-  background: #fff;
-  top: 50%;
-  left: 0;
-  margin: -1px 0 0 0;
-}
-.board-page .menu .drop ul li a:hover,
-.board-page .menu .drop ul li.active a {
-  color: #1b1a1d;
-  background: #fff;
-}
-.board-page .menu .btn,
-.board-page .menu .close {
-  background: #1b1a1d;
-  transition: none;
-  font-size: 16px;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-  width: 140px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #fff;
-}
-.board-page .menu .close {
-  width: 166px;
-  border-bottom: 0;
-}
-.board-page .menu.open .btn:not(.close) {
-  opacity: 0;
-}
-.board-page .menu .btn:before {
-  content: "";
-  margin: 0 20px 0 0;
-  display: block;
-  width: 20px;
-  height: 17px;
-  background: url(../images//board/menu-burg.svg) top center no-repeat;
-}
-.board-page .menu .close:before {
-  content: "";
-  margin: 0 20px 0 0;
-  display: block;
-  width: 20px;
-  height: 17px;
-  background: url(../images//board/menu-close.svg) top center no-repeat;
-}
-@media screen and (max-width: 700px) {
-  .board-page {
-    /*Строка обновлена*/
-  }
-  .board-page .menu {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    width: 36px;
-    height: 36px;
-  }
-  .board-page .menu .btn {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    display: block;
-    width: 36px;
-    height: 36px;
-    background: #fff url(../images//board/menu-burg-m.svg) center center no-repeat;
-    background-size: 20px auto;
-  }
-  .board-page .menu .btn:before {
-    display: none;
-  }
-  .board-page .menu .drop {
-    min-height: 520px;
-    justify-content: center;
-    padding-top: 150px;
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    background: #1b1b1d url(../images//board/lines-mobile.svg) top left no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-  }
-  .board-page .menu .drop:before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: url(../images//board/logo-mobile.svg) top -150px center no-repeat;
-    background-size: 300px auto;
-  }
-  .board-page .menu .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 36px;
-    height: 36px;
-    text-indent: 999px;
-    overflow: hidden;
-    padding: 36px 0 0 0;
-    background: #fff url(../images//board/menu-close-m.svg) center center no-repeat;
-    background-size: 20px auto;
-    box-sizing: border-box;
-    border: 0;
-  }
-  .board-page .menu .drop ul {
-    border: 0;
-    background: none;
-  }
-  .board-page .menu .drop ul li {
-    margin: 20px 0;
-  }
-  .board-page .menu .drop ul li:first-child {
-    margin-top: 0;
-  }
-  .board-page .menu .drop ul li:last-child {
-    margin-bottom: 0;
-  }
-  .board-page .menu .drop ul li a:before {
-    display: none;
-    padding: 0;
-  }
-  .board-page .menu .drop ul li a {
-    padding: 0;
-    font-weight: 300;
-    font-size: 24px;
-  }
-  .board-page .menu .drop ul li.active a {
-    color: #fff;
-    background: none;
-  }
-  .board-page .menu .drop ul li a:hover {
-    color: #fff;
-    background: none;
-  }
-  .board-page .menu span {
-    display: none;
-  }
-}
-.board-page .result {
-  margin-top: 70px;
-  font-size: 20px;
-  padding: 30px 0;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-.board-page .result:before, .board-page .result:after {
-  content: "";
-  width: 100%;
-  height: 3px;
-  position: absolute;
-  top: 0;
-  background: linear-gradient(90deg, #DF8998, #E5B99D);
-}
-.board-page .result:after {
-  top: auto;
-  bottom: 0;
-}
-.board-page .result div {
-  margin: 0 10px;
-}
-.board-page .result div:nth-child(1) {
-  color: #E2A39B;
-}
-.board-page .result span {
-  display: block;
-}
-@media (min-width: 1000px) {
-  .board-page .result {
-    font-size: 22px;
-  }
-  .board-page .result div {
-    margin: 0 30px;
-  }
-  .board-page .result span {
-    display: inline;
-    margin-left: 8px;
-  }
-}
-.board-page .text {
-  margin-top: 30px;
-  text-align: center;
-}
-.board-page .redo {
-  position: relative;
-  width: 320px;
-  height: 88px;
-  margin: 30px auto 0 auto;
-  background: url(../images/board/btn-retry.svg) no-repeat;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
-}
-.board-page .redo:hover {
-  transform: scale(1.05);
-}
-.board-page .redo span {
-  white-space: nowrap;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-.board-page .share {
-  text-align: center;
-  margin-top: 30px;
-}
-.board-page .ya-share2 {
-  display: inline-block;
-}
-.board-page .table-h {
-  font-size: 28px;
-  text-align: center;
-  margin-top: 40px;
-}
-.board-page .table {
-  margin-top: 20px;
-}
-.board-page .t-row {
-  display: flex;
-  flex-flow: row wrap;
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-}
-.board-page .t-row.top {
-  font-size: 16px;
-  border: none;
-}
-.board-page .t-row:not(.top):nth-child(-n+10) {
-  font-weight: 700;
-}
-.board-page .t-row:not(.top):nth-child(-n+3) {
-  font-weight: 900;
-}
-.board-page .t-row:not(.top):nth-child(1) {
-  font-size: 28px;
-}
-.board-page .t-row:not(.top):nth-child(2) {
-  font-size: 24px;
-}
-.board-page .t-row:not(.top):nth-child(3) {
-  font-size: 20px;
-}
-.board-page .t-row div {
-  margin: 6px 0;
-  width: 85px;
-}
-.board-page .t-row div:nth-child(1) {
-  width: 30px;
-}
-.board-page .t-row div:nth-child(3) {
-  text-align: center;
-}
-.board-page .t-row div:nth-child(4) {
-  text-align: right;
-  flex: 1 1 auto;
-}
-@media (min-width: 1000px) {
-  .board-page .t-row {
-    flex-flow: row nowrap;
-    justify-content: space-between;
-  }
-  .board-page .t-row.top {
-    font-size: 20px;
-  }
-  .board-page .t-row div {
-    margin: 15px 0;
-    width: 220px;
-  }
 }
 
 /*# sourceMappingURL=../../css/style.css.map */

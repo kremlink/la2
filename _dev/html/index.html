@@ -155,6 +155,11 @@
         </div>
         <% } %>
     </script>
+    <script type="text/template" id="i-1-25-circle-template">
+        <% for(let i=0;i<circles.length;i++){%>
+        <div class="circle" style="left:<%= circles[i].left %>%;top:<%= circles[i].top %>%;"><div class="l"></div></div>
+        <% } %>
+    </script>
         <script type="text/template" id="ext-player-template">
             <a href="" class="return hoverable">
                 <img src="images/player-close.svg" alt=""/>

@@ -1,7 +1,8 @@
 export const data={
  events:{
   'l':'.left',
-  'r':'.right'
+  'r':'.right',
+  'circle':'.circle'
  },
  view:{
   el:'.ov-wrap.packing',
@@ -19,12 +20,16 @@ export const data={
   lottie:{
    no:'.left .l',
    yes:'.right .l',
-   circle:'.circle'
+   circle:'.circle .l'
   },
   score:{
    dots:'.s-dots',
    amt:'.s-amt',
    cls:['b1','b2','b3']
+  },
+  circle:{
+   cont:'.ov-cont.phase2',
+   tmpl:'#i-1-25-circle-template',
   }
  },
  items:[
@@ -33,5 +38,14 @@ export const data={
   {h:'Что-то еще2',desc:'Описание вещи2'},
   {h:'Что-то еще3',desc:'Описание вещи3',yep:true}
   ],
- wait:1000
+ circles:{
+  wait:1000,
+  data:[
+   {left:10,top:10},
+   {left:20,top:20},
+   {left:70,top:70}
+  ]
+ },
+ beforePhase1:1000,
+ points:{yes:1,no:-1,b1:2,b2:4,b3:7}
 };

@@ -44,20 +44,20 @@ export let Index=Backbone.View.extend({
 
   lsMgr=this.main.lsMgr;
 
-  lsMgr.sendData((r)=>{
-   let lsData=lsMgr.getData();
+  lsMgr.sendData({cb:(r)=>{
+    let lsData=lsMgr.getData();
 
-   if(lsData.data[epIndex].savedTime||r.savedTime)
-    this.$el.addClass(data.view.goOnCls);
+    if(lsData.data[epIndex].savedTime||r.savedTime)
+     this.$el.addClass(data.view.goOnCls);
 
-   if(r.savedTime)
-   {
-    lsData.data[epIndex].savedTime=r.savedTime;
-    lsMgr.setData(lsData);
-   }
+    if(r.savedTime)
+    {
+     lsData.data[epIndex].savedTime=r.savedTime;
+     lsMgr.setData(lsData);
+    }
 
-   this.prepare();
-  },true);
+    this.prepare();
+   }});
  },
  prepare:function(){//inconsistent loadeddata event with multiple videos
   let imgs,
