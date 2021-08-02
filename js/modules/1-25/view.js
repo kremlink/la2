@@ -1,10 +1,12 @@
 import {BaseIntView} from '../baseInteractive/view.js';
 import {data as dat} from './data.js';
 import {lottie as lData} from './lottie.js';
+import {utils} from '../../bf/lib/utils.js';
 
 let app,
     data=dat,
-    events={};
+    events={},
+    pc;
 
 events[`mouseenter ${data.events.l}`]='lHover';
 events[`mouseenter ${data.events.r}`]='rHover';
@@ -32,6 +34,8 @@ export let PackingView=BaseIntView.extend({
   app=opts.app;
   data=app.configure({start:dat}).start;
 
+  pc=app.get('pc');
+
   this.opts=opts;
 
   BaseIntView.prototype.initialize.apply(this,[{
@@ -48,7 +52,7 @@ export let PackingView=BaseIntView.extend({
    return this.nodeType!==3;
   });
 
-  this.$(data.view.item.cont).prepend(this.$items);
+  this.$iCont=this.$(data.view.item.cont).prepend(this.$items);
 
   this.$items.on('transitionend',(e)=>{
    this.anim(e);
@@ -61,9 +65,23 @@ export let PackingView=BaseIntView.extend({
   this.setCtr(0);
   this.setLastPhase(3);
 
+  this.iniSwipe();
+
   //this.next();//TODO:remove
   //this.next();//TODO:remove
   //this.phase2();//TODO:remove
+ },
+ iniSwipe:function(){
+  new utils.swipe({
+   mult:2,
+   speed:1,
+   container:this.$iCont,
+   callback:(delta)=>{
+    if(delta>0)
+     this.lClick();else
+     this.rClick();
+   }
+  });
  },
  anim:function(e){
   if(e.originalEvent.propertyName===data.view.item.fakeTrs)
@@ -161,13 +179,16 @@ export let PackingView=BaseIntView.extend({
       this.$dots.addClass(data.view.score.cls[0]);
  },
  lHover:function(){
-  this.$el.addClass(data.view.item.lCls);
+  if(pc)
+   this.$el.addClass(data.view.item.lCls);
  },
  rHover:function(){
-  this.$el.addClass(data.view.item.rCls);
+  if(pc)
+   this.$el.addClass(data.view.item.rCls);
  },
  leave:function(){
-  this.$el.removeClass(data.view.item.lCls+' '+data.view.item.rCls);
+  if(pc)
+   this.$el.removeClass(data.view.item.lCls+' '+data.view.item.rCls);
  },
  lClick:function(){
   if(!this.waiting)

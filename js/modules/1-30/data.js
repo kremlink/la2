@@ -8,7 +8,7 @@ export const data={
   $ctr:'.r-ctr span',
   ctrTmpl:'<%= curr %>/<%= amt %>',
   item:{
-   cont:'.int .ov-cont',
+   cont:'.into',
    tmpl:'#i-1-30-item-template',
    lCls:'item-l',
    rCls:'item-r',
