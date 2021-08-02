@@ -1,1 +1,1 @@
-{"1":{"savedTime":0,"gameData":{"1-23":[1]}}}
+{"1":{"savedTime":0,"achievements":[]}}

@@ -27,7 +27,7 @@ export let LsMgr=Backbone.View.extend({
  sendData:function(cb,ini=false){
   let ls=this.getData();
 
-  fetch(data.url+JSON.stringify({ini:ini,user:ls.user,episode:epIndex,data:ls.data[epIndex].gameData}),{
+  fetch(data.url+JSON.stringify({ini:ini,user:ls.user,episode:epIndex,data:ls.data[epIndex].gameData}),{//"gameData":{"1-23":[1]}
    method:'get',
    credentials:'include'
   }).then((r)=>{return r.json()}).then(cb);

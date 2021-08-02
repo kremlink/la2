@@ -12,6 +12,7 @@ export let BaseIntView=Backbone.View.extend({
  events:events,
  phase:0,
  data:{},
+ lastPhase:2,
  shownCls:data.view.shownCls,
  initialize:function(opts){
   app=opts.app;
@@ -29,6 +30,9 @@ export let BaseIntView=Backbone.View.extend({
    });
   });
  },
+ setLastPhase:function(i){
+  this.lastPhase=i;
+ },
  setData:function(k,v){
   this.data[k]=v;
  },
@@ -39,7 +43,7 @@ export let BaseIntView=Backbone.View.extend({
  },
  btnClick:function(){
   app.get('aggregator').trigger('sound','btn');
-  if(this.phase===2)
+  if(this.phase===this.lastPhase)
    this.away();else
    this.next();
  },
