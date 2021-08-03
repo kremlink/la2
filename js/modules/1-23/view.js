@@ -55,6 +55,8 @@ export let ForkView=BaseIntView.extend({
 
   if(index===data.vanish)
    this.setData('time',this.opts.data.data.alt);
+  app.get('aggregator').trigger('ls:save',{interactive:'1-23',value:index});
+  app.get('aggregator').trigger('main:achieve','Ачивка: прошел развилку');
   this.away();
  }
 });

@@ -41,13 +41,17 @@ export let MainView=Backbone.View.extend({
   this.listenTo(app.get('aggregator'),'player:interactive',this.step);
   this.listenTo(app.get('aggregator'),'player:timeupdate',throttle);
   this.listenTo(app.get('aggregator'),'player:goOn',this.setGoOn);
+  this.listenTo(app.get('aggregator'),'main:achieve',this.achieve);
 
   $(window).on('visibilitychange pagehide',()=>app.get('aggregator').trigger('page:state'));
 
   new SoundMgr({app:app});
 
-  //testing
-
+  this.$achiev=$(data.view.achievement).on('animationend',()=>this.$achiev.removeClass(data.view.shownCls));
+ },
+ achieve:function(what){
+  this.$achiev.removeClass(data.view.shownCls);
+  setTimeout(()=>this.$achiev.addClass(data.view.shownCls).html(what),100);
  },
  hide:function(){
   this.$el.removeClass(data.view.shownCls);
@@ -89,13 +93,19 @@ export let MainView=Backbone.View.extend({
  },
  step:function(opts){
   let tD=opts.data,
-      int=tD.data.interactive;
+      int=tD.data.interactive,
+      ls;
 
   this.intData=opts;
 
   if(tD.checkpoint)
   {
-   app.get('aggregator').trigger('timer:update',tD);
+   ls=this.lsMgr.getData();
+   ls.data[epIndex].interactive=this.intData.index;
+   this.lsMgr.setData(ls);
+   app.get('aggregator').trigger('ls:save',{interactive:tD.data.interactive});
+   if(tD.data.achievement)
+    this.achieve(tD.data.achievement);
   }else
   {
    if(!this.interactives[int])

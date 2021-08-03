@@ -42,9 +42,10 @@ export let config={
    '1':{
     src:'oceans',
     timecodes:[
-     //{start:.2,back:0.5,invoked:false,data:{interactive:'Fork',alt:3}}//,
-     //{start:.2,back:0.5,invoked:false,data:{interactive:'Packing'}}
-     {start:.2,back:0.5,invoked:false,data:{interactive:'Team'}}
+     {start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
+     {start:5,back:4.9,invoked:false,data:{interactive:'Fork',alt:6}},
+     {start:10,back:9.9,invoked:false,data:{interactive:'Packing'}},
+     {start:11,back:10.9,invoked:false,data:{interactive:'Team'}}
     ]
    }//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
   }

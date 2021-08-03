@@ -168,22 +168,31 @@ export let PlayerView=Backbone.View.extend({
    this.pause();
  },
  play:function({time=-1,interactive=-1}={}){
+  let goOnInd=-1;
+
   if(~time)
   {
    this.player.currentTime(time);
-   this.pData.timecodes.forEach((o)=>{
+   this.pData.timecodes.forEach((o,i)=>{
     if(this.goOn)
     {
      if(~interactive)
       time=this.pData.timecodes[interactive].start;
+
      if(time>o.start)
+     {
       o.invoked=true;
+      goOnInd=i;
+     }
     }else
     {
      if(time<o.start&&o.repeatable)
       o.invoked=false;
     }
    });
+
+   if(this.goOn&&~goOnInd)
+    this.setStepsChoose(goOnInd);
   }
   if(this.player.paused())
   {

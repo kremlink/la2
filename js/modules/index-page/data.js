@@ -4,7 +4,9 @@ export const data={
  events:{
   'start':'.start-pop .start',
   'clr':'.clr',
-  'goOn':'.continue'
+  'goOn':'.continue',
+  'infoHide':'.info-pop .close,.info-pop .close-bg',
+  'infoCaller':'.info-pop-caller'
  },
  view:{
   el:'#wrap',
@@ -15,7 +17,8 @@ export const data={
   timerCls:'timer',
   pauseCls:'paused',
   nopeCls:'nope',
-  goOnCls:'goOn'
+  goOnCls:'goOn',
+  infoCls:'info'
  },
  minViewport:'(min-width:600px)',
  mobViewport:'(max-width:1023px)'

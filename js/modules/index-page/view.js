@@ -12,6 +12,8 @@ let events={};
 events[`click ${data.events.start}`]='start';
 events[`click ${data.events.goOn}`]='goOn';
 events[`click ${data.events.clr}`]='clr';
+events[`click ${data.events.infoHide}`]='infoHide';
+events[`click ${data.events.infoCaller}`]='infoShow';
 
 export let Index=Backbone.View.extend({
  events:events,
@@ -86,6 +88,12 @@ export let Index=Backbone.View.extend({
    this.main.addPlayer(new PlayerView({app:app,lsMgr:lsMgr}));
   });
  },
+ infoHide:function(){
+  this.$el.removeClass(data.view.infoCls);
+ },
+ infoShow:function(){
+  this.$el.addClass(data.view.infoCls);
+ },
  goOn:function(){
   let ls=lsMgr.getData().data[epIndex];
 
@@ -99,7 +107,7 @@ export let Index=Backbone.View.extend({
  },
  loaded:function(){
   this.$el.addClass(data.view.loadedCls);
-  this.start();
+  //this.start();//TODO:remove
  },
  disable:function(f){
   this.$el.toggleClass(data.view.nopeCls,f);
