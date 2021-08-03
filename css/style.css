@@ -555,27 +555,19 @@ body {
   opacity: 0;
   visibility: hidden;
   text-indent: 0;
+  pointer-events: none;
 }
 .ov-wrap.packing .item.shown, .ov-wrap.team .item.shown {
   opacity: 1;
   visibility: visible;
   transition: text-indent 0.3s ease-in-out 0.6s,opacity 0.3s ease-in-out;
 }
-.ov-wrap.packing .item.putL, .ov-wrap.team .item.putL {
+.ov-wrap.packing .item.putL, .ov-wrap.packing .item.putR, .ov-wrap.team .item.putL, .ov-wrap.team .item.putR {
   text-indent: 1px;
 }
-.ov-wrap.packing .item.putL img, .ov-wrap.team .item.putL img {
+.ov-wrap.packing .item.putL img, .ov-wrap.packing .item.putR img, .ov-wrap.team .item.putL img, .ov-wrap.team .item.putR img {
   opacity: 0;
   filter: grayscale(1);
-  transform: translate(-20em, 0);
-}
-.ov-wrap.packing .item.putR, .ov-wrap.team .item.putR {
-  text-indent: 1px;
-}
-.ov-wrap.packing .item.putR img, .ov-wrap.team .item.putR img {
-  opacity: 0;
-  filter: grayscale(1);
-  transform: translate(20em, 0);
 }
 .ov-wrap.packing .item img, .ov-wrap.team .item img {
   transition: transform 0.3s ease-in-out,filter 0.6s ease-in-out,opacity 0.3s ease-in-out 0.6s;
@@ -585,7 +577,6 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
   display: flex;
   align-items: center;
 }
@@ -608,6 +599,12 @@ body {
 .ov-wrap.packing .item.putL .i-h, .ov-wrap.packing .item.putL .i-desc, .ov-wrap.packing .item.putR .i-h, .ov-wrap.packing .item.putR .i-desc {
   opacity: 0;
 }
+.ov-wrap.packing .item.putL img {
+  transform: translate(-23em, 0);
+}
+.ov-wrap.packing .item.putR img {
+  transform: translate(23em, 0);
+}
 .ov-wrap.packing .i-h {
   position: absolute;
   width: 100%;
@@ -626,6 +623,9 @@ body {
   text-align: center;
   font-size: 0.6em;
   transition: opacity 0.3s ease-in-out;
+}
+.ov-wrap.packing .i-img {
+  width: 50%;
 }
 .ov-wrap.packing .score {
   position: absolute;
@@ -675,6 +675,35 @@ body {
   opacity: 1;
   visibility: visible;
 }
+.ov-wrap.team.enable .left, .ov-wrap.team.enable .right {
+  cursor: pointer;
+}
+.ov-wrap.team.enable .arr {
+  opacity: 1;
+}
+.ov-wrap.team .item.putL img {
+  transform: translate(-23em, 0) scale(0.9);
+}
+.ov-wrap.team .item.putR img {
+  transform: translate(23em, 0) scale(0.9);
+}
+.ov-wrap.team .left, .ov-wrap.team .right {
+  cursor: default;
+}
+.ov-wrap.team .emerge {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.ov-wrap.team .i-img {
+  width: 82%;
+}
+.ov-wrap.team .arr {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
 /*@path:components\_footer.scss*/
 /*@path:components\_header.scss*/
 /*@path:components\_main.scss*/

@@ -38,11 +38,6 @@ export let PackingView=BaseIntView.extend({
 
   this.opts=opts;
 
-  BaseIntView.prototype.initialize.apply(this,[{
-   app:app,
-   data:data
-  }]);
-
   this.setLottie();
 
   this.$dots=this.$(data.view.score.dots);
@@ -67,9 +62,10 @@ export let PackingView=BaseIntView.extend({
 
   this.iniSwipe();
 
-  //this.next();//TODO:remove
-  //this.next();//TODO:remove
-  //this.phase2();//TODO:remove
+  BaseIntView.prototype.initialize.apply(this,[{
+   app:app,
+   data:data
+  }]);
  },
  iniSwipe:function(){
   new utils.swipe({
@@ -222,7 +218,7 @@ export let PackingView=BaseIntView.extend({
  },
  toggle:function(f){
   BaseIntView.prototype.toggle.apply(this,arguments);
-  if(!f)
+  if(f)
   {
    this.waiting=false;
    this.index=0;

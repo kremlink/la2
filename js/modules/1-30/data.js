@@ -7,6 +7,12 @@ export const data={
   el:'.ov-wrap.team',
   $ctr:'.r-ctr span',
   ctrTmpl:'<%= curr %>/<%= amt %>',
+  vid:{
+   item:'.emerge',
+   pause:.9,
+   go:1.5
+  },
+  enableCls:'enable',
   item:{
    cont:'.into',
    tmpl:'#i-1-30-item-template',
@@ -15,6 +21,7 @@ export const data={
    putLCls:'putL',
    putRCls:'putR',
    fakeTrs:'text-indent',
+   showTrs:'opacity'
   },
   lottie:{
    no:'.left .l',
@@ -22,5 +29,6 @@ export const data={
   }
  },
  items:[1,0,0,1],
- wait:1000
+ beforeCards:500,
+ wait:500
 };

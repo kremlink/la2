@@ -186,7 +186,10 @@ export let PlayerView=Backbone.View.extend({
    });
   }
   if(this.player.paused())
+  {
+   app.get('aggregator').trigger('player:play');
    this.player.play();
+  }
  },
  pause:function(){
   if(!this.player.seeking())
