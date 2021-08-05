@@ -36,12 +36,20 @@ export let ForkView=BaseIntView.extend({
    });
   });
  },
+ next:function(){
+  BaseIntView.prototype.next.apply(this,arguments);
+  if(this.phase===1)
+  {
+   setTimeout(()=>{
+    this.$el.addClass(data.view.vanishCls);
+    this.$prog.addClass(this.shownCls);
+   },data.before);
+  }
+ },
  toggle:function(f){
   if(f)
   {
    this.stop=false;
-   this.$prog.addClass(this.shownCls);
-   this.$el.addClass(data.view.vanishCls);
   }else{
    this.$el.removeClass(data.view.vanishCls);
    this.$prog.removeClass(this.shownCls);

@@ -497,12 +497,6 @@ body {
   font-size: 0.8em;
   pointer-events: none;
 }
-.ov-wrap.packing.item-l .item:not(.putL):not(.putR) img, .ov-wrap.team.item-l .item:not(.putL):not(.putR) img {
-  transform: translate(-2em, 0) rotate(-15deg);
-}
-.ov-wrap.packing.item-r .item:not(.putL):not(.putR) img, .ov-wrap.team.item-r .item:not(.putL):not(.putR) img {
-  transform: translate(2em, 0) rotate(15deg);
-}
 .ov-wrap.packing .ov-inner, .ov-wrap.team .ov-inner {
   height: 100%;
 }
@@ -574,8 +568,13 @@ body {
 .ov-wrap.packing .item.putL, .ov-wrap.packing .item.putR, .ov-wrap.team .item.putL, .ov-wrap.team .item.putR {
   text-indent: 1px;
 }
+.ov-wrap.packing .item.putL .i-h, .ov-wrap.packing .item.putL .i-desc, .ov-wrap.packing .item.putR .i-h, .ov-wrap.packing .item.putR .i-desc, .ov-wrap.team .item.putL .i-h, .ov-wrap.team .item.putL .i-desc, .ov-wrap.team .item.putR .i-h, .ov-wrap.team .item.putR .i-desc {
+  opacity: 0;
+}
 .ov-wrap.packing .item.putL img, .ov-wrap.packing .item.putR img, .ov-wrap.team .item.putL img, .ov-wrap.team .item.putR img {
   opacity: 0;
+}
+.ov-wrap.packing .item.putL img, .ov-wrap.team .item.putL img {
   filter: grayscale(1);
 }
 .ov-wrap.packing .item img, .ov-wrap.team .item img {
@@ -592,6 +591,16 @@ body {
 .ov-wrap.packing .i-img img, .ov-wrap.team .i-img img {
   width: 100%;
 }
+.ov-wrap.packing .i-desc, .ov-wrap.team .i-desc {
+  position: absolute;
+  left: 50%;
+  bottom: 1em;
+  transform: translate(-50%, 0);
+  width: 80%;
+  text-align: center;
+  font-size: 0.6em;
+  transition: opacity 0.3s ease-in-out;
+}
 .ov-wrap.packing .arr, .ov-wrap.team .arr {
   --w:40em;
   position: absolute;
@@ -602,11 +611,14 @@ body {
   height: calc(43 / 112 * var(--w));
   pointer-events: none;
 }
+.ov-wrap.packing.item-l .item:not(.putL):not(.putR) img {
+  transform: translate(-2em, 0) rotate(-15deg);
+}
+.ov-wrap.packing.item-r .item:not(.putL):not(.putR) img {
+  transform: translate(2em, 0) rotate(15deg);
+}
 .ov-wrap.packing .item {
   color: rgba(255, 255, 255, 0.5);
-}
-.ov-wrap.packing .item.putL .i-h, .ov-wrap.packing .item.putL .i-desc, .ov-wrap.packing .item.putR .i-h, .ov-wrap.packing .item.putR .i-desc {
-  opacity: 0;
 }
 .ov-wrap.packing .item.putL img {
   transform: translate(-23em, 0);
@@ -621,16 +633,6 @@ body {
   text-transform: uppercase;
   font-weight: 300;
   font-size: 1.2em;
-  transition: opacity 0.3s ease-in-out;
-}
-.ov-wrap.packing .i-desc {
-  position: absolute;
-  left: 50%;
-  bottom: 1em;
-  transform: translate(-50%, 0);
-  width: 80%;
-  text-align: center;
-  font-size: 0.6em;
   transition: opacity 0.3s ease-in-out;
 }
 .ov-wrap.packing .i-img {
@@ -684,11 +686,33 @@ body {
   opacity: 1;
   visibility: visible;
 }
+.ov-wrap.team.enable.item-l .item:not(.putL):not(.putR) img {
+  transform: translate(-2em, 0) rotate(-15deg);
+}
+.ov-wrap.team.enable.item-r .item:not(.putL):not(.putR) img {
+  transform: translate(2em, 0) rotate(15deg);
+}
 .ov-wrap.team.enable .left, .ov-wrap.team.enable .right {
   cursor: pointer;
 }
 .ov-wrap.team.enable .arr {
   opacity: 1;
+}
+.ov-wrap.team .mini {
+  position: absolute;
+  left: 50%;
+  top: 2em;
+  transform: translate(-50%, 0);
+  display: flex;
+}
+.ov-wrap.team .mini div {
+  margin: 0 0.3em;
+  width: 1.2em;
+  height: 1.2em;
+  background: #fff;
+  border-radius: 50%;
+  text-align: center;
+  color: #000;
 }
 .ov-wrap.team .item.putL img {
   transform: translate(-23em, 0) scale(0.9);
@@ -698,6 +722,21 @@ body {
 }
 .ov-wrap.team .left, .ov-wrap.team .right {
   cursor: default;
+}
+.ov-wrap.team .left.err:before, .ov-wrap.team .right.err:before {
+  content: "";
+  transition: all 0.3s ease-in-out;
+  border: 0.5em solid rgba(255, 0, 0, 0.5);
+  text-indent: 1px;
+}
+.ov-wrap.team .left:before, .ov-wrap.team .right:before {
+  content: "";
+  text-indent: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 .ov-wrap.team .emerge {
   position: absolute;
@@ -711,6 +750,9 @@ body {
 .ov-wrap.team .arr {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+}
+.ov-wrap.team .i-desc {
+  bottom: -4em;
 }
 
 /*@path:components\_footer.scss*/
@@ -836,7 +878,7 @@ body {
   width: 0;
 }
 .fork .the-prog.shown {
-  transition: width 5s linear;
+  transition: width 10s linear;
 }
 
 .hoverable {

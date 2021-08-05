@@ -14,6 +14,8 @@ events[`mouseleave ${data.events.l}`]='leave';
 events[`mouseleave ${data.events.r}`]='leave';
 events[`click ${data.events.l}`]='lClick';
 events[`click ${data.events.r}`]='rClick';
+events[`transitionend ${data.events.l}`]='trs';
+events[`transitionend ${data.events.r}`]='trs';
 
 export let TeamView=BaseIntView.extend({
  events:function(){
@@ -27,6 +29,8 @@ export let TeamView=BaseIntView.extend({
  iLength:null,
  ignore:false,
  initialize:function(opts){
+  let s='';
+
   app=opts.app;
   data=app.configure({start:dat}).start;
 
@@ -38,15 +42,20 @@ export let TeamView=BaseIntView.extend({
 
   this.$vid=this.$(data.view.vid.item);
 
+  this.$miniCont=this.$(data.view.miniCont.item);
+  for(let i=0;i<data.items.length;i++)
+   s+=data.view.miniCont.tmpl;
+  this.$miniCont.html(this.$mini=$(s));
+
   this.$items=$(this.iTemplate({items:data.items})).filter(function(){
    return this.nodeType!==3;
   });
 
   this.$iCont=this.$(data.view.item.cont).prepend(this.$items);
 
-  this.$items.on('transitionend',(e)=>{
-   this.anim(e);
-  });
+  this.$desc=this.$(data.view.desc);
+
+  this.$items.on('transitionend',(e)=>{this.anim(e);});
 
   this.$ctr=this.$(data.view.$ctr);
 
@@ -83,6 +92,7 @@ export let TeamView=BaseIntView.extend({
     this.$vid[0].currentTime=0;
     this.$vid[0].play();
     this.ignore=false;
+    this.$el.removeClass(data.view.enableCls);
    }
   });
  },
@@ -104,6 +114,7 @@ export let TeamView=BaseIntView.extend({
   {
    this.$vid[0].currentTime=data.view.vid.go;
    this.waiting=false;
+
    this.$el.addClass(data.view.enableCls);
   }
 
@@ -155,35 +166,32 @@ export let TeamView=BaseIntView.extend({
   if(pc)
    this.$el.removeClass(data.view.item.lCls+' '+data.view.item.rCls);
  },
- lClick:function(){
-  if(!this.waiting)
-  {
-   if(!data.items[this.index])
-   {
-    this.$items.eq(this.index).addClass(data.view.item.putLCls);
-    this.$el.removeClass(data.view.enableCls);
-    this.waiting=true;
-    this.$vid[0].play();
-    app.get('aggregator').trigger('sound','btn');
-   }else
-   {
-    app.get('aggregator').trigger('sound','btn');
-   }
-  }
+ trs:function(e){
+  if(e.originalEvent.propertyName===data.view.item.fakeTrs)
+   $(e.currentTarget).removeClass(data.view.item.errCls);
  },
- rClick:function(){
+ lClick:function(e){
+  this.lrClick(e,!data.items[this.index].yep,data.view.item.putLCls);
+ },
+ rClick:function(e){
+  this.lrClick(e,data.items[this.index].yep,data.view.item.putRCls);
+ },
+ lrClick:function(e,f,cls){
   if(!this.waiting)
   {
-   if(data.items[this.index])
+   if(f)
    {
-    this.$items.eq(this.index).addClass(data.view.item.putRCls);
+    this.$items.eq(this.index).addClass(cls);
     this.$el.removeClass(data.view.enableCls);
     this.waiting=true;
     this.$vid[0].play();
     app.get('aggregator').trigger('sound','btn');
+    this.$mini.eq(data.items[this.index].mini.index).html(data.items[this.index].mini.type);
    }else
    {
     app.get('aggregator').trigger('sound','btn');
+    $(e.currentTarget).addClass(data.view.item.errCls);
+    this.$desc.html(data.items[this.index].err);
    }
   }
  },
@@ -191,10 +199,11 @@ export let TeamView=BaseIntView.extend({
   BaseIntView.prototype.toggle.apply(this,arguments);
   if(f)
   {
-   this.waiting=false;
    this.index=0;
    this.$vid[0].currentTime=0;
    this.ignore=false;
+   this.$desc.html('');
+   this.$mini.html('');
 
    this.setCtr(0);
   }

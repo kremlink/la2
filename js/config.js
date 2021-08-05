@@ -43,9 +43,9 @@ export let config={
     src:'oceans',
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
-     {start:.2,back:4.9,invoked:false,data:{interactive:'Fork',alt:6}},
+     //{start:.2,back:4.9,invoked:false,data:{interactive:'Fork',alt:6}},
      //{start:10,back:9.9,invoked:false,data:{interactive:'Packing'}},
-     //{start:.2,back:0.9,invoked:false,data:{interactive:'Team'}}
+     {start:.2,back:0.9,invoked:false,data:{interactive:'Team'}}
     ]
    }//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
   }

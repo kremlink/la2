@@ -100,7 +100,7 @@
       width:0;
     }
     .fork &.shown{
-      @include trs('width 5s linear');
+      @include trs('width 10s linear');
     }
   }
   .hoverable{
