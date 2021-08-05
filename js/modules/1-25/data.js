@@ -47,5 +47,5 @@ export const data={
   ]
  },
  beforePhase1:1000,
- points:{yes:1,no:-1,b1:2,b2:4,b3:7}
+ points:{yes:7,no:-5,b1:0.75}
 };

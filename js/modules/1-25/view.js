@@ -34,7 +34,7 @@ export let PackingView=BaseIntView.extend({
   app=opts.app;
   data=app.configure({start:dat}).start;
 
-  pc=app.get('pc');
+  pc=app.get('isPc');
 
   this.opts=opts;
 
@@ -159,6 +159,8 @@ export let PackingView=BaseIntView.extend({
   this.$ctr.text(this.ctrTemplate({curr:i,amt:this.iLength}));
  },
  setPoints:function(v){
+  let amt=data.items.length+data.circles.data.length;
+
   data.view.score.cls.forEach((o)=>{
    this.$dots.removeClass(o);
   });
@@ -167,11 +169,11 @@ export let PackingView=BaseIntView.extend({
   if(this.points<0)
    this.points=0;
   this.$score.text(this.points);
-  if(this.points>=data.points[data.view.score.cls[2]])
+  if(this.points===data.points.yes*amt)
    this.$dots.addClass(data.view.score.cls[2]);else
-    if(this.points>=data.points[data.view.score.cls[1]])
+    if(this.points===data.points.yes*(amt-1)+data.points.no)
      this.$dots.addClass(data.view.score.cls[1]);else
-     if(this.points>=data.points[data.view.score.cls[0]])
+     if(this.points>=amt*(data.points[data.view.score.cls[0]]*data.points.yes+(1-data.points[data.view.score.cls[0]])*data.points.no))
       this.$dots.addClass(data.view.score.cls[0]);
  },
  lHover:function(){

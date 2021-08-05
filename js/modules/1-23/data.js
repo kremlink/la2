@@ -6,7 +6,8 @@ export const data={
   el:'.ov-wrap.fork',
   $lottie:'.l',
   $prog:'.the-prog',
-  vanishCls:'vanish'
+  vanishCls:'vanish',
+  altCls:'alt'
  },
- vanish:2//dom index
+ before:500
 };

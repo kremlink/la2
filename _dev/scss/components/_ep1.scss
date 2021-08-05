@@ -1,30 +1,36 @@
 @include exports("@path:components\_ep1.scss"){/*@path:components\_ep1.scss*/
   .ov-wrap{
     &.fork{
-      &.vanish .h + .btn{
+      &.vanish .btn.alt{
         visibility:hidden;
+        opacity:0;
+        @include trs('opacity 10s ease-in-out,visibility 0s ease-in-out 10s');
       }
 
       .ov-inner{
         @include center();
-        @include flx(display, flex);
         @include flx(flex-flow, 'row wrap');
         @include flx(justify-content, center);
         text-align:center;
-      }
-
-      .h{
-        text-transform:uppercase;
-        width:100%;
-        font-size:1.8em;
-        font-weight:300;
+        &.shown{
+          @include flx(display, flex);
+          &+.the-prog{
+            opacity:1;
+          }
+        }
       }
 
       .btn{
-        margin:6em 6em 0 6em;
+        margin:0 6em;
         position:relative;
         width:18em;
         cursor:pointer;
+        &.alt{
+          visibility:visible;
+        }
+        &:not(.alt) .l{
+          transform:scale(-1,1);
+        }
       }
 
       .l{
@@ -35,7 +41,7 @@
       .btn-h{
         height:4em;
         line-height:4em;
-        margin-bottom:2em;
+        margin-bottom:1.2em;
         position:relative;
 
         div{
@@ -61,11 +67,11 @@
 
       .ov-inner{
         height:100%;
-      }
-      .ov-cont{
-        @include center();
-        width:100%;
-        height:70%;
+        &.int .ov-cont{
+          @include center();
+          width:100%;
+          height:70%;
+        }
       }
 
       .left,.right{

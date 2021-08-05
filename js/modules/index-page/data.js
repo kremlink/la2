@@ -21,5 +21,5 @@ export const data={
   infoCls:'info'
  },
  minViewport:'(min-width:600px)',
- mobViewport:'(max-width:1023px)'
+ pcViewport:'(min-width:1024px)'
 };

@@ -28,7 +28,8 @@
       width:auto;
       padding:.5em 0;
       height:4em;
-      background:url(#{$path}player-center.svg) left top/100% 100% no-repeat;
+      //background:url(#{$path}player-center.svg) left top/100% 100% no-repeat;
+      background:rgba(#000,.5);
       @media(min-width:1025px){
         left:30%;
         right:30%;
@@ -43,11 +44,11 @@
       }
       &:before{
         left:-1em;
-        background:url(#{$path}player-left.svg) left no-repeat;
+        //background:url(#{$path}player-left.svg) left no-repeat;
       }
       &:after{
         right:-1em;
-        background:url(#{$path}player-right.svg) right no-repeat;
+        //background:url(#{$path}player-right.svg) right no-repeat;
       }
     }
     .vjs-current-time-display,.vjs-time-divider div,.vjs-duration-display{
@@ -55,29 +56,29 @@
     }
     .vjs-play-control{
       &.vjs-playing .vjs-icon-placeholder:before{
-        content:'\0041';
+        //content:'\0041';
       }
       &.vjs-ended .vjs-icon-placeholder:before{
-        content:'\0042';
+        //content:'\0042';
       }
       .vjs-icon-placeholder:before{
-        content:'\0042';
+        //content:'\0042';
         font-family:pdt-player;
       }
     }
     .vjs-mute-control{
       margin-top:-.5em;
       &.vjs-vol-0 .vjs-icon-placeholder:before{
-        content:'\0044';
+        //content:'\0044';
       }
       &.vjs-vol-1 .vjs-icon-placeholder:before{
-        content:'\0045';
+        //content:'\0045';
       }
       &.vjs-vol-2 .vjs-icon-placeholder:before{
-        content:'\0046';
+        //content:'\0046';
       }
       .vjs-icon-placeholder:before{
-        content:'\0047';
+        //content:'\0047';
         font-family:pdt-player;
         line-height:2.2;
       }
@@ -87,7 +88,8 @@
         pointer-events:auto;
       }
       .vjs-volume-control.vjs-volume-vertical{
-        background: url(#{$path}player-sound-bg.svg) no-repeat;
+        //background: url(#{$path}player-sound-bg.svg) no-repeat;
+        background:rgba(#000,.5);
         width:4em;
         height:16em;
         left:-4em;
@@ -108,7 +110,7 @@
         width:.5em;
         &:before{
           font-family:pdt-player;
-          content:'\0048';
+          //content:'\0048';
           font-size:2em;
           left:-.4em;
         }
@@ -184,12 +186,12 @@
     }
 
     .vjs-control{
-      text-shadow:0 6px 0 $brn;
+      //text-shadow:0 6px 0 $brn;
       &.vjs-time-control{
         text-shadow:none;
       }
       &.vjs-menu-button-popup .vjs-icon-placeholder{
-        text-shadow:0 6px 0 $brn;
+        //text-shadow:0 6px 0 $brn;
       }
 
       &:focus,&:focus:before,&:hover:before{
@@ -227,7 +229,8 @@
       font-weight: normal;
       font-style: normal;
       &:before{
-        content: '\0043';
+        //content: '\0043';
+        content: '\f110';
         line-height:2.2;
       }
     }

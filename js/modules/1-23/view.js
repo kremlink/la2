@@ -40,22 +40,21 @@ export let ForkView=BaseIntView.extend({
   if(f)
   {
    this.stop=false;
-   this.$prog.addClass(this.shownCls).on('transitionend',()=>{
-    this.$el.addClass(data.view.vanishCls);
-   });
+   this.$prog.addClass(this.shownCls);
+   this.$el.addClass(data.view.vanishCls);
   }else{
    this.$el.removeClass(data.view.vanishCls);
-   this.$prog.removeClass(this.shownCls).off('transitionend');
+   this.$prog.removeClass(this.shownCls);
   }
 
   BaseIntView.prototype.toggle.apply(this,arguments);
  },
  click:function(e){
-  let index=$(e.currentTarget).index();
+  let curr=$(e.currentTarget);
 
-  if(index===data.vanish)
+  if(curr.hasClass(data.view.altCls))
    this.setData('time',this.opts.data.data.alt);
-  app.get('aggregator').trigger('ls:save',{interactive:'1-23',value:index});
+  app.get('aggregator').trigger('ls:save',{interactive:'1-23',value:curr.index()});
   app.get('aggregator').trigger('main:achieve','Ачивка: прошел развилку');
   this.away();
  }

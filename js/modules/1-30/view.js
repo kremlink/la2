@@ -30,7 +30,7 @@ export let TeamView=BaseIntView.extend({
   app=opts.app;
   data=app.configure({start:dat}).start;
 
-  pc=app.get('pc');
+  pc=app.get('isPc');
 
   this.opts=opts;
 
@@ -61,6 +61,8 @@ export let TeamView=BaseIntView.extend({
    app:app,
    data:data
   }]);
+
+  this.next();//TODO:remove
  },
  next:function(){
   BaseIntView.prototype.next.apply(this,arguments);

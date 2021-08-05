@@ -9,7 +9,7 @@ export const data={
   ctrTmpl:'<%= curr %>/<%= amt %>',
   vid:{
    item:'.emerge',
-   pause:.9,
+   pause:1,
    go:1.5
   },
   enableCls:'enable',

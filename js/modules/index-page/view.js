@@ -23,20 +23,19 @@ export let Index=Backbone.View.extend({
   app=opts.app;
   data=app.configure({index:dat}).index;
   //might be needed someday
-  app.set({dest:'objects.isMobile',object:matchMedia(data.mobViewport).matches});
+  app.set({dest:'objects.isPc',object:matchMedia(data.pcViewport).matches});
 
-  let mob=!matchMedia(data.minViewport).matches;
+  let enough=matchMedia(data.minViewport).matches;
 
   epIndex=app.get('epIndex');
 
   new Metrika({app:app});
   this.main=new MainView({app:app});
 
-  this.$el.toggleClass(data.view.tooSmallCls,mob);
+  this.$el.toggleClass(data.view.tooSmallCls,!enough);
   $(window).on('resize',_.debounce(()=>{
-   mob=!matchMedia(data.minViewport).matches;
-   this.$el.toggleClass(data.view.tooSmallCls,mob);
-   //app.get('aggregator').trigger(mob?'player:pause':'player:play');//TODO: check if paused
+   enough=matchMedia(data.minViewport).matches;
+   this.$el.toggleClass(data.view.tooSmallCls,!enough);
   },200));
   document.addEventListener('contextmenu',e=>e.preventDefault());
   this.listenTo(app.get('aggregator'),'player:ready',this.loaded);
@@ -107,7 +106,7 @@ export let Index=Backbone.View.extend({
  },
  loaded:function(){
   this.$el.addClass(data.view.loadedCls);
-  //this.start();//TODO:remove
+  this.start();//TODO:remove
  },
  disable:function(f){
   this.$el.toggleClass(data.view.nopeCls,f);
