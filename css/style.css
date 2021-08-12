@@ -822,8 +822,8 @@ body {
   display: flex;
 }
 .ov-wrap.qs .btns .l {
-  width: 4em;
-  height: 4em;
+  width: 6em;
+  height: 6em;
   cursor: pointer;
   position: relative;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -917,6 +917,15 @@ body {
 .ov-inner.shown {
   visibility: visible;
   opacity: 1;
+}
+.ov-inner.hi-bye:before {
+  content: "";
+  position: absolute;
+  left: 13em;
+  top: 0;
+  bottom: 0;
+  width: 0.1em;
+  background: linear-gradient(180deg, #DF8998, #E5B99D 90%);
 }
 .ov-inner.hi-bye .ov-cont {
   position: absolute;

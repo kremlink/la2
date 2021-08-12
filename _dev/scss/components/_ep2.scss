@@ -45,8 +45,8 @@
         @include abs($l:35em,$t:12em);
         @include flx(display,flex);
         .l{
-          width:4em;
-          height:4em;
+          width:6em;
+          height:6em;
           cursor:pointer;
           position:relative;
           -webkit-tap-highlight-color: rgba(0,0,0,0);

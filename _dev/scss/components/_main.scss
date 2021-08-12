@@ -41,6 +41,12 @@
       opacity:1;
     }
     &.hi-bye{
+      &:before{
+        content:'';
+        @include abs($l:13em,$t:0,$b:0);
+        width:.1em;
+        background:linear-gradient(180deg,#DF8998,#E5B99D 90%);
+      }
       .ov-cont{
         @include center();
         width:47.4%;

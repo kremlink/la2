@@ -41,7 +41,8 @@ export let config={
   },
   data:{
    '1':{
-    src:'1-ser-prev',
+    //src:'1-ser-prev',
+    src:'oceans',
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
      //{start:1,end:1,back:.1,invoked:false,data:{interactive:'Fork',alt:2}},
