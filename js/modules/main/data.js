@@ -5,6 +5,7 @@ export const data={
  view:{
   el:'.overlay-block',
   shownCls:'shown',
+  noBgCls:'no-bg',
   noAnimCls:'no-anim',
   achievement:'.achievement-pop'
  }

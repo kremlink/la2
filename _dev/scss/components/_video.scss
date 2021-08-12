@@ -133,6 +133,7 @@
       }
     }
     .vjs-progress-control{
+      pointer-events:none;
       &:hover{
         .vjs-progress-holder,.vjs-time-tooltip{
           font-size:1em;

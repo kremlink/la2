@@ -15,21 +15,23 @@ events[`mouseleave ${data.events.r}`]='leave';
 events[`click ${data.events.l}`]='lClick';
 events[`click ${data.events.r}`]='rClick';
 events[`click ${data.events.circle}`]='circleClick';
+events[`transitionend ${data.events.l}`]='trs';
+events[`transitionend ${data.events.r}`]='trs';
 
 export let PackingView=BaseIntView.extend({
  events:function(){
   return _.extend({},BaseIntView.prototype.events,events);
  },
- iTemplate:_.template($(data.view.item.tmpl).html()),
- cTemplate:_.template($(data.view.circle.tmpl).html()),
- ctrTemplate:_.template(data.view.ctrTmpl),
+ iTemplate:null,
+ cTemplate:null,
+ ctrTemplate:null,
  el:data.view.el,
  waiting:false,
  index:0,
  iLength:null,
  phase2Lotties:[],
+ mS:null,
  circles:{clicked:0,failed:0},
- points:0,
  initialize:function(opts){
   app=opts.app;
   data=app.configure({start:dat}).start;
@@ -38,16 +40,19 @@ export let PackingView=BaseIntView.extend({
 
   this.opts=opts;
 
+  this.mS=new opts.MS({view:this,points:data.points,amt:data.items.length+data.circles.data.length});
+
   this.setLottie();
 
-  this.$dots=this.$(data.view.score.dots);
-  this.$score=this.$(data.view.score.amt);
+  this.iTemplate=_.template($(data.view.item.tmpl).html());
+  this.cTemplate=_.template($(data.view.circle.tmpl).html());
+  this.ctrTemplate=_.template(data.view.ctrTmpl);
 
-  this.$items=$(this.iTemplate({items:data.items})).filter(function(){
-   return this.nodeType!==3;
-  });
+  this.$items=$(this.iTemplate({items:data.items})).filter(function(){return this.nodeType!==3;});
 
   this.$iCont=this.$(data.view.item.cont).prepend(this.$items);
+
+  this.$desc=this.$(data.view.desc);
 
   this.$items.on('transitionend',(e)=>{
    this.anim(e);
@@ -66,6 +71,8 @@ export let PackingView=BaseIntView.extend({
    app:app,
    data:data
   }]);
+
+  //this.next();//TODO:remove
  },
  iniSwipe:function(){
   new utils.swipe({
@@ -118,7 +125,7 @@ export let PackingView=BaseIntView.extend({
     l.addEventListener('complete',()=>{
      self.$circles.eq(i).removeClass(self.shownCls);
      self.circles.failed++;
-     self.setPoints(data.points.no);
+     self.mS.setPoints(false);
      self.end();
     });
    },data.circles.wait*i);
@@ -127,15 +134,15 @@ export let PackingView=BaseIntView.extend({
  end:function(){
   if(this.circles.clicked+this.circles.failed===data.circles.data.length)
   {
-   app.get('aggregator').trigger('ls:save',{interactive:'1-25',value:this.points});
-   this.next();
+   app.get('aggregator').trigger('ls:save',{interactive:'1-25',value:this.mS.getPoints()});
+   setTimeout(()=>{this.next();},data.away);
   }
  },
  circleClick:function(e){
-  let circle=$(e.currentTarget).removeClass(this.shownCls);
+  let circle=$(e.currentTarget).removeClass(this.shownCls).addClass(data.view.circle.clickedCls);
 
   this.circles.clicked++;
-  this.setPoints(data.points.yes);
+  this.mS.setPoints(true);
   this.phase2Lotties[this.$circles.index(circle)].pause();
   this.end();
  },
@@ -158,24 +165,6 @@ export let PackingView=BaseIntView.extend({
  setCtr:function(i){
   this.$ctr.text(this.ctrTemplate({curr:i,amt:this.iLength}));
  },
- setPoints:function(v){
-  let amt=data.items.length+data.circles.data.length;
-
-  data.view.score.cls.forEach((o)=>{
-   this.$dots.removeClass(o);
-  });
-
-  this.points+=v;
-  if(this.points<0)
-   this.points=0;
-  this.$score.text(this.points);
-  if(this.points===data.points.yes*amt)
-   this.$dots.addClass(data.view.score.cls[2]);else
-    if(this.points===data.points.yes*(amt-1)+data.points.no)
-     this.$dots.addClass(data.view.score.cls[1]);else
-     if(this.points>=amt*(data.points[data.view.score.cls[0]]*data.points.yes+(1-data.points[data.view.score.cls[0]])*data.points.no))
-      this.$dots.addClass(data.view.score.cls[0]);
- },
  lHover:function(){
   if(pc)
    this.$el.addClass(data.view.item.lCls);
@@ -188,33 +177,31 @@ export let PackingView=BaseIntView.extend({
   if(pc)
    this.$el.removeClass(data.view.item.lCls+' '+data.view.item.rCls);
  },
- lClick:function(){
-  if(!this.waiting)
-  {
-   if(!data.items[this.index].yep)
-   {
-    this.$items.eq(this.index).addClass(data.view.item.putLCls);
-    this.waiting=true;
-    this.setPoints(data.points.yes);
-   }else
-   {
-    app.get('aggregator').trigger('sound','btn');
-    this.setPoints(data.points.no);
-   }
-  }
+ trs:function(e){
+  if(e.originalEvent.propertyName===data.view.item.fakeTrs)
+   $(e.currentTarget).removeClass(data.view.item.errCls);
  },
- rClick:function(){
+ lClick:function(e){
+  this.lrClick(e,!data.items[this.index].yep,data.view.item.putLCls);
+ },
+ rClick:function(e){
+  this.lrClick(e,data.items[this.index].yep,data.view.item.putRCls);
+ },
+ lrClick:function(e,f,cls){
   if(!this.waiting)
   {
-   if(data.items[this.index].yep)
+   if(f)
    {
-    this.$items.eq(this.index).addClass(data.view.item.putRCls);
+    this.$items.eq(this.index).addClass(cls);
     this.waiting=true;
-    this.setPoints(data.points.yes);
+    this.mS.setPoints(true);
+    this.$desc.eq(this.index).html(data.items[this.index].desc);
    }else
    {
     app.get('aggregator').trigger('sound','btn');
-    this.setPoints(data.points.no);
+    this.mS.setPoints(false);
+    $(e.currentTarget).addClass(data.view.item.errCls);
+    this.$desc.eq(this.index).html(data.items[this.index].err);
    }
   }
  },
@@ -225,19 +212,17 @@ export let PackingView=BaseIntView.extend({
    this.waiting=false;
    this.index=0;
    this.$items.eq(this.index).addClass(this.shownCls);
+   this.$desc.eq(this.index).html(data.items[this.index].desc);
 
-   this.points=0;
    this.circles.clicked=0;
    this.circles.failed=0;
 
    for(let i=0;i<this.phase2Lotties.length;i++)
     this.phase2Lotties[i].destroy();
    this.phase2Lotties=[];
-   data.view.score.cls.forEach((o)=>{
-    this.$dots.removeClass(o);
-   });
+
    this.setCtr(0);
-   this.$score.text(0);
+   this.mS.clr();
   }
  },
 });

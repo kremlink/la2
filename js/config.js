@@ -36,16 +36,26 @@ export let config={
   srcData:{
    spec:['1080','720','360'],
    tmpl:'../<%= src %>.mp4'
+   //tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode1/mp4/<%= src %>.mp4'
    //tmpl:'videos/<%= spec %>/<%= src %>.mp4'
   },
   data:{
    '1':{
-    src:'oceans',
+    src:'1-ser-prev',
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
-     //{start:.2,back:4.9,invoked:false,data:{interactive:'Fork',alt:6}},
-     //{start:10,back:9.9,invoked:false,data:{interactive:'Packing'}},
-     {start:.2,back:0.9,invoked:false,data:{interactive:'Team'}}
+     //{start:1,end:1,back:.1,invoked:false,data:{interactive:'Fork',alt:2}},
+     {start:1,end:3,back:.2,invoked:false,data:{interactive:'Packing'}},
+     //{start:2,end:4,back:0.1,invoked:false,data:{interactive:'Team'}}
+     //{start:54.12,end:54.64,noBg:true,back:.1,invoked:false,data:{interactive:'Fork',alt:112.56}},
+     //{start:186.92,end:187.44,back:.2,invoked:false,data:{interactive:'Packing'}},
+     //{start:247.4,end:247.92,back:0.1,invoked:false,data:{interactive:'Team'}}
+    ]
+   },
+   '2':{
+    src:'oceans',
+    timecodes:[
+     {start:.2,end:3,back:.2,invoked:false,data:{interactive:'Qs'}}
     ]
    }//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
   }

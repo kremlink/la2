@@ -50,7 +50,6 @@ export let ForkView=BaseIntView.extend({
   if(f)
   {
    this.stop=false;
-  }else{
    this.$el.removeClass(data.view.vanishCls);
    this.$prog.removeClass(this.shownCls);
   }

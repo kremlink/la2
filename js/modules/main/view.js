@@ -1,16 +1,20 @@
 import {SoundMgr} from '../soundMgr/view.js';
 import {LsMgr} from '../lsMgr/view.js';
+import {MicroScore} from '../mS/view.js';
 
 import {ForkView} from '../1-23/view.js';
 import {PackingView} from '../1-25/view.js';
 import {TeamView} from '../1-30/view.js';
+
+import {QsView} from '../2-25/view.js';
 
 import {data as dat} from './data.js';
 
 let Interactives={
  Fork:ForkView,
  Packing:PackingView,
- Team:TeamView
+ Team:TeamView,
+ Qs:QsView
 };
 
 let app,
@@ -54,7 +58,7 @@ export let MainView=Backbone.View.extend({
   setTimeout(()=>this.$achiev.addClass(data.view.shownCls).html(what),100);
  },
  hide:function(){
-  this.$el.removeClass(data.view.shownCls);
+  this.$el.removeClass(data.view.shownCls+' '+data.view.noBgCls);
   for(let x of Object.values(this.interactives))
    x.toggle(false);
  },
@@ -90,6 +94,8 @@ export let MainView=Backbone.View.extend({
 
   this.lsMgr.setData(ls);
   this.$el.toggleClass(tD.noAnim?data.view.noAnimCls:data.view.shownCls,show);
+  if(tD.noBg)
+   this.$el.toggleClass(data.view.noBgCls,show);
  },
  step:function(opts){
   let tD=opts.data,
@@ -109,7 +115,7 @@ export let MainView=Backbone.View.extend({
   }else
   {
    if(!this.interactives[int])
-    this.interactives[int]=new Interactives[int]({app:app,data:tD});else
+    this.interactives[int]=new Interactives[int]({app:app,data:tD,MS:MicroScore});else
     this.interactives[int].toggle(true);
    this.toggle({show:true});
   }

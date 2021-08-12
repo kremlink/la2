@@ -9,14 +9,12 @@ export const data={
   ctrTmpl:'<%= curr %>/<%= amt %>',
   vid:{
    item:'.emerge',
-   pause:1,
-   go:1.6
+   pause:.9,
+   go:2
   },
   enableCls:'enable',
-  miniCont:{
-   item:'.mini',
-   tmpl:'<div />'
-  },
+  miniCont:'.mini',
+  yepTmpl:'#i-1-30-mini-template',
   item:{
    cont:'.into',
    tmpl:'#i-1-30-item-template',
@@ -35,10 +33,23 @@ export const data={
   }
  },
  items:[
-  {yep:true,err:'Неверно1',mini:{index:2,type:2}},
-  {err:'Неверно2',mini:{index:0,type:0}},
-  {err:'Неверно3',mini:{index:3,type:3}},
-  {yep:true,err:'Неверно4',mini:{index:1,type:1}}
+  {yep:true,err:'Неверно1',mini:{index:3,type:'foot'}},
+  {err:'Неверно2'},
+  {err:'Неверно3'},
+  {err:'Неверно4'},
+  {yep:true,err:'Неверно5',mini:{index:5,type:'foot'}},
+  {err:'Неверно6'},
+  {yep:true,err:'Неверно7',mini:{index:9,type:'phone'}},
+  {yep:true,err:'Неверно8',mini:{index:2,type:'foot'}},
+  {err:'Неверно9'},
+  {yep:true,err:'Неверно10',mini:{index:4,type:'foot'}},
+  {yep:true,err:'Неверно11',mini:{index:1,type:'foot'}},
+  {err:'Неверно12'},
+  {yep:true,err:'Неверно13',mini:{index:7,type:'foot'}},
+  {yep:true,err:'Неверно14',mini:{index:8,type:'map'}},
+  {err:'Неверно15'},
+  {err:'Неверно16'},
+  {yep:true,err:'Неверно17',mini:{index:6,type:'foot'}}
   ],
  beforeCards:500,
  wait:500
