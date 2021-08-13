@@ -7,6 +7,7 @@ import {PackingView} from '../1-25/view.js';
 import {TeamView} from '../1-30/view.js';
 
 import {QsView} from '../2-25/view.js';
+import {RingView} from '../2-7/view.js';
 
 import {data as dat} from './data.js';
 
@@ -14,7 +15,8 @@ let Interactives={
  Fork:ForkView,
  Packing:PackingView,
  Team:TeamView,
- Qs:QsView
+ Qs:QsView,
+ Ring:RingView
 };
 
 let app,

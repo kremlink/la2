@@ -1,9 +1,6 @@
 @include exports("@path:components\_ep2.scss"){/*@path:components\_ep2.scss*/
   .ov-wrap{
     &.qs{
-      .ov-inner{
-        height:100%;
-      }
       .int-score{
         @include abs($b:2em,$l:35em);
       }
@@ -66,6 +63,59 @@
             border-radius:50%;
           }
         }
+      }
+    }
+    &.ring{
+      .note{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:center/contain no-repeat;
+        font-size:1.2em;
+      }
+      .n-text{
+        text-transform:uppercase;
+        color:#000;
+        text-align:center;
+        @include center($t:10em);
+        &:nth-child(2){
+          top:13.3em;
+        }
+      }
+      .l-arr,.r-arr{
+        width:4em;
+        height:1.92*4em;
+        @include abs($b:3em);
+        cursor:pointer;
+      }
+      .l-arr{
+        left:10em;
+        transform:scale(-1, 1);
+      }
+      .r-arr{
+        right:10em;
+      }
+      .rings{
+        width:52%;
+        padding-bottom:52%;
+        @include abs($t:100%,$l:50%);
+        transform:translate(-50%, -27%);
+        .l{
+          @include abs($t:-6.2em,$b:-6.2em,$l:-6.2em,$r:-6.2em);
+        }
+      }
+      .r-mask{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:center/contain no-repeat;
+        -webkit-mask-image:linear-gradient(90deg,transparent,#000,transparent);
+        mask-image:linear-gradient(90deg,transparent,#000,transparent);
+      }
+      .r-in{
+        height:100%;
+        background:center/contain no-repeat;
+        @include trs('transform #{$anim} linear');
       }
     }
   }

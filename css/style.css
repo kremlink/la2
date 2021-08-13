@@ -450,9 +450,6 @@ body {
   opacity: 0;
   transition: opacity 10s ease-in-out,visibility 0s ease-in-out 10s;
 }
-.ov-wrap.fork .ov-inner {
-  height: 100%;
-}
 .ov-wrap.fork .ov-inner.int {
   position: absolute;
   left: 50%;
@@ -506,9 +503,6 @@ body {
   .ov-wrap.fork .btn-sh {
     font-size: 0.8em;
   }
-}
-.ov-wrap.packing .ov-inner, .ov-wrap.team .ov-inner {
-  height: 100%;
 }
 .ov-wrap.packing .ov-inner.int .ov-cont, .ov-wrap.team .ov-inner.int .ov-cont {
   position: absolute;
@@ -768,9 +762,6 @@ body {
 }
 
 /*@path:components\_ep2.scss*/
-.ov-wrap.qs .ov-inner {
-  height: 100%;
-}
 .ov-wrap.qs .int-score {
   position: absolute;
   left: 35em;
@@ -847,6 +838,67 @@ body {
   bottom: 0;
   border-radius: 50%;
 }
+.ov-wrap.ring .note {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: center/contain no-repeat;
+  font-size: 1.2em;
+}
+.ov-wrap.ring .n-text {
+  text-transform: uppercase;
+  color: #000;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 10em;
+  transform: translate(-50%, 0);
+}
+.ov-wrap.ring .n-text:nth-child(2) {
+  top: 13.3em;
+}
+.ov-wrap.ring .l-arr, .ov-wrap.ring .r-arr {
+  width: 4em;
+  height: 7.68em;
+  position: absolute;
+  bottom: 3em;
+  cursor: pointer;
+}
+.ov-wrap.ring .l-arr {
+  left: 10em;
+  transform: scale(-1, 1);
+}
+.ov-wrap.ring .r-arr {
+  right: 10em;
+}
+.ov-wrap.ring .rings {
+  width: 52%;
+  padding-bottom: 52%;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -27%);
+}
+.ov-wrap.ring .rings .l {
+  position: absolute;
+  left: -6.2em;
+  top: -6.2em;
+  right: -6.2em;
+  bottom: -6.2em;
+}
+.ov-wrap.ring .r-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: center/contain no-repeat;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000, transparent);
+}
+.ov-wrap.ring .r-in {
+  height: 100%;
+  background: center/contain no-repeat;
+  transition: transform 0.3s linear;
+}
 
 /*.test-mask{
   background: url(../images//1-23/1-23-bg.jpg) center/cover no-repeat;
@@ -910,6 +962,7 @@ body {
 .ov-inner {
   position: absolute;
   width: 100%;
+  height: 100%;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out;

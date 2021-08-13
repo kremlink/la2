@@ -8,7 +8,6 @@
       }
 
       .ov-inner{
-        height:100%;
         &.int{
           @include center();
           @include flx(flex-flow, 'row wrap');
@@ -66,7 +65,6 @@
 
     &.packing,&.team{
       .ov-inner{
-        height:100%;
         &.int .ov-cont{
           @include center();
           width:100%;

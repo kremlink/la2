@@ -92,6 +92,7 @@ export let QsView=BaseIntView.extend({
   }else
   {
    curr.addClass(data.view.errCls);
+   app.get('aggregator').trigger('sound','btn');
    this.mS.setPoints(false);
   }
  }
