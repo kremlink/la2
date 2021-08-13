@@ -6,8 +6,10 @@ export const data={
  view:{
   el:'.ov-wrap.ring',
   ringLottie:'.rings .l',
-  rotator:'.r-in'
+  rotator:'.r-in',
+  text:'.n-text'
   //rTmpl:'#i-2-25-reveal-template'
  },
- before:1000
+ before:1000,
+ textData:['РДИУ','СДЙТШЯЮ','ГЯСЯ']
 };

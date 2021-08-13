@@ -857,6 +857,9 @@ body {
 .ov-wrap.ring .n-text:nth-child(2) {
   top: 13.3em;
 }
+.ov-wrap.ring .n-text:nth-child(3) {
+  top: 14.5em;
+}
 .ov-wrap.ring .l-arr, .ov-wrap.ring .r-arr {
   width: 4em;
   height: 7.68em;

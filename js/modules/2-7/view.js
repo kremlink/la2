@@ -17,6 +17,7 @@ export let RingView=BaseIntView.extend({
  //rTemplate:null,
  angle:0,
  rStep:360/64,
+ textArr:[],
  initialize:function(opts){
   app=opts.app;
   data=app.configure({start:dat}).start;
@@ -24,6 +25,9 @@ export let RingView=BaseIntView.extend({
   this.opts=opts;
 
   this.$rotator=this.$(data.view.rotator);
+  this.$text=this.$(data.view.text);
+  this.clrText();
+
   //this.rTemplate=_.template($(data.view.rTmpl).html());
 
   //this.$(data.view.reveal).html(this.$reveal=$(this.rTemplate({items:data.items})).filter(function(){return this.nodeType!==3;}));
@@ -58,10 +62,17 @@ export let RingView=BaseIntView.extend({
 
   this.next();//TODO:remove
  },
+ clrText:function(){
+  this.textArr=[];
+  this.$text.each((i,o)=>{
+   this.textArr.push(Array.from(data.textData[i]));
+   o.innerHTML=data.textData[i];
+  });
+ },
  toggle:function(f){
   if(f)
   {
-
+   this.clrText();
   }
 
   BaseIntView.prototype.toggle.apply(this,arguments);
@@ -72,10 +83,31 @@ export let RingView=BaseIntView.extend({
  rClick:function(){
   this.lrClick(false);
  },
+ setText:function(f){
+  this.textArr.forEach((o,i)=>{
+   o.map((o1,i1,ar)=>{
+    let code=o1.charCodeAt(0);
+
+    if(f)
+     code=code===1040?1071:--code;else
+     code=code===1071?1040:++code;
+
+    ar[i1]=String.fromCharCode(code);
+   });
+
+   this.$text.eq(i).html(o.join(''));
+  });
+ },
  lrClick:function(f){
   if(f)
-   this.angle+=this.rStep;else
+  {
+   this.angle+=this.rStep;
+   this.setText(true);
+  }else
+  {
    this.angle-=this.rStep;
+   this.setText(false);
+  }
   this.$rotator.css('transform',`rotate(${this.angle}deg)`);
  }
 });
