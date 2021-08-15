@@ -66,12 +66,20 @@
       }
     }
     &.ring{
+      .ov-inner{
+        z-index:1;
+        &.int.shown~.note{
+          opacity:1;
+        }
+      }
       .note{
         position:absolute;
         width:100%;
         height:100%;
         background:center/contain no-repeat;
         font-size:1.2em;
+        opacity:0;
+        @include trs('opacity #{$anim} ease-in-out');
       }
       .n-text{
         text-transform:uppercase;
@@ -120,6 +128,84 @@
         height:100%;
         background:center/contain no-repeat;
         @include trs('transform #{$anim} linear');
+      }
+      .digits{
+        color:#e2a49b;
+        background:center/contain no-repeat;
+        --h:4em;
+        height:var(--h);
+        width:calc(1002/102*var(--h));
+        padding-left:calc(0.098*var(--h));
+        @include center($b:4em);
+        @include flx(display,flex);
+        @extend %bxz;
+        &.d1{
+          .roller{
+            width:10%;
+          }
+          .ph{
+            width:10%;
+            &:nth-child(1){
+              margin-left:calc(-0.098/2*var(--h));
+            }
+          }
+        }
+      }
+      .ph{
+        @include flx(display,flex);
+        @include flx(justify-content,center);
+        @include flx(align-items,center);
+        &.shown{
+          color:#fff;
+          &~.roller{
+            display:block;
+          }
+          &:nth-child(2)~.roller{
+            transform:translate(100%, 0);
+          }
+          &:nth-child(4)~.roller{
+            transform:translate(300%, 0);
+          }
+          &:nth-child(5)~.roller{
+            transform:translate(400%, 0);
+          }
+          &:nth-child(7)~.roller{
+            transform:translate(600%, 0);
+          }
+          &:nth-child(8)~.roller{
+            transform:translate(700%, 0);
+          }
+          &:nth-child(9)~.roller{
+            transform:translate(800%, 0);
+          }
+          &:nth-child(10)~.roller{
+            transform:translate(900%, 0);
+          }
+        }
+      }
+      .roller{
+        @include abs($l:calc(0.098/2*var(--h)),$t:0);
+        padding-bottom:10%;
+        @include trs('transform #{$anim} ease-in-out');
+        display:none;
+        .l{
+          @include abs($l:-15%,$r:-15%,$t:-15%,$b:-15%);
+          margin-left:calc(-0.098/2*var(--h));
+        }
+      }
+      .t-arr,.b-arr{
+        @include abs($l:50%);
+        width:4em;
+        height:4em;
+        cursor:pointer;
+      }
+      .t-arr{
+        top:-4.3em;
+        transform:translate(-50%, 0) rotate(-90deg);
+      }
+      .b-arr{
+        bottom:-4.3em;
+        transform:translate(-50%, 0) rotate(90deg);
       }
     }
   }
