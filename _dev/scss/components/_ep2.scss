@@ -90,6 +90,7 @@
         height:1.92*4em;
         @include abs($b:3em);
         cursor:pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
       }
       .l-arr{
         left:10em;

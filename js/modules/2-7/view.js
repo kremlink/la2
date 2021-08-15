@@ -6,8 +6,16 @@ let app,
     data=dat,
     events={};
 
-events[`click ${data.events.lClick}`]='lClick';
-events[`click ${data.events.rClick}`]='rClick';
+const alfLen=32;
+
+events[`mousedown ${data.events.ringLArr}`]='ringLClick';
+events[`touchstart ${data.events.ringLArr}`]='ringLClick';
+events[`mousedown ${data.events.ringRArr}`]='ringRClick';
+events[`touchstart ${data.events.ringRArr}`]='ringRClick';
+events[`mouseup ${data.events.ringLArr}`]='ringLUp';
+events[`touchend ${data.events.ringLArr}`]='ringLUp';
+events[`mouseup ${data.events.ringRArr}`]='ringRUp';
+events[`touchend ${data.events.ringRArr}`]='ringRUp';
 
 export let RingView=BaseIntView.extend({
  events:function(){
@@ -16,8 +24,12 @@ export let RingView=BaseIntView.extend({
  el:data.view.el,
  //rTemplate:null,
  angle:0,
- rStep:360/64,
+ angleInd:0,
+ rStep:360/alfLen/2,
  textArr:[],
+ ringGo:null,
+ won:false,
+ ringInt:null,
  initialize:function(opts){
   app=opts.app;
   data=app.configure({start:dat}).start;
@@ -37,6 +49,56 @@ export let RingView=BaseIntView.extend({
    data:data
   }]);
 
+  this.setAnim();
+
+  this.setLastPhase(4);
+
+  $(document).on('mouseup.ring touchend.ring',()=>this.ringLRUp());
+
+  this.ringGo=_.throttle((f)=>{
+   if(!this.won)
+   {
+    this.angle=this.angle+f*this.rStep;
+    this.angleInd=Math.round(this.angle/this.rStep)%alfLen;
+    if(this.angleInd===data.ringWin||this.angleInd===alfLen+data.ringWin)
+    {
+     this.won=true;
+     setTimeout(()=>this.next(),data.before);
+    }
+    this.setText(f+1);
+    this.$rotator.css('transform',`rotate(${this.angle}deg)`);
+   }
+  },data.ringInt,{leading:true,trailing:false});
+
+  this.next();//TODO:remove
+  this.next();//TODO:remove
+ },
+ ringLRDown:function(f){
+  if(!this.ringInt)
+   this.ringInt=setInterval(()=>this.ringGo(f),data.ringInt);
+ },
+ ringLRUp:function(f,onArrow){
+  if(onArrow)
+   this.ringGo(f);
+  if(this.ringInt)
+  {
+   clearInterval(this.ringInt);
+   this.ringInt=null;
+  }
+ },
+ ringLUp:function(){
+  this.ringLRUp(1,true);
+ },
+ ringRUp:function(){
+  this.ringLRUp(-1,true);
+ },
+ ringLClick:function(){
+  this.ringLRDown(1);
+ },
+ ringRClick:function(){
+  this.ringLRDown(-1);
+ },
+ setAnim:function(){
   lottie.loadAnimation({
    container:this.$(data.view.ringLottie)[0],
    renderer:'svg',
@@ -45,22 +107,19 @@ export let RingView=BaseIntView.extend({
    animationData:lData.frame
   });
   lottie.loadAnimation({
-   container:this.$(data.events.lClick)[0],
+   container:this.$(data.events.ringLArr)[0],
    renderer:'svg',
    loop:true,
    autoplay:true,
    animationData:lData.arr
   });
   lottie.loadAnimation({
-   container:this.$(data.events.rClick)[0],
+   container:this.$(data.events.ringRArr)[0],
    renderer:'svg',
    loop:true,
    autoplay:true,
    animationData:lData.arr
   });
-
-
-  this.next();//TODO:remove
  },
  clrText:function(){
   this.textArr=[];
@@ -73,15 +132,13 @@ export let RingView=BaseIntView.extend({
   if(f)
   {
    this.clrText();
+   this.angle=0;
+   this.angleInd=0;
+   this.won=false;
+   this.$rotator.css('transform',`rotate(${this.angle}deg)`);
   }
 
   BaseIntView.prototype.toggle.apply(this,arguments);
- },
- lClick:function(){
-  this.lrClick(true);
- },
- rClick:function(){
-  this.lrClick(false);
  },
  setText:function(f){
   this.textArr.forEach((o,i)=>{
@@ -97,17 +154,5 @@ export let RingView=BaseIntView.extend({
 
    this.$text.eq(i).html(o.join(''));
   });
- },
- lrClick:function(f){
-  if(f)
-  {
-   this.angle+=this.rStep;
-   this.setText(true);
-  }else
-  {
-   this.angle-=this.rStep;
-   this.setText(false);
-  }
-  this.$rotator.css('transform',`rotate(${this.angle}deg)`);
  }
 });

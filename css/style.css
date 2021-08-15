@@ -866,6 +866,7 @@ body {
   position: absolute;
   bottom: 3em;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .ov-wrap.ring .l-arr {
   left: 10em;
