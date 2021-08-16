@@ -68,8 +68,10 @@
     &.ring{
       .ov-inner{
         z-index:1;
-        &.int.shown~.note{
-          opacity:1;
+        &.int.shown{
+          &~.note,&~.the-prog{
+            opacity:1;
+          }
         }
       }
       .note{
@@ -134,19 +136,80 @@
         background:center/contain no-repeat;
         --h:4em;
         height:var(--h);
-        width:calc(1002/102*var(--h));
-        padding-left:calc(0.098*var(--h));
-        @include center($b:4em);
+        @include center($f:h);
         @include flx(display,flex);
         @extend %bxz;
         &.d1{
+          width:calc(1002/102*var(--h));
+          padding-left:calc(0.098*var(--h));
+          bottom:3em;
           .roller{
             width:10%;
+            padding-bottom:10%;
+            left:calc(0.098 / 2 * var(--h));
+            display:none;
+          }
+          .l{
+            @include abs($l:-15%,$r:-15%,$t:-15%,$b:-15%);
+            margin-left:calc(-0.098/2*var(--h));
+          }
+          .ph{
+            width:10%;
+            &.shown{
+              color:#fff;
+              &~.roller{
+                display:block;
+              }
+              &:nth-child(2)~.roller{
+                transform:translate(100%, 0);
+              }
+              &:nth-child(4)~.roller{
+                transform:translate(300%, 0);
+              }
+              &:nth-child(5)~.roller{
+                transform:translate(400%, 0);
+              }
+              &:nth-child(7)~.roller{
+                transform:translate(600%, 0);
+              }
+              &:nth-child(8)~.roller{
+                transform:translate(700%, 0);
+              }
+              &:nth-child(9)~.roller{
+                transform:translate(800%, 0);
+              }
+              &:nth-child(10)~.roller{
+                transform:translate(900%, 0);
+              }
+            }
+            &:nth-child(1){
+              margin-left:calc(-0.098/2*var(--h));
+            }
+          }
+        }
+        &.d2{
+          width:calc(1002/102*var(--h));
+          padding-left:calc(0.098*var(--h));
+          top:3em;
+          .roller{
+            width:calc(200%/11);
+            left:0;
+            height:100%;
+            background:center/contain no-repeat;
+            &.shown1{
+              left:calc(300% / 11);
+            }
+            &.shown2{
+              left:calc(600% / 11);
+            }
+            &.shown3{
+              left:calc(900% / 11);
+            }
           }
           .ph{
             width:10%;
             &:nth-child(1){
-              margin-left:calc(-0.098/2*var(--h));
+              margin-left:calc(-0.098*var(--h));
             }
           }
         }
@@ -155,43 +218,10 @@
         @include flx(display,flex);
         @include flx(justify-content,center);
         @include flx(align-items,center);
-        &.shown{
-          color:#fff;
-          &~.roller{
-            display:block;
-          }
-          &:nth-child(2)~.roller{
-            transform:translate(100%, 0);
-          }
-          &:nth-child(4)~.roller{
-            transform:translate(300%, 0);
-          }
-          &:nth-child(5)~.roller{
-            transform:translate(400%, 0);
-          }
-          &:nth-child(7)~.roller{
-            transform:translate(600%, 0);
-          }
-          &:nth-child(8)~.roller{
-            transform:translate(700%, 0);
-          }
-          &:nth-child(9)~.roller{
-            transform:translate(800%, 0);
-          }
-          &:nth-child(10)~.roller{
-            transform:translate(900%, 0);
-          }
-        }
       }
       .roller{
-        @include abs($l:calc(0.098/2*var(--h)),$t:0);
-        padding-bottom:10%;
+        @include abs($t:0);
         @include trs('transform #{$anim} ease-in-out');
-        display:none;
-        .l{
-          @include abs($l:-15%,$r:-15%,$t:-15%,$b:-15%);
-          margin-left:calc(-0.098/2*var(--h));
-        }
       }
       .t-arr,.b-arr{
         @include abs($l:50%);

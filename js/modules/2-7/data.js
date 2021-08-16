@@ -10,8 +10,9 @@ export const data={
   ringLottie:'.rings .l',
   rotator:'.r-in',
   text:'.n-text',
+  $prog:'.the-prog',
   nLottie:'.roller .l',
-  digits:'.ph:not(.empty)'
+  digits:'.d1 .ph:not(.empty)'
   //rTmpl:'#i-2-25-reveal-template'
  },
  before:1500,
@@ -19,5 +20,6 @@ export const data={
  ringWin:-1,
  ringInt:100,
  iniDigit:0,
- ifSameDigit:5
+ ifSameDigit:5,
+ progWait:500
 };

@@ -20,6 +20,7 @@ events[`mouseup ${data.events.ringRArr}`]='ringRUp';
 events[`touchend ${data.events.ringRArr}`]='ringRUp';
 events[`click ${data.events.dateTArr}`]='dateTClick';
 events[`click ${data.events.dateBArr}`]='dateBClick';
+events[`transitionend ${data.view.$prog}`]='progEnd';
 
 export let RingView=BaseIntView.extend({
  events:function(){
@@ -36,6 +37,7 @@ export let RingView=BaseIntView.extend({
  ringInt:null,
  digiActive:0,
  digiCurr:0,
+ timeIsUp:false,
  date:[...now.getDate().toString(),...Array.from((month>9?'':'0')+month.toString()),...now.getFullYear().toString()].map((o)=>+o),
  initialize:function(opts){
   app=opts.app;
@@ -48,6 +50,8 @@ export let RingView=BaseIntView.extend({
   this.clrText();
 
   this.$digits=this.$(data.view.digits);
+
+  this.$prog=this.$(data.view.$prog);
 
   //this.rTemplate=_.template($(data.view.rTmpl).html());
 
@@ -83,6 +87,10 @@ export let RingView=BaseIntView.extend({
 
   this.next();//TODO:remove
   this.next();//TODO:remove
+  this.next();//TODO:remove
+ },
+ progEnd:function(){
+  this.timeIsUp=true;
  },
  ringLRDown:function(f){
   if(!this.ringInt)
@@ -171,7 +179,8 @@ export let RingView=BaseIntView.extend({
     this.setIniDigit();
    }else
    {
-
+//app.get('aggregator').trigger('ls:save',{interactive:'1-23',value:curr.index()});
+    
     setTimeout(()=>this.next(),data.before)
    }
   }
@@ -194,9 +203,20 @@ export let RingView=BaseIntView.extend({
    this.$rotator.css('transform',`rotate(${this.angle}deg)`);
    this.$digits.html('').removeClass(this.shownCls);
    this.setIniDigit();
+   this.$prog.removeClass(this.shownCls);
+   this.timeIsUp=false;
   }
 
   BaseIntView.prototype.toggle.apply(this,arguments);
+ },
+ next:function(){
+  BaseIntView.prototype.next.apply(this,arguments);
+  if(this.phase===1)
+  {
+   setTimeout(()=>{
+    this.$prog.addClass(this.shownCls);
+   },data.progWait);
+  }
  },
  setIniDigit:function(){
   let f;

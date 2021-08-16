@@ -120,7 +120,7 @@
     background:center/cover no-repeat;
   }
   .the-prog{
-    @include abs($l:0,$b:0);
+    @include abs($l:0);
     width:100%;
     height:.5em;
     background:linear-gradient(90deg,#DF8998,#E5B99D 90%);
@@ -130,6 +130,11 @@
     }
     .fork &.shown{
       @include trs('width 10s linear');
+      bottom:0;
+    }
+    .ring &.shown{
+      @include trs('width 30s linear');
+      top:0;
     }
   }
   .hoverable{
