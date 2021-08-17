@@ -9,7 +9,7 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="maximum-scale=1.0,user-scalable=0">
 <!--<link rel="stylesheet" href="css/style.min.css" />-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 <script>window.jQuery||document.write('<script src="js/lib/jquery.js">\x3C/script>')</script>
         <link href="css/video-js.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css" />
@@ -158,18 +158,32 @@
                     </div>
                     <div class="ov-inner int">
                         <div class="digits d2" style="background-image: url(images/2-7/2-7-topframe.svg);">
-                            <div class="ph">1</div>
-                            <div class="ph">2</div>
-                            <div class="ph empty"></div>
                             <div class="ph"></div>
-                            <div class="ph">3</div>
+                            <div class="ph"></div>
                             <div class="ph empty"></div>
                             <div class="ph"></div>
                             <div class="ph"></div>
                             <div class="ph empty"></div>
                             <div class="ph"></div>
                             <div class="ph"></div>
-                            <div class="roller shown2" style="background-image: url(images/2-7/2-7-two-digit-focus.svg);"></div>
+                            <div class="ph empty"></div>
+                            <div class="ph"></div>
+                            <div class="ph"></div>
+                            <div class="roller" style="background-image: url(images/2-7/2-7-two-digit-focus.svg);"></div>
+                        </div>
+                        <div class="digits d3" style="background-image: url(images/2-7/2-7-botframe.svg);">
+                            <div class="ph"></div>
+                            <div class="ph empty"></div>
+                            <div class="ph"></div>
+                            <div class="ph empty"></div>
+                            <div class="ph"></div>
+                            <div class="ph empty"></div>
+                            <div class="ph"></div>
+                            <div class="roller"><div class="l"></div></div>
+                        </div>
+                        <div class="table">
+                            <div class="into"></div>
+                            <div class="t-over" style="background-image: url(images/2-7/2-7-table.svg);"></div>
                         </div>
                     </div>
                     <div class="ov-inner hi-bye">
@@ -227,6 +241,23 @@
                 </div>
             </div>
 		</div>
+    <script type="text/template" id="i-2-7-table-template">
+        <% for(let i=0;i<rows;i++){ %>
+        <div class="t-tr">
+            <% for(let j=0;j<cols;j++){ %>
+            <div class="t-td">
+                <%= Math.floor(Math.random()*10) %>
+                <% if(i===0){ %>
+                <div class="t-td top"><%= j %></div>
+                <% } %>
+                <% if(j===0){ %>
+                <div class="t-td left"><%= i %></div>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+        <% } %>
+    </script>
     <script type="text/template" id="i-2-25-reveal-template">
         <% for(let i=0;i<items.length;i++){ if('index' in items[i])%>
         <div class="bg-img reveal" style="background-image: url(images/2-25/over<%= items[i].index+1 %>.svg);"></div>
