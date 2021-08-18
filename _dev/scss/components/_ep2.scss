@@ -142,7 +142,7 @@
         &.d1{
           width:calc(1002/102*var(--h));
           padding-left:calc(0.098*var(--h));
-          bottom:3em;
+          bottom:4em;
           .roller{
             width:10%;
             padding-bottom:10%;
@@ -195,9 +195,12 @@
             width:calc(200%/11);
             left:0;
             height:100%;
-            background:center/contain no-repeat;
             display:none;
             @include trs('left #{$anim} ease-in-out');
+            .l{
+              background:center/contain no-repeat;
+              @include abs($l:-5%,$r:-5%,$t:-5%,$b:-5%);
+            }
           }
           .ph{
             width:calc(100%/11);
@@ -339,8 +342,43 @@
           pointer-events:none;
         }
       }
-      .t-td-val{
-
+    }
+    &.labyrinth{
+      video{
+        position:absolute;
+        width:100%;
+        height:100%;
+      }
+      .ovl{
+        @include abs($l:-.07em,$r:-.07em,$t:0,$b:0);
+        overflow:hidden;
+        div{
+          width:200%;
+          height:200%;
+          @include abs($l:-50%,$t:-50%);
+          background:center/50% 50%;
+          -webkit-mask-image:radial-gradient(ellipse,transparent,#000 50%);
+          mask-image:radial-gradient(ellipse,transparent,#000 50%);
+          -webkit-mask-size:100% 100%;
+          mask-size:100% 100%;
+          -webkit-mask-repeat:no-repeat;
+          mask-repeat:no-repeat;
+        }
+      }
+      .into{
+        height:100%;
+        position:relative;
+      }
+      .choose{
+        @include abs($l:0,$r:0,$t:0,$b:0);
+        background:center/contain no-repeat;
+      }
+      .btn{
+        position:absolute;
+        width:3em;
+        height:3em;
+        background:rgba(#fff,.2);
+        cursor:pointer;
       }
     }
   }

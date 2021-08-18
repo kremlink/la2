@@ -57,7 +57,7 @@ export let config={
     src:'oceans',
     timecodes:[
      //start:.2,end:3,back:.2,invoked:false,data:{interactive:'Qs'}},
-     {start:.2,end:3,back:.2,invoked:false,data:{interactive:'Ring'}}
+     {start:.2,end:3,back:.2,invoked:false,data:{interactive:'Labyrinth'}}
     ]
    }//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
   }

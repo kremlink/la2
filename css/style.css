@@ -928,7 +928,7 @@ body {
 .ov-wrap.ring .digits.d1 {
   width: calc(1002/102*var(--h));
   padding-left: calc(0.098*var(--h));
-  bottom: 3em;
+  bottom: 4em;
 }
 .ov-wrap.ring .digits.d1 .roller {
   width: 10%;
@@ -986,9 +986,16 @@ body {
   width: calc(200%/11);
   left: 0;
   height: 100%;
-  background: center/contain no-repeat;
   display: none;
   transition: left 0.3s ease-in-out;
+}
+.ov-wrap.ring .digits.d2 .roller .l {
+  background: center/contain no-repeat;
+  position: absolute;
+  left: -5%;
+  top: -5%;
+  right: -5%;
+  bottom: -5%;
 }
 .ov-wrap.ring .digits.d2 .ph {
   width: calc(100%/11);
@@ -1137,6 +1144,53 @@ body {
   left: calc(var(--w)/-10);
   pointer-events: none;
 }
+.ov-wrap.labyrinth video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.ov-wrap.labyrinth .ovl {
+  position: absolute;
+  left: -0.07em;
+  top: 0;
+  right: -0.07em;
+  bottom: 0;
+  overflow: hidden;
+}
+.ov-wrap.labyrinth .ovl div {
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  background: center/50% 50%;
+  -webkit-mask-image: radial-gradient(ellipse, transparent, #000 50%);
+  mask-image: radial-gradient(ellipse, transparent, #000 50%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.ov-wrap.labyrinth .into {
+  height: 100%;
+  position: relative;
+}
+.ov-wrap.labyrinth .choose {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: center/contain no-repeat;
+}
+.ov-wrap.labyrinth .btn {
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
 /*.test-mask{
   background: url(../images//1-23/1-23-bg.jpg) center/cover no-repeat;
   -webkit-mask-image:url(../images/test/mask2.png);
@@ -1303,8 +1357,9 @@ body {
 .the-prog {
   position: absolute;
   left: 0;
+  top: 0;
   width: 100%;
-  height: 0.5em;
+  height: 0.25em;
   background: linear-gradient(90deg, #DF8998, #E5B99D 90%);
   opacity: 0;
 }
@@ -1313,11 +1368,9 @@ body {
 }
 .fork .the-prog.shown {
   transition: width 10s linear;
-  bottom: 0;
 }
 .ring .the-prog.shown {
   transition: width 30s linear;
-  top: 0;
 }
 
 .hoverable {

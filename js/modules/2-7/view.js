@@ -92,9 +92,9 @@ export let RingView=BaseIntView.extend({
 
   this.setIniDigit();
 
-  //this.next();//TODO:remove
-  //this.next();//TODO:remove
-  //this.next();//TODO:remove
+  this.next();//TODO:remove
+  this.next();//TODO:remove
+  this.next();//TODO:remove
  },
  progEnd:function(){
   this.timeIsUp=true;
@@ -188,6 +188,7 @@ export let RingView=BaseIntView.extend({
    {
     this.$topDigits.removeClass(this.shownCls);
     this.$botDigits.removeClass(this.shownCls);
+    app.get('aggregator').trigger('ls:save',{interactive:'2-7',value:this.timeIsUp});
     setTimeout(()=>this.next(),data.before);
    }
   }else
@@ -205,7 +206,6 @@ export let RingView=BaseIntView.extend({
     this.setIniDigit();
    }else
    {
-//app.get('aggregator').trigger('ls:save',{interactive:'1-23',value:curr.index()});
     this.digiActive=0;
     setTimeout(()=>this.next(),data.before);
    }
@@ -242,7 +242,7 @@ export let RingView=BaseIntView.extend({
   if(this.phase===1)
   {
    setTimeout(()=>{
-    //this.$prog.addClass(this.shownCls);
+    this.$prog.addClass(this.shownCls);
    },data.progWait);
   }
  },

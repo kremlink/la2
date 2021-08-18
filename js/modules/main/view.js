@@ -8,6 +8,7 @@ import {TeamView} from '../1-30/view.js';
 
 import {QsView} from '../2-25/view.js';
 import {RingView} from '../2-7/view.js';
+import {LabyrinthView} from '../2-28/view.js';
 
 import {data as dat} from './data.js';
 
@@ -16,7 +17,8 @@ let Interactives={
  Packing:PackingView,
  Team:TeamView,
  Qs:QsView,
- Ring:RingView
+ Ring:RingView,
+ Labyrinth:LabyrinthView
 };
 
 let app,

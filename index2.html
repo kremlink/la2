@@ -169,7 +169,9 @@
                             <div class="ph empty"></div>
                             <div class="ph"></div>
                             <div class="ph"></div>
-                            <div class="roller" style="background-image: url(images/2-7/2-7-two-digit-focus.svg);"></div>
+                            <div class="roller" >
+                                <div class="l" style="background-image: url(images/2-7/2-7-two-digit-focus.svg);"></div>
+                            </div>
                         </div>
                         <div class="digits d3" style="background-image: url(images/2-7/2-7-botframe.svg);">
                             <div class="ph"></div>
@@ -199,6 +201,38 @@
                         </div>
                     </div>
                     <div class="the-prog"></div>
+                </div>
+                <div class="ov-wrap labyrinth">
+                    <div class="ov-inner hi-bye">
+                        <div class="bg-img" style="background-image: url(images/2-28/2-28-lost-bg.jpg);"></div>
+                        <div class="ov-cont">
+                            <div class="h-b-h">Лабиринт</div>
+                            <div class="h-b-text">
+                                Текст
+                            </div>
+                            <div class="h-b-btn">
+                                <span>Начать</span>
+                                <div class="h-b-l"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ov-inner int">
+                        <video playsinline></video>
+                        <div class="into"></div>
+                    </div>
+                    <div class="ov-inner hi-bye">
+                        <div class="bg-img" style="background-image: url(images/2-28/2-28-overlay.jpg);"></div>
+                        <div class="ov-cont">
+                            <div class="h-b-h">Конец</div>
+                            <div class="h-b-text">
+                                Конец конец
+                            </div>
+                            <div class="h-b-btn">
+                                <span>Далее</span>
+                                <div class="h-b-l"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="start-pop">
@@ -241,6 +275,16 @@
                 </div>
             </div>
 		</div>
+    <script type="text/template" id="i-2-28-template">
+        <div class="ovl">
+            <div style="background-image: url(images/2-28/2-28-overlay.jpg);-webkit-mask-position:<%= ovl.left %>em <%= ovl.top %>em;mask-position:<%= ovl.left %>em <%= ovl.top %>em;"></div>
+        </div>
+        <div class="choose" style="background-image: url(images/2-28/<%= src %>.svg);">
+            <% for(let i=0;i<btns.length;i++){ %>
+            <div class="btn" style="left:<%= btns[i].left %>%;top:<%= btns[i].top %>%;"></div>
+            <% } %>
+        </div>
+    </script>
     <script type="text/template" id="i-2-7-table-template">
         <% for(let i=0;i<rows;i++){ %>
         <div class="t-tr">
