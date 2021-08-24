@@ -36,7 +36,7 @@ export let config={
   srcData:{
    spec:['1080','720','360'],
    tmpl:'../<%= src %>.mp4'
-   //tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode1/mp4/<%= src %>.mp4'
+   //tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= src %>.mp4'
    //tmpl:'videos/<%= spec %>/<%= src %>.mp4'
   },
   data:{
@@ -52,14 +52,23 @@ export let config={
      //{start:186.92,end:187.44,back:.2,invoked:false,data:{interactive:'Packing'}},
      //{start:247.4,end:247.92,back:0.1,invoked:false,data:{interactive:'Team'}}
     ]
-   },
+   },//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
    '2':{
+    src:'2/mp4/2-ser-prev',
+    timecodes:[
+     //{start:.2,end:3,back:.2,invoked:false,data:{interactive:'Fix'}},
+     {start:8.36,end:9.36,back:.2,invoked:false,data:{interactive:'Ring'}},
+     {start:53.76,end:54.76,back:.2,invoked:false,data:{interactive:'Qs'}},
+     {start:104.12,end:105.12,back:.2,invoked:false,data:{interactive:'Labyrinth'}},
+     {start:131.28,end:132.28,back:.2,invoked:false,data:{interactive:'Fix'}}
+    ]
+   },
+   '3':{
     src:'oceans',
     timecodes:[
-     //start:.2,end:3,back:.2,invoked:false,data:{interactive:'Qs'}},
-     {start:.2,end:3,back:.2,invoked:false,data:{interactive:'Labyrinth'}}
+     {start:.2,end:3,back:.2,invoked:false,data:{interactive:'Browser'}}
     ]
-   }//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
+   }
   }
  },
  interactives:{

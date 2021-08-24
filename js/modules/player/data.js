@@ -12,7 +12,6 @@ export const data={
   el:'.video-js',
   goOn:'.continue',
   extTemplate:'#ext-player-template',
-  $extra:'.special-btns',
-  shownCls:'shown'
+  $extra:'.special-btns'
  }
 };

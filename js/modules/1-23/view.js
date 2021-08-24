@@ -49,7 +49,6 @@ export let ForkView=BaseIntView.extend({
  toggle:function(f){
   if(f)
   {
-   this.stop=false;
    this.$el.removeClass(data.view.vanishCls);
    this.$prog.removeClass(this.shownCls);
   }

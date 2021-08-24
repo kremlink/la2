@@ -11,6 +11,7 @@ export const data={
   iTmpl:'#i-2-25-item-template',
   yepCls:'yep',
   errCls:'err',
+  corrCls:'corr',
   fakeTrs:'text-indent'
  },
  before:1000,

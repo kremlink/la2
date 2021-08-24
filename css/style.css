@@ -470,43 +470,15 @@ body {
 .ov-wrap.fork .ov-inner.int.shown + .the-prog {
   opacity: 1;
 }
-.ov-wrap.fork .btn {
+.ov-wrap.fork .the-btn {
   margin: 0 6em;
   position: relative;
-  width: 18em;
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.ov-wrap.fork .btn.alt {
+.ov-wrap.fork .the-btn.alt {
   visibility: visible;
 }
-.ov-wrap.fork .btn:not(.alt) .l {
+.ov-wrap.fork .the-btn:not(.alt) .l {
   transform: scale(-1, 1);
-}
-.ov-wrap.fork .l {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 4.5em;
-}
-.ov-wrap.fork .btn-h {
-  height: 4em;
-  line-height: 4em;
-  margin-bottom: 1.2em;
-  position: relative;
-}
-.ov-wrap.fork .btn-h div {
-  font-size: 1.3em;
-  font-weight: 300;
-}
-.ov-wrap.fork .btn-sh {
-  font-size: 0.95em;
-  pointer-events: none;
-}
-@media (min-width: 1024px) {
-  .ov-wrap.fork .btn-sh {
-    font-size: 0.8em;
-  }
 }
 .ov-wrap.packing .ov-inner.int .ov-cont, .ov-wrap.team .ov-inner.int .ov-cont {
   position: absolute;
@@ -826,10 +798,19 @@ body {
 .ov-wrap.qs .btns .l:nth-child(2) {
   margin-left: 3em;
 }
+.ov-wrap.qs .btns .l.yep {
+  transform: scale(-1, 1);
+}
 .ov-wrap.qs .btns .l.err:before {
   content: "";
   transition: all 0.3s ease-in-out;
   border: 0.5em solid rgba(255, 0, 0, 0.5);
+  text-indent: 1px;
+}
+.ov-wrap.qs .btns .l.corr:before {
+  content: "";
+  transition: all 0.3s ease-in-out;
+  border: 0.5em solid rgba(0, 255, 0, 0.5);
   text-indent: 1px;
 }
 .ov-wrap.qs .btns .l:before {
@@ -840,7 +821,7 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  border-radius: 50%;
+  border-radius: 1em;
 }
 .ov-wrap.ring .ov-inner {
   z-index: 1;
@@ -1164,8 +1145,8 @@ body {
   left: -50%;
   top: -50%;
   background: center/50% 50%;
-  -webkit-mask-image: radial-gradient(ellipse, transparent, #000 50%);
-  mask-image: radial-gradient(ellipse, transparent, #000 50%);
+  -webkit-mask-image: radial-gradient(ellipse closest-side, transparent, #000 50%);
+  mask-image: radial-gradient(ellipse closest-side, transparent, #000 50%);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
@@ -1174,6 +1155,13 @@ body {
 .ov-wrap.labyrinth .into {
   height: 100%;
   position: relative;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+.ov-wrap.labyrinth .into.shown {
+  opacity: 1;
+  pointer-events: auto;
 }
 .ov-wrap.labyrinth .choose {
   position: absolute;
@@ -1185,10 +1173,63 @@ body {
 }
 .ov-wrap.labyrinth .btn {
   position: absolute;
-  width: 3em;
-  height: 3em;
-  background: rgba(255, 255, 255, 0.2);
+  width: 7.8%;
+  padding-bottom: 7.8%;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.ov-wrap.fix .words {
+  position: absolute;
+  left: 50%;
+  top: 3em;
+  transform: translate(-50%, 0);
+}
+.ov-wrap.fix video {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40em;
+  height: 18.9473684211em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.ov-wrap.fix .l-arr, .ov-wrap.fix .r-arr {
+  position: absolute;
+  top: 50%;
+  width: 5em;
+  height: 9.6em;
+  cursor: pointer;
+  margin-top: -4.8em;
+}
+.ov-wrap.fix .l-arr {
+  left: 3em;
+  transform: scale(-1, 1);
+}
+.ov-wrap.fix .r-arr {
+  right: 3em;
+}
+.ov-wrap.fix .the-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 1.3em;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+.ov-wrap.fix .the-btn.err .l:before {
+  content: "";
+  transition: all 0.3s ease-in-out;
+  border: 0.5em solid rgba(255, 0, 0, 0.5);
+  text-indent: 1px;
+}
+.ov-wrap.fix .the-btn .l:before {
+  content: "";
+  text-indent: 0;
+  position: absolute;
+  left: 0.5em;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1em;
 }
 
 /*.test-mask{
@@ -1204,6 +1245,74 @@ body {
   height:100%;
   top:0;
 }*/
+/*@path:components\_ep3.scss*/
+.ov-wrap.browser .top {
+  position: absolute;
+  width: 100%;
+}
+.ov-wrap.browser .container {
+  position: absolute;
+  left: 0;
+  top: 2.5em;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+.ov-wrap.browser .bg {
+  width: 100%;
+}
+.ov-wrap.browser .caller {
+  position: absolute;
+  background: rgba(255, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1;
+}
+.ov-wrap.browser .pops {
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+.ov-wrap.browser .pops.shown {
+  visibility: visible;
+  opacity: 1;
+}
+.ov-wrap.browser .p-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.ov-wrap.browser .p-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 22em;
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.3);
+}
+.ov-wrap.browser .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #f00;
+  padding: 0 0.3em;
+  cursor: pointer;
+}
+.ov-wrap.browser .pop {
+  display: none;
+}
+.ov-wrap.browser .pop.shown {
+  display: block;
+}
+
 /*@path:components\_footer.scss*/
 /*@path:components\_header.scss*/
 /*@path:components\_main.scss*/
@@ -1345,6 +1454,37 @@ body {
   right: 0;
   width: 4em;
   height: 100%;
+}
+
+.the-btn {
+  width: 18em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.the-btn .l {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4.5em;
+}
+.the-btn .btn-h {
+  height: 4em;
+  line-height: 4em;
+  margin-bottom: 1.2em;
+  position: relative;
+}
+.the-btn .btn-h div {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+.the-btn .btn-sh {
+  font-size: 0.95em;
+  pointer-events: none;
+}
+@media (min-width: 1024px) {
+  .the-btn .btn-sh {
+    font-size: 0.8em;
+  }
 }
 
 .bg-img {
@@ -1753,6 +1893,22 @@ body {
   height: 2em;
   background: linear-gradient(90deg, #DF8998, #E5B99D 90%);
   margin: -1em -1em 1em -1em;
+}
+
+.smooth {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.smooth.shown {
+  opacity: 1;
+  pointer-events: auto;
+  transition-duration: 0s;
 }
 
 /*@path:components\_shared.scss*/

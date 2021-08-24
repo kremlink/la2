@@ -1,6 +1,7 @@
 import {BaseIntView} from '../baseInteractive/view.js';
 import {data as dat} from './data.js';
 import {lottie as lData} from './lottie.js';
+import {lottie as lArrData} from '../baseInteractive/lottie.js';
 
 let app,
     data=dat,
@@ -92,9 +93,9 @@ export let RingView=BaseIntView.extend({
 
   this.setIniDigit();
 
-  this.next();//TODO:remove
-  this.next();//TODO:remove
-  this.next();//TODO:remove
+  //this.next();//TODO:remove
+  //this.next();//TODO:remove
+  //this.next();//TODO:remove
  },
  progEnd:function(){
   this.timeIsUp=true;
@@ -139,7 +140,7 @@ export let RingView=BaseIntView.extend({
     renderer:'svg',
     loop:true,
     autoplay:true,
-    animationData:lData.arr
+    animationData:lArrData
    });
   });
   this.$(data.view.nLottie).each(function(){

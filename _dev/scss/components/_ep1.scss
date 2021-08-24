@@ -23,42 +23,14 @@
         }
       }
 
-      .btn{
+      .the-btn{
         margin:0 6em;
         position:relative;
-        width:18em;
-        cursor:pointer;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
         &.alt{
           visibility:visible;
         }
         &:not(.alt) .l{
           transform:scale(-1,1);
-        }
-      }
-
-      .l{
-        @include abs($l:0, $r:0);
-        height:130/520*18em;
-      }
-
-      .btn-h{
-        height:4em;
-        line-height:4em;
-        margin-bottom:1.2em;
-        position:relative;
-
-        div{
-          font-size:1.3em;
-          font-weight:300;
-        }
-      }
-
-      .btn-sh{
-        font-size:.95em;
-        pointer-events:none;
-        @include med(){
-          font-size:.8em;
         }
       }
     }

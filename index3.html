@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html data-app='{"modules":["index"],"index":3}'>
+    <head>
+		<meta charset="utf-8" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<title></title>
+<meta name="Keywords" content="" />
+<meta name="Description" content="" />
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="maximum-scale=1.0,user-scalable=0">
+<!--<link rel="stylesheet" href="css/style.min.css" />-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<script>window.jQuery||document.write('<script src="js/lib/jquery.js">\x3C/script>')</script>
+        <link href="css/video-js.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+<script src="js/lib/event.js"></script>
+<script src="js/lib/imagesloaded.js"></script>
+<script src="js/lib/underscore.min.js"></script>
+<script src="js/lib/backbone.min.js"></script>
+<script src="js/lib/lottie.min.js"></script>
+<script src="js/lib/video.min.js"></script>
+<script src="js/lib/silvermine-videojs-quality-selector.min.js"></script>
+<script src="js/app.js" type="module"></script>
+
+<!--<script src="js/built.min.js"></script>-->
+	</head>
+	<body>
+    <!-- Yandex.Metrika counter -->
+    <!--<script type="text/javascript" >
+     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+     ym(68233750, "init", {
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true
+     });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/68233750" style="position:absolute; left:-9999px;" alt="" /></div></noscript>-->
+    <!-- /Yandex.Metrika counter -->
+		<div id="wrap">
+			<video playsinline
+					class="video-js"
+					controls>
+				<p class="vjs-no-js">
+					To view this video please enable JavaScript, and consider upgrading to a
+					web browser that
+					<a href="https://videojs.com/html5-video-support/" target="_blank">
+						supports HTML5 video
+					</a>
+				</p>
+			</video>
+            <!--<div class="test-mask">
+            
+            </div>-->
+			<div class="overlay-block">
+                <div class="ov-wrap browser">
+                    <div class="bg-img" style="background-image: url(images/2-39/2-39-bg.jpg);"></div>
+                    <div class="ov-inner hi-bye">
+                        <div class="ov-cont">
+                            <div class="h-b-h">Собери пазл?</div>
+                            <div class="h-b-text">
+                                Нееет, это было бы слишком просто или наоборот слишком долго, а тебе нужно ещё историю досмотреть:)
+                                <br/><br/>
+                                Собирая пазл, мы мыслим ассоциативно. Найди слова, которые мы спрятали в череде букв.
+                                <br/><br/>
+                                Нажимай на стрелки, чтобы перемещать наборы букв, и фиксируй ассоциации нажатием кнопки.
+                            </div>
+                            <div class="h-b-infogr">
+                                <picture>
+                                    <source srcset="images/2-39/2-39-intro-pic.png" media="(min-width:1024px)"/>
+                                    <img src="images/2-39/2-39-intro-pic-m.png" alt=""/>
+                                </picture>
+                            </div>
+                            <div class="h-b-btn">
+                                <span>Начать</span>
+                                <div class="h-b-l"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ov-inner int">
+                        <img src="images/3-15/3-15-topline.svg" alt="" class="top"/>
+                        <div class="container">
+                            <div class="pops">
+                                <div class="p-bg"></div>
+                                <div class="p-inner">
+                                    <div class="close">&times;</div>
+                                    <div class="pop">
+                                        0
+                                    </div>
+                                    <div class="pop">
+                                        1
+                                    </div>
+                                    <div class="pop">
+                                        2
+                                    </div>
+                                    <div class="pop">
+                                        3
+                                    </div>
+                                </div>
+                            </div>
+                            <img class="bg" src="images/3-15/3-15-scroll.png" alt=""/>
+                        </div>
+                    </div>
+                    <div class="ov-inner hi-bye">
+                        <div class="ov-cont">
+                            <div class="h-b-h">В путь!</div>
+                            <div class="h-b-text">
+                                Неплохо, пора двигаться дальше.
+                            </div>
+                            <div class="h-b-btn">
+                                <span>Далее</span>
+                                <div class="h-b-l"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="start-pop">
+                <!--<div class="text">
+                    Какой-то текст, если нужен
+                </div>-->
+                <div class="start">
+                    <img src="images/startscreen-btn-h.png" alt=""/>
+                    <img src="images/startscreen-btn.png" alt=""/>
+                </div>
+            </div>
+            <div class="s-ctrls">
+                <div class="continue">
+                    <img src="images/startscreen-btn-continue.svg" alt=""/>
+                    <img src="images/startscreen-btn-continue-h.svg" alt=""/>
+                </div>
+                <div class="clr hoverable">
+                    <img src="images/startscreen-btn-restart.svg" alt=""/>
+                    <img src="images/startscreen-btn-restart-h.svg" alt=""/>
+                </div>
+            </div>
+            <div class="loader-pop">
+                <div class="l"></div>
+            </div>
+            <div class="orientation-pop">
+                <div class="text">
+                    Экран слишком мал :(<br/>
+                    Переверните устройство или используйте компьютер, инспектор.
+                </div>
+            </div>
+            <div class="special-btns"></div>
+            <div class="achievement-pop"></div>
+            <div class="info-pop-caller">Жми сюды</div>
+            <div class="info-pop">
+                <div class="close-bg"></div>
+                <div class="inner">
+                    <div class="close">&times;</div>
+                    <div class="h"></div>
+                    Тут будет всякая инфа, ачивки и прочее
+                </div>
+            </div>
+		</div>
+    <script type="text/template" id="i-3-15-template">
+        <% for(let i=0;i<items.length;i++){ %>
+        <div class="caller" data-what="<%= i %>" style="left:<%= items[i].left %>em;top:<%= items[i].top %>em;width:<%= items[i].width %>em;height:<%= items[i].height %>em;"></div>
+        <% } %>
+    </script>
+        <script type="text/template" id="ext-player-template">
+            <a href="" class="return hoverable">
+                <img src="images/player-close.svg" alt=""/>
+                <img src="images/player-close-h.svg" alt=""/>
+            </a>
+            <input type="checkbox" />
+            <div class="sp-toggle">
+                <div class="hoverable">
+                    <img src="images/player-ch-btn-open.svg" alt=""/>
+                    <img src="images/player-ch-btn-open-h.svg" alt=""/>
+                </div>
+                <div class="hoverable">
+                    <img src="images/player-ch-btn-collapse.svg" alt=""/>
+                    <img src="images/player-ch-btn-collapse-h.svg" alt=""/>
+                </div>
+            </div>
+            <div class="step-btns">
+                <% for(let i=0;i<choose.length;i++){ %>
+                <div class="int-ind-back<%= choose[i]?' enabled':' ' %>"><span><%= i+1 %></span></div>
+                <% } %>
+            </div>
+        </script>
+	</body>
+</html>

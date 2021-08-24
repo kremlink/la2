@@ -60,7 +60,7 @@ export let QsView=BaseIntView.extend({
  },
  trs:function(e){
   if(e.originalEvent.propertyName===data.view.fakeTrs)
-   $(e.currentTarget).removeClass(data.view.errCls);
+   $(e.currentTarget).removeClass(data.view.errCls+' '+data.view.corrCls);
  },
  toggle:function(f){
   if(f)
@@ -84,6 +84,7 @@ export let QsView=BaseIntView.extend({
    this.index++;
    this.mS.setPoints(true);
    this.$items.eq(this.index).addClass(this.shownCls);
+   curr.addClass(data.view.corrCls);
    if(this.index===data.items.length-1)
    {
     app.get('aggregator').trigger('ls:save',{interactive:'2-25',value:this.mS.getPoints()});

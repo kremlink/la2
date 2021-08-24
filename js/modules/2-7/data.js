@@ -22,8 +22,8 @@ export const data={
   }
  },
  before:1500,
- textData:['РДИУ','СДЙТШЯЮ','ГЯСЯ'],
- ringWin:-1,
+ textData:['ИЬАЛ','ЙЬБКРЧЦ','ЫЧЙЧ'],
+ ringWin:-9,
  ringInt:100,
  iniDigit:0,
  ifSameDigit:5,

@@ -50,17 +50,26 @@
           &:nth-child(2){
             margin-left:3em;
           }
+          &.yep{
+            transform:scale(-1, 1);
+          }
           &.err:before{
             content:'';
             @include trs('all #{$anim} ease-in-out');
             border:.5em solid rgba(#f00, .5);
             text-indent:1px;
           }
+          &.corr:before{
+            content:'';
+            @include trs('all #{$anim} ease-in-out');
+            border:.5em solid rgba(#0f0, .5);
+            text-indent:1px;
+          }
           &:before{
             content:'';
             text-indent:0;
             @include abs($l:0,$r:0,$t:0,$b:0);
-            border-radius:50%;
+            border-radius:1em;
           }
         }
       }
@@ -357,8 +366,8 @@
           height:200%;
           @include abs($l:-50%,$t:-50%);
           background:center/50% 50%;
-          -webkit-mask-image:radial-gradient(ellipse,transparent,#000 50%);
-          mask-image:radial-gradient(ellipse,transparent,#000 50%);
+          -webkit-mask-image:radial-gradient(ellipse closest-side,transparent,#000 50%);
+          mask-image:radial-gradient(ellipse closest-side,transparent,#000 50%);
           -webkit-mask-size:100% 100%;
           mask-size:100% 100%;
           -webkit-mask-repeat:no-repeat;
@@ -368,6 +377,13 @@
       .into{
         height:100%;
         position:relative;
+        opacity:0;
+        pointer-events:none;
+        @include trs('opacity #{$anim} ease-in-out');
+        &.shown{
+          opacity:1;
+          pointer-events:auto;
+        }
       }
       .choose{
         @include abs($l:0,$r:0,$t:0,$b:0);
@@ -375,10 +391,51 @@
       }
       .btn{
         position:absolute;
-        width:3em;
-        height:3em;
-        background:rgba(#fff,.2);
+        width:7.8%;
+        padding-bottom:7.8%;
         cursor:pointer;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+    }
+    &.fix{
+      .words{
+        @include center($t:3em);
+      }
+      video{
+        @include center();
+        width:40em;
+        height:54/114*40em;
+        border:1px solid rgba(#fff, .3);
+      }
+      .l-arr,.r-arr{
+        @include abs($t:50%);
+        width:5em;
+        height:192/100*5em;
+        cursor:pointer;
+        margin-top:-192/200*5em;
+      }
+      .l-arr{
+        left:3em;
+        transform:scale(-1,1);
+      }
+      .r-arr{
+        right:3em;
+      }
+      .the-btn{
+        @include center($b:1.3em);
+        text-align:center;
+        &.err .l:before{
+          content:'';
+          @include trs('all #{$anim} ease-in-out');
+          border:.5em solid rgba(#f00, .5);
+          text-indent:1px;
+        }
+        .l:before{
+          content:'';
+          text-indent:0;
+          @include abs($l:.5em,$r:0,$t:0,$b:0);
+          border-radius:1em;
+        }
       }
     }
   }

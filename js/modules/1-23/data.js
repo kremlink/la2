@@ -1,6 +1,6 @@
 export const data={
  events:{
-  'click':'.btn'
+  'click':'.the-btn'
  },
  view:{
   el:'.ov-wrap.fork',
