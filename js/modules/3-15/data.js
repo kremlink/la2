@@ -6,6 +6,7 @@ export const data={
  view:{
   el:'.ov-wrap.browser',
   tmpl:'#i-3-15-template',
+  cont:'.container',
   popsCont:'.pops',
   pops:'.pop'
  },

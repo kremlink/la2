@@ -1,6 +1,9 @@
 import {BaseIntView} from '../baseInteractive/view.js';
 import {data as dat} from './data.js';
 
+import {Scroll} from '../scroll/view.js';
+import {data as scrollData} from '../scroll/data.js';
+
 let app,
     data=dat,
     events={};
@@ -20,6 +23,25 @@ export let BrowserView=BaseIntView.extend({
 
   this.opts=opts;
 
+  this.$cont=this.$(data.view.cont);
+  this.$cont.find('img').imagesLoaded(()=>{
+   let $wrap=this.$cont.find(scrollData.extra.$wrap).css('margin-right',app.get('scrollDim')+'px').scrollTop(0),
+    $block=this.$cont.find(scrollData.extra.$block);
+
+   this.$cont.addClass(this.shownCls);
+   app.set({
+    object:'Bar',
+    on:Scroll.events($wrap,$block),
+    add:$.extend(true,{},scrollData,{
+     holder:this.$cont.find(scrollData.holder),
+     bar:this.$cont.find(scrollData.bar),
+     options:{helpers:{drag:app.get('lib.utils').drag}},
+     extra:{$wrap:$wrap,$block:$block}
+    }),
+    set:false
+   });
+  });
+
   this.$popsCont=this.$(data.view.popsCont).before(_.template($(data.view.tmpl).html())(data));
   this.$pops=this.$(data.view.pops);
 
@@ -33,7 +55,9 @@ export let BrowserView=BaseIntView.extend({
  toggle:function(f){
   if(f)
   {
-
+   this.$cont.removeClass(this.shownCls);
+   this.$popsCont.removeClass(this.shownCls);
+   this.$pops.removeClass(this.shownCls);
   }
 
   BaseIntView.prototype.toggle.apply(this,arguments);

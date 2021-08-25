@@ -7,7 +7,17 @@
       }
       .container{
         @include abs($t:2.5em,$b:0,$l:0,$r:0);
+        overflow:hidden;
+        @extend %loader;
+        pointer-events:none;
+        &.shown{
+          pointer-events:auto;
+        }
+      }
+      .t-scroll-wrap{
+        height:100%;
         overflow:auto;
+        background:#eee;
       }
       .bg{
         width:100%;

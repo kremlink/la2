@@ -2,6 +2,7 @@ import {app} from './bf/base.js';
 
 import {Index} from './modules/index-page/view.js';
 
+import {Bar} from './bf/lib/bar.js';
 import {utils} from './bf/lib/utils.js';
 //import {Toggle} from './bf/lib/toggle.js';
 //------------------------
@@ -15,7 +16,7 @@ if(~modules.indexOf('index'))
 {
  app.init({
   //plugins:[Toggle],
-  plugins:[{object:utils,name:'utils'}],
+  plugins:[Bar,{object:utils,name:'utils'}],
   settings:{}
  });
 
@@ -26,6 +27,7 @@ if(~modules.indexOf('index'))
 //app.set({dest:'objects.isPomoi',object:/iPad|iPhone|iPod/.test(navigator.platform)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)});
 
  $(()=>{
+  app.set({dest:'objects.scrollDim',object:-Math.abs(utils.scrollDim())});
   new Index({app:app});
  });
 }
