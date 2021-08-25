@@ -6,13 +6,16 @@ export const data={
  view:{
   el:'.ov-wrap.browser',
   tmpl:'#i-3-15-template',
+  tTmpl:'<%= month %> <%= date %> <span><%= hour %>:<%= minute %></span>',
+  time:'.time',
   cont:'.container',
   popsCont:'.pops',
   pops:'.pop'
  },
- before:500,
+ before:1500,
  items:[
-  {left:20,top:20,width:3,height:5},
-  {left:10,top:50,width:10,height:10},
+  {left:28,top:20,width:7,height:7},
+  {left:15,top:50,width:10,height:7,yep:true},
+  {left:31,top:56,width:10,height:21}
  ]
 };

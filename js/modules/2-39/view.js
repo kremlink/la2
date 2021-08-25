@@ -95,7 +95,10 @@ export let FixView=BaseIntView.extend({
    this.$words.html((s?s+'&nbsp;&nbsp;&nbsp;&nbsp;':'')+data.timing[this.time]);
    this.ignoreTime.push(this.time);
    if(Object.keys(data.timing).every(v=>this.ignoreTime.includes(+v)))
+   {
+    app.get('aggregator').trigger('ls:save',{interactive:'2-39'});
     setTimeout(()=>this.next(),data.before);
+   }
   }else
   {
    $(e.currentTarget).addClass(data.view.errCls);

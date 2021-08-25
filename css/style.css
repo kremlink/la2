@@ -1254,6 +1254,17 @@ body {
   position: absolute;
   width: 100%;
 }
+.ov-wrap.browser .time {
+  font-size: 0.5em;
+  line-height: 2.2em;
+  width: 8em;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.ov-wrap.browser .time span {
+  margin-left: 0.3em;
+}
 .ov-wrap.browser .container {
   position: absolute;
   left: 0;
@@ -1270,6 +1281,9 @@ body {
   height: 100%;
   overflow: auto;
   background: #eee;
+}
+.ov-wrap.browser .t-scroll-inner {
+  position: relative;
 }
 .ov-wrap.browser .bg {
   width: 100%;
