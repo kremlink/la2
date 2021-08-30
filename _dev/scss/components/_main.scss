@@ -180,7 +180,11 @@
     .ring &.shown{
       @include trs('width 30s linear');
     }
+    .loop &.shown{
+      @include trs('width 20s linear');
+    }
   }
+  //---
   .hoverable{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     @include med(){

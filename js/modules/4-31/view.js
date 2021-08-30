@@ -9,7 +9,7 @@ let app,
 events[`click ${data.events.click}`]='click';
 events[`transitionend ${data.events.click}`]='trs';
 
-export let QsView=BaseIntView.extend({
+export let MapView=BaseIntView.extend({
  events:function(){
   return _.extend({},BaseIntView.prototype.events,events);
  },

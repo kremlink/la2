@@ -57,10 +57,11 @@ export let BaseIntView=Backbone.View.extend({
  toggle:function(f){
   if(f)
   {
-   this.phase=0;
    this.$block.removeClass(this.shownCls).eq(this.phase).addClass(this.shownCls);
    this.data={};
   }
+
+  this.phase=0;
   this.$el.toggleClass(this.shownCls,f);
   app.get('aggregator').trigger(f?'sound':'unsound','bg');
  }

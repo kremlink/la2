@@ -55,18 +55,26 @@ export let config={
    },//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
    '2':{
     src:'2/mp4/2-ser-prev',
+    //src:'oceans',
     timecodes:[
-     //{start:.2,end:3,back:.2,invoked:false,data:{interactive:'Fix'}},
-     {start:8.36,end:9.36,back:.2,invoked:false,data:{interactive:'Ring'}},
+     {start:.2,end:3,back:.2,invoked:false,data:{interactive:'Qs'}},
+     /*{start:8.36,end:9.36,back:.2,invoked:false,data:{interactive:'Ring'}},
      {start:53.76,end:54.76,back:.2,invoked:false,data:{interactive:'Qs'}},
      {start:104.12,end:105.12,back:.2,invoked:false,data:{interactive:'Labyrinth'}},
-     {start:131.28,end:132.28,back:.2,invoked:false,data:{interactive:'Fix'}}
+     {start:131.28,end:132.28,back:.2,invoked:false,data:{interactive:'Fix'}}*/
     ]
    },
    '3':{
     src:'oceans',
     timecodes:[
-     {start:.2,end:3,back:.2,invoked:false,data:{interactive:'Browser'}}
+     //{start:.2,end:3,back:.2,invoked:false,data:{interactive:'Browser'}}
+     {start:.2,end:3,back:.2,invoked:false,data:{interactive:'Qs1'}}
+    ]
+   },
+   '4':{
+    src:'oceans',
+    timecodes:[
+     {start:.2,end:3,back:.2,invoked:false,data:{interactive:'Map'}}
     ]
    }
   }

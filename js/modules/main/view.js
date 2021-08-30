@@ -10,7 +10,12 @@ import {QsView} from '../2-25/view.js';
 import {RingView} from '../2-7/view.js';
 import {LabyrinthView} from '../2-28/view.js';
 import {FixView} from '../2-39/view.js';
+
 import {BrowserView} from '../3-15/view.js';
+import {LoopView} from '../3-15-1/view.js';
+import {Qs1View} from '../3-17/view.js';
+
+import {MapView} from '../4-31/view.js';
 
 import {data as dat} from './data.js';
 
@@ -22,7 +27,10 @@ let Interactives={
  Ring:RingView,
  Labyrinth:LabyrinthView,
  Fix:FixView,
- Browser:BrowserView
+ Browser:BrowserView,
+ Loop:LoopView,
+ Qs1:Qs1View,
+ Map:MapView
 };
 
 let app,

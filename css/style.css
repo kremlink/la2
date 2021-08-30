@@ -1256,7 +1256,7 @@ body {
 }
 .ov-wrap.browser .time {
   font-size: 0.5em;
-  line-height: 2.2em;
+  line-height: 2em;
   width: 8em;
   position: absolute;
   top: 0;
@@ -1273,6 +1273,7 @@ body {
   bottom: 0;
   overflow: hidden;
   pointer-events: none;
+  background-color: #eee;
 }
 .ov-wrap.browser .container.shown {
   pointer-events: auto;
@@ -1280,7 +1281,6 @@ body {
 .ov-wrap.browser .t-scroll-wrap {
   height: 100%;
   overflow: auto;
-  background: #eee;
 }
 .ov-wrap.browser .t-scroll-inner {
   position: relative;
@@ -1290,7 +1290,6 @@ body {
 }
 .ov-wrap.browser .caller {
   position: absolute;
-  background: rgba(255, 0, 0, 0.3);
   cursor: pointer;
   z-index: 1;
 }
@@ -1339,7 +1338,102 @@ body {
 .ov-wrap.browser .pop.shown {
   display: block;
 }
+.ov-wrap.loop .ov-inner.int.shown ~ .the-prog {
+  opacity: 1;
+}
+.ov-wrap.loop .l {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.ov-wrap.loop .btn {
+  position: absolute;
+  left: 46em;
+  top: -2em;
+  width: 17.2%;
+  height: 108.5%;
+  transform: rotate(-24deg);
+  cursor: pointer;
+  display: none;
+}
+.ov-wrap.loop .btn.shown {
+  display: block;
+}
+.ov-wrap.qs1 .left, .ov-wrap.qs1 .right {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.ov-wrap.qs1 .reveal {
+  position: absolute;
+  opacity: 0;
+  width: 10em;
+  transition: opacity 0.3s ease-in-out;
+}
+.ov-wrap.qs1 .reveal.shown {
+  opacity: 1;
+}
+.ov-wrap.qs1 .item {
+  position: absolute;
+  left: 50%;
+  top: 5em;
+  transform: translate(-50%, 0);
+  width: 40%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.ov-wrap.qs1 .item.shown {
+  opacity: 1;
+}
+.ov-wrap.qs1 .h {
+  font-weight: 300;
+  margin-bottom: 2em;
+  text-transform: uppercase;
+}
+.ov-wrap.qs1 .text {
+  font-size: 0.75em;
+}
+@media (min-width: 1024px) {
+  .ov-wrap.qs1 .text {
+    font-size: 0.6em;
+  }
+}
+.ov-wrap.qs1 .btns {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, 0);
+  display: flex;
+}
+.ov-wrap.qs1 .btns .l {
+  width: 6em;
+  height: 6em;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.ov-wrap.qs1 .btns .l:nth-child(2) {
+  margin-left: 3em;
+}
+.ov-wrap.qs1 .btns .l.yep {
+  transform: scale(-1, 1);
+}
+.ov-wrap.qs1 .rotator {
+  position: absolute;
+  left: 50%;
+  top: 65%;
+  transform: translate(-50%, 0);
+  width: 10em;
+  height: 10em;
+}
+.ov-wrap.qs1 .rotator .l {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
+/*@path:components\_ep4.scss*/
 /*@path:components\_footer.scss*/
 /*@path:components\_header.scss*/
 /*@path:components\_main.scss*/
@@ -1558,6 +1652,9 @@ body {
 }
 .ring .the-prog.shown {
   transition: width 30s linear;
+}
+.loop .the-prog.shown {
+  transition: width 20s linear;
 }
 
 .hoverable {

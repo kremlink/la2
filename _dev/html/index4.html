@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-app='{"modules":["index"],"index":3}'>
+<html data-app='{"modules":["index"],"index":4}'>
     <head>
 		@@include('components/head.html')
         @@include('components/scripts.html')
@@ -35,97 +35,17 @@
             
             </div>-->
 			<div class="overlay-block">
-                <div class="ov-wrap browser">
-                    <div class="bg-img" style="background-image: url(images/2-39/2-39-bg.jpg);"></div>
+                <div class="ov-wrap map">
+                    <div class="bg-img" style="background-image: url(images/2-25/2-25-bg.jpg);"></div>
                     <div class="ov-inner hi-bye">
                         <div class="ov-cont">
-                            <div class="h-b-h">Собери пазл?</div>
+                            <div class="h-b-h">Что делать при поиске в городе?</div>
                             <div class="h-b-text">
-                                Нееет, это было бы слишком просто или наоборот слишком долго, а тебе нужно ещё историю досмотреть:)
+                                Тебе будут последовательно предложен ряд действий. Прими решение, какие из них правильные для поиска в городе.
                                 <br/><br/>
-                                Собирая пазл, мы мыслим ассоциативно. Найди слова, которые мы спрятали в череде букв.
+                                Галочка — то, что нужно. Крестик — не подходит для города.
                                 <br/><br/>
-                                Нажимай на стрелки, чтобы перемещать наборы букв, и фиксируй ассоциации нажатием кнопки.
-                            </div>
-                            <div class="h-b-infogr">
-                                <picture>
-                                    <source srcset="images/2-39/2-39-intro-pic.png" media="(min-width:1024px)"/>
-                                    <img src="images/2-39/2-39-intro-pic-m.png" alt=""/>
-                                </picture>
-                            </div>
-                            <div class="h-b-btn">
-                                <span>Начать</span>
-                                <div class="h-b-l"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ov-inner int">
-                        <img src="images/3-15/3-15-topline.svg" alt="" class="top"/>
-                        <div class="time"></div>
-                        <div class="container">
-                            <div class="t-scroll-wrap">
-                                <div class="t-scroll-inner">
-                                    <div class="pops">
-                                        <div class="p-bg"></div>
-                                        <div class="p-inner">
-                                            <div class="close">&times;</div>
-                                            <div class="pop">
-                                                Первый текст
-                                            </div>
-                                            <div class="pop">
-                                                Этот верный! Сейчас будет переход далее.
-                                            </div>
-                                            <div class="pop">
-                                                Третий текст
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="bg" src="images/3-15/3-15-scroll.png" alt=""/>
-                                </div>
-                            </div>
-                            <div class="t-scroll-bar"><div></div></div>
-                        </div>
-                    </div>
-                    <div class="ov-inner hi-bye">
-                        <div class="ov-cont">
-                            <div class="h-b-h">В путь!</div>
-                            <div class="h-b-text">
-                                Неплохо, пора двигаться дальше.
-                            </div>
-                            <div class="h-b-btn">
-                                <span>Далее</span>
-                                <div class="h-b-l"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ov-wrap loop">
-                    <div class="bg-img" style="background-image: url(images/1-23/1-23-bg.jpg);"></div>
-                    <div class="ov-inner hi-bye">
-                        <div class="ov-cont">
-                            <div class="h-b-h">Описание</div>
-                            <div class="h-b-text">
-                                Текст текст
-                            </div>
-                            <div class="h-b-btn">
-                                <span>Начать</span>
-                                <div class="h-b-l"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ov-inner int">
-                        <div class="l"></div>
-                        <div class="btn"></div>
-                    </div>
-                    <div class="the-prog"></div>
-                </div>
-                <div class="ov-wrap qs1">
-                    <div class="bg-img" style="background-image: url(images/3-17/3-17-bg.jpg);"></div>
-                    <div class="ov-inner hi-bye">
-                        <div class="ov-cont">
-                            <div class="h-b-h">Что делать?</div>
-                            <div class="h-b-text">
-                                Тебе будут
+                                В зависимости от набранных очков ты сможешь получить достижение одного из трёх уровней.
                             </div>
                             <div class="h-b-infogr">
                                 <picture>
@@ -140,15 +60,17 @@
                         </div>
                     </div>
                     <div class="ov-inner int">
+                        <div class="bg-img l" style="background-image: url(images/2-25/map.svg);"></div>
                         <div class="left"></div>
                         <div class="right"></div>
+                        <div class="int-score">
+                            <div class="s-dots"><div></div><div></div><div></div></div>
+                            <div class="s-amt">0</div>
+                            <div class="s-descr">ваши очки</div>
+                        </div>
                         <div class="btns">
                             <div class="l yep"></div>
                             <div class="l"></div>
-                        </div>
-                        <div class="rotator">
-                            <div class="l"></div>
-                            <div class="l prog"></div>
                         </div>
                     </div>
                     <div class="ov-inner hi-bye">
@@ -206,22 +128,17 @@
                 </div>
             </div>
 		</div>
-    <script type="text/template" id="i-3-17-reveal-template">
-        <% for(let i=0;i<items.length;i++){%>
-        <img class="reveal" src="images/3-17/img<%= i %>.jpg" style="left:<%= items[i].left %>%;top:<%= items[i].top %>%;transform:rotate(<%= items[i].r %>deg);" alt=""/>
+    <script type="text/template" id="i-2-25-reveal-template">
+        <% for(let i=0;i<items.length;i++){ if('index' in items[i])%>
+        <div class="bg-img reveal" style="background-image: url(images/2-25/over<%= items[i].index+1 %>.svg);"></div>
         <% } %>
     </script>
-    <script type="text/template" id="i-3-17-item-template">
+    <script type="text/template" id="i-2-25-item-template">
         <% for(let i=0;i<items.length;i++){%>
         <div class="item">
             <div class="h"><%= items[i].h %></div>
             <div class="text"><%= items[i].text %></div>
         </div>
-        <% } %>
-    </script>
-    <script type="text/template" id="i-3-15-template">
-        <% for(let i=0;i<items.length;i++){ %>
-        <div class="caller" data-what="<%= i %>" style="left:<%= items[i].left %>%;top:<%= items[i].top %>%;width:<%= items[i].width %>%;height:<%= items[i].height %>%;"></div>
         <% } %>
     </script>
         <script type="text/template" id="ext-player-template">

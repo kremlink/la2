@@ -1,6 +1,7 @@
 import {BaseIntView} from '../baseInteractive/view.js';
 import {data as dat} from './data.js';
 import {lottie as lData} from './lottie.js';
+import {lottie as lBtnsData} from '../2-25/lottie.js';
 
 let app,
     data=dat,
@@ -9,7 +10,7 @@ let app,
 events[`click ${data.events.click}`]='click';
 events[`transitionend ${data.events.click}`]='trs';
 
-export let QsView=BaseIntView.extend({
+export let Qs1View=BaseIntView.extend({
  events:function(){
   return _.extend({},BaseIntView.prototype.events,events);
  },
@@ -17,14 +18,16 @@ export let QsView=BaseIntView.extend({
  iTemplate:null,
  rTemplate:null,
  index:0,
- mS:null,
+ prog:null,
+ wait:false,
+ step:0,
+ dur:0,
+ ctr:1,
  initialize:function(opts){
   app=opts.app;
   data=app.configure({start:dat}).start;
 
   this.opts=opts;
-
-  this.mS=new opts.MS({view:this,points:data.points,amt:data.items.length});
 
   this.iTemplate=_.template($(data.view.iTmpl).html());
   this.rTemplate=_.template($(data.view.rTmpl).html());
@@ -37,26 +40,47 @@ export let QsView=BaseIntView.extend({
    data:data
   }]);
 
+  this.setLottie();
+
+  this.next();//TODO:remove
+ },
+ setLottie:function(){
   this.$(data.events.click).each(function(i){
    lottie.loadAnimation({
     container:this,
     renderer:'svg',
     loop:true,
     autoplay:true,
-    animationData:lData.btn[i]
+    animationData:lBtnsData.btn[i]
    });
   });
 
   lottie.loadAnimation({
-   container:this.$(data.view.map)[0],
+   container:this.$(data.view.rotator)[0],
    renderer:'svg',
    loop:true,
    autoplay:true,
-   animationData:lData.map
+   animationData:lData.rotator
   });
 
+  this.prog=lottie.loadAnimation({
+   container:this.$(data.view.prog)[0],
+   renderer:'svg',
+   loop:false,
+   autoplay:false,
+   animationData:lData.prog
+  });
 
-  //this.next();//TODO:remove
+  this.dur=this.prog.getDuration(true);
+  this.step=this.dur/data.items.length;
+  this.prog.addEventListener('enterFrame',e=>{
+   if(e.currentTime>this.step*this.ctr&&this.dur-this.step*(this.ctr-1)>this.step)
+   {
+    this.ctr++;
+    this.prog.pause();
+    this.wait=false;
+   }
+  });
  },
  trs:function(e){
   if(e.originalEvent.propertyName===data.view.fakeTrs)
@@ -66,37 +90,33 @@ export let QsView=BaseIntView.extend({
   if(f)
   {
    this.index=0;
+   this.ctr=1;
+   this.wait=false;
+   this.prog.goToAndStop(0);
    this.$reveal.removeClass(this.shownCls);
    this.$items.removeClass(this.shownCls).eq(this.index).addClass(this.shownCls);
-   this.mS.clr();
   }
 
   BaseIntView.prototype.toggle.apply(this,arguments);
  },
  click:function(e){
-  let curr=$(e.currentTarget);
-  
-  if(this.index<data.items.length&&(curr.hasClass(data.view.yepCls)&&data.items[this.index].yep||!curr.hasClass(data.view.yepCls)&&!data.items[this.index].yep))
+  let yep=$(e.currentTarget).hasClass(data.view.yepCls);
+
+  if(this.index<data.items.length&&!this.wait)
   {
-   if('index' in data.items[this.index])
-    this.$reveal.eq(data.items[this.index].index).addClass(this.shownCls);
+   if(yep)
+   {
+    this.wait=true;
+    this.$reveal.eq(this.index).addClass(this.shownCls);
+    this.prog.play();
+   }
    this.$items.eq(this.index).removeClass(this.shownCls);
    this.index++;
-   this.mS.setPoints(true);
    this.$items.eq(this.index).addClass(this.shownCls);
-   curr.addClass(data.view.corrCls);
    if(this.index===data.items.length)
    {
-    app.get('aggregator').trigger('ls:save',{interactive:'2-25',value:this.mS.getPoints()});
+    app.get('aggregator').trigger('ls:save',{interactive:'3-17'});
     setTimeout(()=>this.next(),data.before);
-   }
-  }else
-  {
-   if(this.index<data.items.length)
-   {
-    curr.addClass(data.view.errCls);
-    app.get('aggregator').trigger('sound','btn');
-    this.mS.setPoints(false);
    }
   }
  }

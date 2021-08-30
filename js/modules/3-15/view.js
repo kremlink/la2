@@ -42,7 +42,7 @@ export let BrowserView=BaseIntView.extend({
    data:data
   }]);
 
-  this.next();
+  //this.next();
 
   this.render();
   setInterval(()=>this.render(),1000);
@@ -83,7 +83,7 @@ export let BrowserView=BaseIntView.extend({
   this.$pops.eq(this.curr=$(e.currentTarget).index()).addClass(this.shownCls);
   if(data.items[this.curr].yep)
   {
-   app.get('aggregator').trigger('ls:save',{interactive:'3-15'});
+   app.get('aggregator').trigger('ls:save',{interactive:'3-15-2'});
    setTimeout(()=>this.next(),data.before);
   }
  },
