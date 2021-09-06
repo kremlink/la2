@@ -35,14 +35,14 @@ export let Qs1View=BaseIntView.extend({
   this.$(data.view.reveal).html(this.$reveal=$(this.rTemplate({items:data.items})).filter(function(){return this.nodeType!==3;}));
   this.$(data.view.into).html(this.$items=$(this.iTemplate({items:data.items})).filter(function(){return this.nodeType!==3;}));
 
+  this.setLottie();
+
   BaseIntView.prototype.initialize.apply(this,[{
    app:app,
    data:data
   }]);
 
-  this.setLottie();
-
-  this.next();//TODO:remove
+  //this.next();//TODO:remove
  },
  setLottie:function(){
   this.$(data.events.click).each(function(i){
@@ -81,6 +81,9 @@ export let Qs1View=BaseIntView.extend({
     this.wait=false;
    }
   });
+  this.prog.addEventListener('complete',()=>{
+   this.$el.addClass(data.view.remainCls);
+  });
  },
  trs:function(e){
   if(e.originalEvent.propertyName===data.view.fakeTrs)
@@ -95,6 +98,7 @@ export let Qs1View=BaseIntView.extend({
    this.prog.goToAndStop(0);
    this.$reveal.removeClass(this.shownCls);
    this.$items.removeClass(this.shownCls).eq(this.index).addClass(this.shownCls);
+   this.$el.removeClass(data.view.remainCls);
   }
 
   BaseIntView.prototype.toggle.apply(this,arguments);

@@ -59,13 +59,11 @@
                     <div class="bg-img" style="background-image: url(images/2-39/2-39-bg.jpg);"></div>
                     <div class="ov-inner hi-bye">
                         <div class="ov-cont">
-                            <div class="h-b-h">Собери пазл?</div>
+                            <div class="h-b-h">Изучи страницу Лисы в социальной сети</div>
                             <div class="h-b-text">
-                                Нееет, это было бы слишком просто или наоборот слишком долго, а тебе нужно ещё историю досмотреть:)
+                                Найди информацию, которая поможет понять куда могли отправиться дети.
                                 <br/><br/>
-                                Собирая пазл, мы мыслим ассоциативно. Найди слова, которые мы спрятали в череде букв.
-                                <br/><br/>
-                                Нажимай на стрелки, чтобы перемещать наборы букв, и фиксируй ассоциации нажатием кнопки.
+                                Нажимая на ссылки и картинки, ты найдёшь подсказку.
                             </div>
                             <div class="h-b-infogr">
                                 <picture>
@@ -89,15 +87,6 @@
                                         <div class="p-bg"></div>
                                         <div class="p-inner">
                                             <div class="close">&times;</div>
-                                            <div class="pop">
-                                                Первый текст
-                                            </div>
-                                            <div class="pop">
-                                                Этот верный! Сейчас будет переход далее.
-                                            </div>
-                                            <div class="pop">
-                                                Третий текст
-                                            </div>
                                         </div>
                                     </div>
                                     <img class="bg" src="images/3-15/3-15-scroll.png" alt=""/>
@@ -108,9 +97,9 @@
                     </div>
                     <div class="ov-inner hi-bye">
                         <div class="ov-cont">
-                            <div class="h-b-h">В путь!</div>
+                            <div class="h-b-h">Фестиваль граффити Moscow river</div>
                             <div class="h-b-text">
-                                Неплохо, пора двигаться дальше.
+                                Вряд ли Макс пропустит это мероприятие, а вместе с ним и Лиса с Артёмом.
                             </div>
                             <div class="h-b-btn">
                                 <span>Далее</span>
@@ -123,9 +112,9 @@
                     <div class="bg-img" style="background-image: url(images/1-23/1-23-bg.jpg);"></div>
                     <div class="ov-inner hi-bye">
                         <div class="ov-cont">
-                            <div class="h-b-h">Описание</div>
+                            <div class="h-b-h">Нужен пароль</div>
                             <div class="h-b-text">
-                                Текст текст
+                                Перед тобой калейдоскоп воспоминаний Лешего при посещении квартиры. Отыщи в них пароль к ноутбуку и нажми на него.
                             </div>
                             <div class="h-b-btn">
                                 <span>Начать</span>
@@ -143,9 +132,11 @@
                     <div class="bg-img" style="background-image: url(images/3-17/3-17-bg.jpg);"></div>
                     <div class="ov-inner hi-bye">
                         <div class="ov-cont">
-                            <div class="h-b-h">Что делать?</div>
+                            <div class="h-b-h">Организуй поиск на местности</div>
                             <div class="h-b-text">
-                                Тебе будут
+                                Необходимо прочесать местность. Принимай решения куда отправятся пешие поисковики. Человеческие и временные ресурсы ограниченные, выбирай только те места, которые достойны внимания.
+                                <br/><br/>
+                                Галочка — стоит осмотреть. Крестик — не имеет смысла.
                             </div>
                             <div class="h-b-infogr">
                                 <picture>
@@ -173,9 +164,13 @@
                     </div>
                     <div class="ov-inner hi-bye">
                         <div class="ov-cont">
-                            <div class="h-b-h">Новые знания получены:)</div>
+                            <div class="h-b-h">
+                                <div class="h-b-var">Плохая организация поиска</div>
+                                <div class="h-b-var">Хорошая работа</div>
+                            </div>
                             <div class="h-b-text">
-                                Продолжаем поиск, впереди ещё много всего полезного и интересного!
+                                <div class="h-b-var">У тебя осталось время, которое могло быть использовано для осмотра дополнительных точек на местности.</div>
+                                <div class="h-b-var">Тебе удалось осмотреть максимальное количество точек на местности в отведённое время</div>
                             </div>
                             <div class="h-b-btn">
                                 <span>Далее</span>
@@ -238,6 +233,13 @@
             <div class="text"><%= items[i].text %></div>
         </div>
         <% } %>
+    </script>
+    <script type="text/template" id="p-3-15-template">
+        <% for(let i=0;i<items.length;i++){if(items[i].yep){ %>
+        <div class="pop"><%= popText.yep %></div>
+        <% }else{ %>
+        <div class="pop"><%= popText.nope[Math.floor(Math.random()*popText.nope.length)] %></div>
+        <% }} %>
     </script>
     <script type="text/template" id="i-3-15-template">
         <% for(let i=0;i<items.length;i++){ %>

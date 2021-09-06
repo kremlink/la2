@@ -1,7 +1,7 @@
 @include exports("@path:components\_ep1.scss"){/*@path:components\_ep1.scss*/
   .ov-wrap{
     &.fork{
-      &.vanish .btn.alt{
+      &.vanish .the-btn.alt{
         visibility:hidden;
         opacity:0;
         @include trs('opacity 10s ease-in-out,visibility 0s ease-in-out 10s');

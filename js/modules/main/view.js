@@ -15,7 +15,7 @@ import {BrowserView} from '../3-15/view.js';
 import {LoopView} from '../3-15-1/view.js';
 import {Qs1View} from '../3-17/view.js';
 
-import {MapView} from '../4-31/view.js';
+import {TabletsView} from '../4-4/view.js';
 
 import {data as dat} from './data.js';
 
@@ -30,7 +30,7 @@ let Interactives={
  Browser:BrowserView,
  Loop:LoopView,
  Qs1:Qs1View,
- Map:MapView
+ Tablets:TabletsView
 };
 
 let app,

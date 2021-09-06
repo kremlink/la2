@@ -19,6 +19,7 @@ export let BrowserView=BaseIntView.extend({
  el:data.view.el,
  curr:0,
  tTmpl:null,
+ pTmpl:null,
  initialize:function(opts){
   app=opts.app;
   data=app.configure({start:dat}).start;
@@ -26,10 +27,12 @@ export let BrowserView=BaseIntView.extend({
   this.opts=opts;
 
   this.tTmpl=_.template(data.view.tTmpl);
+  this.pTmpl=_.template(data.view.pTmpl);
+  this.$(data.view.popsInto).append(_.template($(data.view.pTmpl).html())(data));
   this.$time=this.$(data.view.time);
 
   this.$cont=this.$(data.view.cont);
-  this.$cont.find('img').imagesLoaded(()=>{
+  this.$cont.find('img').imagesLoaded(()=>{//TODO:remove when shared preload added
    this.$cont.addClass(this.shownCls);
    this.setScroll();
   });
@@ -79,12 +82,15 @@ export let BrowserView=BaseIntView.extend({
   BaseIntView.prototype.toggle.apply(this,arguments);
  },
  click:function(e){
-  this.$popsCont.addClass(this.shownCls);
-  this.$pops.eq(this.curr=$(e.currentTarget).index()).addClass(this.shownCls);
+  this.curr=$(e.currentTarget).index();
   if(data.items[this.curr].yep)
   {
    app.get('aggregator').trigger('ls:save',{interactive:'3-15-2'});
-   setTimeout(()=>this.next(),data.before);
+   this.next();
+  }else
+  {
+   this.$popsCont.addClass(this.shownCls);
+   this.$pops.eq(this.curr).addClass(this.shownCls);
   }
  },
  close:function(){

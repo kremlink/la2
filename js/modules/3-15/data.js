@@ -6,13 +6,14 @@ export const data={
  view:{
   el:'.ov-wrap.browser',
   tmpl:'#i-3-15-template',
+  pTmpl:'#p-3-15-template',
   tTmpl:'<%= month %> <%= date %> <span><%= hour %>:<%= minute %></span>',
   time:'.time',
   cont:'.container',
+  popsInto:'.p-inner',
   popsCont:'.pops',
   pops:'.pop'
  },
- before:1500,
  items:[
   {left:4.95,top:2.45,width:14.32,height:0.97},
   {left:4.95,top:3.58,width:14.32,height:0.97},
@@ -54,5 +55,9 @@ export const data={
   {left:43.8,top:59.57,width:49.58,height:15.52,yep:true},
   {left:43.8,top:76.07,width:49.58,height:2.06},
   {left:43.8,top:78.58,width:49.58,height:19.68}
- ]
+ ],
+ popText:{
+  yep:'Лиса активно следит за увлечениями Макса, неплохая зацепка!',
+  nope:['Вряд ли это то, что нужно','Хмм…не то','Бесполезно, ищем дальше','Не пригодится','Не поможет','Не то, стоит поискать ещё','Это нам сейчас не поможет','Лучше поискать что-то полезное']
+ }
 };

@@ -453,7 +453,7 @@ body {
 
 /*@path:base\_exts.scss*/
 /*@path:components\_ep1.scss*/
-.ov-wrap.fork.vanish .btn.alt {
+.ov-wrap.fork.vanish .the-btn.alt {
   visibility: hidden;
   opacity: 0;
   transition: opacity 10s ease-in-out,visibility 0s ease-in-out 10s;
@@ -1359,6 +1359,12 @@ body {
 .ov-wrap.loop .btn.shown {
   display: block;
 }
+.ov-wrap.qs1.remain .h-b-var:first-child {
+  display: none;
+}
+.ov-wrap.qs1.remain .h-b-var:nth-child(2) {
+  display: block;
+}
 .ov-wrap.qs1 .left, .ov-wrap.qs1 .right {
   position: absolute;
   width: 100%;
@@ -1432,8 +1438,54 @@ body {
   width: 100%;
   height: 100%;
 }
+.ov-wrap.qs1 .rotator .l.prog {
+  width: 13em;
+  height: 2.08em;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /*@path:components\_ep4.scss*/
+.ov-wrap.tablets.vanish .the-btn:not(.alt) {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out 2s,visibility 0s ease-in-out 2s;
+}
+.ov-wrap.tablets.vanish .the-btn:not(.alt) .btn-sh {
+  opacity: 1;
+}
+.ov-wrap.tablets .ov-inner.int {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  flex-flow: row wrap;
+  justify-content: center;
+  height: auto;
+  text-align: center;
+}
+.ov-wrap.tablets .ov-inner.int.shown {
+  display: flex;
+}
+.ov-wrap.tablets .ov-inner.int.shown + .the-prog {
+  opacity: 1;
+}
+.ov-wrap.tablets .the-btn {
+  margin: 0 6em;
+  position: relative;
+}
+.ov-wrap.tablets .the-btn:not(.alt) {
+  visibility: visible;
+}
+.ov-wrap.tablets .the-btn:not(.alt) .l {
+  transform: scale(-1, 1);
+}
+.ov-wrap.tablets .btn-sh {
+  opacity: 0;
+}
+
 /*@path:components\_footer.scss*/
 /*@path:components\_header.scss*/
 /*@path:components\_main.scss*/
@@ -1532,6 +1584,9 @@ body {
 }
 .ov-inner .h-b-text a {
   color: #b6837e;
+}
+.ov-inner .h-b-var:not(:first-child) {
+  display: none;
 }
 .ov-inner .h-b-infogr {
   margin-top: 1.5em;
@@ -1655,6 +1710,9 @@ body {
 }
 .loop .the-prog.shown {
   transition: width 20s linear;
+}
+.tablets .the-prog.shown {
+  transition: width 10s linear;
 }
 
 .hoverable {
