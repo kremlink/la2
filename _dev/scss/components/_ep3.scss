@@ -114,7 +114,7 @@
       .reveal{
         position:absolute;
         opacity:0;
-        width:10em;
+        width:20em;
         @include trs('opacity #{$anim} ease-in-out');
         &.shown{
           opacity:1;
@@ -122,7 +122,7 @@
       }
       .item{
         @include center($t:5em);
-        width:40%;
+        width:35%;
         text-align:center;
         opacity:0;
         @include trs('opacity #{$anim} ease-in-out');
@@ -172,6 +172,11 @@
             @include center();
           }
         }
+      }
+      .p-text{
+        @include center();
+        white-space:nowrap;
+        color:#000;
       }
     }
   }

@@ -55,7 +55,6 @@ export let QsView=BaseIntView.extend({
    animationData:lData.map
   });
 
-
   //this.next();//TODO:remove
  },
  trs:function(e){

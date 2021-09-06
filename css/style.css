@@ -1373,7 +1373,7 @@ body {
 .ov-wrap.qs1 .reveal {
   position: absolute;
   opacity: 0;
-  width: 10em;
+  width: 20em;
   transition: opacity 0.3s ease-in-out;
 }
 .ov-wrap.qs1 .reveal.shown {
@@ -1384,7 +1384,7 @@ body {
   left: 50%;
   top: 5em;
   transform: translate(-50%, 0);
-  width: 40%;
+  width: 35%;
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -1445,6 +1445,14 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+.ov-wrap.qs1 .p-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  color: #000;
 }
 
 /*@path:components\_ep4.scss*/

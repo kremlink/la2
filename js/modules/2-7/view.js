@@ -45,7 +45,7 @@ export let RingView=BaseIntView.extend({
  date:[...Array.from((month>9?'':'0')+now.getDate().toString()),...Array.from((month>9?'':'0')+month.toString()),...now.getFullYear().toString()].map((o)=>+o),
  initialize:function(opts){
   let self=this;
-console.log(this.date);
+
   app=opts.app;
   data=app.configure({start:dat}).start;
   
@@ -72,7 +72,7 @@ console.log(this.date);
 
   this.setAnim();
 
-  this.setLastPhase(4);
+  this.setLastPhase(6);
 
   $(document).on('mouseup.ring touchend.ring',()=>this.ringLRUp());
 

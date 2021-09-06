@@ -1,6 +1,9 @@
 @include exports("@path:components\_ep2.scss"){/*@path:components\_ep2.scss*/
   .ov-wrap{
     &.qs{
+      &.simple{
+
+      }
       .int-score{
         @include abs($b:2em,$l:35em);
       }

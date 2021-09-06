@@ -78,8 +78,8 @@ export let config={
    '4':{
     src:'oceans',
     timecodes:[
-     //{start:.2,end:1,back:.2,invoked:false,data:{interactive:'Qs'}},
-     {start:.2,end:3,back:.1,invoked:false,data:{interactive:'Fork',alt:2}},
+     {start:.2,end:1,back:.2,invoked:false,data:{interactive:'Qs',simple:true}},
+     {start:2,end:3,back:.1,invoked:false,data:{interactive:'Fork',alt:2}},
      {start:4,end:5,back:.2,invoked:false,data:{interactive:'Tablets'}}
     ]
    }
