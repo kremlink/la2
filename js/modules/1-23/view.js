@@ -14,8 +14,10 @@ export let ForkView=BaseIntView.extend({
  },
  el:data.view.el,
  initialize:function(opts){
+  let self=this;
+
   app=opts.app;
-  data=app.configure({start:dat}).start;
+  //data=app.configure({start:dat}).start;
 
   this.opts=opts;
 
@@ -26,13 +28,13 @@ export let ForkView=BaseIntView.extend({
    data:data
   }]);
 
-  this.$(data.view.$lottie).each(function(){
+  this.$(data.view.$lottie).each(function(i){
    lottie.loadAnimation({
     container:this,
     renderer:'svg',
     loop:true,
     autoplay:true,
-    animationData:lData
+    animationData:!self.opts.data.data.diff?lData.btn:lData.btns[i]
    });
   });
  },

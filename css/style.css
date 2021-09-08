@@ -453,6 +453,10 @@ body {
 
 /*@path:base\_exts.scss*/
 /*@path:components\_ep1.scss*/
+.ov-wrap.fork.vanish .l-bg:nth-child(2) {
+  opacity: 0;
+  transition: opacity 10s ease-in-out,visibility 0s ease-in-out 10s;
+}
 .ov-wrap.fork.vanish .the-btn.alt {
   visibility: hidden;
   opacity: 0;
@@ -473,6 +477,28 @@ body {
 }
 .ov-wrap.fork .ov-inner.int.shown + .the-prog {
   opacity: 1;
+}
+.ov-wrap.fork .ov-inner.diff {
+  height: 100%;
+}
+.ov-wrap.fork .ov-inner.diff .the-btn {
+  height: 85%;
+  margin: auto 0 auto 3em;
+  width: 15em;
+  display: flex;
+}
+.ov-wrap.fork .ov-inner.diff .the-btn.alt {
+  margin-left: 15em;
+}
+.ov-wrap.fork .ov-inner.diff .the-btn .btn-h {
+  margin-top: auto;
+}
+.ov-wrap.fork .l-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 .ov-wrap.fork .the-btn {
   margin: 0 6em;
@@ -1312,7 +1338,7 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
 .ov-wrap.browser .p-inner {
@@ -1320,20 +1346,31 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 22em;
+  width: 40em;
   padding: 1em;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0.3em;
+}
+@media (min-width: 1024px) {
+  .ov-wrap.browser .p-inner {
+    width: 22em;
+  }
 }
 .ov-wrap.browser .close {
   position: absolute;
-  top: 0;
-  right: 0;
-  color: #f00;
-  padding: 0 0.3em;
+  top: -1em;
+  right: -1em;
+  width: 2em;
   cursor: pointer;
 }
 .ov-wrap.browser .pop {
   display: none;
+  font-size: 2em;
+}
+@media (min-width: 1024px) {
+  .ov-wrap.browser .pop {
+    font-size: 1em;
+  }
 }
 .ov-wrap.browser .pop.shown {
   display: block;
@@ -1456,10 +1493,14 @@ body {
 }
 
 /*@path:components\_ep4.scss*/
+.ov-wrap.tablets.vanish .l:first-child {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out 3s,visibility 0s ease-in-out 3.3s;
+}
 .ov-wrap.tablets.vanish .the-btn:not(.alt) {
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out 2s,visibility 0s ease-in-out 2s;
+  transition: opacity 0.3s ease-in-out 3s,visibility 0s ease-in-out 3.3s;
 }
 .ov-wrap.tablets.vanish .the-btn:not(.alt) .btn-sh {
   opacity: 1;
@@ -1471,7 +1512,6 @@ body {
   transform: translate(-50%, -50%);
   flex-flow: row wrap;
   justify-content: center;
-  height: auto;
   text-align: center;
 }
 .ov-wrap.tablets .ov-inner.int.shown {
@@ -1480,18 +1520,35 @@ body {
 .ov-wrap.tablets .ov-inner.int.shown + .the-prog {
   opacity: 1;
 }
+.ov-wrap.tablets .l {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
 .ov-wrap.tablets .the-btn {
-  margin: 0 6em;
-  position: relative;
+  position: absolute;
+  left: 19em;
+  top: 3em;
+  width: 7em;
+  padding-top: 6em;
+}
+.ov-wrap.tablets .the-btn.alt {
+  left: 32.5em;
+  top: 22em;
+  width: 16em;
 }
 .ov-wrap.tablets .the-btn:not(.alt) {
   visibility: visible;
 }
-.ov-wrap.tablets .the-btn:not(.alt) .l {
-  transform: scale(-1, 1);
-}
 .ov-wrap.tablets .btn-sh {
   opacity: 0;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  white-space: nowrap;
 }
 
 /*@path:components\_footer.scss*/
@@ -1555,11 +1612,16 @@ body {
 .ov-inner.hi-bye:before {
   content: "";
   position: absolute;
-  left: 13em;
+  left: 10em;
   top: 0;
   bottom: 0;
   width: 0.1em;
   background: linear-gradient(180deg, #DF8998, #E5B99D 90%);
+}
+@media (min-width: 1024px) {
+  .ov-inner.hi-bye:before {
+    left: 13em;
+  }
 }
 .ov-inner.hi-bye .ov-cont {
   position: absolute;
@@ -1696,6 +1758,7 @@ body {
   height: 10%;
   position: absolute;
   border-radius: 0.3em;
+  cursor: pointer;
 }
 
 .the-prog {

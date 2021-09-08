@@ -54,23 +54,30 @@
       }
       .p-bg{
         @include abs($l:0,$r:0,$t:0,$b:0);
-        background:rgba(#000,.3);
+        background:rgba(#000,.8);
         cursor:pointer;
       }
       .p-inner{
         @include center();
-        width:22em;
+        width:40em;
         padding:1em;
-        background:rgba(#000,.3);
+        background:rgba(#000,.6);
+        border-radius:.3em;
+        @include med(){
+          width:22em;
+        }
       }
       .close{
-        @include abs($t:0,$r:0);
-        color:#f00;
-        padding:0 .3em;
+        @include abs($t:-1em,$r:-1em);
+        width:2em;
         cursor:pointer;
       }
       .pop{
         display:none;
+        font-size:2em;
+        @include med(){
+          font-size:1em;
+        }
         &.shown{
           display:block;
         }

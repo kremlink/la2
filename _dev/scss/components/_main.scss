@@ -44,9 +44,12 @@
     &.hi-bye{
       &:before{
         content:'';
-        @include abs($l:13em,$t:0,$b:0);
+        @include abs($l:10em,$t:0,$b:0);
         width:.1em;
         background:linear-gradient(180deg,#DF8998,#E5B99D 90%);
+        @include med(){
+          left:13em;
+        }
       }
       .ov-cont{
         @include center();
@@ -165,6 +168,7 @@
       height:10%;
       position:absolute;
       border-radius:0.3em;
+      cursor:pointer;
     }
   }
   //---

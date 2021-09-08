@@ -20,7 +20,7 @@ export let LabyrinthView=BaseIntView.extend({
  finish:false,
  initialize:function(opts){
   app=opts.app;
-  data=app.configure({start:dat}).start;
+  //data=app.configure({start:dat}).start;
 
   this.opts=opts;
   this.$vid=this.$(data.view.vid);

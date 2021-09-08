@@ -1,12 +1,18 @@
 @include exports("@path:components\_ep4.scss"){/*@path:components\_ep4.scss*/
   .ov-wrap{
     &.tablets{
-      &.vanish .the-btn:not(.alt){
-        visibility:hidden;
-        opacity:0;
-        @include trs('opacity #{$anim} ease-in-out 2s,visibility 0s ease-in-out 2s');
-        .btn-sh{
-          opacity:1;
+      &.vanish{
+        .l:first-child{
+          opacity:0;
+          @include trs('opacity #{$anim} ease-in-out 3s,visibility 0s ease-in-out 3.3s');
+        }
+        .the-btn:not(.alt){
+          visibility:hidden;
+          opacity:0;
+          @include trs('opacity #{$anim} ease-in-out 3s,visibility 0s ease-in-out 3.3s');
+          .btn-sh{
+            opacity:1;
+          }
         }
       }
 
@@ -15,7 +21,6 @@
           @include center();
           @include flx(flex-flow, 'row wrap');
           @include flx(justify-content, center);
-          height:auto;
           text-align:center;
           &.shown{
             @include flx(display, flex);
@@ -26,18 +31,27 @@
         }
       }
 
+      .l{
+        @include abs($l:0,$r:0,$t:0,$b:0);
+      }
+
       .the-btn{
-        margin:0 6em;
-        position:relative;
+        @include abs($l:19em,$t:3em);
+        width:7em;
+        padding-top:6em;
+        &.alt{
+          left:32.5em;
+          top:22em;
+          width:16em;
+        }
         &:not(.alt){
           visibility:visible;
-          .l{
-            transform:scale(-1,1);
-          }
         }
       }
       .btn-sh{
         opacity:0;
+        @include center($b:0);
+        white-space:nowrap;
       }
     }
   }

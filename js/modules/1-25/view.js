@@ -34,7 +34,7 @@ export let PackingView=BaseIntView.extend({
  circles:{clicked:0,failed:0},
  initialize:function(opts){
   app=opts.app;
-  data=app.configure({start:dat}).start;
+  //data=app.configure({start:dat}).start;
 
   pc=app.get('isPc');
 

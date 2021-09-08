@@ -1,6 +1,6 @@
 import {BaseIntView} from '../baseInteractive/view.js';
 import {data as dat} from './data.js';
-import {lottie as lData} from '../1-23/lottie.js';
+import {lottie as lData} from './lottie.js';
 
 let app,
     data=dat,
@@ -17,7 +17,7 @@ export let TabletsView=BaseIntView.extend({
  outerWidth:null,
  initialize:function(opts){
   app=opts.app;
-  data=app.configure({start:dat}).start;
+  //data=app.configure({start:dat}).start;
 
   this.opts=opts;
 
@@ -34,13 +34,13 @@ export let TabletsView=BaseIntView.extend({
     this.value=this.$prog.width()/this.outerWidth;
   },1000);
 
-  this.$(data.view.$lottie).each(function(){
+  this.$(data.view.$lottie).each(function(i){
    lottie.loadAnimation({
     container:this,
     renderer:'svg',
     loop:true,
     autoplay:true,
-    animationData:lData
+    animationData:lData.btns[i]
    });
   });
  },

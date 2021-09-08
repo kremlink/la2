@@ -56,42 +56,18 @@
             </div>-->
 			<div class="overlay-block">
                 <div class="ov-wrap qs">
-                    <div class="bg-img" style="background-image: url(images/2-25/2-25-bg.jpg);"></div>
-                    <div class="ov-inner hi-bye">
-                        <div class="ov-cont">
-                            <div class="h-b-h">Повезло</div>
-                            <div class="h-b-text">
-                                Пешие поисковики осмотрели реку, к счастью, тело не найдено. Изучи местность и продолжай поиски.
-                            </div>
-                            <div class="h-b-infogr">
-                                <picture>
-                                    <source srcset="images/2-25/2-25-intro-pic.png" media="(min-width:1024px)"/>
-                                    <img src="images/2-25/2-25-intro-pic-m.png" alt=""/>
-                                </picture>
-                            </div>
-                            <div class="h-b-btn">
-                                <span>Начать</span>
-                                <div class="h-b-l"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="bg-img" style="background-image: url(images/4-31/4-31-bg.jpg);"></div>
                     <div class="ov-inner int">
-                        <div class="bg-img l" style="background-image: url(images/2-25/map.svg);"></div>
+                        <div class="bg-img l" style="background-image: url(images/4-31/4-31-map.svg);"></div>
                         <div class="left"></div>
                         <div class="right"></div>
-                       <!-- <div class="int-score">
-                            <div class="s-dots"><div></div><div></div><div></div></div>
-                            <div class="s-amt">0</div>
-                            <div class="s-descr">ваши очки</div>
-                        </div>-->
                         <div class="btns">
                             <div class="l yep"></div>
-<!--                            <div class="l"></div>-->
                         </div>
                     </div>
                 </div>
                 <div class="ov-wrap fork">
-                    <div class="bg-img" style="background-image: url(images/1-23/1-23-bg.jpg);"></div>
+                    <div class="bg-img" style="background-image: url(images/4-6/bg.jpg);"></div>
                     <div class="ov-inner hi-bye">
                         <div class="ov-cont">
                             <div class="h-b-h">Побег? Побег!? Побег!</div>
@@ -104,20 +80,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ov-inner int">
+                    <div class="ov-inner int diff">
+                        <div class="l-bg"></div>
+                        <div class="l-bg"></div>
                         <div class="the-btn">
-                            <div class="l"></div>
-                            <div class="btn-h"><div>Попытаться выломать дверь</div></div>
+                            <div class="btn-h"><div>Выбить дверь</div></div>
                         </div>
                         <div class="the-btn alt">
-                            <div class="l"></div>
                             <div class="btn-h"><div>Искать другой выход</div></div>
                         </div>
                     </div>
                     <div class="the-prog"></div>
                 </div>
                 <div class="ov-wrap tablets">
-                    <div class="bg-img" style="background-image: url(images/1-23/1-23-bg.jpg);"></div>
+                    <div class="bg-img" style="background-image: url(images/4-4/bg.jpg);"></div>
                     <div class="ov-inner hi-bye">
                         <div class="ov-cont">
                             <div class="h-b-h">Таблетки для Артёма</div>
@@ -131,14 +107,14 @@
                         </div>
                     </div>
                     <div class="ov-inner int">
+                        <div class="l"></div>
+                        <div class="l"></div>
                         <div class="the-btn">
-                            <div class="l"></div>
                             <div class="btn-h"><div>Уйти</div></div>
                             <div class="btn-sh">Отчаянные времена требуют отчаянных мер</div>
                         </div>
                         <div class="the-btn alt">
-                            <div class="l"></div>
-                            <div class="btn-h"><div>Украсть таблетки</div></div>
+                            <div class="btn-h"><div>Отвлечь продавца</div></div>
                         </div>
                     </div>
                     <div class="the-prog"></div>
@@ -185,11 +161,6 @@
                 </div>
             </div>
 		</div>
-    <script type="text/template" id="i-2-25-reveal-template">
-        <% for(let i=0;i<items.length;i++){ if('index' in items[i])%>
-        <div class="bg-img reveal" style="background-image: url(images/2-25/over<%= items[i].index+1 %>.svg);"></div>
-        <% } %>
-    </script>
     <script type="text/template" id="i-2-25-item-template">
         <% for(let i=0;i<items.length;i++){%>
         <div class="item">

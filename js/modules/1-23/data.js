@@ -4,7 +4,7 @@ export const data={
  },
  view:{
   el:'.ov-wrap.fork',
-  $lottie:'.l',
+  $lottie:'.l,.l-bg',
   $prog:'.the-prog',
   vanishCls:'vanish',
   altCls:'alt'

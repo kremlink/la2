@@ -35,7 +35,7 @@ export let TeamView=BaseIntView.extend({
   let yItems=data.items.filter(o=>o.yep);
 
   app=opts.app;
-  data=app.configure({start:dat}).start;
+  //data=app.configure({start:dat}).start;
 
   pc=app.get('isPc');
 

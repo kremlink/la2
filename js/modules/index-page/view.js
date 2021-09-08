@@ -106,7 +106,7 @@ export let Index=Backbone.View.extend({
  },
  loaded:function(){
   this.$el.addClass(data.view.loadedCls);
-  this.start();//TODO:remove
+  //this.start();//TODO:remove
  },
  disable:function(f){
   this.$el.toggleClass(data.view.nopeCls,f);

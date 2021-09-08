@@ -35,18 +35,18 @@ export let config={
   ],
   srcData:{
    spec:['1080','720','360'],
-   tmpl:'../<%= src %>.mp4'
-   //tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= src %>.mp4'
+   //tmpl:'../<%= src %>.mp4'
+   tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= src %>/mp4/<%= src %>-ser-prev.mp4'
    //tmpl:'videos/<%= spec %>/<%= src %>.mp4'
   },
   data:{
    '1':{
-    //src:'1-ser-prev',
-    src:'oceans',
+    src:'1',
+    //src:'oceans',
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
-     //{start:1,end:1,back:.1,invoked:false,data:{interactive:'Fork',alt:2}},
-     {start:1,end:3,back:.2,invoked:false,data:{interactive:'Packing'}},
+     {start:1,end:1,back:.1,invoked:false,data:{interactive:'Fork',alt:2}},
+     //{start:1,end:3,back:.2,invoked:false,data:{interactive:'Packing'}},
      //{start:2,end:4,back:0.1,invoked:false,data:{interactive:'Team'}}
      //{start:54.12,end:54.64,noBg:true,back:.1,invoked:false,data:{interactive:'Fork',alt:112.56}},
      //{start:186.92,end:187.44,back:.2,invoked:false,data:{interactive:'Packing'}},
@@ -54,10 +54,10 @@ export let config={
     ]
    },//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
    '2':{
-    //src:'2/mp4/2-ser-prev',
-    src:'oceans',
+    src:'2',
+    //src:'oceans',
     timecodes:[
-     {start:.2,end:1,back:.2,invoked:false,data:{interactive:'Ring'}},
+     //{start:.2,end:1,back:.2,invoked:false,data:{interactive:'Ring'}},
      {start:2,end:3,back:.2,invoked:false,data:{interactive:'Qs'}},
      {start:4,end:5,back:.2,invoked:false,data:{interactive:'Labyrinth'}},
      {start:6,end:7,back:.2,invoked:false,data:{interactive:'Fix'}}
@@ -68,19 +68,24 @@ export let config={
     ]
    },
    '3':{
-    src:'oceans',
+    src:'3',
+    //src:'oceans',
     timecodes:[
-     //{start:.2,end:1,back:.2,invoked:false,data:{interactive:'Loop'}},
-     //{start:2,end:2.5,back:.2,invoked:false,data:{interactive:'Browser'}},
-     {start:.4,end:5,back:.2,invoked:false,data:{interactive:'Qs1'}}
+     //{start:1,end:2,back:.2,invoked:false,data:{interactive:'Loop'}},
+     //{start:.1,end:4,back:.2,invoked:false,data:{interactive:'Browser'}},
+     //{start:5,end:6,back:.2,invoked:false,data:{interactive:'Qs1'}}
+     {start:20.92,end:20.96,back:.2,invoked:false,data:{interactive:'Loop'}},
+     {start:21.88,end:21.92,back:.2,invoked:false,data:{interactive:'Browser'}},
+     {start:56.2,end:57.2,back:.2,invoked:false,data:{interactive:'Qs1'}}
     ]
    },
    '4':{
-    src:'oceans',
+    src:'4',
+    //src:'oceans',
     timecodes:[
-     {start:.2,end:1,back:.2,invoked:false,data:{interactive:'Qs',simple:true}},
-     {start:2,end:3,back:.1,invoked:false,data:{interactive:'Fork',alt:2}},
-     {start:4,end:5,back:.2,invoked:false,data:{interactive:'Tablets'}}
+     {start:211.4,end:212.4,back:.2,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''}}},
+     {start:47.92,end:48.92,back:.1,invoked:false,data:{interactive:'Fork',alt:58.84,diff:true}},
+     {start:186.72,end:187.72,back:.2,invoked:false,data:{interactive:'Tablets'}}
     ]
    }
   }

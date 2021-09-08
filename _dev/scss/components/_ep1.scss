@@ -1,10 +1,16 @@
 @include exports("@path:components\_ep1.scss"){/*@path:components\_ep1.scss*/
   .ov-wrap{
     &.fork{
-      &.vanish .the-btn.alt{
-        visibility:hidden;
-        opacity:0;
-        @include trs('opacity 10s ease-in-out,visibility 0s ease-in-out 10s');
+      &.vanish{
+        .l-bg:nth-child(2){
+          opacity:0;
+          @include trs('opacity 10s ease-in-out,visibility 0s ease-in-out 10s');
+        }
+        .the-btn.alt{
+          visibility:hidden;
+          opacity:0;
+          @include trs('opacity 10s ease-in-out,visibility 0s ease-in-out 10s');
+        }
       }
 
       .ov-inner{
@@ -21,6 +27,25 @@
             }
           }
         }
+        &.diff{
+          height:100%;
+          .the-btn{
+            height:85%;
+            margin:auto 0 auto 3em;
+            width:15em;
+            @include flx(display,flex);
+            &.alt{
+              margin-left:15em;
+            }
+            .btn-h{
+              margin-top:auto;
+            }
+          }
+        }
+      }
+
+      .l-bg{
+        @include abs($l:0,$r:0,$t:0,$b:0);
       }
 
       .the-btn{

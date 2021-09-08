@@ -20,17 +20,19 @@ export let QsView=BaseIntView.extend({
  mS:null,
  initialize:function(opts){
   app=opts.app;
-  data=app.configure({start:dat}).start;
+  //data=app.configure({start:dat}).start;
 
   this.opts=opts;
 
   this.mS=new opts.MS({view:this,points:data.points,amt:data.items.length});
 
   this.iTemplate=_.template($(data.view.iTmpl).html());
-  this.rTemplate=_.template($(data.view.rTmpl).html());
-
-  this.$(data.view.reveal).html(this.$reveal=$(this.rTemplate({items:data.items})).filter(function(){return this.nodeType!==3;}));
-  this.$(data.view.into).html(this.$items=$(this.iTemplate({items:data.items})).filter(function(){return this.nodeType!==3;}));
+  this.$(data.view.into).html(this.$items=$(this.iTemplate({items:this.opts.data.data.item?[opts.data.data.item]:data.items})).filter(function(){return this.nodeType!==3;}));
+  if(!this.opts.data.data.item)
+  {
+   this.rTemplate=_.template($(data.view.rTmpl).html());
+   this.$(data.view.reveal).html(this.$reveal=$(this.rTemplate({items:data.items})).filter(function(){return this.nodeType!==3;}));
+  }
 
   BaseIntView.prototype.initialize.apply(this,[{
    app:app,
@@ -65,7 +67,8 @@ export let QsView=BaseIntView.extend({
   if(f)
   {
    this.index=0;
-   this.$reveal.removeClass(this.shownCls);
+   if(!this.opts.data.data.item)
+    this.$reveal.removeClass(this.shownCls);
    this.$items.removeClass(this.shownCls).eq(this.index).addClass(this.shownCls);
    this.mS.clr();
   }
@@ -73,25 +76,26 @@ export let QsView=BaseIntView.extend({
   BaseIntView.prototype.toggle.apply(this,arguments);
  },
  click:function(e){
-  let curr=$(e.currentTarget);
+  let curr=$(e.currentTarget),
+      len=this.opts.data.data.item?1:data.items.length;
   
-  if(this.index<data.items.length&&(curr.hasClass(data.view.yepCls)&&data.items[this.index].yep||!curr.hasClass(data.view.yepCls)&&!data.items[this.index].yep))
+  if(this.index<len&&(curr.hasClass(data.view.yepCls)&&data.items[this.index].yep||!curr.hasClass(data.view.yepCls)&&!data.items[this.index].yep))
   {
-   if('index' in data.items[this.index])
+   if(!this.opts.data.data.item&&'index' in data.items[this.index])
     this.$reveal.eq(data.items[this.index].index).addClass(this.shownCls);
    this.$items.eq(this.index).removeClass(this.shownCls);
    this.index++;
    this.mS.setPoints(true);
    this.$items.eq(this.index).addClass(this.shownCls);
    curr.addClass(data.view.corrCls);
-   if(this.index===data.items.length)
+   if(this.index===len)
    {
     app.get('aggregator').trigger('ls:save',{interactive:'2-25',value:this.mS.getPoints()});
-    setTimeout(()=>this.next(),data.before);
+    setTimeout(()=>this.opts.data.data.item?this.away():this.next(),data.before);
    }
   }else
   {
-   if(this.index<data.items.length)
+   if(this.index<len)
    {
     curr.addClass(data.view.errCls);
     app.get('aggregator').trigger('sound','btn');
