@@ -487,18 +487,39 @@
   }
 
   .achievement-pop{
-    @include abs($l:50%,$t:50%);
-    transform:translate(-50%, -50%) scale(0);
+    @include center($r:100%);
     width:20em;
-    padding:2em;
-    text-align:center;
-    background:rgba(#fff,.7);
-    border-radius:1em;
-    visibility:hidden;
+    height:110/636*20em;
     z-index:2;
-    pointer-events:none;
+    @include trs('margin-right #{$anim} ease-in-out');
+    background: url(#{$path}achiv-bg.svg) no-repeat;
+    color:#fff;
     &.shown{
+      margin-right:-20em;
       //animation:3s forwards linear achiev;
+    }
+    .close{
+      width:2em;
+      height:2em;
+      @include center($r:0);
+      cursor:pointer;
+    }
+    .into{
+      @include flx(display,flex);
+      @include flx(align-items,center);
+    }
+    .img{
+      width:3em;
+      margin-left:1em;
+    }
+    .inner{
+      margin-left:1.5em;
+    }
+    .h{
+      text-transform:uppercase;
+    }
+    .text{
+      margin-top:.8em;
     }
   }
   //---

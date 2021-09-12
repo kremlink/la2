@@ -43,15 +43,15 @@ export let Index=Backbone.View.extend({
 
   lsMgr=this.main.lsMgr;
 
-  lsMgr.sendData({cb:(r)=>{
+  lsMgr.sendData({ini:true,cb:(r)=>{
     let lsData=lsMgr.getData();
 
-    if(lsData.data[epIndex].savedTime||r.savedTime)
+    if(lsData.data[epIndex].savedTime||r.data[epIndex].savedTime)
      this.$el.addClass(data.view.goOnCls);
 
-    if(r.savedTime)
+    if(r.data[epIndex].savedTime)
     {
-     lsData.data[epIndex].savedTime=r.savedTime;
+     lsData.data[epIndex].savedTime=r.data[epIndex].savedTime;
      lsMgr.setData(lsData);
     }
 

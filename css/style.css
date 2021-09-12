@@ -2103,18 +2103,46 @@ body {
 }
 .achievement-pop {
   position: absolute;
-  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(0);
+  right: 100%;
+  transform: translate(0, -50%);
   width: 20em;
-  padding: 2em;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 1em;
-  visibility: hidden;
+  height: 3.4591194969em;
   z-index: 2;
-  pointer-events: none;
+  transition: margin-right 0.3s ease-in-out;
+  background: url(../images/achiv-bg.svg) no-repeat;
+  color: #fff;
 }
+.achievement-pop.shown {
+  margin-right: -20em;
+}
+.achievement-pop .close {
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  cursor: pointer;
+}
+.achievement-pop .into {
+  display: flex;
+  align-items: center;
+}
+.achievement-pop .img {
+  width: 3em;
+  margin-left: 1em;
+}
+.achievement-pop .inner {
+  margin-left: 1.5em;
+}
+.achievement-pop .h {
+  text-transform: uppercase;
+}
+.achievement-pop .text {
+  margin-top: 0.8em;
+}
+
 .info-pop {
   position: absolute;
   left: 0;

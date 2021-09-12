@@ -2,6 +2,7 @@ import {SoundMgr} from '../soundMgr/view.js';
 import {LsMgr} from '../lsMgr/view.js';
 import {MicroScore} from '../mS/view.js';
 import {InfoPop} from '../info-pop/view.js';
+import {AchievePop} from '../achieve/view.js';
 
 import {ForkView} from '../1-23/view.js';
 import {PackingView} from '../1-25/view.js';
@@ -56,24 +57,18 @@ export let MainView=Backbone.View.extend({
   epIndex=app.get('epIndex');
 
   this.lsMgr=new LsMgr({app:app});
-  new InfoPop();
+  new InfoPop({app:app});
+  new AchievePop({app:app});
 
   this.listenTo(app.get('aggregator'),'interactive:toggle',this.toggle);
   this.listenTo(app.get('aggregator'),'player:back',this.hide);
   this.listenTo(app.get('aggregator'),'player:interactive',this.step);
   this.listenTo(app.get('aggregator'),'player:timeupdate',throttle);
   this.listenTo(app.get('aggregator'),'player:goOn',this.setGoOn);
-  this.listenTo(app.get('aggregator'),'main:achieve',this.achieve);
 
   $(window).on('visibilitychange pagehide',()=>app.get('aggregator').trigger('page:state'));
 
   new SoundMgr({app:app});
-
-  this.$achiev=$(data.view.achievement).on('animationend',()=>this.$achiev.removeClass(data.view.shownCls));
- },
- achieve:function(what){
-  this.$achiev.removeClass(data.view.shownCls);
-  setTimeout(()=>this.$achiev.addClass(data.view.shownCls).html(what),100);
  },
  hide:function(){
   this.$el.removeClass(data.view.shownCls+' '+data.view.noBgCls);

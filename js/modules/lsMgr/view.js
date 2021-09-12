@@ -26,11 +26,16 @@ export let LsMgr=Backbone.View.extend({
 
   this.listenTo(app.get('aggregator'),'ls:save',this.sendData);
  },
- sendData:function(opts={interactive:null,value:null,cb:null}){
-  fetch(data.url+JSON.stringify({episode:epIndex,time:this.getData().data[epIndex].savedTime,interactive:opts.interactive,value:opts.value}),{
+ sendData:function({ini=false,interactive=null,value=null,cb=()=>{}}){
+  fetch(data.url+JSON.stringify({episode:epIndex,time:this.getData().data[epIndex].savedTime,interactive:interactive,value:value}),{
    method:'get',
    credentials:'include'
-  }).then((r)=>{return r.json()}).then(opts.cb);
+  }).then((r)=>{return r.json()}).then((r)=>{
+   if(!ini&&r.achievement)
+    app.get('aggregator').trigger('achieve',r.achievement);
+   app.get('aggregator').trigger('info',r.achievements);
+   cb(r);
+  });
  },
  resetData:function(resetUser=false){
   if(resetUser)

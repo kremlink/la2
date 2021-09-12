@@ -72,8 +72,8 @@ export let LoopView=BaseIntView.extend({
  },
  click:function(){
   app.get('aggregator').trigger('ls:save',{interactive:'3-15-1',value:this.value});
-  if(this.value>data.thr)
-   app.get('aggregator').trigger('main:achieve','Ачивка: успел');
+  //if(this.value>data.thr)
+   //app.get('aggregator').trigger('main:achieve','Ачивка: успел');
   this.away();
  }
 });

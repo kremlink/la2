@@ -6,7 +6,6 @@ export const data={
   el:'.overlay-block',
   shownCls:'shown',
   noBgCls:'no-bg',
-  noAnimCls:'no-anim',
-  achievement:'.achievement-pop'
+  noAnimCls:'no-anim'
  }
 };
