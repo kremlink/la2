@@ -35,8 +35,8 @@ export let config={
   ],
   srcData:{
    spec:['1080','720','360'],
-   //tmpl:'../<%= src %>.mp4'
-   tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= src %>/mp4/<%= src %>-ser-prev.mp4'
+   tmpl:'../<%= src %>.mp4'
+   //tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= src %>/mp4/<%= src %>-ser-prev.mp4'
    //tmpl:'videos/<%= spec %>/<%= src %>.mp4'
   },
   data:{
@@ -68,15 +68,15 @@ export let config={
     ]
    },
    '3':{
-    src:'3',
-    //src:'oceans',
+    //src:'3',
+    src:'oceans',
     timecodes:[
-     //{start:1,end:2,back:.2,invoked:false,data:{interactive:'Loop'}},
+     {start:1,end:2,back:.2,invoked:false,data:{interactive:'Loop'}},
      //{start:.1,end:4,back:.2,invoked:false,data:{interactive:'Browser'}},
      //{start:5,end:6,back:.2,invoked:false,data:{interactive:'Qs1'}}
-     {start:20.92,end:20.96,back:.2,invoked:false,data:{interactive:'Loop'}},
+     /*{start:20.92,end:20.96,back:.2,invoked:false,data:{interactive:'Loop'}},
      {start:21.88,end:21.92,back:.2,invoked:false,data:{interactive:'Browser'}},
-     {start:56.2,end:57.2,back:.2,invoked:false,data:{interactive:'Qs1'}}
+     {start:56.2,end:57.2,back:.2,invoked:false,data:{interactive:'Qs1'}}*/
     ]
    },
    '4':{

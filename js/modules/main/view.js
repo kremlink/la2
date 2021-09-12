@@ -1,6 +1,7 @@
 import {SoundMgr} from '../soundMgr/view.js';
 import {LsMgr} from '../lsMgr/view.js';
 import {MicroScore} from '../mS/view.js';
+import {InfoPop} from '../info-pop/view.js';
 
 import {ForkView} from '../1-23/view.js';
 import {PackingView} from '../1-25/view.js';
@@ -55,6 +56,7 @@ export let MainView=Backbone.View.extend({
   epIndex=app.get('epIndex');
 
   this.lsMgr=new LsMgr({app:app});
+  new InfoPop();
 
   this.listenTo(app.get('aggregator'),'interactive:toggle',this.toggle);
   this.listenTo(app.get('aggregator'),'player:back',this.hide);

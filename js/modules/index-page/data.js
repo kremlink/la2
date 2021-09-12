@@ -4,9 +4,7 @@ export const data={
  events:{
   'start':'.start-pop .start',
   'clr':'.clr',
-  'goOn':'.continue',
-  'infoHide':'.info-pop .close,.info-pop .close-bg',
-  'infoCaller':'.info-pop-caller'
+  'goOn':'.continue'
  },
  view:{
   el:'#wrap',
@@ -17,8 +15,7 @@ export const data={
   timerCls:'timer',
   pauseCls:'paused',
   nopeCls:'nope',
-  goOnCls:'goOn',
-  infoCls:'info'
+  goOnCls:'goOn'
  },
  minViewport:'(min-width:600px)',
  pcViewport:'(min-width:1024px)'

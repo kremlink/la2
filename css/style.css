@@ -1816,6 +1816,9 @@ body {
   z-index: 2;
   display: none;
 }
+.start .special-btns {
+  display: block;
+}
 .special-btns .return {
   position: absolute;
   left: -8em;
@@ -2112,7 +2115,26 @@ body {
   z-index: 2;
   pointer-events: none;
 }
-.info-pop-caller {
+.info-pop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  z-index: 2;
+}
+.info-pop.shown {
+  visibility: visible;
+}
+.info-pop.shown .caller {
+  visibility: hidden;
+}
+.info-pop.shown .close-bg, .info-pop.shown .inner {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+.info-pop .caller {
   position: absolute;
   top: 0;
   right: 0;
@@ -2123,24 +2145,14 @@ body {
   border-radius: 0 0 0 0.3em;
   z-index: 2;
   cursor: pointer;
-  display: none;
-}
-.info-pop {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  visibility: hidden;
-  opacity: 0;
-  z-index: 2;
-  transition: opacity 0.3s ease-in-out;
+  visibility: visible;
 }
 .info-pop .close-bg {
   width: 100%;
   height: 100%;
   cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
 }
 .info-pop .inner {
   position: absolute;
@@ -2151,6 +2163,7 @@ body {
   height: 30em;
   padding: 1em;
   background: #ddd;
+  opacity: 0;
 }
 .info-pop .close {
   padding: 0 0.5em;
