@@ -2170,14 +2170,14 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  padding: 10em 0 4em 0;
+  padding: 8em 0 4em 0;
   opacity: 0;
   background: center/cover;
   display: flex;
   font-size: 0.6em;
 }
 .info-pop .tabs {
-  width: 29%;
+  width: 33%;
   text-align: right;
   text-transform: uppercase;
 }
@@ -2200,12 +2200,15 @@ body {
   display: flex;
   flex-flow: column nowrap;
 }
+.info-pop .top {
+  margin-top: -0.8em;
+}
 .info-pop .h {
-  font-size: 6em;
+  font-size: 4em;
   font-weight: 300;
 }
-.info-pop .descr {
-  margin-top: 4em;
+.info-pop .desc {
+  margin-top: 2em;
 }
 .info-pop .container {
   flex: 1 0 auto;
@@ -2237,8 +2240,11 @@ body {
 .info-pop .ach-item:nth-child(n+2) {
   margin-top: 4em;
 }
+.info-pop .ach-item.disabled {
+  opacity: 0.3;
+}
 .info-pop .ach-img {
-  width: 6em;
+  width: 8em;
 }
 .info-pop .ach-text {
   margin-left: 2em;
@@ -2254,7 +2260,7 @@ body {
   margin-top: 4em;
 }
 .info-pop .pers-img {
-  width: 16em;
+  width: 13em;
   box-shadow: 0 0.93em 2.3em rgba(0, 0, 0, 0.25);
 }
 .info-pop .pers-text {

@@ -48,7 +48,8 @@ export let PlayerView=Backbone.View.extend({
   });
   this.listenTo(app.get('aggregator'),'main:toggle',this.setPausable);
   this.listenTo(app.get('aggregator'),'page:state',this.freeze);
-  this.listenTo(app.get('aggregator'),'achieve:hide',()=>{if(this.pausable&&this.player.paused())this.player.play()});
+  this.listenTo(app.get('aggregator'),'achieve:hide',()=>{if(this.pausable&&this.player.paused())this.player.play();});
+  this.listenTo(app.get('aggregator'),'player:pause',()=>{this.player.pause();});
  },
  freeze:function(){
   if(document.visibilityState==='hidden')

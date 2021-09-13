@@ -548,14 +548,14 @@
     }
     .inner{
       @include abs($l:0,$r:0,$t:0,$b:0);
-      padding:10em 0 4em 0;
+      padding:8em 0 4em 0;
       opacity:0;
       background:center/cover;
       @include flx(display,flex);
       font-size:.6em;
     }
     .tabs{
-      width:29%;
+      width:33%;
       text-align:right;
       text-transform:uppercase;
       div{
@@ -579,14 +579,14 @@
       @include flx(flex-flow,'column nowrap');
     }
     .top{
-
+      margin-top:-.8em;
     }
     .h{
-      font-size:6em;
+      font-size:4em;
       font-weight:300;
     }
-    .descr{
-      margin-top:4em;
+    .desc{
+      margin-top:2em;
     }
     .container{
       @include flx(flex,'1 0 auto');
@@ -621,9 +621,12 @@
       &:nth-child(n+2){
         margin-top:4em;
       }
+      &.disabled{
+        opacity:.3;
+      }
     }
     .ach-img{
-      width:6em;
+      width:8em;
     }
     .ach-text{
       margin-left:2em;
@@ -639,7 +642,7 @@
       }
     }
     .pers-img{
-      width:16em;
+      width:13em;
       box-shadow:0 0.93em 2.3em rgba(#000,.25);
     }
     .pers-text{

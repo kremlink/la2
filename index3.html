@@ -239,7 +239,7 @@
                     <div class="desc">Text text text2</div>
                 </div>
                 <div class="block">
-                    <div class="h">Header3</div>
+                    <div class="h">Достижения (<span class="ach-ctr"></span>)</div>
                     <div class="desc">Text text text3</div>
                 </div>
                 <div class="block">
@@ -261,55 +261,42 @@
                             Load
                         </div>
                         <div class="block achievements">
-                            <div class="ach-item">
-                                <img src="images/3-17/img0.jpg" alt="" class="ach-img"/>
-                                <div class="ach-text">
-                                    <div class="ach-h">Header</div>
-                                    Text text text
-                                </div>
-                            </div>
-                            <div class="ach-item">
-                                <img src="images/3-17/img1.jpg" alt="" class="ach-img"/>
-                                <div class="ach-text">
-                                    <div class="ach-h">Header</div>
-                                    Text text text
-                                </div>
-                            </div>
-                            <div class="ach-item">
-                                <img src="images/3-17/img2.jpg" alt="" class="ach-img"/>
-                                <div class="ach-text">
-                                    <div class="ach-h">Header</div>
-                                    Text text text
-                                </div>
-                            </div>
+                        
                         </div>
                         <div class="block">
                             <div class="pers-item">
-                                <img src="images/3-17/img0.jpg" alt="" class="pers-img"/>
+                                <img src="images/info-pop/photo.jpg" alt="" class="pers-img"/>
                                 <div class="pers-text">
-                                    <div class="pers-h">Header</div>
-                                    Text text text
+                                    <div class="pers-h">Header1</div>
+                                    Text text text1
                                 </div>
                             </div>
                             <div class="pers-item">
-                                <img src="images/3-17/img0.jpg" alt="" class="pers-img"/>
+                                <img src="images/info-pop/photo.jpg" alt="" class="pers-img"/>
                                 <div class="pers-text">
-                                    <div class="pers-h">Header</div>
-                                    Text text text
+                                    <div class="pers-h">Header2</div>
+                                    Text text text2
                                 </div>
                             </div>
                             <div class="pers-item">
-                                <img src="images/3-17/img0.jpg" alt="" class="pers-img"/>
+                                <img src="images/info-pop/photo.jpg" alt="" class="pers-img"/>
                                 <div class="pers-text">
-                                    <div class="pers-h">Header</div>
-                                    Text text text
+                                    <div class="pers-h">Header3</div>
+                                    Text text text3
                                 </div>
                             </div>
                             <div class="pers-item">
-                                <img src="images/3-17/img0.jpg" alt="" class="pers-img"/>
+                                <img src="images/info-pop/photo.jpg" alt="" class="pers-img"/>
                                 <div class="pers-text">
-                                    <div class="pers-h">Header</div>
-                                    Text text text
+                                    <div class="pers-h">Header4</div>
+                                    Text text text4
+                                </div>
+                            </div>
+                            <div class="pers-item">
+                                <img src="images/info-pop/photo.jpg" alt="" class="pers-img"/>
+                                <div class="pers-text">
+                                    <div class="pers-h">Header5</div>
+                                    Text text text5
                                 </div>
                             </div>
                         </div>
@@ -361,9 +348,17 @@
         <% } %>
     </script>
 
-    <script type="text/template" id="ainfo-ach-template">
-    
-    </script>
+    <script type="text/template" id="info-ach-template">
+    <% for(let i=0;i<achievements.length;i++){ %>
+    <div class="ach-item<%= achievements[i].disabled?' disabled':'' %>">
+        <img class="ach-img" src="<%= achievements[i].img %>" />
+        <div class="ach-text">
+            <div class="ach-h"><%= achievements[i].h %></div>
+            <%= achievements[i].text %>
+        </div>
+    </div>
+    <% } %>
+</script>
 <script type="text/template" id="achievement-template">
     <img class="img" src="<%= img %>" />
     <div class="inner">

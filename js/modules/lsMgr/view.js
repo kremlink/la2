@@ -33,7 +33,7 @@ export let LsMgr=Backbone.View.extend({
   }).then((r)=>{return r.json()}).then((r)=>{
    if(!ini&&r.achievement)
     app.get('aggregator').trigger('achieve:show',r.achievement);
-   app.get('aggregator').trigger('info',r.achievements);
+   app.get('aggregator').trigger('info:populate',r);
    cb(r);
   });
  },

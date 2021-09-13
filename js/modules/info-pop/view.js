@@ -16,12 +16,17 @@ export let InfoPop=Backbone.View.extend({
  el:data.view.el,
  tabLen:0,
  scrollBar:null,
+ shown:false,
+ achTemplate:_.template($(data.view.ach.tmpl).html()),
  initialize:function(opts){
   app=opts.app;
-  this.listenTo(app.get('aggregator'),'info',this.populateAchievements);
+  this.listenTo(app.get('aggregator'),'info:populate',this.populateAchievements);
 
   this.$tabs=this.$(data.events.tab);
   this.$blocks=this.$(data.view.block);
+
+  this.$ach=this.$(data.view.ach.item);
+  this.$achCtr=this.$(data.view.ach.ctr);
 
   this.tabLen=this.$tabs.length;
 
@@ -46,20 +51,27 @@ export let InfoPop=Backbone.View.extend({
   });
  },
  toggle:function(){
-  this.$el.toggleClass(data.view.shownCls);
+  this.$el.toggleClass(data.view.shownCls,this.shown=!this.shown);
+  if(this.shown)
+   app.get('aggregator').trigger('player:pause');
  },
  tab:function(e){
   let tab=e?$(e.currentTarget):this.$tabs.eq(0),
       ind=e?this.$tabs.index(tab):0;
 
-  this.$tabs.removeClass(data.view.shownCls);
-  this.$blocks.removeClass(data.view.shownCls);
-  tab.addClass(data.view.shownCls);
-  this.$blocks.eq(ind).addClass(data.view.shownCls);
-  this.$blocks.eq(this.tabLen+ind).addClass(data.view.shownCls);
-  setTimeout(()=>this.scrollBar.resize(),0);
+  if(!tab.hasClass(data.view.shownCls))
+  {
+   this.$tabs.removeClass(data.view.shownCls);
+   this.$blocks.removeClass(data.view.shownCls);
+   tab.addClass(data.view.shownCls);
+   this.$blocks.eq(ind).addClass(data.view.shownCls);
+   this.$blocks.eq(this.tabLen+ind).addClass(data.view.shownCls);
+   setTimeout(()=>this.scrollBar.resize(),0);
+  }
  },
- populateAchievements:function(){
-  console.log('populate achievements');
+ populateAchievements:function(r){
+  this.$ach.html(this.achTemplate(r));
+  setTimeout(()=>this.scrollBar.resize(),0);
+  this.$achCtr.text(`${r.achievements.filter((o)=>!o.disabled).length}/${r.achievements.length}`);
  }
 });

@@ -1,6 +1,14 @@
-<script type="text/template" id="ainfo-ach-template">
-    
-    </script>
+<script type="text/template" id="info-ach-template">
+    <% for(let i=0;i<achievements.length;i++){ %>
+    <div class="ach-item<%= achievements[i].disabled?' disabled':'' %>">
+        <img class="ach-img" src="<%= achievements[i].img %>" />
+        <div class="ach-text">
+            <div class="ach-h"><%= achievements[i].h %></div>
+            <%= achievements[i].text %>
+        </div>
+    </div>
+    <% } %>
+</script>
 <script type="text/template" id="achievement-template">
     <img class="img" src="<%= img %>" />
     <div class="inner">

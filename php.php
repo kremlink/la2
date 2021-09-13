@@ -1,6 +1,7 @@
 {
- "achievements":[],
- "achievement":{"h":"Заголовок","text":"Текст","img":"images/achievements/ach1.jpg"},
+ "achievements":[{"h":"Заголовок1","text":"Текст1","img":"images/achievements/ach1.png"},{"h":"Заголовок2","text":"Текст2","img":"images/achievements/ach1.png"},
+ {"disabled":true,"h":"Заголовок3","text":"Текст3","img":"images/achievements/ach1.png"},{"h":"Заголовок4","text":"Текст4","img":"images/achievements/ach1.png"}],
+ "achievement":{"h":"Заголовок","text":"Текст","img":"images/achievements/ach1.png"},
  "data":{
   "1":{"savedTime":0},
   "2":{"savedTime":0},

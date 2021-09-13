@@ -6,6 +6,11 @@ export const data={
  view:{
   el:'.info-pop',
   block:'.block',
-  shownCls:'shown'
+  shownCls:'shown',
+  ach:{
+   item:'.achievements',
+   tmpl:'#info-ach-template',
+   ctr:'.ach-ctr'
+  }
  }
 };

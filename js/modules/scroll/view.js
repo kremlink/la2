@@ -33,8 +33,10 @@ export let Scroll={
 
     dims=toggler.call(this,u);
 
-    if(!opts.external)
-     u.$wrap.scrollTop(opts.value[0]*(dims.blockDim-dims.wrapDim)/opts.bounds[1]);
+    if(opts.resize)
+     u.$wrap.scrollTop(0);else
+     if(!opts.external)
+      u.$wrap.scrollTop(opts.value[0]*(dims.blockDim-dims.wrapDim)/opts.bounds[1]);
    }
   }
  }
