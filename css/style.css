@@ -2137,11 +2137,8 @@ body {
 .info-pop.shown {
   visibility: visible;
 }
-.info-pop.shown .caller img:nth-child(1) {
-  display: none;
-}
-.info-pop.shown .caller img:nth-child(2) {
-  display: block;
+.info-pop.shown .caller {
+  background-image: url(../images//icons/icon-close.svg);
 }
 .info-pop.shown .inner {
   opacity: 1;
@@ -2157,12 +2154,7 @@ body {
   cursor: pointer;
   visibility: visible;
   z-index: 1;
-}
-.info-pop .caller img {
-  width: 100%;
-}
-.info-pop .caller img:nth-child(2) {
-  display: none;
+  background: url(../images//icons/icon-menu.svg) center/cover no-repeat;
 }
 .info-pop .inner {
   position: absolute;
@@ -2187,6 +2179,7 @@ body {
 }
 .info-pop .tabs div.shown {
   color: rgba(255, 255, 255, 0.3);
+  cursor: auto;
 }
 .info-pop .tabs div.shown span {
   background: none;
@@ -2276,6 +2269,19 @@ body {
 .info-pop .art-ref {
   text-transform: uppercase;
   color: #e2a49b;
+  background: linear-gradient(90deg,rgba(226, 164, 155, 0.3) 1px,transparent 1px,transparent 1px) left calc(100% - 0px)/2px 1px repeat-x;
+  text-decoration: none;
+  position: relative;
+}
+.info-pop .art-ref:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -2em;
+  transform: translate(0, -50%);
+  width: 1em;
+  height: 1em;
+  background: url(../images//icons/icon-new.svg) center/cover no-repeat;
 }
 .info-pop .art-text {
   margin-top: 0.4em;
