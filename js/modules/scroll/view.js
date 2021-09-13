@@ -1,22 +1,30 @@
+let toggler=function(u){
+ let wrapDim=u.$wrap.height(),
+  blockDim=u.$block.height(),
+  hide=blockDim<=wrapDim;
+
+ if(!hide)
+  this.get('setBarDim',[wrapDim/blockDim*this.get('getData').holderDim]);
+ this.get('getData').container[(hide?'add':'remove')+'Class'](u.cls);
+ u.$wrap[(hide?'add':'remove')+'Class'](u.cls);
+
+ return {wrapDim:wrapDim,blockDim:blockDim};
+};
+
 export let Scroll={
- events:function(wrapDim,blockDim){
+ events:function(){
+  let dims;
+
   return {
    init:function(){
-    let u=this.get('data').extra,
-     hide;
+    let u=this.get('data').extra;
 
-    wrapDim=u.$wrap.height();
-    blockDim=u.$block.height();
-    hide=blockDim<=wrapDim;
-
-    if(!hide)
-     this.get('setBarDim',[wrapDim/blockDim*this.get('getData').holderDim]);
-    this.get('getData').container[(hide?'add':'remove')+'Class'](u.cls);
-    u.$wrap[(hide?'add':'remove')+'Class'](u.cls);
+    dims=toggler.call(this,u);
 
     u.$wrap.on('scroll',()=>{
+     console.log(dims);
      this.get('setPosition',{
-      value:[u.$wrap.scrollTop()*this.get('getData').bounds[1]/(blockDim-wrapDim)],
+      value:[u.$wrap.scrollTop()*this.get('getData').bounds[1]/(dims.blockDim-dims.wrapDim)],
       external:true
      });
     });
@@ -24,8 +32,10 @@ export let Scroll={
    change:function(e,opts){
     let u=this.get('data').extra;
 
+    dims=toggler.call(this,u);
+
     if(!opts.external)
-     u.$wrap.scrollTop(opts.value[0]*(blockDim-wrapDim)/opts.bounds[1]);
+     u.$wrap.scrollTop(opts.value[0]*(dims.blockDim-dims.wrapDim)/opts.bounds[1]);
    }
   }
  }

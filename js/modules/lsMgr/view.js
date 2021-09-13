@@ -32,7 +32,7 @@ export let LsMgr=Backbone.View.extend({
    credentials:'include'
   }).then((r)=>{return r.json()}).then((r)=>{
    if(!ini&&r.achievement)
-    app.get('aggregator').trigger('achieve',r.achievement);
+    app.get('aggregator').trigger('achieve:show',r.achievement);
    app.get('aggregator').trigger('info',r.achievements);
    cb(r);
   });

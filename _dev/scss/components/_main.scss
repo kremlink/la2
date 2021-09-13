@@ -154,6 +154,14 @@
     background:center/cover no-repeat;
   }
   //---
+  .t-scroll-wrap{
+    height:100%;
+    overflow:auto;
+  }
+  .t-scroll-inner{
+    position:relative;
+  }
+
   .t-scroll-bar{
     @include abs($t:.5em,$b:.5em,$r:.3em);
     width:0.6em;
@@ -499,85 +507,179 @@
       //animation:3s forwards linear achiev;
     }
     .close{
-      width:2em;
-      height:2em;
+      width:2.5em;
+      height:2.5em;
       @include center($r:0);
       cursor:pointer;
     }
     .into{
       @include flx(display,flex);
       @include flx(align-items,center);
+      height:100%;
     }
     .img{
       width:3em;
       margin-left:1em;
     }
     .inner{
-      margin-left:1.5em;
+      margin:0 2.5em 0 1.5em;
+      @include flx(flex,'1 0 auto');
+      font-size:.65em;
     }
     .h{
       text-transform:uppercase;
     }
     .text{
-      margin-top:.8em;
+      margin-top:.6em;
     }
   }
   //---
   .info-pop{
-    @include abs($l:0,$r:0,$b:0,$t:0);
+    width:100%;
+    height:56.25vw; //h:w=9/16
+    max-height:100vh;
+    max-width:177.7777vh; //16/9=1.778
+    @include center();
     visibility:hidden;
     z-index:2;
+    color:#fff;
     &.shown{
       visibility:visible;
       .caller{
-        visibility:hidden;
+        background:rgba(#fff,.5);
       }
-      .close-bg,.inner{
+      .inner{
         opacity:1;
         @include trs('opacity #{$anim} ease-in-out');
       }
     }
     .caller{
-      @include abs($t:0,$r:0);
+      @include abs($t:2em,$r:2em);
       text-align:center;
-      width:5em;
-      padding:1em;
+      width:2em;
+      height:2em;
       background:#fff;
-      border-radius:0 0 0 .3em;
-      z-index:2;
       cursor:pointer;
       visibility:visible;
-    }
-    .close-bg{
-      width:100%;
-      height:100%;
-      cursor:pointer;
-      background:rgba(#000,0.6);
-      opacity:0;
+      z-index:1;
     }
     .inner{
-      @include center();
-      width:30em;
-      height:30em;
-      padding:1em;
-      background:#ddd;
+      @include abs($l:0,$r:0,$t:0,$b:0);
+      padding:10em 0 4em 0;
       opacity:0;
+      background:center/cover;
+      @include flx(display,flex);
+      font-size:.6em;
     }
-    .close{
-      padding:0 .5em;
-      color:#f00;
-      @include abs($t:0,$r:0);
-      cursor:pointer;
-      font-size:2em;
-      line-height:1em;
+    .tabs{
+      width:29%;
+      text-align:right;
+      text-transform:uppercase;
+      div{
+        cursor:pointer;
+        margin-bottom:.9em;
+        &.shown{
+          color:rgba(#fff,.3);
+          span{
+            background:none;
+          }
+        }
+      }
+      span{
+        @include grad-ref($c:rgba(#fff,.3),$d:true);
+      }
+    }
+    .content{
+      margin-left:6em;
+      @include flx(flex,'1 0 auto');
+      @include flx(display,flex);
+      @include flx(flex-flow,'column nowrap');
+    }
+    .top{
+
     }
     .h{
-      height:2em;
-      background:linear-gradient(90deg,#DF8998,#E5B99D 90%);
-      margin:-1em -1em 1em -1em;
+      font-size:6em;
+      font-weight:300;
+    }
+    .descr{
+      margin-top:4em;
+    }
+    .container{
+      @include flx(flex,'1 0 auto');
+      overflow:hidden;
+      position:relative;
+      margin-top:4em;
+      .block{
+        //position:absolute;
+        //width:100%;
+        //height:100%;
+      }
+    }
+    .t-scroll-wrap{
+      @include abs($l:0,$r:0);
+    }
+    .t-scroll-bar{
+      background:rgba(#fff,.3);
+      div{
+        background:rgba(#fff,.5);
+      }
+    }
+    .block{
+      display:none;
+      &.shown{
+        display:block;
+      }
+    }
+
+    .ach-item{
+      @include flx(display,flex);
+      @include flx(align-items,center);
+      &:nth-child(n+2){
+        margin-top:4em;
+      }
+    }
+    .ach-img{
+      width:6em;
+      margin-left:2em;
+    }
+    .ach-text{
+      margin-left:2em;
+    }
+    .ach-h{
+      text-transform:uppercase;
+      margin-bottom:.4em;
+    }
+    .pers-item{
+      @include flx(display,flex);
+      &:nth-child(n+2){
+        margin-top:4em;
+      }
+    }
+    .pers-img{
+      width:16em;
+    }
+    .pers-text{
+      margin-left:4em;
+    }
+    .pers-h{
+      text-transform:uppercase;
+      margin-bottom:.4em;
+    }
+    .art-item{
+      &:nth-child(n+2){
+        margin-top:4em;
+      }
+    }
+    .art-ref{
+      text-transform:uppercase;
+      color:getc(digit);
+    }
+    .art-text{
+      margin-top:.4em;
     }
   }
-
+//---
   .smooth{
     width:100%;
     height:100%;

@@ -123,8 +123,7 @@ export let MainView=Backbone.View.extend({
    ls.data[epIndex].interactive=this.intData.index;
    this.lsMgr.setData(ls);
    app.get('aggregator').trigger('ls:save',{interactive:tD.data.interactive});
-   if(tD.data.achievement)
-    this.achieve(tD.data.achievement);
+   this.player.pause();
   }else
   {
    if(!this.interactives[int])

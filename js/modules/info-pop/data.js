@@ -1,10 +1,11 @@
 export const data={
  events:{
-  'hide':'.close,.close-bg',
-  'caller':'.caller'
+  'caller':'.caller',
+  'tab':'.tabs div'
  },
  view:{
   el:'.info-pop',
+  block:'.block',
   shownCls:'shown'
  }
 };

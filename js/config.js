@@ -71,8 +71,9 @@ export let config={
     //src:'3',
     src:'oceans',
     timecodes:[
-     {start:1,end:2,back:.2,invoked:false,data:{interactive:'Loop'}},
-     //{start:.1,end:4,back:.2,invoked:false,data:{interactive:'Browser'}},
+     //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1'}},
+     //{start:.3,end:1,back:.2,invoked:false,data:{interactive:'Loop'}},
+     {start:.1,end:4,back:.2,invoked:false,data:{interactive:'Browser'}},
      //{start:5,end:6,back:.2,invoked:false,data:{interactive:'Qs1'}}
      /*{start:20.92,end:20.96,back:.2,invoked:false,data:{interactive:'Loop'}},
      {start:21.88,end:21.92,back:.2,invoked:false,data:{interactive:'Browser'}},

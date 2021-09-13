@@ -13,13 +13,17 @@ export let AchievePop=Backbone.View.extend({
  template:_.template($(data.view.template).html()),
  initialize:function(opts){
   app=opts.app;
-  this.listenTo(app.get('aggregator'),'achieve',this.achieve);
+
+  this.$into=this.$(data.view.into);
+  this.listenTo(app.get('aggregator'),'achieve:show',this.achieve);
  },
  achieve:function(r){
-  this.$el.removeClass(data.view.shownCls).html(this.template(r));
+  this.$el.removeClass(data.view.shownCls);
+  this.$into.html(this.template(r));
   setTimeout(()=>this.$el.addClass(data.view.shownCls),100);
  },
  hide:function(){
   this.$el.removeClass(data.view.shownCls);
+  app.get('aggregator').trigger('achieve:hide');
  }
 });

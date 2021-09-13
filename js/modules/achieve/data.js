@@ -4,6 +4,7 @@ export const data={
  },
  view:{
   el:'.achievement-pop',
+  into:'.into',
   template:'#achievement-template',
   shownCls:'shown'
  }
