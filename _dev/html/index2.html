@@ -301,45 +301,7 @@
                     </div>
                 </div>
             </div>
-            <div class="start-pop">
-                <!--<div class="text">
-                    Какой-то текст, если нужен
-                </div>-->
-                <div class="start">
-                    <img src="images/startscreen-btn-h.png" alt=""/>
-                    <img src="images/startscreen-btn.png" alt=""/>
-                </div>
-            </div>
-            <div class="s-ctrls">
-                <div class="continue">
-                    <img src="images/startscreen-btn-continue.svg" alt=""/>
-                    <img src="images/startscreen-btn-continue-h.svg" alt=""/>
-                </div>
-                <div class="clr hoverable">
-                    <img src="images/startscreen-btn-restart.svg" alt=""/>
-                    <img src="images/startscreen-btn-restart-h.svg" alt=""/>
-                </div>
-            </div>
-            <div class="loader-pop">
-                <div class="l"></div>
-            </div>
-            <div class="orientation-pop">
-                <div class="text">
-                    Экран слишком мал :(<br/>
-                    Переверните устройство или используйте компьютер, инспектор.
-                </div>
-            </div>
-            <div class="special-btns"></div>
-            <div class="achievement-pop"></div>
-            <div class="info-pop-caller">Жми сюды</div>
-            <div class="info-pop">
-                <div class="close-bg"></div>
-                <div class="inner">
-                    <div class="close">&times;</div>
-                    <div class="h"></div>
-                    Тут будет всякая инфа, ачивки и прочее
-                </div>
-            </div>
+            @@include('components/shared.html')
 		</div>
     <script type="text/template" id="i-2-28-template">
         <div class="ovl">
@@ -381,27 +343,6 @@
         </div>
         <% } %>
     </script>
-        <script type="text/template" id="ext-player-template">
-            <a href="" class="return hoverable">
-                <img src="images/player-close.svg" alt=""/>
-                <img src="images/player-close-h.svg" alt=""/>
-            </a>
-            <input type="checkbox" />
-            <div class="sp-toggle">
-                <div class="hoverable">
-                    <img src="images/player-ch-btn-open.svg" alt=""/>
-                    <img src="images/player-ch-btn-open-h.svg" alt=""/>
-                </div>
-                <div class="hoverable">
-                    <img src="images/player-ch-btn-collapse.svg" alt=""/>
-                    <img src="images/player-ch-btn-collapse-h.svg" alt=""/>
-                </div>
-            </div>
-            <div class="step-btns">
-                <% for(let i=0;i<choose.length;i++){ %>
-                <div class="int-ind-back<%= choose[i]?' enabled':' ' %>"><span><%= i+1 %></span></div>
-                <% } %>
-            </div>
-        </script>
+    @@include('components/shared-tmpls.html')
 	</body>
 </html>

@@ -1,5 +1,10 @@
 {
  "achievements":[],
  "achievement":{"h":"Заголовок","text":"Текст","img":"images/achievements/ach1.jpg"},
- "data":{"3":{"savedTime":0}}
+ "data":{
+  "1":{"savedTime":0},
+  "2":{"savedTime":0},
+  "3":{"savedTime":0},
+  "4":{"savedTime":0}
+ }
 }

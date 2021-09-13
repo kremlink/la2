@@ -11,7 +11,10 @@ export const data={
  view:{
   el:'.video-js',
   goOn:'.continue',
-  extTemplate:'#ext-player-template',
-  $extra:'.special-btns'
+  steps:{
+   item:'.special-btns .inner',
+   tmpl:'#ext-player-template',
+   step:'.int-ind-back'
+  }
  }
 };

@@ -11,7 +11,7 @@ events[`click ${data.events.iiBack}`]='iiBack';
 export let PlayerView=Backbone.View.extend({
  events:events,
  el:data.view.el,
- extTemplate:null,
+ stepsTemplate:null,
  pData:null,
  qual:null,
  pausable:true,
@@ -21,14 +21,12 @@ export let PlayerView=Backbone.View.extend({
   app=opts.app;
   data=app.configure({player:dat}).player;
 
-  let ext=$(data.view.extTemplate);
-
   epIndex=app.get('epIndex');
   lsMgr=opts.lsMgr;
 
-  this.$extra=$(data.view.$extra);
+  this.$steps=$(data.view.steps.item).on('click',data.view.steps.step,(e)=>this.iiBack.call(this,e));//TODO:maybe separate module for steps?
 
-  this.extTemplate=ext.length?_.template($(data.view.extTemplate).html()):()=>{};
+  this.stepsTemplate=$(data.view.steps.tmpl).length?_.template($(data.view.steps.tmpl).html()):()=>{};
   this.pData=$.extend(true,{},data.data[epIndex]);
   this.qual=[...data.quality];
   this.player=videojs(this.el,{
@@ -96,7 +94,7 @@ export let PlayerView=Backbone.View.extend({
    return arr;
   })();
 
-  this.$extra.html(this.extTemplate({choose:choose}));
+  this.$steps.html(this.stepsTemplate({choose:choose}));
  },
  setGoOn:function(){
   this.goOn=true;
@@ -106,7 +104,6 @@ export let PlayerView=Backbone.View.extend({
   let touched={};
 
   this.setElement(data.view.el);
-  this.$el.append(this.$extra);
   this.changeSrc(this.pData.src);
 
   this.player.controlBar.addChild('QualitySelector');

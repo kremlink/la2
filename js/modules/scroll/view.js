@@ -22,7 +22,6 @@ export let Scroll={
     dims=toggler.call(this,u);
 
     u.$wrap.on('scroll',()=>{
-     console.log(dims);
      this.get('setPosition',{
       value:[u.$wrap.scrollTop()*this.get('getData').bounds[1]/(dims.blockDim-dims.wrapDim)],
       external:true
