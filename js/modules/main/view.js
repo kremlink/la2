@@ -64,7 +64,7 @@ export let MainView=Backbone.View.extend({
   this.listenTo(app.get('aggregator'),'player:back',this.hide);
   this.listenTo(app.get('aggregator'),'player:interactive',this.step);
   this.listenTo(app.get('aggregator'),'player:timeupdate',throttle);
-  this.listenTo(app.get('aggregator'),'player:goOn',this.setGoOn);
+  //this.listenTo(app.get('aggregator'),'player:goOn',this.setGoOn);
 
   $(window).on('visibilitychange pagehide',()=>app.get('aggregator').trigger('page:state'));
 
@@ -84,9 +84,9 @@ export let MainView=Backbone.View.extend({
   ls.data[epIndex].savedTime=currTime;
   this.lsMgr.setData(ls);
  },
- setGoOn:function(){
+ /*setGoOn:function(){
   this.goOn=true;
- },
+ },*/
  toggle:function({show:show,opts}){
   let tD=this.intData.data,
       ls=this.lsMgr.getData();

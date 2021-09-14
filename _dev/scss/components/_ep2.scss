@@ -154,7 +154,7 @@
         &.d1{
           width:calc(1002/102*var(--h));
           padding-left:calc(0.098*var(--h));
-          bottom:4em;
+          bottom:7em;
           .roller{
             width:10%;
             padding-bottom:10%;
@@ -163,7 +163,7 @@
           }
           .l{
             @include abs($l:-15%,$r:-15%,$t:-15%,$b:-15%);
-            margin-left:calc(-0.098/2*var(--h));
+            margin-left:calc(-0.098/1.5*var(--h));
           }
           .ph{
             width:10%;
@@ -219,15 +219,16 @@
             &.shown{
               &~.roller{
                 display:block;
+                margin-left:.2%;
               }
               &:nth-child(4)~.roller{
-                left:calc(300% / 11);
+                left:calc(300% / 11.05);
               }
               &:nth-child(7)~.roller{
-                left:calc(600% / 11);
+                left:calc(600% / 11.05);
               }
               &:nth-child(10)~.roller{
-                left:calc(900% / 11);
+                left:calc(900% / 11.05);
               }
             }
             &:nth-child(1){
@@ -238,11 +239,11 @@
         &.d3{
           width:calc(702/102*var(--h));
           padding-left:calc(0.098*var(--h));
-          bottom:3em;
+          bottom:4em;
           .roller{
             width:calc(100%/7);
             padding-bottom:calc(100%/7);
-            left:calc(0.098 / 2 * var(--h));
+            margin-left:-1%;
             display:none;
           }
           .l{

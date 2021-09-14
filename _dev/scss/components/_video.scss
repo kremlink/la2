@@ -6,7 +6,6 @@
     $lbrn:rgb(176,172,164);
     $mbrn:rgb(107,100,88);
     $brn:rgb(65,59,50);
-    $size:4em;
     color:$lbrn;
     .nope &{
       pointer-events:none;
@@ -24,11 +23,11 @@
       background: url(#{$path}loader.png) no-repeat;
     }
     .vjs-control-bar{
-      //left:3%;
-      //right:3%;
-      left:30%;
-      right:30%;
-      bottom:4em;
+      left:3%;
+      right:3%;
+      //left:30%;
+      //right:30%;
+      bottom:4.6em;
       width:auto;
       height:0;
       background:none;
@@ -45,6 +44,9 @@
     }
     .vjs-play-control{
       order:1;
+      width:6.6em;
+      height:6.6em;
+      top:-6.6em;
       &.vjs-playing .vjs-icon-placeholder:before{
         content:'';
         background-image: url(#{$path}player/icon-pause.svg);
@@ -59,6 +61,9 @@
       }
     }
     .vjs-mute-control{
+      width:4.4em;
+      height:4.4em;
+      top:-5.1em;
       &.vjs-vol-0 .vjs-icon-placeholder:before{
         content:'';
         background-image: url(#{$path}player/icon-sound-no.svg);
@@ -71,6 +76,10 @@
         content:'';
         background-image: url(#{$path}player/icon-sound-low.svg);
       }
+      &:before{
+        content:'';
+        @include abs($t:-1em,$b:0,$l:0,$r:0);
+      }
       .vjs-icon-placeholder:before{
         content:'';
         background-image: url(#{$path}player/icon-sound-high.svg);
@@ -81,17 +90,17 @@
         pointer-events:auto;
       }
       &.vjs-volume-panel-vertical{
-        width:$size;
+        width:4.4em;
         height:0;
         top:0;
       }
       .vjs-volume-control.vjs-volume-vertical{
         //background: url(#{$path}player-sound-bg.svg) no-repeat;
         background:rgba(#000,.25);
-        width:4em;
+        width:4.4em;
         height:16em;
-        left:-4em;
-        top:-20em;
+        left:-4.4em;
+        top:-22em;
         pointer-events:none;
         transition:none;
         display:none;
@@ -173,11 +182,8 @@
 
     .vjs-control{
       //text-shadow:0 6px 0 $brn;
-      width:$size;
-      height:$size;
-      top:-$size;
       &.vjs-progress-control{
-        //pointer-events:none;//TODO:uncomment
+        pointer-events:none;//TODO:uncomment
         @include abs($l:0,$r:0,$t:1.5em);
         width:auto;
         height:auto;
@@ -193,6 +199,12 @@
       &.vjs-time-control{
         text-shadow:none;
         display:none;
+        &.vjs-remaining-time{
+          display:block;
+          color:#fff;
+          font-size:1.5em;
+          @include abs($r:3em,$t:-3.5em);
+        }
       }
       &.vjs-menu-button-popup .vjs-icon-placeholder{
         //text-shadow:0 6px 0 $brn;
@@ -202,30 +214,47 @@
         text-shadow:none;
       }
       &.vjs-quality-selector{
+        top:-5.1em;
+        width:4.4em;
+        height:4.4em;
         order:1;
       }
     }
 
     .vjs-menu-button-popup .vjs-menu{
-      width:5em;
+      width:5.4em;
       left:-.5em;
+      bottom:2.5em;
+      height:2em;
       border:none;
       text-shadow:none;
+      color:rgba(#fff,.6);
       .vjs-menu-content{
-        background:#564f44;
+        background:rgba(#000,.75);
+        padding:.3em 0 .8em 0;
+        border-radius:.3em;
+        overflow:visible;
+        &:before{
+          content:'';
+          @include tri($d:bottom,$s1:.3em,$s2:.3em,$c:rgba(#000,.75));
+          @include center($b:-.3em);
+        }
       }
-      .vjs-menu-item:hover{
-        background:$mbrn;
+      /*.vjs-menu-item:hover{
+
+      }*/
+      .vjs-menu-item{
+        margin-top:.5em;
       }
       .vjs-selected,.vjs-selected:focus,.vjs-selected:hover{
-        background:$lbrn;
+        color:#fff;
+        background:none;
       }
     }
   }
   .vjs-quality-selector{
     .vjs-menu-button{
-      height: 100%;
-      width: 100%;
+
     }
     .vjs-button >.vjs-icon-placeholder {
       // From video.js font: https://github.com/videojs/font

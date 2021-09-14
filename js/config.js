@@ -46,8 +46,8 @@ export let config={
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
      //{start:1,end:2,back:1,invoked:false,data:{interactive:'Fork',alt:2}},
-     //{start:3,end:4,back:3,invoked:false,data:{interactive:'Packing'}},
-     //{start:5,end:6,back:5,invoked:false,data:{interactive:'Team'}}
+     {start:3,end:4,back:3,invoked:false,data:{interactive:'Packing'}},
+     {start:5,end:6,back:5,invoked:false,data:{interactive:'Team'}}
      /*{start:54.12,end:54.64,noBg:true,back:.1,invoked:false,data:{interactive:'Fork',alt:112.56}},
      {start:186.92,end:187.44,back:.2,invoked:false,data:{interactive:'Packing'}},
      {start:247.4,end:247.92,back:0.1,invoked:false,data:{interactive:'Team'}}*/
@@ -57,10 +57,10 @@ export let config={
     src:'2',
     //src:'oceans',
     timecodes:[
-     {start:1,end:2,back:1,invoked:false,data:{interactive:'Ring'}},
-     {start:3,end:4,back:3,invoked:false,data:{interactive:'Qs'}},
-     {start:5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth'}},
-     {start:7,end:8,back:7,invoked:false,data:{interactive:'Fix'}}
+     //{start:1,end:2,back:1,invoked:false,data:{interactive:'Ring'}},
+     //{start:3,end:4,back:3,invoked:false,data:{interactive:'Qs'}},
+     //{start:5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth'}},
+     {start:1,end:8,back:7,invoked:false,data:{interactive:'Fix'}}
      /*{start:8.36,end:9.36,back:.2,invoked:false,data:{interactive:'Ring'}},
      {start:53.76,end:54.76,back:.2,invoked:false,data:{interactive:'Qs'}},
      {start:104.12,end:105.12,back:.2,invoked:false,data:{interactive:'Labyrinth'}},

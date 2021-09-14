@@ -1,4 +1,5 @@
 {
+ "user":{"sid":12345},
  "achievements":[{"h":"Заголовок1","text":"Текст1","img":"images/achievements/ach1.png"},{"h":"Заголовок2","text":"Текст2","img":"images/achievements/ach1.png"},
  {"disabled":true,"h":"Заголовок3","text":"Текст3","img":"images/achievements/ach1.png"},{"h":"Заголовок4","text":"Текст4","img":"images/achievements/ach1.png"}],
  "achievement":{"h":"Заголовок","text":"Текст","img":"images/achievements/ach1.png"},

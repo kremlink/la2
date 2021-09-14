@@ -37,7 +37,8 @@ export let PlayerView=Backbone.View.extend({
      progressControl:{},
      currentTimeDisplay:{},
      timeDivider:{},
-     durationDisplay:{}
+     durationDisplay:{},
+     remainingTimeDisplay:{}
     }
    },
    plugins:{
@@ -99,7 +100,7 @@ export let PlayerView=Backbone.View.extend({
  },
  setGoOn:function(){
   this.goOn=true;
-  app.get('aggregator').trigger('player:goOn');
+  //app.get('aggregator').trigger('player:goOn');
  },
  prepare:function(){
   let touched={};

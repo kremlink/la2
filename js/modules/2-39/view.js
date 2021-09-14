@@ -40,7 +40,7 @@ export let FixView=BaseIntView.extend({
    renderer:'svg',
    loop:true,
    autoplay:true,
-   animationData:lData
+   animationData:lData.btn
   });
 
   this.$(`${data.events.lArr},${data.events.rArr}`).each(function(){

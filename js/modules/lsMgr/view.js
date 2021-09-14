@@ -27,7 +27,7 @@ export let LsMgr=Backbone.View.extend({
   this.listenTo(app.get('aggregator'),'ls:save',this.sendData);
  },
  sendData:function({ini=false,interactive=null,value=null,cb=()=>{}}){
-  fetch(data.url+JSON.stringify({episode:epIndex,time:this.getData().data[epIndex].savedTime,interactive:interactive,value:value}),{
+  fetch(data.url+JSON.stringify({sid:this.getData().user.sid,episode:epIndex,time:this.getData().data[epIndex].savedTime,interactive:interactive,value:value}),{
    method:'get',
    credentials:'include'
   }).then((r)=>{return r.json()}).then((r)=>{

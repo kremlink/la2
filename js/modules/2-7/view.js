@@ -42,7 +42,7 @@ export let RingView=BaseIntView.extend({
  digiActive:0,
  digiCurr:0,
  timeIsUp:false,
- date:[...Array.from((month>9?'':'0')+now.getDate().toString()),...Array.from((month>9?'':'0')+month.toString()),...now.getFullYear().toString()].map((o)=>+o),
+ date:[...Array.from((month+1>9?'':'0')+now.getDate().toString()),...Array.from((month>9?'':'0')+month.toString()),...now.getFullYear().toString()].map((o)=>+o),
  initialize:function(opts){
   let self=this;
 
@@ -93,9 +93,11 @@ export let RingView=BaseIntView.extend({
 
   this.setIniDigit();
 
-  //this.next();//TODO:remove
-  //this.next();//TODO:remove
-  //this.next();//TODO:remove
+  /*this.next();//TODO:remove
+  this.next();//TODO:remove
+  this.next();//TODO:remove
+  this.next();//TODO:remove
+  this.next();//TODO:remove*/
  },
  progEnd:function(){
   this.timeIsUp=true;

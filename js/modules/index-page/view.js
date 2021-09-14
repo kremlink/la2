@@ -10,7 +10,7 @@ let app,
 
 let events={};
 events[`click ${data.events.start}`]='start';
-events[`click ${data.events.goOn}`]='goOn';
+//events[`click ${data.events.goOn}`]='goOn';
 events[`click ${data.events.clr}`]='clr';
 
 export let Index=Backbone.View.extend({
@@ -46,14 +46,15 @@ export let Index=Backbone.View.extend({
   lsMgr.sendData({ini:true,cb:(r)=>{
     let lsData=lsMgr.getData();
 
-    if(lsData.data[epIndex].savedTime||r.data[epIndex].savedTime)
-     this.$el.addClass(data.view.goOnCls);
+    /*if(lsData.data[epIndex].savedTime||r.data[epIndex].savedTime)
+     this.$el.addClass(data.view.goOnCls);*/
+
+    lsData.user.sid=r.user.sid;
 
     if(r.data[epIndex].savedTime)
-    {
      lsData.data[epIndex].savedTime=r.data[epIndex].savedTime;
-     lsMgr.setData(lsData);
-    }
+
+    lsMgr.setData(lsData);
 
     this.prepare();
    }});
@@ -85,28 +86,38 @@ export let Index=Backbone.View.extend({
    this.main.addPlayer(new PlayerView({app:app,lsMgr:lsMgr}));
   });
  },
- goOn:function(){
+ /*goOn:function(){
   let ls=lsMgr.getData().data[epIndex];
 
   this.$el.addClass(data.view.startCls);
   this.main.player.setGoOn();
   this.main.player.play({time:ls.savedTime,interactive:ls.interactive});
- },
+ },*/
  clr:function(){
   lsMgr.resetData(true);
   this.$el.removeClass(data.view.goOnCls);
  },
  loaded:function(){
   this.$el.addClass(data.view.loadedCls);
-  this.start();//TODO:remove
+  //this.start();//TODO:remove
+  //setTimeout(()=>this.main.player.pause(),500);//TODO:remove
  },
  disable:function(f){
   this.$el.toggleClass(data.view.nopeCls,f);
  },
  start:function(){
+  let ls=lsMgr.getData().data[epIndex];
+  
   this.$el.addClass(data.view.startCls);
-  lsMgr.resetData();
-  this.main.player.play();
+  if(ls.savedTime)
+  {
+   this.main.player.setGoOn();
+   this.main.player.play({time:ls.savedTime,interactive:ls.interactive});
+  }else
+  {
+   //lsMgr.resetData();
+   this.main.player.play();
+  }
   app.get('aggregator').trigger('sound','btn');
  },
  pause:function(opts){
