@@ -45,9 +45,9 @@ export let config={
     //src:'oceans',
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
-     {start:1,end:2,back:1,invoked:false,data:{interactive:'Fork',alt:2}},
-     {start:3,end:4,back:3,invoked:false,data:{interactive:'Packing'}},
-     {start:5,end:6,back:5,invoked:false,data:{interactive:'Team'}}
+     //{start:1,end:2,back:1,invoked:false,data:{interactive:'Fork',alt:2}},
+     //{start:3,end:4,back:3,invoked:false,data:{interactive:'Packing'}},
+     //{start:5,end:6,back:5,invoked:false,data:{interactive:'Team'}}
      /*{start:54.12,end:54.64,noBg:true,back:.1,invoked:false,data:{interactive:'Fork',alt:112.56}},
      {start:186.92,end:187.44,back:.2,invoked:false,data:{interactive:'Packing'}},
      {start:247.4,end:247.92,back:0.1,invoked:false,data:{interactive:'Team'}}*/
@@ -84,7 +84,7 @@ export let config={
     src:'4',
     //src:'oceans',
     timecodes:[
-     {start:1,end:2,back:1,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''}}},
+     {start:1,end:2,back:1,invoked:false,data:{interactive:'Qs',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}},
      {start:3,end:4,back:3,invoked:false,data:{interactive:'Fork',alt:3,diff:true}},
      {start:5,end:6,back:5,invoked:false,data:{interactive:'Tablets'}}
      /*{start:211.4,end:212.4,back:.2,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''}}},

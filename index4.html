@@ -266,27 +266,32 @@
         </div>
         <% } %>
     </script>
-        <script type="text/template" id="ext-player-template">
-            <a href="" class="return hoverable">
-                <img src="images/player-close.svg" alt=""/>
-                <img src="images/player-close-h.svg" alt=""/>
-            </a>
-            <input type="checkbox" />
-            <div class="sp-toggle">
-                <div class="hoverable">
-                    <img src="images/player-ch-btn-open.svg" alt=""/>
-                    <img src="images/player-ch-btn-open-h.svg" alt=""/>
-                </div>
-                <div class="hoverable">
-                    <img src="images/player-ch-btn-collapse.svg" alt=""/>
-                    <img src="images/player-ch-btn-collapse-h.svg" alt=""/>
-                </div>
-            </div>
-            <div class="step-btns">
-                <% for(let i=0;i<choose.length;i++){ %>
-                <div class="int-ind-back<%= choose[i]?' enabled':' ' %>"><span><%= i+1 %></span></div>
-                <% } %>
-            </div>
-        </script>
+    <script type="text/template" id="info-ach-template">
+    <% for(let i=0;i<achievements.length;i++){ %>
+    <div class="ach-item<%= achievements[i].disabled?' disabled':'' %>">
+        <img class="ach-img" src="<%= achievements[i].img %>" />
+        <div class="ach-text">
+            <div class="ach-h"><%= achievements[i].h %></div>
+            <%= achievements[i].text %>
+        </div>
+    </div>
+    <% } %>
+</script>
+<script type="text/template" id="achievement-template">
+    <img class="img" src="<%= img %>" />
+    <div class="inner">
+        <div class="h"><%= h %></div>
+        <div class="text"><%= text %></div>
+    </div>
+</script>
+<script type="text/template" id="ext-player-template">
+    <input type="checkbox" />
+    <img class="icon" src="images/icons/icon-bookmark.svg" alt=""/>
+    <div class="step-btns">
+        <% for(let i=0;i<choose.length;i++){ %>
+        <div class="int-ind-back<%= choose[i]?' enabled':' ' %>"><span><%= i+1 %></span></div>
+        <% } %>
+    </div>
+</script>
 	</body>
 </html>

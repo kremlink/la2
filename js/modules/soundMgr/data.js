@@ -3,8 +3,8 @@ export const data={
  src:{
   'btn':{src:'click',loop:false},
   'btn-h':{src:'hover',loop:false},
-  'bg':{src:'music',loop:true},
-  'close':{src:'close',loop:false},
-  'open':{src:'open',loop:false}
+  'bg':{src:'bg',loop:true},
+  'yes':{src:'yes',loop:false},
+  'no':{src:'no',loop:false}
  }
 };

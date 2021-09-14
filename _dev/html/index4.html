@@ -111,27 +111,6 @@
         </div>
         <% } %>
     </script>
-        <script type="text/template" id="ext-player-template">
-            <a href="" class="return hoverable">
-                <img src="images/player-close.svg" alt=""/>
-                <img src="images/player-close-h.svg" alt=""/>
-            </a>
-            <input type="checkbox" />
-            <div class="sp-toggle">
-                <div class="hoverable">
-                    <img src="images/player-ch-btn-open.svg" alt=""/>
-                    <img src="images/player-ch-btn-open-h.svg" alt=""/>
-                </div>
-                <div class="hoverable">
-                    <img src="images/player-ch-btn-collapse.svg" alt=""/>
-                    <img src="images/player-ch-btn-collapse-h.svg" alt=""/>
-                </div>
-            </div>
-            <div class="step-btns">
-                <% for(let i=0;i<choose.length;i++){ %>
-                <div class="int-ind-back<%= choose[i]?' enabled':' ' %>"><span><%= i+1 %></span></div>
-                <% } %>
-            </div>
-        </script>
+    @@include('components/shared-tmpls.html')
 	</body>
 </html>
