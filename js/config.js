@@ -58,9 +58,9 @@ export let config={
     //src:'oceans',
     timecodes:[
      //{start:1,end:2,back:1,invoked:false,data:{interactive:'Ring'}},
-     //{start:3,end:4,back:3,invoked:false,data:{interactive:'Qs'}},
-     //{start:5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth'}},
-     {start:1,end:8,back:7,invoked:false,data:{interactive:'Fix'}}
+     {start:3,end:4,back:3,invoked:false,data:{interactive:'Qs'}},
+     {start:5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth'}},
+     {start:7,end:8,back:7,invoked:false,data:{interactive:'Fix'}}
      /*{start:8.36,end:9.36,back:.2,invoked:false,data:{interactive:'Ring'}},
      {start:53.76,end:54.76,back:.2,invoked:false,data:{interactive:'Qs'}},
      {start:104.12,end:105.12,back:.2,invoked:false,data:{interactive:'Labyrinth'}},

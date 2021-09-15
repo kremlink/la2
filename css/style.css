@@ -874,14 +874,14 @@ body {
   text-align: center;
   position: absolute;
   left: 50%;
-  top: 10em;
+  top: 9em;
   transform: translate(-50%, 0);
 }
 .ov-wrap.ring .n-text:nth-child(2) {
-  top: 13.3em;
+  top: 11.6em;
 }
 .ov-wrap.ring .n-text:nth-child(3) {
-  top: 14.5em;
+  top: 12.8em;
 }
 .ov-wrap.ring .l-arr, .ov-wrap.ring .r-arr {
   width: 4em;

@@ -54,7 +54,7 @@ export let Index=Backbone.View.extend({
     if(r.data[epIndex].savedTime)
      lsData.data[epIndex].savedTime=r.data[epIndex].savedTime;
 
-    lsMgr.setData(lsData);
+    lsMgr.setData(lsData); //TODO:Move almost all to lmgr
 
     this.prepare();
    }});

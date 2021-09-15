@@ -99,12 +99,12 @@
         text-transform:uppercase;
         color:#000;
         text-align:center;
-        @include center($t:10em);
+        @include center($t:9em);
         &:nth-child(2){
-          top:13.3em;
+          top:11.6em;
         }
         &:nth-child(3){
-          top:14.5em;
+          top:12.8em;
         }
       }
       .l-arr,.r-arr{
