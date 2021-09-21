@@ -10,7 +10,8 @@ export const data={
   tmpl:'#i-2-28-template'
  },
  vidSrc:{
-  tmpl:'../videos/<%= src %>.mp4',
+  tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= epIndex %>/int-mp4/<%= src %>.mp4',
+  //tmpl:'../videos/<%= src %>.mp4',
   '360':'2-28-lost'
  },
  before:500,

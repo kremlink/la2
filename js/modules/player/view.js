@@ -14,7 +14,7 @@ export let PlayerView=Backbone.View.extend({
  stepsTemplate:null,
  pData:null,
  qual:null,
- pausable:true,
+ pausable:{noInteractive:true,noInfoPop:true},
  firstTime:true,
  goOn:false,
  initialize:function(opts){
@@ -47,27 +47,29 @@ export let PlayerView=Backbone.View.extend({
   },()=>{
    this.prepare();
   });
-  this.listenTo(app.get('aggregator'),'main:toggle',this.setPausable);
+  this.listenTo(app.get('aggregator'),'main:toggle',(f)=>this.setPausable('noInteractive',f));
+  this.listenTo(app.get('aggregator'),'info:toggle',(f)=>this.setPausable('noInfoPop',!f));
   this.listenTo(app.get('aggregator'),'page:state',this.freeze);
-  this.listenTo(app.get('aggregator'),'achieve:hide',()=>{if(this.pausable&&this.player.paused())this.player.play();});
+  this.listenTo(app.get('aggregator'),'achieve:hide',()=>{if(this.pausable.noInteractive&&this.pausable.noInfoPop&&this.player.paused())this.player.play();});
   this.listenTo(app.get('aggregator'),'player:pause',()=>{this.player.pause();});
  },
  freeze:function(){
   if(document.visibilityState==='hidden')
    this.pause();
  },
- setPausable:function(f){
-  this.pausable=f;
+ setPausable:function(what,f){
+  this.pausable[what]=f;
  },
  iiBack:function(e){
   let index=$(e.currentTarget).index();
 
+  app.get('aggregator').trigger('sound','btn');
   this.pData.timecodes.forEach((o,i)=>{
    if(index<=i)
     o.invoked=false;
   });
   app.get('aggregator').trigger('player:back');
-  this.setPausable(true);
+  this.setPausable('noInteractive',true);
 
   this.play({time:this.pData.timecodes[index].back});
  },
@@ -116,7 +118,7 @@ export let PlayerView=Backbone.View.extend({
   this.player.on('play',()=>{
    if(!app.get('_dev-player')&&!document.fullscreenElement&&document.documentElement.requestFullscreen)
     document.documentElement.requestFullscreen();
-   if(!this.pausable)
+   if(!this.pausable.noInteractive&&!this.pausable.noInfoPop)
     this.pause();
   });
 
@@ -158,7 +160,7 @@ export let PlayerView=Backbone.View.extend({
   });
 
   $(document).on('keypress',(e)=>{
-   if(this.player.controlBar.playToggle.el()!==document.activeElement&&e.which===32&&this.pausable)
+   if(this.player.controlBar.playToggle.el()!==document.activeElement&&e.which===32&&this.pausable.noInteractive&&this.pausable.noInfoPop)
     this.playPauseByCtrls();
   });
  },
@@ -178,6 +180,7 @@ export let PlayerView=Backbone.View.extend({
     {
      if(~interactive)
       time=this.pData.timecodes[interactive].start;
+     this.player.currentTime(time);
 
      if(time>o.start)
      {

@@ -4,9 +4,9 @@
  {"disabled":true,"h":"Общий сбор","text":"Текст3","img":"images/achievements/ach1.png"},{"h":"План","text":"Текст4","img":"images/achievements/ach1.png"}],
  "achievement":{"h":"План","text":"Текст","img":"images/achievements/ach1.png"},
  "data":{
-  "1":{"savedTime":0},
-  "2":{"savedTime":0},
-  "3":{"savedTime":0},
-  "4":{"savedTime":0}
+  "1":{"savedTime":0,"interactive:":-1},
+  "2":{"savedTime":0,"interactive:":-1},
+  "3":{"savedTime":0,"interactive:":-1},
+  "4":{"savedTime":0,"interactive:":-1}
  }
 }

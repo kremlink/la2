@@ -51,8 +51,9 @@ export let Index=Backbone.View.extend({
 
     lsData.user.sid=r.user.sid;
 
-    if(r.data[epIndex].savedTime)
-     lsData.data[epIndex].savedTime=r.data[epIndex].savedTime;
+    lsData.data[epIndex].savedTime=~r.data[epIndex].savedTime?r.data[epIndex].savedTime:lsData.data[epIndex].savedTime;
+    if(~r.data[epIndex].savedTime)
+     lsData.data[epIndex].interactive=r.data[epIndex].interactive;
 
     lsMgr.setData(lsData); //TODO:Move almost all to lmgr
 
@@ -99,8 +100,8 @@ export let Index=Backbone.View.extend({
  },
  loaded:function(){
   this.$el.addClass(data.view.loadedCls);
-  //this.start();//TODO:remove
-  //setTimeout(()=>this.main.player.pause(),500);//TODO:remove
+  this.start();//TODO:remove
+  setTimeout(()=>this.main.player.pause(),500);//TODO:remove
  },
  disable:function(f){
   this.$el.toggleClass(data.view.nopeCls,f);
@@ -110,7 +111,7 @@ export let Index=Backbone.View.extend({
   
   this.$el.addClass(data.view.startCls);
   if(ls.savedTime)
-  {
+  {console.log(ls);
    this.main.player.setGoOn();
    this.main.player.play({time:ls.savedTime,interactive:ls.interactive});
   }else

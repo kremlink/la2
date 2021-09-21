@@ -66,6 +66,7 @@ export let TabletsView=BaseIntView.extend({
  click:function(e){
   let curr=$(e.currentTarget);
 
+  app.get('aggregator').trigger('sound','btn');
   if(!curr.hasClass(data.view.altCls))
   {
    this.$el.addClass(data.view.vanishCls);

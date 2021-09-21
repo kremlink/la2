@@ -103,6 +103,7 @@ export let RingView=BaseIntView.extend({
   this.timeIsUp=true;
  },
  ringLRDown:function(f){
+  app.get('aggregator').trigger('sound','btn');
   if(!this.ringInt)
    this.ringInt=setInterval(()=>this.ringGo(f),data.ringInt);
  },
@@ -180,6 +181,7 @@ export let RingView=BaseIntView.extend({
 
   if(row===this.date[this.digiActive*2]&&col===this.date[this.digiActive*2+1]&&this.digiActive<4)
   {
+   app.get('aggregator').trigger('sound','yes');
    this.$botDigits.eq(this.digiActive).removeClass(this.shownCls).text(parseInt(curr.text()));
    this.$topDigits.eq(this.digiActive*2).removeClass(this.shownCls);
    this.digiActive++;
@@ -196,10 +198,11 @@ export let RingView=BaseIntView.extend({
    }
   }else
   {
-   app.get('aggregator').trigger('sound','btn');
+   app.get('aggregator').trigger('sound','no');
   }
  },
  nextDigit:function(){
+  app.get('aggregator').trigger('sound','btn');
   if(this.date[this.digiActive]===this.digiCurr)
   {
    this.$digits.eq(this.digiActive).removeClass(this.shownCls);

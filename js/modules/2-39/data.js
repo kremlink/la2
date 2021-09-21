@@ -13,7 +13,8 @@ export const data={
   fakeTrs:'text-indent'
  },
  vidSrc:{
-  tmpl:'../videos/<%= src %>.mp4',
+  tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= epIndex %>/int-mp4/<%= src %>.mp4',
+  //tmpl:'../videos/<%= src %>.mp4',
   '360':'2-39-alphabet'
  },
  timing:{

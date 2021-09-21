@@ -141,6 +141,7 @@ export let PackingView=BaseIntView.extend({
  circleClick:function(e){
   let circle=$(e.currentTarget).removeClass(this.shownCls).addClass(data.view.circle.clickedCls);
 
+  app.get('aggregator').trigger('sound','btn');
   this.circles.clicked++;
   this.mS.setPoints(true);
   this.phase2Lotties[this.$circles.index(circle)].pause();
@@ -167,11 +168,17 @@ export let PackingView=BaseIntView.extend({
  },
  lHover:function(){
   if(pc)
+  {
    this.$el.addClass(data.view.item.lCls);
+   app.get('aggregator').trigger('sound','btn-h');
+  }
  },
  rHover:function(){
   if(pc)
+  {
    this.$el.addClass(data.view.item.rCls);
+   app.get('aggregator').trigger('sound','btn-h');
+  }
  },
  leave:function(){
   if(pc)
@@ -192,13 +199,14 @@ export let PackingView=BaseIntView.extend({
   {
    if(f)
    {
+    app.get('aggregator').trigger('sound','yes');
     this.$items.eq(this.index).addClass(cls);
     this.waiting=true;
     this.mS.setPoints(true);
     this.$desc.eq(this.index).html(data.items[this.index].desc);
    }else
    {
-    app.get('aggregator').trigger('sound','btn');
+    app.get('aggregator').trigger('sound','no');
     this.mS.setPoints(false);
     $(e.currentTarget).addClass(data.view.item.errCls);
     this.$desc.eq(this.index).html(data.items[this.index].err);

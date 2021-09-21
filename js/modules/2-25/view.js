@@ -78,9 +78,10 @@ export let QsView=BaseIntView.extend({
  click:function(e){
   let curr=$(e.currentTarget),
       len=this.opts.data.data.item?1:data.items.length;
-  
-  if(this.index<len&&(curr.hasClass(data.view.yepCls)&&data.items[this.index].yep||!curr.hasClass(data.view.yepCls)&&!data.items[this.index].yep))
+
+  if(this.opts.data.data.item||this.index<len&&(curr.hasClass(data.view.yepCls)&&data.items[this.index].yep||!curr.hasClass(data.view.yepCls)&&!data.items[this.index].yep))
   {
+   app.get('aggregator').trigger('sound','yes');
    if(!this.opts.data.data.item&&'index' in data.items[this.index])
     this.$reveal.eq(data.items[this.index].index).addClass(this.shownCls);
    this.$items.eq(this.index).removeClass(this.shownCls);
@@ -98,7 +99,7 @@ export let QsView=BaseIntView.extend({
    if(this.index<len)
    {
     curr.addClass(data.view.errCls);
-    app.get('aggregator').trigger('sound','btn');
+    app.get('aggregator').trigger('sound','no');
     this.mS.setPoints(false);
    }
   }

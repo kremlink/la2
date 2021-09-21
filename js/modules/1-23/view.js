@@ -60,6 +60,7 @@ export let ForkView=BaseIntView.extend({
  click:function(e){
   let curr=$(e.currentTarget);
 
+  app.get('aggregator').trigger('sound','btn');
   if(curr.hasClass(data.view.altCls))
    this.setData('time',this.opts.data.data.alt);
   app.get('aggregator').trigger('ls:save',{interactive:'1-23',value:curr.index()});

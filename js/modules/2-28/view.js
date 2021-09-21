@@ -24,7 +24,7 @@ export let LabyrinthView=BaseIntView.extend({
 
   this.opts=opts;
   this.$vid=this.$(data.view.vid);
-  this.$vid[0].src=_.template(data.vidSrc.tmpl)({src:data.vidSrc['360']});
+  this.$vid[0].src=_.template(data.vidSrc.tmpl)({epIndex:app.get('epIndex'),src:data.vidSrc['360']});
 
   this.tmpl=_.template($(data.view.tmpl).html());
 
@@ -94,6 +94,7 @@ export let LabyrinthView=BaseIntView.extend({
  click:function(e){
   this.currData.btnInd=$(e.currentTarget).index();
 
+  app.get('aggregator').trigger('sound','btn');
   this.$into.removeClass(this.shownCls);
   if(data.forks[this.currData.key].btns[this.currData.btnInd].finish)
   {

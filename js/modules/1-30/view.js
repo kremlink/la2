@@ -162,11 +162,17 @@ export let TeamView=BaseIntView.extend({
  },
  lHover:function(){
   if(pc)
+  {
    this.$el.addClass(data.view.item.lCls);
+   app.get('aggregator').trigger('sound','btn-h');
+  }
  },
  rHover:function(){
   if(pc)
+  {
    this.$el.addClass(data.view.item.rCls);
+   app.get('aggregator').trigger('sound','btn-h');
+  }
  },
  leave:function(){
   if(pc)
@@ -187,17 +193,17 @@ export let TeamView=BaseIntView.extend({
   {
    if(f)
    {
+    app.get('aggregator').trigger('sound','yes');
     this.$items.eq(this.index).addClass(cls);
     this.$el.removeClass(data.view.enableCls);
     this.chosen=true;
     this.waiting=true;
     this.$vid[0].play();
-    app.get('aggregator').trigger('sound','btn');
     if(data.items[this.index].mini)
      this.$mini.eq(data.items[this.index].mini.index-1).addClass(this.shownCls);
    }else
    {
-    app.get('aggregator').trigger('sound','btn');
+    app.get('aggregator').trigger('sound','no');
     $(e.currentTarget).addClass(data.view.item.errCls);
     this.$desc.eq(this.index).html(data.items[this.index].err);
    }

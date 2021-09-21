@@ -5,7 +5,11 @@
 
       }
       .int-score{
+        display:none;
         @include abs($b:2em,$l:35em);
+        @include med(){
+          display:block;
+        }
       }
       .left{
         position:absolute;

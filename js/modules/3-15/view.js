@@ -74,7 +74,6 @@ export let BrowserView=BaseIntView.extend({
  toggle:function(f){
   if(f)
   {
-   this.$cont.removeClass(this.shownCls);
    this.$popsCont.removeClass(this.shownCls);
    this.$pops.removeClass(this.shownCls);
   }
@@ -85,15 +84,18 @@ export let BrowserView=BaseIntView.extend({
   this.curr=$(e.currentTarget).index();
   if(data.items[this.curr].yep)
   {
+   app.get('aggregator').trigger('sound','yes');
    app.get('aggregator').trigger('ls:save',{interactive:'3-15-2'});
    this.next();
   }else
   {
    this.$popsCont.addClass(this.shownCls);
    this.$pops.eq(this.curr).addClass(this.shownCls);
+   app.get('aggregator').trigger('sound','no');
   }
  },
  close:function(){
+  app.get('aggregator').trigger('sound','btn');
   this.$popsCont.removeClass(this.shownCls);
   this.$pops.eq(this.curr).removeClass(this.shownCls);
  }

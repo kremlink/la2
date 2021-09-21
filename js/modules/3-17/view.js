@@ -108,6 +108,7 @@ export let Qs1View=BaseIntView.extend({
 
   if(this.index<data.items.length&&!this.wait)
   {
+   app.get('aggregator').trigger('sound','btn');
    if(yep)
    {
     this.wait=true;

@@ -27,7 +27,7 @@ export let FixView=BaseIntView.extend({
   this.opts=opts;
 
   this.$vid=this.$(data.view.vid);
-  this.$vid[0].src=_.template(data.vidSrc.tmpl)({src:data.vidSrc['360']});
+  this.$vid[0].src=_.template(data.vidSrc.tmpl)({epIndex:app.get('epIndex'),src:data.vidSrc['360']});
   this.$words=this.$(data.view.words);
 
   BaseIntView.prototype.initialize.apply(this,[{
@@ -80,6 +80,8 @@ export let FixView=BaseIntView.extend({
   this.lrArr(1);
  },
  lrArr:function(f){
+  app.get('aggregator').trigger('sound','btn');
+
   this.setTime(f);
   while(this.ignoreTime.includes(this.time))
    this.setTime(f);
@@ -91,6 +93,7 @@ export let FixView=BaseIntView.extend({
 
   if(data.timing[this.time]&&!this.ignoreTime.includes(this.time))
   {
+   app.get('aggregator').trigger('sound','yes');
    s=this.$words.html();
    this.$words.html((s?s+'&nbsp;&nbsp;&nbsp;&nbsp;':'')+data.timing[this.time]);
    this.ignoreTime.push(this.time);
@@ -102,7 +105,7 @@ export let FixView=BaseIntView.extend({
   }else
   {
    $(e.currentTarget).addClass(data.view.errCls);
-   app.get('aggregator').trigger('sound','btn');
+   app.get('aggregator').trigger('sound','no');
   }
  },
  setTime:function(f){

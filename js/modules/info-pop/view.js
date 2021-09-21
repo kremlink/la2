@@ -10,6 +10,8 @@ let app,
 let events={};
 events[`click ${data.events.caller}`]='toggle';
 events[`click ${data.events.tab}`]='tab';
+events[`click ${data.events.copy}`]='copy';
+events[`click ${data.events.go}`]='go';
 
 export let InfoPop=Backbone.View.extend({
  events:events,
@@ -33,6 +35,23 @@ export let InfoPop=Backbone.View.extend({
   this.setScroll();
 
   this.tab();
+
+  this.setCode('AAA');
+ },
+ copy:function(){
+  this.$codeHidden.select();
+  document.execCommand('copy');
+ },
+ go:function(){
+
+ },
+ setCode:function(code){
+  this.$code=this.$(data.view.code).text(code);
+  this.$qr=this.$(data.view.qr);
+  this.$codeInput=this.$(data.view.codeInput);
+  this.$codeHidden=this.$(data.view.codeHidden).val(code);
+
+  this.$qr.qrcode(code);
  },
  setScroll:function(){
   let $wrap=this.$el.find(scrollData.extra.$wrap).css('margin-right',app.get('scrollDim')+'px').scrollTop(0),
@@ -52,8 +71,10 @@ export let InfoPop=Backbone.View.extend({
  },
  toggle:function(){
   this.$el.toggleClass(data.view.shownCls,this.shown=!this.shown);
+  app.get('aggregator').trigger('sound','btn');
   if(this.shown)
    app.get('aggregator').trigger('player:pause');
+  app.get('aggregator').trigger('info:toggle',this.shown);
  },
  tab:function(e){
   let tab=e?$(e.currentTarget):this.$tabs.eq(0),
@@ -61,6 +82,8 @@ export let InfoPop=Backbone.View.extend({
 
   if(!tab.hasClass(data.view.shownCls))
   {
+   if(e)
+    app.get('aggregator').trigger('sound','btn');
    this.$tabs.removeClass(data.view.shownCls);
    this.$blocks.removeClass(data.view.shownCls);
    tab.addClass(data.view.shownCls);

@@ -25,5 +25,6 @@ export let AchievePop=Backbone.View.extend({
  hide:function(){
   this.$el.removeClass(data.view.shownCls);
   app.get('aggregator').trigger('achieve:hide');
+  app.get('aggregator').trigger('sound','btn');
  }
 });
