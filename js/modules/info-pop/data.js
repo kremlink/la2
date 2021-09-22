@@ -12,7 +12,11 @@ export const data={
   code:'.code',
   codeInput:'.code-input',
   codeHidden:'.code-hidden',
+  mail:'.mail',
+  save:'.save',
   qr:'.qr',
+  qrFileName:'niaden-jiv.png',
+  param:'code',
   ach:{
    item:'.achievements',
    tmpl:'#info-ach-template',

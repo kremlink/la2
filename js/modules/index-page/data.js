@@ -17,6 +17,6 @@ export const data={
   nopeCls:'nope',
   goOnCls:'goOn'
  },
- minViewport:'(min-width:600px)',
+ minViewport:600,
  pcViewport:'(min-width:1024px)'
 };

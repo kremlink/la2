@@ -31,6 +31,18 @@ export let LsMgr=Backbone.View.extend({
    method:'get',
    credentials:'include'
   }).then((r)=>{return r.json()}).then((r)=>{
+   if(ini)
+   {
+    let lsData=this.getData();
+
+    lsData.user.sid=r.user.sid;
+
+    lsData.data[epIndex].savedTime=~r.data[epIndex].savedTime?r.data[epIndex].savedTime:lsData.data[epIndex].savedTime;
+    if(~r.data[epIndex].savedTime)
+     lsData.data[epIndex].interactive=r.data[epIndex].interactive;
+
+    this.setData(lsData);
+   }
    if(!ini&&r.achievement)
     app.get('aggregator').trigger('achieve:show',r.achievement);
    app.get('aggregator').trigger('info:populate',r);

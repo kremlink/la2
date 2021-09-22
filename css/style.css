@@ -1639,6 +1639,7 @@ body {
   cursor: pointer;
   visibility: hidden;
   z-index: 1;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   background: url(../images//icons/icon-menu.svg) center/cover no-repeat;
 }
 @media (min-width: 1024px) {
@@ -1665,6 +1666,12 @@ body {
   width: 33%;
   text-align: right;
   text-transform: uppercase;
+  font-size: 1.7em;
+}
+@media (min-width: 1024px) {
+  .info-pop .tabs {
+    font-size: 1em;
+  }
 }
 .info-pop .tabs div {
   cursor: pointer;
@@ -1681,8 +1688,8 @@ body {
   background: linear-gradient(90deg,rgba(255, 255, 255, 0.3) 1px,transparent 1px,transparent 1px) left calc(100% - 0px)/2px 1px repeat-x;
 }
 .info-pop .content {
-  margin-left: 6em;
-  flex: 1 0 auto;
+  margin: 0 6em;
+  flex: 1 1 auto;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -1694,7 +1701,14 @@ body {
   font-weight: 300;
 }
 .info-pop .desc {
-  margin-top: 2em;
+  margin-top: 1.2em;
+  font-size: 1.6em;
+}
+@media (min-width: 1024px) {
+  .info-pop .desc {
+    font-size: 1em;
+    margin-top: 2em;
+  }
 }
 .info-pop .container {
   flex: 1 0 auto;
@@ -1706,6 +1720,9 @@ body {
   position: absolute;
   left: 0;
   right: 0;
+}
+.info-pop .t-scroll-inner {
+  padding-right: 1em;
 }
 .info-pop .t-scroll-bar {
   background: rgba(255, 255, 255, 0.3);
@@ -1720,17 +1737,22 @@ body {
   display: block;
 }
 .info-pop .the-code {
-  margin-top: 3em;
-  display: flex;
+  margin-top: 2em;
   align-items: center;
   position: relative;
+}
+@media (min-width: 1024px) {
+  .info-pop .the-code {
+    margin-top: 3em;
+    display: flex;
+  }
 }
 .info-pop .the-code:before {
   content: "";
   background: linear-gradient(-90deg, #DF8998, #E5B99D 90%);
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 2.5em;
   width: 24em;
   height: 0.3em;
 }
@@ -1770,16 +1792,63 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
+.info-pop .pair-btns {
+  position: absolute;
+  margin: 5em 0 0 12.5em;
+}
+@media (min-width: 1024px) {
+  .info-pop .pair-btns {
+    margin-left: 11em;
+  }
+}
 .info-pop .btn {
   text-transform: uppercase;
   color: #DF8998;
-  margin-left: 1.5em;
   cursor: pointer;
   position: relative;
   padding-left: 1.5em;
+  font-size: 1.6em;
+}
+@media (min-width: 1024px) {
+  .info-pop .btn {
+    font-size: 1em;
+    margin-left: 1.5em;
+  }
 }
 .info-pop .btn.go {
   padding-left: 0;
+  margin-top: 1.5em;
+}
+@media (min-width: 1024px) {
+  .info-pop .btn.go {
+    margin-top: 0;
+  }
+}
+.info-pop .btn.copy {
+  margin-top: 1.5em;
+}
+@media (min-width: 1024px) {
+  .info-pop .btn.copy {
+    margin-top: 0;
+  }
+}
+.info-pop .btn.copy:before {
+  background-image: url(../images/icons/icon-copy.svg);
+}
+.info-pop .btn.save {
+  display: block;
+  text-decoration: none;
+}
+.info-pop .btn.save:before {
+  background-image: url(../images/icons/icon-save.svg);
+}
+.info-pop .btn.mail {
+  text-decoration: none;
+  display: block;
+  margin-top: 1em;
+}
+.info-pop .btn.mail:before {
+  background-image: url(../images/icons/icon-mail.svg);
 }
 .info-pop .btn:before {
   content: "";
@@ -1791,28 +1860,38 @@ body {
   top: 50%;
   transform: translate(0, -50%);
 }
-.info-pop .btn.copy:before {
-  background-image: url(../images/icons/icon-copy.svg);
-}
 .info-pop .or-copy {
-  margin-top: 5em;
+  margin-top: 2em;
+  font-size: 1.6em;
+}
+@media (min-width: 1024px) {
+  .info-pop .or-copy {
+    font-size: 1em;
+    margin-top: 5em;
+  }
 }
 .info-pop .qr {
   margin-top: 4em;
   width: 9em;
   height: 9em;
-  border: 1em solid #fff;
 }
 .info-pop .qr canvas {
   width: 100%;
   height: 100%;
+  background: #fff;
+  border: 1em solid #fff;
 }
 .info-pop .ach-item {
   display: flex;
   align-items: center;
 }
 .info-pop .ach-item:nth-child(n+2) {
-  margin-top: 4em;
+  margin-top: 2.5em;
+}
+@media (min-width: 1024px) {
+  .info-pop .ach-item:nth-child(n+2) {
+    margin-top: 4em;
+  }
 }
 .info-pop .ach-item.disabled {
   opacity: 0.3;
@@ -1821,14 +1900,28 @@ body {
   width: 8em;
 }
 .info-pop .ach-text {
-  margin-left: 2em;
+  margin-left: 1.3em;
+  font-size: 1.6em;
+}
+@media (min-width: 1024px) {
+  .info-pop .ach-text {
+    font-size: 1em;
+    margin-left: 2em;
+  }
 }
 .info-pop .ach-h {
   text-transform: uppercase;
   margin-bottom: 0.4em;
+  font-size: 1.3em;
+}
+@media (min-width: 1024px) {
+  .info-pop .ach-h {
+    font-size: 1em;
+  }
 }
 .info-pop .pers-item {
   display: flex;
+  align-items: flex-start;
 }
 .info-pop .pers-item:nth-child(n+2) {
   margin-top: 4em;
@@ -1838,14 +1931,33 @@ body {
   box-shadow: 0 0.93em 2.3em rgba(0, 0, 0, 0.25);
 }
 .info-pop .pers-text {
-  margin-left: 4em;
+  margin: 7em 0 0 -8em;
+  font-size: 1.6em;
+}
+@media (min-width: 1024px) {
+  .info-pop .pers-text {
+    font-size: 1em;
+    margin: 0 0 0 2em;
+  }
 }
 .info-pop .pers-h {
   text-transform: uppercase;
-  margin-bottom: 0.4em;
+  margin: -5.5em 0 5.7em 7em;
+  font-size: 1.3em;
+}
+@media (min-width: 1024px) {
+  .info-pop .pers-h {
+    font-size: 1em;
+    margin: 0 0 0.4em 0;
+  }
 }
 .info-pop .art-item:nth-child(n+2) {
-  margin-top: 4em;
+  margin-top: 2em;
+}
+@media (min-width: 1024px) {
+  .info-pop .art-item:nth-child(n+2) {
+    margin-top: 4em;
+  }
 }
 .info-pop .art-ref {
   text-transform: uppercase;
@@ -1853,19 +1965,30 @@ body {
   background: linear-gradient(90deg,rgba(226, 164, 155, 0.3) 1px,transparent 1px,transparent 1px) left calc(100% - 0px)/2px 1px repeat-x;
   text-decoration: none;
   position: relative;
+  font-size: 1.6em;
+}
+@media (min-width: 1024px) {
+  .info-pop .art-ref {
+    font-size: 1em;
+  }
 }
 .info-pop .art-ref:before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 0;
   right: -2em;
-  transform: translate(0, -50%);
   width: 1em;
   height: 1em;
   background: url(../images//icons/icon-new.svg) center/cover no-repeat;
 }
 .info-pop .art-text {
   margin-top: 0.4em;
+  font-size: 1.6em;
+}
+@media (min-width: 1024px) {
+  .info-pop .art-text {
+    font-size: 1em;
+  }
 }
 
 /*@path:components\_main.scss*/
@@ -2238,7 +2361,7 @@ body {
   visibility: hidden;
   font-size: 30px;
   line-height: 30px;
-  z-index: 1;
+  z-index: 3;
   justify-content: center;
   align-items: center;
 }

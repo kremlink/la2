@@ -23,17 +23,14 @@ export let Index=Backbone.View.extend({
   //might be needed someday
   app.set({dest:'objects.isPc',object:matchMedia(data.pcViewport).matches});
 
-  let enough=matchMedia(data.minViewport).matches;
-
   epIndex=app.get('epIndex');
 
   new Metrika({app:app});
   this.main=new MainView({app:app});
 
-  this.$el.toggleClass(data.view.tooSmallCls,!enough);
+  this.$el.toggleClass(data.view.tooSmallCls,window.screen.width<data.minViewport);
   $(window).on('resize',_.debounce(()=>{
-   enough=matchMedia(data.minViewport).matches;
-   this.$el.toggleClass(data.view.tooSmallCls,!enough);
+   this.$el.toggleClass(data.view.tooSmallCls,window.screen.width<data.minViewport);
   },200));
   document.addEventListener('contextmenu',e=>e.preventDefault());
   this.listenTo(app.get('aggregator'),'player:ready',this.loaded);
@@ -43,22 +40,7 @@ export let Index=Backbone.View.extend({
 
   lsMgr=this.main.lsMgr;
 
-  lsMgr.sendData({ini:true,cb:(r)=>{
-    let lsData=lsMgr.getData();
-
-    /*if(lsData.data[epIndex].savedTime||r.data[epIndex].savedTime)
-     this.$el.addClass(data.view.goOnCls);*/
-
-    lsData.user.sid=r.user.sid;
-
-    lsData.data[epIndex].savedTime=~r.data[epIndex].savedTime?r.data[epIndex].savedTime:lsData.data[epIndex].savedTime;
-    if(~r.data[epIndex].savedTime)
-     lsData.data[epIndex].interactive=r.data[epIndex].interactive;
-
-    lsMgr.setData(lsData); //TODO:Move almost all to lmgr
-
-    this.prepare();
-   }});
+  lsMgr.sendData({ini:true,cb:()=>this.prepare()});
  },
  prepare:function(){//inconsistent loadeddata event with multiple videos
   let imgs,

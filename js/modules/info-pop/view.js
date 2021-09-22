@@ -22,7 +22,7 @@ export let InfoPop=Backbone.View.extend({
  achTemplate:_.template($(data.view.ach.tmpl).html()),
  initialize:function(opts){
   app=opts.app;
-  this.listenTo(app.get('aggregator'),'info:populate',this.populateAchievements);
+  this.listenTo(app.get('aggregator'),'info:populate',this.populate);
 
   this.$tabs=this.$(data.events.tab);
   this.$blocks=this.$(data.view.block);
@@ -30,28 +30,36 @@ export let InfoPop=Backbone.View.extend({
   this.$ach=this.$(data.view.ach.item);
   this.$achCtr=this.$(data.view.ach.ctr);
 
+  this.$code=this.$(data.view.code);
+  this.$qr=this.$(data.view.qr);
+  this.$codeInput=this.$(data.view.codeInput);
+  this.$codeHidden=this.$(data.view.codeHidden);
+  this.$mail=this.$(data.view.mail);
+  this.$save=this.$(data.view.save);
+
   this.tabLen=this.$tabs.length;
 
   this.setScroll();
 
   this.tab();
-
-  this.setCode('AAA');
  },
  copy:function(){
   this.$codeHidden.select();
   document.execCommand('copy');
  },
+ clrHref:function(){
+  return location.href.replace(/\?.*/,'').replace(/#.*/,'');
+ },
  go:function(){
-
+  location.href=this.clrHref()+`?${data.view.param}=`+this.$codeInput.val();
  },
  setCode:function(code){
-  this.$code=this.$(data.view.code).text(code);
-  this.$qr=this.$(data.view.qr);
-  this.$codeInput=this.$(data.view.codeInput);
-  this.$codeHidden=this.$(data.view.codeHidden).val(code);
+  this.$code.text(code);
+  this.$codeHidden.val(code);
 
-  this.$qr.qrcode(code);
+  this.$qr.html('').qrcode({text:this.clrHref()+`?${data.view.param}=`+code});
+  this.$save.attr('download',data.view.qrFileName).attr('href',this.$qr.find('canvas')[0].toDataURL("image/png").replace("image/png","image/octet-stream"));
+  this.$mail.attr('href',`mailto:`);//mailto:me@me.com?subject=Me&body=%3Chtml%20xmlns%3D%22http:%2F%2Fwww.w3.or
  },
  setScroll:function(){
   let $wrap=this.$el.find(scrollData.extra.$wrap).css('margin-right',app.get('scrollDim')+'px').scrollTop(0),
@@ -92,9 +100,11 @@ export let InfoPop=Backbone.View.extend({
    setTimeout(()=>this.scrollBar.resize(),0);
   }
  },
- populateAchievements:function(r){
+ populate:function(r){
   this.$ach.html(this.achTemplate(r));
   setTimeout(()=>this.scrollBar.resize(),0);
   this.$achCtr.text(`${r.achievements.filter((o)=>!o.disabled).length}/${r.achievements.length}`);
+
+  this.setCode(r.user.code);
  }
 });

@@ -314,7 +314,7 @@
     visibility:hidden;
     font-size:30px;
     line-height:30px;
-    z-index:1;
+    z-index:3;
     @include flx(justify-content,center);
     @include flx(align-items,center);
     .too-small &{
