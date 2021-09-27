@@ -12,6 +12,8 @@ events[`click ${data.events.caller}`]='toggle';
 events[`click ${data.events.tab}`]='tab';
 events[`click ${data.events.copy}`]='copy';
 events[`click ${data.events.go}`]='go';
+events[`click ${data.events.mail}`]='mail';
+events[`focus ${data.events.mailInput}`]='mailFocus';
 
 export let InfoPop=Backbone.View.extend({
  events:events,
@@ -19,7 +21,9 @@ export let InfoPop=Backbone.View.extend({
  tabLen:0,
  scrollBar:null,
  shown:false,
+ code:'',
  achTemplate:_.template($(data.view.ach.tmpl).html()),
+ mailTmpl:_.template(data.view.save.body),
  initialize:function(opts){
   app=opts.app;
   this.listenTo(app.get('aggregator'),'info:populate',this.populate);
@@ -31,17 +35,34 @@ export let InfoPop=Backbone.View.extend({
   this.$achCtr=this.$(data.view.ach.ctr);
 
   this.$code=this.$(data.view.code);
-  this.$qr=this.$(data.view.qr);
+  this.$qr=this.$(data.view.save.qr);
   this.$codeInput=this.$(data.view.codeInput);
-  this.$codeHidden=this.$(data.view.codeHidden);
-  this.$mail=this.$(data.view.mail);
-  this.$save=this.$(data.view.save);
+  this.$codeHidden=this.$(data.view.save.codeHidden);
+  this.$mail=this.$(data.events.mail);
+  this.$save=this.$(data.view.save.saveBtn);
+
+  this.$mailInput=this.$(data.events.mailInput);
+
+  //this.$errText=this.$(data.view.errText);
 
   this.tabLen=this.$tabs.length;
 
   this.setScroll();
 
   this.tab();
+ },
+ mailFocus:function(){
+  this.$mailInput.removeClass(data.view.errCls);
+ },
+ mail:function(e){
+  if(app.get('lib.utils.form.validate')({check:this.$mailInput,data:data.view.save.vData}))
+  {
+   this.$mail.attr('href',`mailto:${this.$mailInput.val()}?subject=${escape(data.view.save.subj)}&body=${escape(this.mailTmpl({code:this.r.user.code,ref:this.ref()}))}`);
+  }else
+  {
+   this.$mailInput.addClass(data.view.errCls);
+   e.preventDefault();
+  }
  },
  copy:function(){
   this.$codeHidden.select();
@@ -50,16 +71,19 @@ export let InfoPop=Backbone.View.extend({
  clrHref:function(){
   return location.href.replace(/\?.*/,'').replace(/#.*/,'');
  },
- go:function(){
-  location.href=this.clrHref()+`?${data.view.param}=`+this.$codeInput.val();
+ ref:function(){
+  return this.clrHref()+`?${data.view.param}=`+this.r.user.code;
  },
- setCode:function(code){
-  this.$code.text(code);
-  this.$codeHidden.val(code);
+ go:function(){
+  //this.$errText.html(r.errCodeText);//on request
+   location.href=this.clrHref()+`?${data.view.param}=`+this.$codeInput.val();
+ },
+ setCode:function(){
+  this.$code.text(this.r.user.code);
+  this.$codeHidden.val(this.r.user.code);
 
-  this.$qr.html('').qrcode({text:this.clrHref()+`?${data.view.param}=`+code});
-  this.$save.attr('download',data.view.qrFileName).attr('href',this.$qr.find('canvas')[0].toDataURL("image/png").replace("image/png","image/octet-stream"));
-  this.$mail.attr('href',`mailto:`);//mailto:me@me.com?subject=Me&body=%3Chtml%20xmlns%3D%22http:%2F%2Fwww.w3.or
+  this.$qr.html('').qrcode({text:this.ref()});
+  this.$save.attr('download',data.view.save.qrFileName).attr('href',this.$qr.find('canvas')[0].toDataURL("image/png").replace("image/png","image/octet-stream"));
  },
  setScroll:function(){
   let $wrap=this.$el.find(scrollData.extra.$wrap).css('margin-right',app.get('scrollDim')+'px').scrollTop(0),
@@ -105,6 +129,7 @@ export let InfoPop=Backbone.View.extend({
   setTimeout(()=>this.scrollBar.resize(),0);
   this.$achCtr.text(`${r.achievements.filter((o)=>!o.disabled).length}/${r.achievements.length}`);
 
-  this.setCode(r.user.code);
+  this.r=r;
+  this.setCode();
  }
 });

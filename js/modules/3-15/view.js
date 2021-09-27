@@ -32,10 +32,10 @@ export let BrowserView=BaseIntView.extend({
   this.$time=this.$(data.view.time);
 
   this.$cont=this.$(data.view.cont);
-  this.$cont.find('img').imagesLoaded(()=>{//TODO:remove when shared preload added
+  //this.$cont.find('img').imagesLoaded(()=>{//TODO:remove when shared preload added
    this.$cont.addClass(this.shownCls);
    this.setScroll();
-  });
+  //});
 
   this.$popsCont=this.$(data.view.popsCont).before(_.template($(data.view.tmpl).html())(data));
   this.$pops=this.$(data.view.pops);

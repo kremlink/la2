@@ -1,10 +1,18 @@
 @include exports("@path:base\_rules.scss"){/*@path:base\_rules.scss*/
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
-
   @font-face{
     font-family:pdt-player;
     //src:url("../fonts/p-f.woff") format("woff");
     src:url("../fonts/p-f-default.woff") format("woff");
+  }
+
+  @font-face{
+    font-family:Montserrat;
+    src:url("../fonts/mons.woff") format("woff");
+  }
+  @font-face{
+    font-weight:300;
+    font-family:Montserrat;
+    src:url("../fonts/mons-l.woff") format("woff");
   }
 
   .safe-hide-svg{

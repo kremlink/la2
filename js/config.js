@@ -7,17 +7,66 @@ export let config={
  'index':{
   preload:{
    '1':{
-    /*'images/':{imgs:['question-photo.png','map-bg2.png']},
-    'images/packing/':{j:[12,8,5],tmpl:['packing-[i]-[j].png','packing-[i]-[j]-p.png']}*/
-   }
+    'images/':{imgs:['blood.svg','achiv-bg.svg']},
+    'images/1-23/':{imgs:['1-23-bg.jpg']},
+    'images/1-25/':{
+     imgs:['1-25-bg.jpg','1-25-arrows.svg','1-25-intro-pic.png','1-25-intro-pic-m.png','add-bg.svg','point-empty.svg','point-full.svg'],
+     j:[9],
+     tmpl:['1-25-obj[j].png']
+    },
+    'images/1-30/':{
+     imgs:['1-30-bg.jpg','1-30-intro-pic.png','1-30-intro-pic-m.png','1-30-icon-foot.svg','1-30-icon-gear.svg','1-30-icon-map.svg'],
+     j:[17],
+     tmpl:['card[j].png']
+    }
+   },
+   '2':{
+    'images/':{imgs:['blood.svg','achiv-bg.svg']},
+    'images/2-7/':{imgs:['2-7-bg1.jpg','2-7-bg2.jpg','2-7-bigframe.svg','2-7-botframe.svg','2-7-intro-pic.png','2-7-intro-pic-m.png','2-7-ring-in.svg','2-7-ring-out.svg','2-7-table.svg','2-7-topframe.svg','2-7-two-digit-focus.svg']},
+    'images/2-25/':{
+     imgs:['2-25-bg.jpg','map.svg','2-25-intro-pic.png','2-25-intro-pic-m.png'],
+     j:[6],
+     tmpl:['over[j].svg']
+    },
+    'images/2-28/':{
+     imgs:['2-28-lost-bg.jpg','2-28-overlay.jpg','2-28-intro-pic.png','2-28-intro-pic-m.png','3b.svg','3c.svg','3l1.svg','3l2.svg','3r1.svg','3r2.svg','3ß.svg','4b.svg','4c.svg','4l.svg','4r.svg']
+    },
+    'images/2-39/':{
+     imgs:['2-39-bg.jpg','2-39-intro-pic.png','2-39-intro-pic-m.png']
+    }
+   },
+   '3':{
+    'images/':{imgs:['blood.svg','achiv-bg.svg']},
+    'images/3-15/':{imgs:['bg.jpg','3-15-close.svg','3-15-intro-pic.png','3-15-intro-pic-m.png','3-15-scroll.png','3-15-topline.svg']},
+    'images/3-15-1/':{
+     j:[9],
+     tmpl:['img_[j].jpg']//TODO:bug in lottie - it has 0 index
+    },
+    'images/3-17/':{
+     imgs:['3-17-bg.jpg','3-17-iintro-pic.png','3-17-intro-pic-m.png'],
+     j:[10],
+     tmpl:['img[j].jpg']
+    }
+   },
+   '4':{
+    'images/':{imgs:['blood.svg','achiv-bg.svg']},
+    'images/4-4/':{imgs:['bg.jpg']},
+    'images/4-6/':{
+     imgs:['bg.jpg']
+    },
+    'images/4-31/':{
+     imgs:['4-31-bg.jpg','4-31-map.svg']
+    }
+   },
   }
  },
  sound:{
-  template:'<audio src="https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/base-mp3/<%= src %>.mp3" preload="auto" <%= loop?"loop":"" %>></audio>'
+  template:'<audio src="../sounds/<%= src %>.mp3" preload="auto" <%= loop?"loop":"" %>></audio>'
+  //template:'<audio src="https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/base-mp3/<%= src %>.mp3" preload="auto" <%= loop?"loop":"" %>></audio>'//TODO:this
  },
  redirect:{
-   '1':'end.php'
-  },
+  '1':'end.php'
+ },
  'player':{
   quality:[
    {
@@ -36,7 +85,7 @@ export let config={
   srcData:{
    spec:['1080p','720p','480p'],
    tmpl:'../<%= src %>.mp4'
-   //tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= src %>/mp4/ng2_master_<%= src %>ser<%= spec %>.mp4'
+   //tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= src %>/mp4/ng2_master_<%= src %>ser<%= spec %>.mp4'//TODO:this
   },
   data:{
    '1':{
@@ -70,9 +119,9 @@ export let config={
     //src:'3',
     src:'oceans',
     timecodes:[
-     /*{start:1,end:2,back:1,invoked:false,data:{interactive:'Loop'}},
+     {start:1,end:2,back:1,invoked:false,data:{interactive:'Loop'}},
      {start:3,end:4,back:3,invoked:false,data:{interactive:'Browser'}},
-     {start:5,end:6,back:5,invoked:false,data:{interactive:'Qs1'}}*/
+     {start:5,end:6,back:5,invoked:false,data:{interactive:'Qs1'}}
      /*{start:800.36,end:800.88,back:800,invoked:false,data:{interactive:'Loop'}},
      {start:801.36,end:801.4,back:801,invoked:false,data:{interactive:'Browser'}},
      {start:1333.96,end:1335,back:1333.4,invoked:false,data:{interactive:'Qs1'}}*/
@@ -82,9 +131,9 @@ export let config={
     //src:'4',
     src:'oceans',
     timecodes:[
-     /*{start:1,end:2,back:1,invoked:false,data:{interactive:'Qs',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}},
+     {start:1,end:2,back:1,invoked:false,data:{interactive:'Qs',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}},
      {start:3,end:4,back:3,invoked:false,data:{interactive:'Fork',alt:3,diff:true}},
-     {start:5,end:6,back:5,invoked:false,data:{interactive:'Tablets'}}*/
+     {start:5,end:6,back:5,invoked:false,data:{interactive:'Tablets'}}
      /*{start:335.6,end:336.6,back:335,invoked:false,data:{interactive:'Tablets'}},
      {start:393.2,end:394.24,back:392.7,invoked:false,data:{interactive:'Fork',alt:404.12,diff:true}},
      {start:1617.32,end:1618.32,back:1616.9,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''}}}*/

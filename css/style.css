@@ -2,7 +2,6 @@
 /*@path:core\_base.scss*/
 /*@path:core\_mixins.scss*/
 /*@path:core\_exts.scss*/
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap");
 .ov-wrap.browser .container {
   background: url(../images/loader.gif) center no-repeat;
 }
@@ -411,6 +410,15 @@ table {
   font-family: pdt-player;
   src: url("../fonts/p-f-default.woff") format("woff");
 }
+@font-face {
+  font-family: Montserrat;
+  src: url("../fonts/mons.woff") format("woff");
+}
+@font-face {
+  font-weight: 300;
+  font-family: Montserrat;
+  src: url("../fonts/mons-l.woff") format("woff");
+}
 .safe-hide-svg {
   position: absolute;
   left: 0;
@@ -457,7 +465,7 @@ body {
   opacity: 0;
   transition: opacity 10s ease-in-out,visibility 0s ease-in-out 10s;
 }
-.ov-wrap.fork.vanish .the-btn.alt {
+.ov-wrap.fork.vanish .ov-inner.int.shown .the-btn.alt {
   visibility: hidden;
   opacity: 0;
   transition: opacity 10s ease-in-out,visibility 0s ease-in-out 10s;
@@ -474,6 +482,9 @@ body {
 }
 .ov-wrap.fork .ov-inner.int.shown {
   display: flex;
+}
+.ov-wrap.fork .ov-inner.int.shown .the-btn.alt {
+  visibility: visible;
 }
 .ov-wrap.fork .ov-inner.int.shown + .the-prog {
   opacity: 1;
@@ -503,9 +514,6 @@ body {
 .ov-wrap.fork .the-btn {
   margin: 0 6em;
   position: relative;
-}
-.ov-wrap.fork .the-btn.alt {
-  visibility: visible;
 }
 .ov-wrap.fork .the-btn:not(.alt) .l {
   transform: scale(-1, 1);
@@ -1663,7 +1671,7 @@ body {
   font-size: 0.6em;
 }
 .info-pop .tabs {
-  width: 33%;
+  flex: 1 1 auto;
   text-align: right;
   text-transform: uppercase;
   font-size: 1.7em;
@@ -1689,7 +1697,7 @@ body {
 }
 .info-pop .content {
   margin: 0 6em;
-  flex: 1 1 auto;
+  width: 60em;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -1714,7 +1722,12 @@ body {
   flex: 1 0 auto;
   overflow: hidden;
   position: relative;
-  margin-top: 4em;
+  margin-top: 2.5em;
+}
+@media (min-width: 1024px) {
+  .info-pop .container {
+    margin-top: 4em;
+  }
 }
 .info-pop .t-scroll-wrap {
   position: absolute;
@@ -1737,14 +1750,14 @@ body {
   display: block;
 }
 .info-pop .the-code {
-  margin-top: 2em;
+  margin-top: 1em;
+  display: flex;
   align-items: center;
   position: relative;
 }
 @media (min-width: 1024px) {
   .info-pop .the-code {
     margin-top: 3em;
-    display: flex;
   }
 }
 .info-pop .the-code:before {
@@ -1752,11 +1765,11 @@ body {
   background: linear-gradient(-90deg, #DF8998, #E5B99D 90%);
   position: absolute;
   left: 0;
-  top: 2.5em;
+  bottom: 0;
   width: 24em;
-  height: 0.3em;
+  height: 0.1em;
 }
-.info-pop .code-input {
+.info-pop .code-input, .info-pop .mail-input {
   border: none;
   background: none;
   color: #fff;
@@ -1765,19 +1778,49 @@ body {
   font-size: 1.5em;
   text-align: center;
   text-transform: uppercase;
+  position: relative;
+  top: 0.5em;
 }
-.info-pop .code-input::-webkit-input-placeholder {
+.info-pop .code-input::-webkit-input-placeholder, .info-pop .mail-input::-webkit-input-placeholder {
   color: #fff;
   text-transform: uppercase;
 }
-.info-pop .code-input::-moz-placeholder {
+.info-pop .code-input::-moz-placeholder, .info-pop .mail-input::-moz-placeholder {
   color: #fff;
   text-transform: uppercase;
   opacity: 1;
 }
-.info-pop .code-input:-ms-input-placeholder {
+.info-pop .code-input:-ms-input-placeholder, .info-pop .mail-input:-ms-input-placeholder {
   color: #fff;
   text-transform: uppercase;
+}
+@media (min-width: 1024px) {
+  .info-pop .code-input, .info-pop .mail-input {
+    top: 0;
+  }
+}
+.info-pop .mail-input {
+  top: 0;
+}
+.info-pop .mail-input.err {
+  color: #f77;
+}
+.info-pop .mail-input.err::-webkit-input-placeholder {
+  color: #f77;
+}
+.info-pop .mail-input.err::-moz-placeholder {
+  color: #f77;
+  opacity: 1;
+}
+.info-pop .mail-input.err:-ms-input-placeholder {
+  color: #f77;
+}
+.info-pop .err-text {
+  text-transform: uppercase;
+  color: #f77;
+  position: absolute;
+  left: 0;
+  bottom: -2em;
 }
 .info-pop .code-hidden {
   position: absolute;
@@ -1792,13 +1835,15 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
-.info-pop .pair-btns {
-  position: absolute;
-  margin: 5em 0 0 12.5em;
+.info-pop .code span {
+  font-size: 1.2em;
+  position: relative;
+  top: 0.4em;
 }
 @media (min-width: 1024px) {
-  .info-pop .pair-btns {
-    margin-left: 11em;
+  .info-pop .code span {
+    font-size: 1em;
+    top: 0;
   }
 }
 .info-pop .btn {
@@ -1808,11 +1853,12 @@ body {
   position: relative;
   padding-left: 1.5em;
   font-size: 1.6em;
+  margin-left: 1.5em;
+  text-decoration: none;
 }
 @media (min-width: 1024px) {
   .info-pop .btn {
     font-size: 1em;
-    margin-left: 1.5em;
   }
 }
 .info-pop .btn.go {
@@ -1837,15 +1883,16 @@ body {
 }
 .info-pop .btn.save {
   display: block;
-  text-decoration: none;
+  position: absolute;
+  margin: 2.5em 0 0 9em;
+}
+@media (min-width: 1024px) {
+  .info-pop .btn.save {
+    margin: 4.5em 0 0 12.5em;
+  }
 }
 .info-pop .btn.save:before {
   background-image: url(../images/icons/icon-save.svg);
-}
-.info-pop .btn.mail {
-  text-decoration: none;
-  display: block;
-  margin-top: 1em;
 }
 .info-pop .btn.mail:before {
   background-image: url(../images/icons/icon-mail.svg);

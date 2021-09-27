@@ -75,23 +75,25 @@
                     <div class="t-scroll-inner">
                         <div class="block">
                             <div class="the-code">
-                                <div class="code"></div>
+                                <div class="code"><span></span></div>
                                 <input type="text" class="code-hidden"/>
                                 <div class="btn copy">скопировать в буфер</div>
+                            </div>
+                            <div class="the-code">
+                                <input data-valid="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" placeholder="Введите e-mail" type="text" class="mail-input"/>
+                                <a href="" class="btn mail">Отправить на почту</a>
                             </div>
                             <div class="or-copy">
                                 Или вы можете схоранить себе qr-код и воспользоваться сканером на устройстве.
                             </div>
-                            <div class="pair-btns">
-                                <a href="" class="btn save">Сохранить файл с кодом</a>
-                                <a href="" class="btn mail">Отправить себе на почту</a>
-                            </div>
+                            <a href="" class="btn save">Сохранить файл с кодом</a>
                             <div class="qr"></div>
                         </div>
                         <div class="block">
                             <div class="the-code">
                                 <input placeholder="Введите ваш код" type="text" class="code-input"/>
                                 <div class="btn go">Продолжить&nbsp;&nbsp;&rarr;</div>
+<!--                                <div class="err-text"></div>-->
                             </div>
                         </div>
                         <div class="block achievements">
