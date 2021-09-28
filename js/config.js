@@ -39,8 +39,9 @@ export let config={
     'images/':{imgs:['blood.svg','achiv-bg.svg']},
     'images/3-15/':{imgs:['bg.jpg','3-15-close.svg','3-15-intro-pic.png','3-15-intro-pic-m.png','3-15-scroll.png','3-15-topline.svg']},
     'images/3-15-1/':{
-     j:[9],
-     tmpl:['img_[j].jpg']//TODO:bug in lottie - it has 0 index
+     imgs:['img_0.jpg'],
+     j:[8],
+     tmpl:['img_[j].jpg']
     },
     'images/3-17/':{
      imgs:['3-17-bg.jpg','3-17-iintro-pic.png','3-17-intro-pic-m.png'],
@@ -65,7 +66,10 @@ export let config={
   //template:'<audio src="https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/base-mp3/<%= src %>.mp3" preload="auto" <%= loop?"loop":"" %>></audio>'//TODO:this
  },
  redirect:{
-  '1':'end.php'
+  '1':'end1.php',
+  '2':'end2.php',
+  '3':'end3.php',
+  '4':'end4.php'
  },
  'player':{
   quality:[

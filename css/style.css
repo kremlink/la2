@@ -2316,6 +2316,9 @@ body {
   display: none;
   font-size: 0.5em;
 }
+.start .special-btns {
+  display: block;
+}
 .special-btns .inner {
   position: absolute;
   left: 4em;
@@ -2642,6 +2645,19 @@ body {
 .nope .video-js {
   pointer-events: none;
 }
+.video-js .b-b, .video-js .f-b {
+  height: 4em;
+  background: #fff;
+  top: -5em;
+}
+.video-js .b-b {
+  order: 1;
+  margin: 0 6em 0 auto;
+}
+.video-js .f-b {
+  order: 3;
+  margin: 0 auto 0 6em;
+}
 .video-js .vjs-big-play-button {
   display: none;
   position: absolute;
@@ -2676,7 +2692,7 @@ body {
   background: center/cover no-repeat;
 }
 .video-js .vjs-play-control {
-  order: 1;
+  order: 2;
   width: 6.6em;
   height: 6.6em;
   top: -6.6em;
@@ -2844,7 +2860,7 @@ body {
   top: -5.1em;
   width: 4.4em;
   height: 4.4em;
-  order: 1;
+  order: 4;
 }
 .video-js .vjs-menu-button-popup .vjs-menu {
   width: 5.4em;

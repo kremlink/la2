@@ -6,7 +6,9 @@ let app,
     events={},
     lsMgr;
 
-events[`click ${data.events.iiBack}`]='iiBack';
+events[`click ${data.events.toInt}`]='toInt';
+events[`click ${data.events.backward}`]='backwardClick';
+events[`click ${data.events.forward}`]='forwardClick';
 
 export let PlayerView=Backbone.View.extend({
  events:events,
@@ -24,7 +26,7 @@ export let PlayerView=Backbone.View.extend({
   epIndex=app.get('epIndex');
   lsMgr=opts.lsMgr;
 
-  this.$steps=$(data.view.steps.item).on('click',data.view.steps.step,(e)=>this.iiBack.call(this,e));//TODO:maybe separate module for steps?
+  this.$steps=$(data.view.steps.item).on('click',data.view.steps.step,(e)=>this.toInt.call(this,e));//TODO:maybe separate module for steps?
 
   this.stepsTemplate=$(data.view.steps.tmpl).length?_.template($(data.view.steps.tmpl).html()):()=>{};
   this.pData=$.extend(true,{},data.data[epIndex]);
@@ -60,19 +62,6 @@ export let PlayerView=Backbone.View.extend({
  setPausable:function(what,f){
   this.pausable[what]=f;
  },
- iiBack:function(e){
-  let index=$(e.currentTarget).index();
-
-  app.get('aggregator').trigger('sound','btn');
-  this.pData.timecodes.forEach((o,i)=>{
-   if(index<=i)
-    o.invoked=false;
-  });
-  app.get('aggregator').trigger('player:back');
-  this.setPausable('noInteractive',true);
-
-  this.play({time:this.pData.timecodes[index].back});
- },
  changeSrc:function(src){
   let ind=this.qual.findIndex((o)=>matchMedia(o.width).matches);
 
@@ -104,6 +93,39 @@ export let PlayerView=Backbone.View.extend({
   this.goOn=true;
   //app.get('aggregator').trigger('player:goOn');
  },
+ toInt:function(e){
+  let index=$(e.currentTarget).index();
+
+  app.get('aggregator').trigger('sound','btn');
+  this.pData.timecodes.forEach((o,i)=>{
+   if(index<=i)
+    o.invoked=false;
+  });
+  app.get('aggregator').trigger('player:back');
+  this.setPausable('noInteractive',true);
+
+  this.play({time:this.pData.timecodes[index].back});
+ },
+ backwardClick:function(){
+  let curr=this.player.currentTime();
+
+  app.get('aggregator').trigger('sound','btn');
+
+ /* this.pData.timecodes.forEach((o,i)=>{
+   if((o.start<0?curr>this.player.duration()+o.start:curr>o.start)&&!o.invoked)
+   {
+    app.get('aggregator').trigger('player:interactive',{data:o,index:i});
+    o.invoked=true;
+    this.setStepsChoose(i);
+   }
+  });*/
+
+  console.log('b');
+ },
+ forwardClick:function(){
+  app.get('aggregator').trigger('sound','btn');
+  console.log('f');
+ },
  prepare:function(){
   let touched={};
 
@@ -111,6 +133,8 @@ export let PlayerView=Backbone.View.extend({
   this.changeSrc(this.pData.src);
 
   this.player.controlBar.addChild('QualitySelector');
+  this.player.controlBar.addChild('Button').el().classList.add('b-b');
+  this.player.controlBar.addChild('Button').el().classList.add('f-b');
 
   if(app.get('_dev-player'))
    this.player.muted(true);

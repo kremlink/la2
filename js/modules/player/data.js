@@ -6,7 +6,9 @@ export const data={
  _production:false,
  quality:{},
  events:{
-  'iiBack':'.int-ind-back'
+  'toInt':'.int-ind-back',
+  'backward':'.b-b',
+  'forward':'.f-b'
  },
  view:{
   el:'.video-js',

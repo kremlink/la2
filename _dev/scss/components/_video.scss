@@ -10,6 +10,19 @@
     .nope &{
       pointer-events:none;
     }
+    .b-b,.f-b{
+      height:4em;
+      background:#fff;
+      top:-5em;
+    }
+    .b-b{
+      order:1;
+      margin:0 6em 0 auto;
+    }
+    .f-b{
+      order:3;
+      margin:0 auto 0 6em;
+    }
     .vjs-big-play-button{
       display:none;//
       @include center();
@@ -43,7 +56,7 @@
       background:center/cover no-repeat;
     }
     .vjs-play-control{
-      order:1;
+      order:2;
       width:6.6em;
       height:6.6em;
       top:-6.6em;
@@ -217,7 +230,7 @@
         top:-5.1em;
         width:4.4em;
         height:4.4em;
-        order:1;
+        order:4;
       }
     }
 

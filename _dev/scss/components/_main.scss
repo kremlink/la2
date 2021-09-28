@@ -236,7 +236,7 @@
     display:none;
     font-size:.5em;
     .start &{
-      //display:block;
+      display:block;
     }
     .inner{
       @include abs($l:4em,$t:9em);
