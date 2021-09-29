@@ -17,6 +17,7 @@ export const data={
    item:'.special-btns .inner',
    tmpl:'#ext-player-template',
    step:'.int-ind-back'
-  }
+  },
+  go:[2,2]
  }
 };

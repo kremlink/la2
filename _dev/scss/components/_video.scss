@@ -11,17 +11,21 @@
       pointer-events:none;
     }
     .b-b,.f-b{
-      height:4em;
+      width:6em;
+      height:6em;
       background:#fff;
-      top:-5em;
+      top:-6em;
+      background: center/cover no-repeat;
     }
     .b-b{
       order:1;
       margin:0 6em 0 auto;
+      background-image:url(#{$path}/icons/icon-b-30.svg);
     }
     .f-b{
       order:3;
       margin:0 auto 0 6em;
+      background-image:url(#{$path}/icons/icon-f-10.svg);
     }
     .vjs-big-play-button{
       display:none;//
@@ -196,7 +200,7 @@
     .vjs-control{
       //text-shadow:0 6px 0 $brn;
       &.vjs-progress-control{
-        //pointer-events:none;//TODO:uncomment
+        pointer-events:none;//TODO:uncomment
         @include abs($l:0,$r:0,$t:1.5em);
         width:auto;
         height:auto;

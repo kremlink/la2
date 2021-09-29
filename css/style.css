@@ -1945,6 +1945,7 @@ body {
 }
 .info-pop .ach-img {
   width: 8em;
+  height: 8em;
 }
 .info-pop .ach-text {
   margin-left: 1.3em;
@@ -1975,6 +1976,7 @@ body {
 }
 .info-pop .pers-img {
   width: 13em;
+  height: 13em;
   box-shadow: 0 0.93em 2.3em rgba(0, 0, 0, 0.25);
 }
 .info-pop .pers-text {
@@ -2646,17 +2648,21 @@ body {
   pointer-events: none;
 }
 .video-js .b-b, .video-js .f-b {
-  height: 4em;
+  width: 6em;
+  height: 6em;
   background: #fff;
-  top: -5em;
+  top: -6em;
+  background: center/cover no-repeat;
 }
 .video-js .b-b {
   order: 1;
   margin: 0 6em 0 auto;
+  background-image: url(../images//icons/icon-b-30.svg);
 }
 .video-js .f-b {
   order: 3;
   margin: 0 auto 0 6em;
+  background-image: url(../images//icons/icon-f-10.svg);
 }
 .video-js .vjs-big-play-button {
   display: none;
@@ -2828,6 +2834,7 @@ body {
   background: rgba(255, 255, 255, 0.25);
 }
 .video-js .vjs-control.vjs-progress-control {
+  pointer-events: none;
   position: absolute;
   left: 0;
   top: 1.5em;
