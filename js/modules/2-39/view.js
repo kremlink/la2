@@ -55,6 +55,7 @@ export let FixView=BaseIntView.extend({
 
   this.$vid.on('loadedmetadata',()=>{
    this.duration=this.$vid[0].duration;
+   this.$el.addClass(data.view.readyCls);
   });
 
   //this.next();

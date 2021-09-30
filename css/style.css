@@ -1275,6 +1275,9 @@ body {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+.ov-wrap.fix.ready .ov-inner.int.shown .l-arr, .ov-wrap.fix.ready .ov-inner.int.shown .r-arr {
+  visibility: visible;
+}
 .ov-wrap.fix .words {
   position: absolute;
   left: 50%;
@@ -1297,6 +1300,7 @@ body {
   height: 9.6em;
   cursor: pointer;
   margin-top: -4.8em;
+  visibility: hidden;
 }
 .ov-wrap.fix .l-arr {
   left: 3em;

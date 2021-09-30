@@ -24,7 +24,6 @@ export let LabyrinthView=BaseIntView.extend({
 
   this.opts=opts;
   this.$vid=this.$(data.view.vid);
-  this.$vid[0].src=_.template(data.vidSrc.tmpl)({epIndex:app.get('epIndex'),src:data.vidSrc['360']});
 
   this.tmpl=_.template($(data.view.tmpl).html());
 
@@ -37,6 +36,11 @@ export let LabyrinthView=BaseIntView.extend({
    data:data
   }]);
 
+  this.iniVid();
+
+  //this.next();
+ },
+ iniVid:function(){
   this.$vid.on('timeupdate',()=>{
    let curr=this.$vid[0].currentTime;
 
@@ -53,8 +57,6 @@ export let LabyrinthView=BaseIntView.extend({
     }
    }
   }).on('seeked',()=>this.$smooth.removeClass(this.shownCls));
-
-  //this.next();
  },
  smoothify:function(changeTime){
   let ctx=this.$smooth[0].getContext('2d'),
@@ -82,6 +84,7 @@ export let LabyrinthView=BaseIntView.extend({
  toggle:function(f){
   if(f)
   {
+   this.$vid[0].src=_.template(data.vidSrc.tmpl)({epIndex:app.get('epIndex'),src:data.vidSrc.src[app.get('playerQ')]});
    this.finish=false;
    this.$smooth.removeClass(this.shownCls);
    this.$into.removeClass(this.shownCls);

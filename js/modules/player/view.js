@@ -115,27 +115,30 @@ export let PlayerView=Backbone.View.extend({
    f=false,
    index=-1;
 
-  app.get('aggregator').trigger('sound','btn');
-  if(this.pData.timecodes[0].start<=curr)
+  if(!this.player.seeking())
   {
-   this.pData.timecodes.forEach((o,i)=>{
-    if(o.start<futur)
-    {
-     if(!f)
+   app.get('aggregator').trigger('sound','btn');
+   if(this.pData.timecodes[0].start<=curr)
+   {
+    this.pData.timecodes.forEach((o,i)=>{
+     if(o.start<futur)
      {
-      f=true;
-      index=i;
+      if(!f)
+      {
+       f=true;
+       index=i;
+      }
+     }else
+     {
+      o.invoked=false;
      }
-    }else
-    {
-     o.invoked=false;
-    }
-   });
+    });
+   }
+
+   this.setStepsChoose(index);
+
+   this.play({time:futur});
   }
-
-  this.setStepsChoose(index);
-
-  this.play({time:futur});
  },
  forwardClick:function(){
   let curr=this.player.currentTime(),
@@ -143,15 +146,18 @@ export let PlayerView=Backbone.View.extend({
    futur=curr+data.view.go[1]<dur?curr+data.view.go[1]:dur,
    index=-1;
 
-  app.get('aggregator').trigger('sound','btn');
-  this.pData.timecodes.forEach((o,i)=>{
-   if(o.start>curr&&o.start<futur)
-   {
-    index=i;
-   }
-  });
+  if(!this.player.seeking())
+  {
+   app.get('aggregator').trigger('sound','btn');
+   this.pData.timecodes.forEach((o,i)=>{
+    if(o.start>curr&&o.start<futur)
+    {
+     index=i;
+    }
+   });
 
-  this.play({time:~index?this.pData.timecodes[index].start:futur});
+   this.play({time:~index?this.pData.timecodes[index].start:futur});
+  }
  },
  prepare:function(){
   let touched={};
@@ -208,6 +214,10 @@ export let PlayerView=Backbone.View.extend({
    if(this.firstTime)
     app.get('aggregator').trigger('player:ready');
    this.firstTime=false;
+  });
+
+  this.player.on('qualitySelected',(e,n)=>{
+   app.set({dest:'objects.playerQ',object:n.label,lib:false});
   });
 
   $(document).on('keypress',(e)=>{

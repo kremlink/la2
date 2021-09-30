@@ -406,6 +406,11 @@
       }
     }
     &.fix{
+      &.ready .ov-inner.int.shown{
+        .l-arr,.r-arr{
+          visibility:visible;
+        }
+      }
       .words{
         @include center($t:3em);
       }
@@ -421,6 +426,7 @@
         height:192/100*5em;
         cursor:pointer;
         margin-top:-192/200*5em;
+        visibility:hidden;
       }
       .l-arr{
         left:3em;

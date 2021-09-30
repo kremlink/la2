@@ -10,6 +10,7 @@ export const data={
   vid:'video',
   words:'.words',
   errCls:'err',
+  readyCls:'ready',
   fakeTrs:'text-indent'
  },
  vidSrc:{
