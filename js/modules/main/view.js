@@ -4,6 +4,7 @@ import {MicroScore} from '../mS/view.js';
 import {InfoPop} from '../info-pop/view.js';
 import {AchievePop} from '../achieve/view.js';
 
+import {LearnView} from '../learn/view.js';
 import {ForkView} from '../1-23/view.js';
 import {PackingView} from '../1-25/view.js';
 import {TeamView} from '../1-30/view.js';
@@ -22,6 +23,7 @@ import {TabletsView} from '../4-4/view.js';
 import {data as dat} from './data.js';
 
 let Interactives={
+ Learn:LearnView,
  Fork:ForkView,
  Packing:PackingView,
  Team:TeamView,

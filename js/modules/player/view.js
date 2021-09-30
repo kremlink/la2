@@ -217,7 +217,7 @@ export let PlayerView=Backbone.View.extend({
   });
 
   this.player.on('qualitySelected',(e,n)=>{
-   app.set({dest:'objects.playerQ',object:n.label,lib:false});
+   app.set({dest:'objects.playerQ',object:n.label,lib:false,notify:false});
   });
 
   $(document).on('keypress',(e)=>{

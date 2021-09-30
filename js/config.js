@@ -1,5 +1,5 @@
 export let config={
- metrika:{name:64365469},
+ metrika:{name:1},
  ls:{
   name:'la-vid3',
   url:'php.php?data='
@@ -8,6 +8,11 @@ export let config={
   preload:{
    '1':{
     'images/':{imgs:['blood.svg','achiv-bg.svg']},
+    'images/learn/':{
+     imgs:['study-arrow.svg','study-save.png'],
+     j:[4],
+     tmpl:['study-bg[j].jpg']
+    },
     'images/1-23/':{imgs:['1-23-bg.jpg']},
     'images/1-25/':{
      imgs:['1-25-bg.jpg','1-25-arrows.svg','1-25-intro-pic.png','1-25-intro-pic-m.png','add-bg.svg','point-empty.svg','point-full.svg'],
@@ -97,8 +102,9 @@ export let config={
     src:'oceans',
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
-     {start:3,end:4,back:2.5,invoked:false,data:{interactive:'Fork',alt:2}},
-     {start:6,end:7,back:5.5,invoked:false,data:{interactive:'Packing'}},
+     {start:.2,back:.2,invoked:false,data:{interactive:'Learn'}},
+     //{start:3,end:4,back:2.5,invoked:false,data:{interactive:'Fork',alt:2}},
+     //{start:6,end:7,back:5.5,invoked:false,data:{interactive:'Packing'}},
      //{start:5,end:6,back:5,invoked:false,data:{interactive:'Team'}}
      /*{start:1043.48,end:1044.52,noBg:true,back:1043,invoked:false,data:{interactive:'Fork',alt:1095.92}},
      {start:1412.68,end:1413.68,back:1412,invoked:false,data:{interactive:'Packing'}},

@@ -72,8 +72,19 @@ export let RingView=BaseIntView.extend({
 
   this.setAnim();
 
-  this.setLastPhase(6);
+  //this.setLastPhase(6);
 
+  this.ringIni();
+
+  this.setIniDigit();
+
+  /*this.next();//TODO:remove
+  this.next();//TODO:remove
+  this.next();//TODO:remove
+  this.next();//TODO:remove
+  this.next();//TODO:remove*/
+ },
+ ringIni:function(){
   $(document).on('mouseup.ring touchend.ring',()=>this.ringLRUp());
 
   this.ringGo=_.throttle((f)=>{
@@ -90,14 +101,6 @@ export let RingView=BaseIntView.extend({
     this.$rotator.css('transform',`rotate(${this.angle}deg)`);
    }
   },data.ringInt,{leading:true,trailing:false});
-
-  this.setIniDigit();
-
-  /*this.next();//TODO:remove
-  this.next();//TODO:remove
-  this.next();//TODO:remove
-  this.next();//TODO:remove
-  this.next();//TODO:remove*/
  },
  progEnd:function(){
   this.timeIsUp=true;

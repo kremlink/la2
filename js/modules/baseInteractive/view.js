@@ -12,12 +12,13 @@ export let BaseIntView=Backbone.View.extend({
  events:events,
  phase:0,
  data:{},
- lastPhase:2,
+ lastPhase:0,
  shownCls:data.view.shownCls,
  initialize:function(opts){
   app=opts.app;
 
   this.$block=this.$(data.view.block);
+  this.lastPhase=this.$block.length-1;
 
   this.toggle(true);
   this.$(data.view.$lottie).each(function(){
@@ -29,9 +30,6 @@ export let BaseIntView=Backbone.View.extend({
     animationData:lData
    });
   });
- },
- setLastPhase:function(i){
-  this.lastPhase=i;
  },
  setData:function(k,v){
   this.data[k]=v;

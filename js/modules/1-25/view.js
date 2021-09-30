@@ -63,7 +63,7 @@ export let PackingView=BaseIntView.extend({
   this.iLength=this.$items.length;
 
   this.setCtr(0);
-  this.setLastPhase(3);
+  //this.setLastPhase(3);
 
   this.iniSwipe();
 

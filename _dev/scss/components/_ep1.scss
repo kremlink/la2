@@ -1,5 +1,8 @@
 @include exports("@path:components\_ep1.scss"){/*@path:components\_ep1.scss*/
   .ov-wrap{
+    &.learn{
+
+    }
     &.fork{
       &.vanish{
         .l-bg:nth-child(2){
