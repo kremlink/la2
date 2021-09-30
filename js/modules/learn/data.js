@@ -1,5 +1,6 @@
 export const data={
  events:{
+  'start':'.start',
   'skip':'.skip'
  },
  view:{

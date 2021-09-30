@@ -13,6 +13,9 @@
     &.no-bg{
       background:none;
     }
+    &.isLearn{
+      z-index:3;
+    }
   }
   .ov-wrap{
     width:100%;

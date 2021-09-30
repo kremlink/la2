@@ -1,7 +1,36 @@
 @include exports("@path:components\_ep1.scss"){/*@path:components\_ep1.scss*/
   .ov-wrap{
     &.learn{
+      .ov-inner{
+        @include abs($l:0,$t:0,$r:0,$b:0);
+        .h-b-btn{
+          right:0;
+        }
+      }
+      .ov-cont{
+        @include center();
+        width:90%;
+        &.i3{
 
+        }
+      }
+      .start{
+        color:#DF8998;
+        cursor:pointer;
+        margin-top:2em;
+        text-transform:uppercase;
+        display:inline-block;
+      }
+      .skip{
+        margin-top:2em;
+        color:rgba(#fff,.5);
+        cursor:pointer;
+        display:inline-block;
+      }
+      .arr{
+        @include abs($l:60%,$b:5.5%);
+        width:5.5%;
+      }
     }
     &.fork{
       &.vanish{

@@ -95,6 +95,9 @@ export let MainView=Backbone.View.extend({
 
   app.get('aggregator').trigger('main:toggle',!show);
 
+  if(tD.data.interactive==='Learn')
+   this.$el.toggleClass(data.view.isLearnCls,show);
+
   if(show)
   {
    ls.data[epIndex].interactive=this.intData.index;

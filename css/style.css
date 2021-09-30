@@ -461,6 +461,42 @@ body {
 
 /*@path:base\_exts.scss*/
 /*@path:components\_ep1.scss*/
+.ov-wrap.learn .ov-inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.ov-wrap.learn .ov-inner .h-b-btn {
+  right: 0;
+}
+.ov-wrap.learn .ov-cont {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+}
+.ov-wrap.learn .start {
+  color: #DF8998;
+  cursor: pointer;
+  margin-top: 2em;
+  text-transform: uppercase;
+  display: inline-block;
+}
+.ov-wrap.learn .skip {
+  margin-top: 2em;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  display: inline-block;
+}
+.ov-wrap.learn .arr {
+  position: absolute;
+  left: 60%;
+  bottom: 5.5%;
+  width: 5.5%;
+}
 .ov-wrap.fork.vanish .l-bg:nth-child(2) {
   opacity: 0;
   transition: opacity 10s ease-in-out,visibility 0s ease-in-out 10s;
@@ -2066,6 +2102,9 @@ body {
 }
 .overlay-block.no-bg {
   background: none;
+}
+.overlay-block.isLearn {
+  z-index: 3;
 }
 
 .ov-wrap {

@@ -5,6 +5,7 @@ let app,
     data=dat,
     events={};
 
+events[`click ${data.events.start}`]='start';
 events[`click ${data.events.skip}`]='skip';
 
 export let LearnView=BaseIntView.extend({
@@ -27,8 +28,11 @@ export let LearnView=BaseIntView.extend({
 
   //this.next();//TODO:remove
  },
- skip:function(e){
-
+ start:function(){
+  this.next();
+ },
+ skip:function(){
+  this.away();
  },
  toggle:function(f){
   BaseIntView.prototype.toggle.apply(this,arguments);
