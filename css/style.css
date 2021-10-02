@@ -6,7 +6,7 @@
   background: url(../images/loader.gif) center no-repeat;
 }
 
-.ov-wrap.ring .digits {
+.ov-wrap.ring .digits, .ov-wrap.learn .ov-cont.ach {
   box-sizing: border-box;
 }
 
@@ -468,6 +468,9 @@ body {
   right: 0;
   bottom: 0;
 }
+.ov-wrap.learn .ov-inner .h-b-text {
+  margin-top: 2.5em;
+}
 .ov-wrap.learn .ov-inner .h-b-btn {
   right: 0;
 }
@@ -477,6 +480,15 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
+}
+.ov-wrap.learn .ov-cont.full {
+  height: 100%;
+}
+.ov-wrap.learn .ov-cont.ach {
+  padding: 0 12em 0 21em;
+}
+.ov-wrap.learn .ov-cont.save {
+  height: 90%;
 }
 .ov-wrap.learn .start {
   color: #DF8998;
@@ -490,6 +502,28 @@ body {
   color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   display: inline-block;
+}
+.ov-wrap.learn .pop-l, .ov-wrap.learn .pop-r {
+  border: 0.2em solid rgba(255, 255, 255, 0.7);
+  padding: 1em;
+  border-radius: 0.6em;
+  display: inline-block;
+  position: absolute;
+  top: 8em;
+}
+.ov-wrap.learn .pop-l {
+  left: -3em;
+}
+.ov-wrap.learn .pop-r {
+  right: -3em;
+}
+.ov-wrap.learn .save-img {
+  position: absolute;
+  width: 70%;
+  margin: -1em 0 0 -3em;
+}
+.ov-wrap.learn .save-img + .h-b-h {
+  margin-top: 17em;
 }
 .ov-wrap.learn .arr {
   position: absolute;
@@ -2308,12 +2342,10 @@ body {
   height: 0.25em;
   background: linear-gradient(90deg, #DF8998, #E5B99D 90%);
   opacity: 0;
+  transition: width 0s linear;
 }
 .the-prog.shown {
   width: 0;
-}
-.fork .the-prog.shown {
-  transition: width 10s linear;
 }
 .ring .the-prog.shown {
   transition: width 30s linear;

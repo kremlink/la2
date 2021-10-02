@@ -21,8 +21,6 @@ export let ForkView=BaseIntView.extend({
 
   this.opts=opts;
 
-  this.$prog=this.$(data.view.$prog);
-
   BaseIntView.prototype.initialize.apply(this,[{
    app:app,
    data:data
@@ -42,17 +40,18 @@ export let ForkView=BaseIntView.extend({
   BaseIntView.prototype.next.apply(this,arguments);
   if(this.phase===1)
   {
+   this.theProg.$prog.css('transition-duration',data.progDur+'s');
    setTimeout(()=>{
     this.$el.addClass(data.view.vanishCls);
-    this.$prog.addClass(this.shownCls);
    },data.before);
   }
+  if(this.phase===2)
+   this.theProg.pulse=false;
  },
  toggle:function(f){
   if(f)
   {
    this.$el.removeClass(data.view.vanishCls);
-   this.$prog.removeClass(this.shownCls);
   }
 
   BaseIntView.prototype.toggle.apply(this,arguments);

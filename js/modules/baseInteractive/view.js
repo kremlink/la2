@@ -14,11 +14,27 @@ export let BaseIntView=Backbone.View.extend({
  data:{},
  lastPhase:0,
  shownCls:data.view.shownCls,
+ theProg:{
+  $item:null,
+  outerWidth:0,
+  value:0,
+  pulse:false
+ },
  initialize:function(opts){
   app=opts.app;
 
   this.$block=this.$(data.view.block);
   this.lastPhase=this.$block.length-1;
+
+  this.theProg.$prog=this.$(data.view.$prog);
+  this.theProg.outerWidth=this.theProg.$prog.parent().width();
+
+  setInterval(()=>{
+   if(this.theProg.pulse)
+    app.get('aggregator').trigger('sound','pulse');
+   if(this.phase===1)
+    this.theProg.value=this.theProg.$prog.width()/this.theProg.outerWidth;
+  },1000);
 
   this.toggle(true);
   this.$(data.view.$lottie).each(function(){
@@ -38,6 +54,11 @@ export let BaseIntView=Backbone.View.extend({
   this.$block.eq(this.phase).removeClass(this.shownCls);
   this.phase++;
   this.$block.eq(this.phase).addClass(this.shownCls);
+  if(this.phase===1)
+  {
+   this.theProg.pulse=true;
+   this.theProg.$prog.addClass(this.shownCls);
+  }
  },
  btnClick:function(){
   app.get('aggregator').trigger('sound','btn');
@@ -57,6 +78,10 @@ export let BaseIntView=Backbone.View.extend({
   {
    this.$block.removeClass(this.shownCls).eq(this.phase).addClass(this.shownCls);
    this.data={};
+   this.theProg.$prog.removeClass(this.shownCls).css('transition-duration','0s');
+  }else
+  {
+   this.theProg.pulse=false;
   }
 
   this.phase=0;

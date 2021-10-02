@@ -50,7 +50,7 @@ export const data={
   },
   "3l2":{
    ovl:{left:-12,top:-3},
-   btns:[{start:88,end:90.88,left:17.97,top:27.4,go:"3l1"},{start:92,end:34.88,left:23.85,top:9.9,go:"4l"}]
+   btns:[{start:88,end:90.88,left:17.97,top:27.4,go:"3l1"},{start:92,end:94.88,left:23.85,top:9.9,go:"4l"}]
   },
   "3r1":{
    ovl:{left:19,top:6},

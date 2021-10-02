@@ -5,6 +5,7 @@ export const data={
   'btn-h':{src:'hover',loop:false},
   'bg':{src:'bg',loop:true},
   'yes':{src:'yes',loop:false},
-  'no':{src:'no',loop:false}
+  'no':{src:'no',loop:false},
+  'pulse':{src:'pulse',loop:false}
  }
 };

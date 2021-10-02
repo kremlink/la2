@@ -189,11 +189,12 @@
     height:.25em;
     background:linear-gradient(90deg,#DF8998,#E5B99D 90%);
     opacity:0;
+    @include trs('width 0s linear');
     &.shown{
       width:0;
     }
     .fork &.shown{
-      @include trs('width 10s linear');
+
     }
     .ring &.shown{
       @include trs('width 30s linear');
