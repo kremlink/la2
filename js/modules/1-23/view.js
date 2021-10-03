@@ -23,7 +23,8 @@ export let ForkView=BaseIntView.extend({
 
   BaseIntView.prototype.initialize.apply(this,[{
    app:app,
-   data:data
+   data:data,
+   progDur:data.progDur
   }]);
 
   this.$(data.view.$lottie).each(function(i){
@@ -45,8 +46,6 @@ export let ForkView=BaseIntView.extend({
     this.$el.addClass(data.view.vanishCls);
    },data.before);
   }
-  if(this.phase===2)
-   this.theProg.pulse=false;
  },
  toggle:function(f){
   if(f)

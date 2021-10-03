@@ -183,6 +183,20 @@
     }
   }
   //---
+  @keyframes blood{
+    50%{
+      filter:opacity(0);
+    }
+  }
+  .the-blood{
+    @include abs($l:0,$t:0,$r:0,$b:0);
+    background: center/cover no-repeat;
+    pointer-events:none;
+    opacity:0;
+    &.shown{
+      animation:.3s forwards linear blood;
+    }
+  }
   .the-prog{
     @include abs($l:0,$t:0);
     width:100%;
@@ -192,9 +206,7 @@
     @include trs('width 0s linear');
     &.shown{
       width:0;
-    }
-    .fork &.shown{
-
+      opacity:1;
     }
     .ring &.shown{
       @include trs('width 30s linear');

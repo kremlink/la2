@@ -7,10 +7,10 @@ export const data={
   shownCls:'shown',
   $lottie:'.h-b-l',
   $prog:'.the-prog',
-  prog:{
-   thr:.75,
-   vol:[0,1],
-   time:[1,.5]
-  }
+  $blood:'.the-blood'
+ },
+ prog:{
+  thr:.25,
+  time:[1,.5]
  }
 };

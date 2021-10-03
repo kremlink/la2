@@ -16,25 +16,40 @@ export let BaseIntView=Backbone.View.extend({
  shownCls:data.view.shownCls,
  theProg:{
   $item:null,
+  $blood:null,
   outerWidth:0,
   value:0,
-  pulse:false
+  pulse:false,
+  dur:0
  },
  initialize:function(opts){
   app=opts.app;
+
+  this.theProg.dur=opts.progDur;
 
   this.$block=this.$(data.view.block);
   this.lastPhase=this.$block.length-1;
 
   this.theProg.$prog=this.$(data.view.$prog);
+  this.theProg.$blood=this.$(data.view.$blood);
   this.theProg.outerWidth=this.theProg.$prog.parent().width();
 
-  setInterval(()=>{
-   if(this.theProg.pulse)
-    app.get('aggregator').trigger('sound','pulse');
-   if(this.phase===1)
-    this.theProg.value=this.theProg.$prog.width()/this.theProg.outerWidth;
-  },1000);
+  if(this.theProg.$prog.length)
+  {
+   let c=data.prog.time[0];
+
+   setInterval(()=>{
+    if(this.theProg.pulse)
+    {
+     this.theProg.value=this.theProg.$prog.width()/this.theProg.outerWidth;
+     c=this.theProg.value*this.theProg.value+data.prog.thr*data.prog.thr/(1-data.prog.thr)*(this.theProg.value-1);
+     c=c<0?0:c;
+     app.get('aggregator').trigger('sound','pulse',1-c);
+     this.theProg.$blood.removeClass(this.shownCls).css('opacity',1-c);
+     setTimeout(()=>this.theProg.$blood.addClass(this.shownCls),0);
+    }
+   },(data.prog.time[0]*c+data.prog.time[1]*(1-c))*1000);
+  }
 
   this.toggle(true);
   this.$(data.view.$lottie).each(function(){
@@ -59,6 +74,16 @@ export let BaseIntView=Backbone.View.extend({
    this.theProg.pulse=true;
    this.theProg.$prog.addClass(this.shownCls);
   }
+  if(this.phase===2)
+  {
+   this.clrProg();
+  }
+ },
+ clrProg:function(){
+  this.theProg.pulse=false;
+  this.theProg.$blood.removeClass(this.shownCls);
+  this.theProg.$blood.css('opacity',0);
+  this.theProg.$prog.removeClass(this.shownCls).css('transition-duration','0s');
  },
  btnClick:function(){
   app.get('aggregator').trigger('sound','btn');
@@ -78,10 +103,9 @@ export let BaseIntView=Backbone.View.extend({
   {
    this.$block.removeClass(this.shownCls).eq(this.phase).addClass(this.shownCls);
    this.data={};
-   this.theProg.$prog.removeClass(this.shownCls).css('transition-duration','0s');
   }else
   {
-   this.theProg.pulse=false;
+   this.clrProg();
   }
 
   this.phase=0;
