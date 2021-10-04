@@ -23,8 +23,7 @@ export let ForkView=BaseIntView.extend({
 
   BaseIntView.prototype.initialize.apply(this,[{
    app:app,
-   data:data,
-   progDur:data.progDur
+   data:data
   }]);
 
   this.$(data.view.$lottie).each(function(i){

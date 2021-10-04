@@ -5,9 +5,8 @@ export const data={
  view:{
   el:'.ov-wrap.tablets',
   $lottie:'.l',
-  $prog:'.the-prog',
   vanishCls:'vanish',
   altCls:'alt'
  },
- before:500
+ progDur:10
 };

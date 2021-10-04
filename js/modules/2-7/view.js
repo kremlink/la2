@@ -59,8 +59,6 @@ export let RingView=BaseIntView.extend({
   this.$topDigits=this.$(data.view.topDigits).each(function(i){this.innerHTML=self.date[i];});
   this.$botDigits=this.$(data.view.botDigits);
 
-  this.$prog=this.$(data.view.$prog);
-
   this.tableTemplate=_.template($(data.view.table.tmpl).html());
   this.$(data.view.table.item).html(this.$reveal=$(this.tableTemplate(data.table)).filter(function(){return this.nodeType!==3;}));
   this.$tds=this.$(data.events.td);
@@ -238,7 +236,6 @@ export let RingView=BaseIntView.extend({
    this.$rotator.css('transform',`rotate(${this.angle}deg)`);
    this.$digits.html('').removeClass(this.shownCls);
    this.setIniDigit();
-   this.$prog.removeClass(this.shownCls);
    this.timeIsUp=false;
    this.$botDigits.removeClass(this.shownCls).eq(0).addClass(this.shownCls);
    this.$topDigits.removeClass(this.shownCls).eq(0).addClass(this.shownCls);
@@ -250,9 +247,7 @@ export let RingView=BaseIntView.extend({
   BaseIntView.prototype.next.apply(this,arguments);
   if(this.phase===1)
   {
-   setTimeout(()=>{
-    this.$prog.addClass(this.shownCls);
-   },data.progWait);
+   this.theProg.$prog.css('transition-duration',data.progDur+'s');
   }
  },
  setIniDigit:function(){

@@ -115,10 +115,10 @@ export let config={
     //src:'2',
     src:'oceans',
     timecodes:[
-     //{start:1,end:2,back:1,invoked:false,data:{interactive:'Ring'}},
+     {start:1,end:2,back:1,invoked:false,data:{interactive:'Ring'}},
      //{start:3,end:4,back:3,invoked:false,data:{interactive:'Qs'}},
      //{start:5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth'}},
-     {start:1,end:8,back:7,invoked:false,data:{interactive:'Fix'}}
+     //{start:1,end:8,back:7,invoked:false,data:{interactive:'Fix'}}
      /*{start:459.76,end:460.8,back:459,invoked:false,data:{interactive:'Ring'}},
      {start:1185.44,end:1186.48,back:1185,invoked:false,data:{interactive:'Qs'}},
      {start:1361.36,end:1362.4,back:1361,invoked:false,data:{interactive:'Labyrinth'}},

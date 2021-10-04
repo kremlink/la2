@@ -21,12 +21,12 @@ export const data={
    tmpl:'#i-2-7-table-template'
   }
  },
+ progDur:30,
  before:1500,
  textData:['ИЬАЛ','ЙЬБКРЧЦ','ЫЧЙЧ'],
  ringWin:-9,
  ringInt:100,
  iniDigit:0,
  ifSameDigit:5,
- progWait:500,
  table:{rows:4,cols:10}
 };

@@ -193,9 +193,7 @@
     background: center/cover no-repeat;
     pointer-events:none;
     opacity:0;
-    &.shown{
-      animation:.3s forwards linear blood;
-    }
+    animation:0s forwards linear blood infinite;
   }
   .the-prog{
     @include abs($l:0,$t:0);
@@ -207,15 +205,6 @@
     &.shown{
       width:0;
       opacity:1;
-    }
-    .ring &.shown{
-      @include trs('width 30s linear');
-    }
-    .loop &.shown{
-      @include trs('width 20s linear');
-    }
-    .tablets &.shown{
-      @include trs('width 10s linear');
     }
   }
   //---

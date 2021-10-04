@@ -13,7 +13,6 @@ export let TabletsView=BaseIntView.extend({
   return _.extend({},BaseIntView.prototype.events,events);
  },
  el:data.view.el,
- value:0,
  outerWidth:null,
  initialize:function(opts){
   app=opts.app;
@@ -29,11 +28,6 @@ export let TabletsView=BaseIntView.extend({
    data:data
   }]);
 
-  setInterval(()=>{
-   if(this.phase===1)
-    this.value=this.$prog.width()/this.outerWidth;
-  },1000);
-
   this.$(data.view.$lottie).each(function(i){
    lottie.loadAnimation({
     container:this,
@@ -48,9 +42,7 @@ export let TabletsView=BaseIntView.extend({
   BaseIntView.prototype.next.apply(this,arguments);
   if(this.phase===1)
   {
-   setTimeout(()=>{
-    this.$prog.addClass(this.shownCls);
-   },data.before);
+   this.theProg.$prog.css('transition-duration',data.progDur+'s');
   }
  },
  toggle:function(f){
@@ -58,7 +50,6 @@ export let TabletsView=BaseIntView.extend({
   {
    this.$el.removeClass(data.view.vanishCls);
    this.$prog.removeClass(this.shownCls);
-   this.value=0;
   }
 
   BaseIntView.prototype.toggle.apply(this,arguments);
@@ -72,7 +63,7 @@ export let TabletsView=BaseIntView.extend({
    this.$el.addClass(data.view.vanishCls);
   }else
   {
-   app.get('aggregator').trigger('ls:save',{interactive:'4-4',value:this.value});
+   app.get('aggregator').trigger('ls:save',{interactive:'4-4',value:this.theProg.value});
    this.away();
   }
  }

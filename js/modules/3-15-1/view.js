@@ -22,8 +22,6 @@ export let LoopView=BaseIntView.extend({
 
   this.opts=opts;
 
-  this.$prog=this.$(data.view.$prog).on('transitionend',()=>{if(this.phase===1)this.away();});
-  this.outerWidth=this.$prog.parent().width();
   this.$btn=this.$(data.events.click);
 
   this.setLottie();
@@ -32,11 +30,8 @@ export let LoopView=BaseIntView.extend({
    app:app,
    data:data
   }]);
-  
-  setInterval(()=>{
-   if(this.phase===1)
-    this.value=this.$prog.width()/this.outerWidth;
-  },1000);
+
+  this.theProg.$prog.on('transitionend',()=>{if(this.phase===1)this.away();});
  },
  setLottie:function(){
   this.l=lottie.loadAnimation({
@@ -55,15 +50,13 @@ export let LoopView=BaseIntView.extend({
   if(this.phase===1)
   {
    this.l.play();
-   setTimeout(()=>{this.$prog.addClass(this.shownCls);},data.before);
+   this.theProg.$prog.css('transition-duration',data.progDur+'s');
   }
  },
  toggle:function(f){
   if(f)
   {
-   this.$prog.removeClass(this.shownCls);
    this.$btn.removeClass(this.shownCls);
-   this.value=0;
   }
 
   this.l.pause();
@@ -72,7 +65,7 @@ export let LoopView=BaseIntView.extend({
  },
  click:function(){
   app.get('aggregator').trigger('sound','btn');
-  app.get('aggregator').trigger('ls:save',{interactive:'3-15-1',value:this.value});
+  app.get('aggregator').trigger('ls:save',{interactive:'3-15-1',value:this.theProg.value});
   //if(this.value>data.thr)
    //app.get('aggregator').trigger('main:achieve','Ачивка: успел');
   this.away();

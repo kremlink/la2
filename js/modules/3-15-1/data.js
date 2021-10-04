@@ -4,10 +4,9 @@ export const data={
  },
  view:{
   el:'.ov-wrap.loop',
-  $lottie:'.l',
-  $prog:'.the-prog'
+  $lottie:'.l'
  },
+ progDur:20,
  show:{start:45,end:85},
- thr:.5,
- before:500
+ thr:.5
 };

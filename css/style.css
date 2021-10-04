@@ -2348,9 +2348,7 @@ body {
   background: center/cover no-repeat;
   pointer-events: none;
   opacity: 0;
-}
-.the-blood.shown {
-  animation: 0.3s forwards linear blood;
+  animation: 0s forwards linear blood infinite;
 }
 
 .the-prog {
@@ -2366,15 +2364,6 @@ body {
 .the-prog.shown {
   width: 0;
   opacity: 1;
-}
-.ring .the-prog.shown {
-  transition: width 30s linear;
-}
-.loop .the-prog.shown {
-  transition: width 20s linear;
-}
-.tablets .the-prog.shown {
-  transition: width 10s linear;
 }
 
 .hoverable {
