@@ -10,6 +10,7 @@ export const data={
   $blood:'.the-blood'
  },
  prog:{
+  op:0.8,
   thr:.25,
   time:[1,.5]
  }

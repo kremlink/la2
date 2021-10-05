@@ -31,7 +31,7 @@
       @include med(){
         top:2em;
       }
-      .start &{
+      .start &,.fromLoad &{
         visibility:visible;
       }
     }

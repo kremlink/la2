@@ -10,6 +10,7 @@ let app,
 
 let events={};
 events[`click ${data.events.start}`]='start';
+events[`click ${data.events.load}`]='callInfoPop';
 //events[`click ${data.events.goOn}`]='goOn';
 events[`click ${data.events.clr}`]='clr';
 
@@ -82,11 +83,14 @@ export let Index=Backbone.View.extend({
  },
  loaded:function(){
   this.$el.addClass(data.view.loadedCls);
-  this.start();//TODO:remove
+  //this.start();//TODO:remove
   //setTimeout(()=>this.main.player.pause(),500);//TODO:remove
  },
  disable:function(f){
   this.$el.toggleClass(data.view.nopeCls,f);
+ },
+ callInfoPop:function(){
+  this.$el.addClass(data.view.fromLoadCls);
  },
  start:function(){
   let ls=lsMgr.getData().data[epIndex];

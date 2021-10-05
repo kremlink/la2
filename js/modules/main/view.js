@@ -59,7 +59,7 @@ export let MainView=Backbone.View.extend({
   epIndex=app.get('epIndex');
 
   this.lsMgr=new LsMgr({app:app});
-  new InfoPop({app:app});
+  this.infoPop=new InfoPop({app:app});
   new AchievePop({app:app});
 
   this.listenTo(app.get('aggregator'),'interactive:toggle',this.toggle);

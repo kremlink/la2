@@ -184,7 +184,7 @@
   }
   //---
   @keyframes blood{
-    50%{
+    10%{
       filter:opacity(0);
     }
   }
@@ -378,7 +378,7 @@
     .start{
       width:30em;
       height:109/492*30em;
-      margin:auto auto 2em auto;
+      margin:auto 1em 2em auto;
       position:relative;
       cursor:pointer;
       -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -396,7 +396,19 @@
         @include trs('opacity #{$anim} ease-in-out');
       }
     }
+    .load{
+      height:6em;
+      margin:auto auto 2em 1em;
+      width:510/114*6em;
+      position:relative;
+      background:#fff;
+      cursor:pointer;
+      .goOn:not(.start) &{
+        //display:block;
+      }
+    }
   }
+
   .s-ctrls{
     @include abs($l:0,$t:0);
     $h:3.25em;
@@ -410,14 +422,6 @@
       position:relative;
       margin-left:-1px;
       #wrap:not(.start) &{
-        //display:block;
-      }
-    }
-    .continue{
-      width:510/114*$h;
-      display:none;
-      position:relative;
-      .goOn:not(.start) &{
         //display:block;
       }
     }

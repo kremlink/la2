@@ -3,6 +3,7 @@ export const data={
  waitBtn:1500,
  events:{
   'start':'.start-pop .start',
+  'load':'.start-pop .load',
   'clr':'.clr',
   'goOn':'.continue'
  },
@@ -11,6 +12,7 @@ export const data={
   loadedCls:'loaded',
   tooSmallCls:'too-small',
   startCls:'start',
+  fromLoadCls:'fromLoad',
   //fsCls:'fs',
   timerCls:'timer',
   pauseCls:'paused',

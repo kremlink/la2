@@ -202,7 +202,7 @@
         &.shown{
           opacity:1;
           visibility:visible;
-          @include trs('text-indent #{$anim} ease-in-out #{$anim*2},opacity #{$anim} ease-in-out');
+          @include trs('text-indent #{$anim*4} ease-in-out #{$anim*2},opacity #{$anim} ease-in-out');
         }
 
         &.putL,&.putR{

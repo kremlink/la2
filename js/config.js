@@ -103,9 +103,9 @@ export let config={
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
      //{start:.2,back:.2,invoked:false,data:{interactive:'Learn'}},
-     {start:.5,end:4,back:2.5,invoked:false,data:{interactive:'Fork',alt:2}},
+     //{start:.5,end:4,back:2.5,invoked:false,data:{interactive:'Fork',alt:2}},
      //{start:6,end:7,back:5.5,invoked:false,data:{interactive:'Packing'}},
-     //{start:5,end:6,back:5,invoked:false,data:{interactive:'Team'}}
+     {start:.5,end:6,back:5,invoked:false,data:{interactive:'Team'}}
      /*{start:1043.48,end:1044.52,noBg:true,back:1043,invoked:false,data:{interactive:'Fork',alt:1095.92}},
      {start:1412.68,end:1413.68,back:1412,invoked:false,data:{interactive:'Packing'}},
      {start:1650.24,end:1651.36,back:1649.8,invoked:false,data:{interactive:'Team'}}*/

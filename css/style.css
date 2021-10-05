@@ -688,7 +688,7 @@ body {
 .ov-wrap.packing .item.shown, .ov-wrap.team .item.shown {
   opacity: 1;
   visibility: visible;
-  transition: text-indent 0.3s ease-in-out 0.6s,opacity 0.3s ease-in-out;
+  transition: text-indent 1.2s ease-in-out 0.6s,opacity 0.3s ease-in-out;
 }
 .ov-wrap.packing .item.putL, .ov-wrap.packing .item.putR, .ov-wrap.team .item.putL, .ov-wrap.team .item.putR {
   text-indent: 1px;
@@ -1729,7 +1729,7 @@ body {
     top: 2em;
   }
 }
-.start .info-pop .caller {
+.start .info-pop .caller, .fromLoad .info-pop .caller {
   visibility: visible;
 }
 .info-pop .inner {
@@ -2335,7 +2335,7 @@ body {
 }
 
 @keyframes blood {
-  50% {
+  10% {
     filter: opacity(0);
   }
 }
@@ -2565,7 +2565,7 @@ body {
 .start-pop .start {
   width: 30em;
   height: 6.6463414634em;
-  margin: auto auto 2em auto;
+  margin: auto 1em 2em auto;
   position: relative;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -2583,7 +2583,14 @@ body {
   height: 100%;
   transition: opacity 0.3s ease-in-out;
 }
-
+.start-pop .load {
+  height: 6em;
+  margin: auto auto 2em 1em;
+  width: 26.8421052632em;
+  position: relative;
+  background: #fff;
+  cursor: pointer;
+}
 .s-ctrls {
   position: absolute;
   left: 0;
@@ -2598,11 +2605,6 @@ body {
   display: none;
   position: relative;
   margin-left: -1px;
-}
-.s-ctrls .continue {
-  width: 14.5394736842em;
-  display: none;
-  position: relative;
 }
 .int-score {
   position: absolute;

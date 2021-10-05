@@ -88,6 +88,7 @@ export let TeamView=BaseIntView.extend({
     this.ignore=true;
     this.$vid[0].pause();
     this.$items.eq(this.index).addClass(this.shownCls);
+    console.log('u');
    }
   }).on('ended',()=>{
    if(this.index!==this.iLength)
@@ -124,6 +125,7 @@ export let TeamView=BaseIntView.extend({
 
   if(e.originalEvent.propertyName===data.view.item.fakeTrs)
   {
+   console.log('t-i');
    if(this.index!==this.iLength-1)
    {
     this.$items.eq(this.index++).removeClass(this.shownCls+' '+data.view.item.putLCls+' '+data.view.item.putRCls);

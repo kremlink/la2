@@ -42,7 +42,7 @@ export let BaseIntView=Backbone.View.extend({
      c=c<0?0:c;
      dur=data.prog.time[0]*c+data.prog.time[1]*(1-c);
      app.get('aggregator').trigger('sound','pulse',1-c);
-     this.theProg.$blood.css({opacity:1-c,animationDuration:dur+'s'});
+     this.theProg.$blood.css({opacity:(1-c)*data.prog.op,animationDuration:dur+'s'});
     }
    },dur*1000);
   }
@@ -80,7 +80,8 @@ export let BaseIntView=Backbone.View.extend({
   {
    this.resetProgEl();
    this.theProg.pulse=true;
-   this.theProg.$prog.addClass(this.shownCls);
+   if(this.theProg.$prog)
+    this.theProg.$prog.addClass(this.shownCls);
   }
   if(this.phase===2)
   {
