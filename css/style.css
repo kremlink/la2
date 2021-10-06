@@ -866,8 +866,14 @@ body {
 .ov-wrap.team .mini div.shown {
   opacity: 1;
 }
+.ov-wrap.team .item.putL .i-desc {
+  opacity: 1;
+}
 .ov-wrap.team .item.putL img {
   transform: translate(-23em, 0) scale(0.9);
+}
+.ov-wrap.team .item.putR .i-desc {
+  opacity: 1;
 }
 .ov-wrap.team .item.putR img {
   transform: translate(23em, 0) scale(0.9);

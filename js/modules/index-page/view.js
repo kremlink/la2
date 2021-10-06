@@ -38,6 +38,7 @@ export let Index=Backbone.View.extend({
   //this.listenTo(app.get('aggregator'),'player:fs',this.fs);
   this.listenTo(app.get('aggregator'),'player:interactive',this.pause);
   this.listenTo(app.get('aggregator'),'player:play',this.play);
+  this.listenTo(app.get('aggregator'),'info:toggle',this.infoPopHide);
 
   lsMgr=this.main.lsMgr;
 
@@ -83,7 +84,7 @@ export let Index=Backbone.View.extend({
  },
  loaded:function(){
   this.$el.addClass(data.view.loadedCls);
-  //this.start();//TODO:remove
+  this.start();//TODO:remove
   //setTimeout(()=>this.main.player.pause(),500);//TODO:remove
  },
  disable:function(f){
@@ -91,6 +92,11 @@ export let Index=Backbone.View.extend({
  },
  callInfoPop:function(){
   this.$el.addClass(data.view.fromLoadCls);
+  this.main.infoPop.tab(false,1);
+ },
+ infoPopHide:function(f){
+  if(!f)
+   this.$el.removeClass(data.view.fromLoadCls);
  },
  start:function(){
   let ls=lsMgr.getData().data[epIndex];

@@ -367,11 +367,21 @@
         }
       }
       .item{
-        &.putL img{
-          transform:translate(-23em, 0) scale(0.9);
+        &.putL{
+          .i-desc{
+            opacity:1;
+          }
+          img{
+            transform:translate(-23em, 0) scale(0.9);
+          }
         }
-        &.putR img{
-          transform:translate(23em, 0) scale(0.9);
+        &.putR{
+          .i-desc{
+            opacity:1;
+          }
+          img{
+            transform:translate(23em, 0) scale(0.9);
+          }
         }
       }
       .left,.right{

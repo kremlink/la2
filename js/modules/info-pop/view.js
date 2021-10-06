@@ -108,13 +108,13 @@ export let InfoPop=Backbone.View.extend({
    app.get('aggregator').trigger('player:pause');
   app.get('aggregator').trigger('info:toggle',this.shown);
  },
- tab:function(e){
-  let tab=e?$(e.currentTarget):this.$tabs.eq(0),
-      ind=e?this.$tabs.index(tab):0;
+ tab:function(e,ext=-1){
+  let tab=~ext?this.$tabs.eq(ext):(e?$(e.currentTarget):this.$tabs.eq(0)),
+      ind=this.$tabs.index(tab);
 
   if(!tab.hasClass(data.view.shownCls))
   {
-   if(e)
+   if(e&&!~ext)
     app.get('aggregator').trigger('sound','btn');
    this.$tabs.removeClass(data.view.shownCls);
    this.$blocks.removeClass(data.view.shownCls);

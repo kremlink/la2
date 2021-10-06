@@ -33,9 +33,9 @@ export const data={
   }
  },
  items:[
-  {yep:true,err:'Semen, авто. Выезд от Красногвардейской, 3 места.',mini:{index:4,type:'foot'}},
-  {err:'ПаЛех погряз в пробках, сорри.'},
-  {yep:true,err:'Оболенская, выезжаю из Балашихи, авто 3 места. При стопе позвоните.',mini:{index:2,type:'foot'}},
+  {yep:true,text:'Semen1',err:'Semen, авто. Выезд от Красногвардейской, 3 места.',audio:'voice0',mini:{index:4,type:'foot'}},
+  {text:'Paleh',err:'ПаЛех погряз в пробках, сорри.'},
+  {text:'Obol',yep:true,err:'Оболенская, выезжаю из Балашихи, авто 3 места. При стопе позвоните.',audio:'voice1',mini:{index:2,type:'foot'}},
   {err:'Surprise, выезжаю на другой поиск через 15 минут.'},
   {yep:true,err:'Ежик с котомкой и Bigden, готовы стартовать от метро Орехово.',mini:{index:8,type:'foot'}},
   {yep:true,err:'Это Vert. Буду ко времени штаба, есть 4 места для пеших.',mini:{index:5,type:'foot'}},
@@ -49,7 +49,7 @@ export const data={
   {err:'Джимни, нахожусь Зеленограде. По картам сплошные пробки, не успею в разумные сроки.'},
   {err:'Olexandra, в отпуске, в другой раз ребят.'},
   {yep:true,err:'Леший, готов, беру руководство на себя.',mini:{index:10,type:'gear'}},
-  {yep:true,err:'Сашка, готова, буду инфоргом на поиске.',mini:{index:11,type:'gear'}},
+  {yep:true,err:'Сашка, готова, буду инфоргом на поиске.',mini:{index:11,type:'gear'}}
  ],
  beforeCards:500,
  wait:500

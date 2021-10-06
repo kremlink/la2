@@ -88,7 +88,6 @@ export let TeamView=BaseIntView.extend({
     this.ignore=true;
     this.$vid[0].pause();
     this.$items.eq(this.index).addClass(this.shownCls);
-    console.log('u');
    }
   }).on('ended',()=>{
    if(this.index!==this.iLength)
@@ -125,7 +124,6 @@ export let TeamView=BaseIntView.extend({
 
   if(e.originalEvent.propertyName===data.view.item.fakeTrs)
   {
-   console.log('t-i');
    if(this.index!==this.iLength-1)
    {
     this.$items.eq(this.index++).removeClass(this.shownCls+' '+data.view.item.putLCls+' '+data.view.item.putRCls);
@@ -195,12 +193,14 @@ export let TeamView=BaseIntView.extend({
   {
    if(f)
    {
-    app.get('aggregator').trigger('sound','yes');
+    if(data.items[this.index].audio)
+     app.get('aggregator').trigger('sound',data.items[this.index].audio);
     this.$items.eq(this.index).addClass(cls);
     this.$el.removeClass(data.view.enableCls);
     this.chosen=true;
     this.waiting=true;
     this.$vid[0].play();
+    this.$desc.eq(this.index).html(data.items[this.index].text);
     if(data.items[this.index].mini)
      this.$mini.eq(data.items[this.index].mini.index-1).addClass(this.shownCls);
    }else
