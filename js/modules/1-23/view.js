@@ -60,7 +60,7 @@ export let ForkView=BaseIntView.extend({
   app.get('aggregator').trigger('sound','btn');
   if(curr.hasClass(data.view.altCls))
    this.setData('time',this.opts.data.data.alt);
-  app.get('aggregator').trigger('ls:save',{interactive:'1-23',value:curr.index()});
+  app.get('aggregator').trigger('ls:save',{interactive:this.opts.data.data.real,value:curr.index()});
   this.away();
  }
 });

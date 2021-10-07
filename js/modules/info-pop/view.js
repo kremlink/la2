@@ -50,6 +50,8 @@ export let InfoPop=Backbone.View.extend({
   this.setScroll();
 
   this.tab();
+
+  this.listenTo(app.get('aggregator'),'scroll:resize',this.scrollResize);
  },
  mailFocus:function(){
   this.$mailInput.removeClass(data.view.errCls);
@@ -121,8 +123,11 @@ export let InfoPop=Backbone.View.extend({
    tab.addClass(data.view.shownCls);
    this.$blocks.eq(ind).addClass(data.view.shownCls);
    this.$blocks.eq(this.tabLen+ind).addClass(data.view.shownCls);
-   setTimeout(()=>this.scrollBar.resize(),0);
+   setTimeout(()=>this.scrollResize(),0);
   }
+ },
+ scrollResize:function(){
+  this.scrollBar.resize();
  },
  populate:function(r){
   this.$ach.html(this.achTemplate(r));

@@ -904,6 +904,10 @@ body {
 }
 
 /*@path:components\_ep2.scss*/
+.ov-wrap.qs.err .error {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
 .ov-wrap.qs .int-score {
   display: none;
   position: absolute;
@@ -951,6 +955,17 @@ body {
 }
 @media (min-width: 1024px) {
   .ov-wrap.qs .text {
+    font-size: 0.6em;
+  }
+}
+.ov-wrap.qs .error {
+  position: absolute;
+  top: 23em;
+  opacity: 0;
+  font-size: 0.75em;
+}
+@media (min-width: 1024px) {
+  .ov-wrap.qs .error {
     font-size: 0.6em;
   }
 }
@@ -1815,7 +1830,12 @@ body {
   right: 0;
 }
 .info-pop .t-scroll-inner {
-  padding-right: 1em;
+  padding-right: 5em;
+}
+@media (min-width: 1024px) {
+  .info-pop .t-scroll-inner {
+    padding-right: 3em;
+  }
 }
 .info-pop .t-scroll-bar {
   background: rgba(255, 255, 255, 0.3);
@@ -2113,10 +2133,12 @@ body {
 .info-pop .art-text {
   margin-top: 0.4em;
   font-size: 1.6em;
+  display: none;
 }
 @media (min-width: 1024px) {
   .info-pop .art-text {
     font-size: 1em;
+    display: block;
   }
 }
 

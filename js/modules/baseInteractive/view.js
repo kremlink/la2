@@ -122,6 +122,7 @@ export let BaseIntView=Backbone.View.extend({
 
   this.phase=0;
   this.$el.toggleClass(this.shownCls,f);
-  app.get('aggregator').trigger(f?'sound':'unsound','bg');
+  if(this.opts.data.data.bg)
+   app.get('aggregator').trigger(f?'sound':'unsound',this.opts.data.data.bg);
  }
 });

@@ -32,6 +32,7 @@ export let Index=Backbone.View.extend({
   this.$el.toggleClass(data.view.tooSmallCls,window.screen.width<data.minViewport);
   $(window).on('resize',_.debounce(()=>{
    this.$el.toggleClass(data.view.tooSmallCls,window.screen.width<data.minViewport);
+   app.get('aggregator').trigger('scroll:resize');
   },200));
   document.addEventListener('contextmenu',e=>e.preventDefault());
   this.listenTo(app.get('aggregator'),'player:ready',this.loaded);
@@ -46,26 +47,29 @@ export let Index=Backbone.View.extend({
  },
  prepare:function(){//inconsistent loadeddata event with multiple videos
   let imgs,
-      wait=[];
+      wait=[],
+      collect=(what)=>{
+       for(let [x,y] of Object.entries(data.preload[what]))
+       {
+        imgs=[];
+        if(y.imgs){
+         imgs=y.imgs.map(t=>x+t);
+        }
+        if(y.j)
+        {
+         for(let i=1;i<=y.j.length;i++)
+          for(let j=1;j<=y.j[i-1];j++)
+           for(let k=0;k<y.tmpl.length;k++)
+            imgs.push(x+y.tmpl[k].replace('[i]',i).replace('[j]',j));
+        }
+        wait.push(app.get('lib.utils.imgsReady')({src:imgs}));
+       }
+      };
 
+  if(data.preload['shared'])
+   collect('shared');
   if(data.preload[epIndex])
-  {
-   for(let [x,y] of Object.entries(data.preload[epIndex]))
-   {
-    imgs=[];
-    if(y.imgs){
-     imgs=y.imgs.map(t=>x+t);
-    }
-    if(y.j)
-    {
-     for(let i=1;i<=y.j.length;i++)
-      for(let j=1;j<=y.j[i-1];j++)
-       for(let k=0;k<y.tmpl.length;k++)
-        imgs.push(x+y.tmpl[k].replace('[i]',i).replace('[j]',j));
-    }
-    wait.push(app.get('lib.utils.imgsReady')({src:imgs}));
-   }
-  }
+   collect(epIndex);
 
   $.when(wait).then(()=>{
    this.main.addPlayer(new PlayerView({app:app,lsMgr:lsMgr}));

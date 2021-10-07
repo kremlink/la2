@@ -20,6 +20,7 @@ export let BrowserView=BaseIntView.extend({
  curr:0,
  tTmpl:null,
  pTmpl:null,
+ scrollBar:null,
  initialize:function(opts){
   app=opts.app;
   //data=app.configure({start:dat}).start;
@@ -49,12 +50,17 @@ export let BrowserView=BaseIntView.extend({
 
   this.render();
   setInterval(()=>this.render(),1000);
+
+  this.listenTo(app.get('aggregator'),'scroll:resize',this.scrollResize);
+ },
+ scrollResize:function(){
+  this.scrollBar.resize();
  },
  setScroll:function(){
   let $wrap=this.$cont.find(scrollData.extra.$wrap).css('margin-right',app.get('scrollDim')+'px').scrollTop(0),
    $block=this.$cont.find(scrollData.extra.$block);
 
-  app.set({
+  this.scrollBar=app.set({
    object:'Bar',
    on:Scroll.events($wrap,$block),
    add:$.extend(true,{},scrollData,{

@@ -100,7 +100,10 @@
       @include abs($l:0,$r:0);
     }
     .t-scroll-inner{
-      padding-right:1em;
+      padding-right:5em;
+      @include med(){
+        padding-right:3em;
+      }
     }
     .t-scroll-bar{
       background:rgba(#fff,.3);
@@ -349,8 +352,10 @@
     .art-text{
       margin-top:.4em;
       font-size:1.6em;
+      display:none;
       @include med(){
         font-size:1em;
+        display:block;
       }
     }
   }

@@ -70,6 +70,7 @@ export let QsView=BaseIntView.extend({
    if(!this.opts.data.data.item)
     this.$reveal.removeClass(this.shownCls);
    this.$items.removeClass(this.shownCls).eq(this.index).addClass(this.shownCls);
+   this.$el.removeClass(data.view.errCls);
    this.mS.clr();
   }
 
@@ -81,6 +82,7 @@ export let QsView=BaseIntView.extend({
 
   if(this.opts.data.data.item||this.index<len&&(curr.hasClass(data.view.yepCls)&&data.items[this.index].yep||!curr.hasClass(data.view.yepCls)&&!data.items[this.index].yep))
   {
+   this.$el.removeClass(data.view.errCls);
    app.get('aggregator').trigger('sound','yes');
    if(!this.opts.data.data.item&&'index' in data.items[this.index])
     this.$reveal.eq(data.items[this.index].index).addClass(this.shownCls);
@@ -99,6 +101,7 @@ export let QsView=BaseIntView.extend({
    if(this.index<len)
    {
     curr.addClass(data.view.errCls);
+    this.$el.addClass(data.view.errCls);
     app.get('aggregator').trigger('sound','no');
     this.mS.setPoints(false);
    }

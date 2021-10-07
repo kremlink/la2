@@ -6,8 +6,11 @@ export let config={
  },
  'index':{
   preload:{
-   '1':{
+   'shared':{
     'images/':{imgs:['blood.svg','achiv-bg.svg']},
+    'images/info-pop/':{imgs:['Leshiy.jpg','Sashka.jpg','Bob.jpg','Kartoshka.jpg','Lisa.jpg','Max.jpg','Artyom.jpg','Andrey.jpg','Irina.jpg','Valya.jpg']}
+   },
+   '1':{
     'images/learn/':{
      imgs:['study-arrow.svg','study-save.png'],
      j:[4],
@@ -26,7 +29,6 @@ export let config={
     }
    },
    '2':{
-    'images/':{imgs:['blood.svg','achiv-bg.svg']},
     'images/2-7/':{imgs:['2-7-bg1.jpg','2-7-bg2.jpg','2-7-bigframe.svg','2-7-botframe.svg','2-7-intro-pic.png','2-7-intro-pic-m.png','2-7-ring-in.svg','2-7-ring-out.svg','2-7-table.svg','2-7-topframe.svg','2-7-two-digit-focus.svg']},
     'images/2-25/':{
      imgs:['2-25-bg.jpg','map.svg','2-25-intro-pic.png','2-25-intro-pic-m.png'],
@@ -41,7 +43,6 @@ export let config={
     }
    },
    '3':{
-    'images/':{imgs:['blood.svg','achiv-bg.svg']},
     'images/3-15/':{imgs:['bg.jpg','3-15-close.svg','3-15-intro-pic.png','3-15-intro-pic-m.png','3-15-scroll.png','3-15-topline.svg']},
     'images/3-15-1/':{
      imgs:['img_0.jpg'],
@@ -55,7 +56,6 @@ export let config={
     }
    },
    '4':{
-    'images/':{imgs:['blood.svg','achiv-bg.svg']},
     'images/4-4/':{imgs:['bg.jpg']},
     'images/4-6/':{
      imgs:['bg.jpg']
@@ -103,38 +103,38 @@ export let config={
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
      //{start:.2,back:.2,invoked:false,data:{interactive:'Learn'}},
-     //{start:.5,end:4,back:2.5,invoked:false,data:{interactive:'Fork',alt:2}},
+     {start:.5,end:4,back:2.5,invoked:false,data:{interactive:'Fork',alt:2,real:'1-23'}},
      //{start:6,end:7,back:5.5,invoked:false,data:{interactive:'Packing'}},
-     {start:.5,end:6,back:5,invoked:false,data:{interactive:'Team'}}
+     //{start:.5,end:6,back:5,invoked:false,data:{interactive:'Team',bg:'action'}}
      /*{start:1043.48,end:1044.52,noBg:true,back:1043,invoked:false,data:{interactive:'Fork',alt:1095.92}},
      {start:1412.68,end:1413.68,back:1412,invoked:false,data:{interactive:'Packing'}},
-     {start:1650.24,end:1651.36,back:1649.8,invoked:false,data:{interactive:'Team'}}*/
+     {start:1650.24,end:1651.36,back:1649.8,invoked:false,data:{interactive:'Team',bg:'action'}}*/
     ]
    },//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
    '2':{
     //src:'2',
     src:'oceans',
     timecodes:[
-     {start:1,end:2,back:1,invoked:false,data:{interactive:'Ring'}},
-     //{start:3,end:4,back:3,invoked:false,data:{interactive:'Qs'}},
-     //{start:5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth'}},
-     //{start:1,end:8,back:7,invoked:false,data:{interactive:'Fix'}}
-     /*{start:459.76,end:460.8,back:459,invoked:false,data:{interactive:'Ring'}},
+     //{start:1,end:2,back:1,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
+     {start:.3,end:4,back:3,invoked:false,data:{interactive:'Qs'}},
+     //{start:5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
+     //{start:1,end:8,back:7,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}
+     /*{start:459.76,end:460.8,back:459,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
      {start:1185.44,end:1186.48,back:1185,invoked:false,data:{interactive:'Qs'}},
-     {start:1361.36,end:1362.4,back:1361,invoked:false,data:{interactive:'Labyrinth'}},
-     {start:1784.28,end:1785.32,back:1783.8,invoked:false,data:{interactive:'Fix'}}*/
+     {start:1361.36,end:1362.4,back:1361,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
+     {start:1784.28,end:1785.32,back:1783.8,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}*/
     ]
    },
    '3':{
     //src:'3',
     src:'oceans',
     timecodes:[
-     {start:1,end:2,back:1,invoked:false,data:{interactive:'Loop'}},
-     {start:3,end:4,back:3,invoked:false,data:{interactive:'Browser'}},
-     {start:5,end:6,back:5,invoked:false,data:{interactive:'Qs1'}}
-     /*{start:800.36,end:800.88,back:800,invoked:false,data:{interactive:'Loop'}},
-     {start:801.36,end:801.4,back:801,invoked:false,data:{interactive:'Browser'}},
-     {start:1333.96,end:1335,back:1333.4,invoked:false,data:{interactive:'Qs1'}}*/
+     //{start:1,end:2,back:1,invoked:false,data:{interactive:'Loop',bg:'action'}},
+     {start:3,end:4,back:3,invoked:false,data:{interactive:'Browser',bg:'action'}},
+     {start:5,end:6,back:5,invoked:false,data:{interactive:'Qs1',bg:'liric'}}
+     /*{start:800.36,end:800.88,back:800,invoked:false,data:{interactive:'Loop',bg:'action'}},
+     {start:801.36,end:801.4,back:801,invoked:false,data:{interactive:'Browser',bg:'action'}},
+     {start:1333.96,end:1335,back:1333.4,invoked:false,data:{interactive:'Qs1',bg:'liric'}}*/
     ]
    },
    '4':{
@@ -142,11 +142,11 @@ export let config={
     src:'oceans',
     timecodes:[
      {start:1,end:2,back:1,invoked:false,data:{interactive:'Qs',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}},
-     {start:3,end:4,back:3,invoked:false,data:{interactive:'Fork',alt:3,diff:true}},
-     {start:5,end:6,back:5,invoked:false,data:{interactive:'Tablets'}}
-     /*{start:335.6,end:336.6,back:335,invoked:false,data:{interactive:'Tablets'}},
-     {start:393.2,end:394.24,back:392.7,invoked:false,data:{interactive:'Fork',alt:404.12,diff:true}},
-     {start:1617.32,end:1618.32,back:1616.9,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''}}}*/
+     {start:3,end:4,back:3,invoked:false,data:{interactive:'Fork',alt:3,diff:true,real:'4-6',bg:'huliganskaya'}},
+     {start:5,end:6,back:5,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}}
+     /*{start:335.6,end:336.6,back:335,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}},
+     {start:393.2,end:394.24,back:392.7,invoked:false,data:{interactive:'Fork',alt:404.12,diff:true,real:'4-6',bg:'huliganskaya'}},
+     {start:1617.32,end:1618.32,back:1616.9,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''},bg:'trevoga'}}*/
     ]
    }
   }

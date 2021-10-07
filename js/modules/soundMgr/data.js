@@ -1,9 +1,12 @@
 export const data={
  template:'',
  src:{
+  'action':{src:'action',loop:true},
+  'trevoga':{src:'trevoga',loop:true},
+  'huliganskaya':{src:'huliganskaya',loop:true},
+  'liric':{src:'liric',loop:true},
   'btn':{src:'click',loop:false},
   'btn-h':{src:'hover',loop:false},
-  'bg':{src:'bg',loop:true},
   'yes':{src:'yes',loop:false},
   'no':{src:'no',loop:false},
   'pulse':{src:'pulse',loop:false},
