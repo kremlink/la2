@@ -116,11 +116,11 @@ export let config={
     src:'oceans',
     timecodes:[
      //{start:1,end:2,back:1,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
-     {start:.3,end:4,back:3,invoked:false,data:{interactive:'Qs'}},
-     //{start:5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
+     //{start:.3,end:4,back:3,invoked:false,data:{interactive:'Qs',real:'2-25'}},
+     {start:.5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
      //{start:1,end:8,back:7,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}
      /*{start:459.76,end:460.8,back:459,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
-     {start:1185.44,end:1186.48,back:1185,invoked:false,data:{interactive:'Qs'}},
+     {start:1185.44,end:1186.48,back:1185,invoked:false,data:{interactive:'Qs',real:'2-25'}},
      {start:1361.36,end:1362.4,back:1361,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
      {start:1784.28,end:1785.32,back:1783.8,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}*/
     ]
@@ -130,8 +130,8 @@ export let config={
     src:'oceans',
     timecodes:[
      //{start:1,end:2,back:1,invoked:false,data:{interactive:'Loop',bg:'action'}},
-     {start:3,end:4,back:3,invoked:false,data:{interactive:'Browser',bg:'action'}},
-     {start:5,end:6,back:5,invoked:false,data:{interactive:'Qs1',bg:'liric'}}
+     //{start:3,end:4,back:3,invoked:false,data:{interactive:'Browser',bg:'action'}},
+     {start:.5,end:6,back:5,invoked:false,data:{interactive:'Qs1',bg:'liric'}}
      /*{start:800.36,end:800.88,back:800,invoked:false,data:{interactive:'Loop',bg:'action'}},
      {start:801.36,end:801.4,back:801,invoked:false,data:{interactive:'Browser',bg:'action'}},
      {start:1333.96,end:1335,back:1333.4,invoked:false,data:{interactive:'Qs1',bg:'liric'}}*/
@@ -141,12 +141,12 @@ export let config={
     //src:'4',
     src:'oceans',
     timecodes:[
-     {start:1,end:2,back:1,invoked:false,data:{interactive:'Qs',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}},
+     {start:1,end:2,back:1,invoked:false,data:{interactive:'Qs',real:'4-31',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}},
      {start:3,end:4,back:3,invoked:false,data:{interactive:'Fork',alt:3,diff:true,real:'4-6',bg:'huliganskaya'}},
      {start:5,end:6,back:5,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}}
      /*{start:335.6,end:336.6,back:335,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}},
      {start:393.2,end:394.24,back:392.7,invoked:false,data:{interactive:'Fork',alt:404.12,diff:true,real:'4-6',bg:'huliganskaya'}},
-     {start:1617.32,end:1618.32,back:1616.9,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''},bg:'trevoga'}}*/
+     {start:1617.32,end:1618.32,back:1616.9,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''},real:'4-31',bg:'trevoga'}}*/
     ]
    }
   }

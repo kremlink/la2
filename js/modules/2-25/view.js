@@ -93,7 +93,7 @@ export let QsView=BaseIntView.extend({
    curr.addClass(data.view.corrCls);
    if(this.index===len)
    {
-    app.get('aggregator').trigger('ls:save',{interactive:'2-25',value:this.mS.getPoints()});
+    app.get('aggregator').trigger('ls:save',{interactive:this.opts.data.data.real,value:this.mS.getPoints()});
     setTimeout(()=>this.opts.data.data.item?this.away():this.next(),data.before);
    }
   }else

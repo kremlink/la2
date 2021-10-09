@@ -531,3 +531,12 @@
     }
   }
 }
+//---
+.server-test{
+  @include center($t:1em);
+  padding:1em;
+  pointer-events:none;
+  width:70%;
+  z-index:5;
+  background:rgba(#fff,.6);
+}

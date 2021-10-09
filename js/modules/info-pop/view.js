@@ -22,10 +22,13 @@ export let InfoPop=Backbone.View.extend({
  scrollBar:null,
  shown:false,
  code:'',
- achTemplate:_.template($(data.view.ach.tmpl).html()),
+ achTemplate:null,
  mailTmpl:_.template(data.view.save.body),
  initialize:function(opts){
   app=opts.app;
+
+  this.achTemplate=_.template($(data.view.ach.tmpl).html());
+
   this.listenTo(app.get('aggregator'),'info:populate',this.populate);
 
   this.$tabs=this.$(data.events.tab);

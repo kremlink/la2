@@ -120,7 +120,7 @@ export let Qs1View=BaseIntView.extend({
    this.$items.eq(this.index).addClass(this.shownCls);
    if(this.index===data.items.length)
    {
-    app.get('aggregator').trigger('ls:save',{interactive:'3-17'});
+    app.get('aggregator').trigger('ls:save',{interactive:'3-17',value:(this.ctr-1)/(data.items.length-1)});
     setTimeout(()=>this.next(),data.before);
    }
   }

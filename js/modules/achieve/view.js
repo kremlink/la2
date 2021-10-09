@@ -10,10 +10,11 @@ events[`click ${data.events.hide}`]='hide';
 export let AchievePop=Backbone.View.extend({
  events:events,
  el:data.view.el,
- template:_.template($(data.view.template).html()),
+ template:null,
  initialize:function(opts){
   app=opts.app;
 
+  this.template=_.template($(data.view.template).html());
   this.$into=this.$(data.view.into);
   this.listenTo(app.get('aggregator'),'achieve:show',this.achieve);
  },
