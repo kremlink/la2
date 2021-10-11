@@ -106,9 +106,9 @@ export let config={
      {start:.5,end:4,back:2.5,invoked:false,data:{interactive:'Fork',alt:2,real:'1-23'}},
      //{start:6,end:7,back:5.5,invoked:false,data:{interactive:'Packing'}},
      //{start:.5,end:6,back:5,invoked:false,data:{interactive:'Team',bg:'action'}}
-     /*{start:1043.48,end:1044.52,noBg:true,back:1043,invoked:false,data:{interactive:'Fork',alt:1095.92}},
-     {start:1412.68,end:1413.68,back:1412,invoked:false,data:{interactive:'Packing'}},
-     {start:1650.24,end:1651.36,back:1649.8,invoked:false,data:{interactive:'Team',bg:'action'}}*/
+     /*{start:1043.44,end:1044.44,noBg:true,back:1043,invoked:false,data:{interactive:'Fork',alt:1095.88}},
+     {start:1412.6,end:1413.6,back:1412,invoked:false,data:{interactive:'Packing'}},
+     {start:1645.92,end:1646.92,back:1645.5,invoked:false,data:{interactive:'Team',bg:'action'}}*/
     ]
    },//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
    '2':{
@@ -119,10 +119,10 @@ export let config={
      //{start:.3,end:4,back:3,invoked:false,data:{interactive:'Qs',real:'2-25'}},
      {start:.5,end:6,back:5,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
      //{start:1,end:8,back:7,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}
-     /*{start:459.76,end:460.8,back:459,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
-     {start:1185.44,end:1186.48,back:1185,invoked:false,data:{interactive:'Qs',real:'2-25'}},
-     {start:1361.36,end:1362.4,back:1361,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
-     {start:1784.28,end:1785.32,back:1783.8,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}*/
+     /*{start:461.52,end:462.52,back:461,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
+     {start:1185.4,end:1186.4,back:1185,invoked:false,data:{interactive:'Qs',real:'2-25'}},
+     {start:1356.52,end:1357.52,back:1356,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
+     {start:1770.96,end:1771.96,back:1770.5,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}*/
     ]
    },
    '3':{
@@ -132,9 +132,9 @@ export let config={
      //{start:1,end:2,back:1,invoked:false,data:{interactive:'Loop',bg:'action'}},
      //{start:3,end:4,back:3,invoked:false,data:{interactive:'Browser',bg:'action'}},
      {start:.5,end:6,back:5,invoked:false,data:{interactive:'Qs1',bg:'liric'}}
-     /*{start:800.36,end:800.88,back:800,invoked:false,data:{interactive:'Loop',bg:'action'}},
-     {start:801.36,end:801.4,back:801,invoked:false,data:{interactive:'Browser',bg:'action'}},
-     {start:1333.96,end:1335,back:1333.4,invoked:false,data:{interactive:'Qs1',bg:'liric'}}*/
+     /*{start:800.32,end:801.32,back:800,invoked:false,data:{interactive:'Loop',bg:'action'}},
+     {start:802.76,end:803.76,back:802.2,invoked:false,data:{interactive:'Browser',bg:'action'}},
+     {start:1334.88,end:1335.88,back:1334.4,invoked:false,data:{interactive:'Qs1',bg:'liric'}}*/
     ]
    },
    '4':{
@@ -144,14 +144,11 @@ export let config={
      {start:1,end:2,back:1,invoked:false,data:{interactive:'Qs',real:'4-31',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}},
      {start:3,end:4,back:3,invoked:false,data:{interactive:'Fork',alt:3,diff:true,real:'4-6',bg:'huliganskaya'}},
      {start:5,end:6,back:5,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}}
-     /*{start:335.6,end:336.6,back:335,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}},
-     {start:393.2,end:394.24,back:392.7,invoked:false,data:{interactive:'Fork',alt:404.12,diff:true,real:'4-6',bg:'huliganskaya'}},
-     {start:1617.32,end:1618.32,back:1616.9,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''},real:'4-31',bg:'trevoga'}}*/
+     /*{start:335.6,end:336.6,back:335.1,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}},
+     {start:393.2,end:394.2,back:392.7,invoked:false,data:{interactive:'Fork',alt:404.12,diff:true,real:'4-6',bg:'huliganskaya'}},
+     {start:1617.28,end:1618.28,back:1616.9,invoked:false,data:{interactive:'Qs',item:{h:'Ищем дальше',text:''},real:'4-31',bg:'trevoga'}}*/
     ]
    }
   }
- },
- interactives:{
-
  }
 };
