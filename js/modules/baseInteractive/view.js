@@ -35,7 +35,7 @@ export let BaseIntView=Backbone.View.extend({
    dur=data.prog.time[0];
 
    setInterval(()=>{
-    if(this.theProg.pulse)
+    if(this.theProg.pulse&&this.theProg.$prog)
     {
      this.theProg.value=this.theProg.$prog.width()/this.theProg.outerWidth;
      c=this.theProg.value*this.theProg.value+data.prog.thr*data.prog.thr/(1-data.prog.thr)*(this.theProg.value-1);

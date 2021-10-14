@@ -43,9 +43,9 @@ export let Index=Backbone.View.extend({
 
   lsMgr=this.main.lsMgr;
 
-  lsMgr.sendData({ini:true,cb:()=>this.prepare()});
+  lsMgr.sendData({ini:true,cb:(r)=>this.prepare(r)});
  },
- prepare:function(){//inconsistent loadeddata event with multiple videos
+ prepare:function(r){//inconsistent loadeddata event with multiple videos
   let imgs,
       wait=[],
       collect=(what)=>{
@@ -71,6 +71,9 @@ export let Index=Backbone.View.extend({
   if(data.preload[epIndex])
    collect(epIndex);
 
+  if(r.user&&r.user.code)
+   this.$el.addClass(data.view.goOnCls);
+
   $.when(wait).then(()=>{
    this.main.addPlayer(new PlayerView({app:app,lsMgr:lsMgr}));
   });
@@ -88,7 +91,7 @@ export let Index=Backbone.View.extend({
  },
  loaded:function(){
   this.$el.addClass(data.view.loadedCls);
-  this.start();//TODO:remove
+  //this.start();//TODO:remove
   //setTimeout(()=>this.main.player.pause(),500);//TODO:remove
  },
  disable:function(f){
@@ -96,6 +99,7 @@ export let Index=Backbone.View.extend({
  },
  callInfoPop:function(){
   this.$el.addClass(data.view.fromLoadCls);
+  this.main.infoPop.toggle();
   this.main.infoPop.tab(false,1);
  },
  infoPopHide:function(f){

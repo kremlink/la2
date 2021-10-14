@@ -193,8 +193,9 @@ export let TeamView=BaseIntView.extend({
   {
    if(f)
    {
-    if(data.items[this.index].audio)
-     app.get('aggregator').trigger('sound',data.items[this.index].audio);
+    //if(data.items[this.index].audio)
+     //app.get('aggregator').trigger('sound',data.items[this.index].audio);
+    app.get('aggregator').trigger('sound','yes');
     this.$items.eq(this.index).addClass(cls);
     this.$el.removeClass(data.view.enableCls);
     this.chosen=true;

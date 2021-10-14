@@ -2555,6 +2555,7 @@ body {
   bottom: 0;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   background: url(../images/start-bg.jpg) center/cover no-repeat;
   z-index: 1;
   transition: opacity 0.3s ease-in-out;
@@ -2593,15 +2594,24 @@ body {
 .start-pop .start {
   width: 30em;
   height: 6.6463414634em;
-  margin: auto 1em 2em auto;
+  margin: auto 1em 2em 1em;
   position: relative;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.goOn .start-pop .start div:nth-child(1) {
+  display: none;
+}
+.goOn .start-pop .start div:nth-child(2) {
+  display: block;
 }
 @media (min-width: 1024px) {
   .start-pop .start:hover img + img {
     opacity: 0;
   }
+}
+.start-pop .start div:nth-child(2) {
+  display: none;
 }
 .start-pop .start img {
   position: absolute;
@@ -2611,14 +2621,7 @@ body {
   height: 100%;
   transition: opacity 0.3s ease-in-out;
 }
-.start-pop .load {
-  height: 6em;
-  margin: auto auto 2em 1em;
-  width: 26.8421052632em;
-  position: relative;
-  background: #fff;
-  cursor: pointer;
-}
+
 .s-ctrls {
   position: absolute;
   left: 0;
@@ -2760,6 +2763,7 @@ body {
   width: 70%;
   z-index: 5;
   background: rgba(255, 255, 255, 0.6);
+  display: none;
 }
 
 /*@path:components\_shared.scss*/
@@ -2789,6 +2793,13 @@ body {
   order: 3;
   margin: 0 auto 0 6em;
   background-image: url(../images//icons/icon-f-10.svg);
+}
+.video-js .rem {
+  color: #fff;
+  font-size: 1.5em;
+  position: absolute;
+  top: -2.5em;
+  right: 3em;
 }
 .video-js .vjs-big-play-button {
   display: none;
@@ -2979,7 +2990,6 @@ body {
   display: none;
 }
 .video-js .vjs-control.vjs-time-control.vjs-remaining-time {
-  display: block;
   color: #fff;
   font-size: 1.5em;
   position: absolute;

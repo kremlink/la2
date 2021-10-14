@@ -2,10 +2,9 @@ export const data={
  preload:{},
  waitBtn:1500,
  events:{
-  'start':'.start-pop .start',
+  'start':'.start-pop .play',
   'load':'.start-pop .load',
-  'clr':'.clr',
-  'goOn':'.continue'
+  'clr':'.clr'
  },
  view:{
   el:'#wrap',

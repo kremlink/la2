@@ -12,7 +12,7 @@ export const data={
  },
  view:{
   el:'.video-js',
-  goOn:'.continue',
+  rem:'.rem',
   steps:{
    item:'.special-btns .inner',
    tmpl:'#ext-player-template',

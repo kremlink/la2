@@ -27,6 +27,11 @@
       margin:0 auto 0 6em;
       background-image:url(#{$path}/icons/icon-f-10.svg);
     }
+    .rem{
+      color:#fff;
+      font-size:1.5em;
+      @include abs($r:3em,$t:-2.5em);
+    }
     .vjs-big-play-button{
       display:none;//
       @include center();
@@ -217,7 +222,7 @@
         text-shadow:none;
         display:none;
         &.vjs-remaining-time{
-          display:block;
+          //display:block;
           color:#fff;
           font-size:1.5em;
           @include abs($r:3em,$t:-3.5em);

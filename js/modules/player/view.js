@@ -10,6 +10,12 @@ events[`click ${data.events.toInt}`]='toInt';
 events[`click ${data.events.backward}`]='backwardClick';
 events[`click ${data.events.forward}`]='forwardClick';
 
+let sToMS=(rem)=>{
+ let ss=Math.floor(rem)%60;
+
+ return (rem>.25?'-':'')+Math.floor(rem/60)+':'+(ss<10?'0':'')+ss;
+};
+
 export let PlayerView=Backbone.View.extend({
  events:events,
  el:data.view.el,
@@ -168,6 +174,9 @@ export let PlayerView=Backbone.View.extend({
   this.player.controlBar.addChild('QualitySelector');
   this.player.controlBar.addChild('Button').el().classList.add('b-b');
   this.player.controlBar.addChild('Button').el().classList.add('f-b');
+  this.player.controlBar.addChild('Button').el().classList.add('rem');
+
+  this.$rem=this.$(data.view.rem);
 
   if(app.get('_dev-player'))
    this.player.muted(true);
@@ -193,17 +202,21 @@ export let PlayerView=Backbone.View.extend({
   });
 
   this.player.on('timeupdate',()=>{
-   let curr=this.player.currentTime();
+   let curr=this.player.currentTime(),
+       rem=this.player.remainingTime(),
+       dur=this.player.duration();
 
    app.get('aggregator').trigger('player:timeupdate',curr);
    this.pData.timecodes.forEach((o,i)=>{
-    if((o.start<0?curr>this.player.duration()+o.start:curr>o.start)&&!o.invoked)
+    if((o.start<0?curr>dur+o.start:curr>o.start)&&!o.invoked)
     {
      app.get('aggregator').trigger('player:interactive',{data:o,index:i});
      o.invoked=true;
      this.setStepsChoose(i);
     }
    });
+
+   this.$rem.text(data.data[epIndex].neededDur?sToMS(data.data[epIndex].neededDur-(dur-rem)*data.data[epIndex].neededDur/dur):sToMS(rem));
   });
 
   this.player.on('ended',()=>{
