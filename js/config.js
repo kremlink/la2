@@ -12,7 +12,7 @@ export let config={
    },
    '1':{
     'images/learn/':{
-     imgs:['study-arrow.svg','study-save.png'],
+     imgs:['study-save.png'],
      j:[4],
      tmpl:['study-bg[j].jpg']
     },
@@ -23,7 +23,7 @@ export let config={
      tmpl:['1-25-obj[j].png']
     },
     'images/1-30/':{
-     imgs:['1-30-bg.jpg','1-30-intro-pic.png','1-30-intro-pic-m.png','1-30-icon-foot.svg','1-30-icon-gear.svg','1-30-icon-map.svg'],
+     imgs:['1-30-bg.jpg','1-30-intro-pic.png','1-30-intro-pic-m.png','1-30-icon-foot.svg','1-30-icon-gear.svg','1-30-icon-map.svg','1-30-icon-phone.svg','no-frame.svg','yes-frame.svg'],
      j:[17],
      tmpl:['card[j].png']
     }
@@ -36,7 +36,7 @@ export let config={
      tmpl:['over[j].svg']
     },
     'images/2-28/':{
-     imgs:['2-28-lost-bg.jpg','2-28-overlay.jpg','2-28-intro-pic.png','2-28-intro-pic-m.png','3b.svg','3c.svg','3l1.svg','3l2.svg','3r1.svg','3r2.svg','3ß.svg','4b.svg','4c.svg','4l.svg','4r.svg']
+     imgs:['poster.jpg','2-28-lost-bg.jpg','2-28-intro-pic.png','2-28-intro-pic-m.png','3b.svg','3c.svg','3l1.svg','3l2.svg','3r1.svg','3r2.svg','3ß.svg','4b.svg','4l.svg','4r.svg']
     },
     'images/2-39/':{
      imgs:['2-39-bg.jpg','2-39-intro-pic.png','2-39-intro-pic-m.png']
@@ -56,6 +56,9 @@ export let config={
     }
    },
    '4':{
+    'images/2-25/':{
+     imgs:['button.svg','map-bg.svg']
+    },
     'images/4-4/':{imgs:['bg.jpg']},
     'images/4-6/':{
      imgs:['bg.jpg']
@@ -93,64 +96,65 @@ export let config={
   ],
   srcData:{
    spec:['1080p','720p','480p'],
-   tmpl:'../<%= src %>.mp4'
-   //tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= src %>/mp4/ng2_master_<%= src %>ser<%= spec %>.mp4'//TODO:this
+   //tmpl:'../<%= src %>.mp4'
+   tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= src %>/mp4/ng2_master_<%= src %>ser<%= spec %>.mp4'//TODO:this
   },
   data:{
    '1':{
-    //src:'1',
-    src:'oceans',
+    src:'1',
+    //src:'oceans',
     neededDur:'1865',
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
-     /*{start:1,back:1,invoked:false,data:{interactive:'Learn'}},
-     {start:2,end:2,back:2,invoked:false,data:{interactive:'Fork',alt:2,bg:'trevoga',real:'1-23'}},
-     {start:3,end:3,back:3,invoked:false,data:{interactive:'Packing',bg:'trevoga'}},
-     {start:4,end:4,back:4,invoked:false,data:{interactive:'Team',bg:'action'}}*/
-     /*{start:1043.44,end:1044.44,noBg:true,back:1043,invoked:false,data:{interactive:'Fork',alt:1095.88,bg:'trevoga',real:'1-23'}},
+     /*{start:1,back:.8,invoked:false,data:{interactive:'Learn'}},
+     {start:25,end:25,back:25,invoked:false,data:{interactive:'Fork',alt:25,bg:'trevoga',real:'1-23'}},
+     {start:45,end:45,back:45,invoked:false,data:{interactive:'Packing',bg:'trevoga'}},
+     {start:65,end:65,back:65,invoked:false,data:{interactive:'Team',bg:'action'}}*/
+     {start:1,back:.8,invoked:false,data:{interactive:'Learn'}},
+     {start:1043.44,end:1044.44,noBg:true,back:1043,invoked:false,data:{interactive:'Fork',alt:1095.88,bg:'trevoga',real:'1-23'}},
      {start:1412.6,end:1413.6,back:1412,invoked:false,data:{interactive:'Packing',bg:'trevoga'}},
-     {start:1645.92,end:1646.92,back:1645.5,invoked:false,data:{interactive:'Team',bg:'action'}}*/
+     {start:1645.92,end:1646.92,back:1645.5,invoked:false,data:{interactive:'Team',bg:'action'}}
     ]
    },//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
    '2':{
-    //src:'2',
-    src:'oceans',
+    src:'2',
+    //src:'oceans',
     neededDur:'2335',
     timecodes:[
-     {start:1,end:1,back:1,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
+    /* {start:1,end:1,back:1,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
      {start:2,end:2,back:2,invoked:false,data:{interactive:'Qs',bg:'trevoga',real:'2-25'}},
      {start:3,end:3,back:3,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
-     {start:4,end:4,back:4,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}
-     /*{start:461.52,end:462.52,back:461,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
+     {start:4,end:4,back:4,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}*/
+     {start:461.52,end:462.52,back:461,invoked:false,data:{interactive:'Ring',bg:'trevoga'}},
      {start:1185.4,end:1186.4,back:1185,invoked:false,data:{interactive:'Qs',bg:'trevoga',real:'2-25'}},
      {start:1356.52,end:1357.52,back:1356,invoked:false,data:{interactive:'Labyrinth',bg:'trevoga'}},
-     {start:1770.96,end:1771.96,back:1770.5,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}*/
+     {start:1770.96,end:1771.96,back:1770.5,invoked:false,data:{interactive:'Fix',bg:'huliganskaya'}}
     ]
    },
    '3':{
-    //src:'3',
-    src:'oceans',
+    src:'3',
+    //src:'oceans',
     neededDur:'1805',
     timecodes:[
-     {start:1,end:1,back:1,invoked:false,data:{interactive:'Loop',bg:'action'}},
+     /*{start:1,end:1,back:1,invoked:false,data:{interactive:'Loop',bg:'action'}},
      {start:2,end:2,back:2,invoked:false,data:{interactive:'Browser',bg:'action'}},
-     {start:3,end:3,back:3,invoked:false,data:{interactive:'Qs1',bg:'liric'}}
-     /*{start:800.32,end:801.32,back:800,invoked:false,data:{interactive:'Loop',bg:'action'}},
+     {start:3,end:3,back:3,invoked:false,data:{interactive:'Qs1',bg:'liric'}}*/
+     {start:800.32,end:801.32,back:800,invoked:false,data:{interactive:'Loop',bg:'action'}},
      {start:802.76,end:803.76,back:802.2,invoked:false,data:{interactive:'Browser',bg:'action'}},
-     {start:1334.88,end:1335.88,back:1334.4,invoked:false,data:{interactive:'Qs1',bg:'liric'}}*/
+     {start:1334.88,end:1335.88,back:1334.4,invoked:false,data:{interactive:'Qs1',bg:'liric'}}
     ]
    },
    '4':{
-    //src:'4',
-    src:'oceans',
+    src:'4',
+    //src:'oceans',
     neededDur:'2059',
     timecodes:[
-     {start:1,end:1,back:1,invoked:false,data:{interactive:'Qs',bg:'trevoga',real:'4-31',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}},
+     /*{start:1,end:1,back:1,invoked:false,data:{interactive:'Qs',bg:'trevoga',real:'4-31',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}},
      {start:2,end:2,back:2,invoked:false,data:{interactive:'Fork',alt:2,diff:true,real:'4-6',bg:'huliganskaya'}},
-     {start:3,end:3,back:3,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}}
-     /*{start:335.6,end:336.6,back:335.1,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}},
+     {start:3,end:3,back:3,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}}*/
+     {start:335.6,end:336.6,back:335.1,invoked:false,data:{interactive:'Tablets',bg:'trevoga'}},
      {start:393.2,end:394.2,back:392.7,invoked:false,data:{interactive:'Fork',alt:404.12,diff:true,real:'4-6',bg:'huliganskaya'}},
-     {start:1617.28,end:1618.28,back:1616.9,invoked:false,data:{interactive:'Qs',bg:'trevoga',real:'4-31',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}}*/
+     {start:1617.28,end:1618.28,back:1616.9,invoked:false,data:{interactive:'Qs',bg:'trevoga',real:'4-31',item:{h:'Пешие поисковики осмотрели реку.<br />к счастью, тело не найдено.<br /><br />Продолжай поиски.',text:''}}}
     ]
    }
   }

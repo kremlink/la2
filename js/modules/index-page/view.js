@@ -14,6 +14,8 @@ events[`click ${data.events.load}`]='callInfoPop';
 //events[`click ${data.events.goOn}`]='goOn';
 events[`click ${data.events.clr}`]='clr';
 
+let smallCheck=()=>window.screen.width<data.minViewport&&matchMedia(data.orient).matches;
+
 export let Index=Backbone.View.extend({
  events:events,
  el:data.view.el,
@@ -21,17 +23,18 @@ export let Index=Backbone.View.extend({
  initialize:function(opts){
   app=opts.app;
   data=app.configure({index:dat}).index;
-  //might be needed someday
+
   app.set({dest:'objects.isPc',object:matchMedia(data.pcViewport).matches});
+  app.set({dest:'objects.isApple',object:/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream||navigator.platform.includes('Mac')});
 
   epIndex=app.get('epIndex');
 
   new Metrika({app:app});
   this.main=new MainView({app:app});
 
-  this.$el.toggleClass(data.view.tooSmallCls,window.screen.width<data.minViewport);
+  this.$el.toggleClass(data.view.tooSmallCls,smallCheck());
   $(window).on('resize',_.debounce(()=>{
-   this.$el.toggleClass(data.view.tooSmallCls,window.screen.width<data.minViewport);
+   this.$el.toggleClass(data.view.tooSmallCls,smallCheck());
    app.get('aggregator').trigger('scroll:resize');
   },200));
   document.addEventListener('contextmenu',e=>e.preventDefault());

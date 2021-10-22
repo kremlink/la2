@@ -38,7 +38,7 @@ export let LearnView=BaseIntView.extend({
   BaseIntView.prototype.toggle.apply(this,arguments);
   if(f)
   {
-
+   //app.get('aggregator').trigger('ls:save',{interactive:'learn'});
   }
  },
 });

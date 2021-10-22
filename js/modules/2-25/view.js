@@ -39,23 +39,26 @@ export let QsView=BaseIntView.extend({
    data:data
   }]);
 
-  this.$(data.events.click).each(function(i){
+  if(!this.opts.data.data.item||!app.get('isApple'))
+  {
+   this.$(data.events.click).html('').each(function(i){
+    lottie.loadAnimation({
+     container:this,
+     renderer:'svg',
+     loop:true,
+     autoplay:true,
+     animationData:lData.btn[i]
+    });
+   });
+
    lottie.loadAnimation({
-    container:this,
+    container:this.$(data.view.map).html('')[0],
     renderer:'svg',
     loop:true,
     autoplay:true,
-    animationData:lData.btn[i]
+    animationData:lData.map
    });
-  });
-
-  lottie.loadAnimation({
-   container:this.$(data.view.map)[0],
-   renderer:'svg',
-   loop:true,
-   autoplay:true,
-   animationData:lData.map
-  });
+  }
 
   //this.next();//TODO:remove
  },

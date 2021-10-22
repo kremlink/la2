@@ -41,7 +41,8 @@ export let TeamView=BaseIntView.extend({
 
   this.opts=opts;
 
-  this.setLottie();
+  if(!app.get('isApple'))
+   this.setLottie();
 
   this.$vid=this.$(data.view.vid.item);
 
@@ -143,14 +144,14 @@ export let TeamView=BaseIntView.extend({
  },
  setLottie:function(){
   lottie.loadAnimation({
-   container:this.$(data.view.lottie.no)[0],
+   container:this.$(data.view.lottie.no).html('')[0],
    renderer:'svg',
    loop:true,
    autoplay:true,
    animationData:lData.no
   });
   lottie.loadAnimation({
-   container:this.$(data.view.lottie.yes)[0],
+   container:this.$(data.view.lottie.yes).html('')[0],
    renderer:'svg',
    loop:true,
    autoplay:true,

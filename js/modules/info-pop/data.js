@@ -21,8 +21,8 @@ export const data={
    vData:'valid',
    saveBtn:'.save',
    qr:'.qr',
-   qrFileName:'niaden-jiv-qr.png',
-   subj:'Код найден-жив',
+   qrFileName:'nayden-jiv-qr.png',
+   subj:'Код сохранения сериала НАЙДЕН_ЖИВ',
    body:'Ваш код: <%= code %>\r\nСсылка: <%= ref %>'
   },
   ach:{

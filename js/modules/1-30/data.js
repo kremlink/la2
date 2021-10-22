@@ -10,7 +10,8 @@ export const data={
   vid:{
    item:'.emerge',
    pause:.9,
-   go:2
+   go:2,
+   end:3.4
   },
   enableCls:'enable',
   miniCont:'.mini',
@@ -49,7 +50,7 @@ export const data={
   {text:'Иногда реальность против нас',err:'Джимни, нахожусь в Зеленограде. По картам сплошные пробки, не успею в разумные сроки.',audio:'voice0'},
   {text:'Иногда отдыхают даже герои',err:'К сожалению, сейчас в отпуске, в другой раз, ребят.',audio:'voice0'},
   {yep:true,text:'Леший, готов, беру руководство на себя.',err:'Я обязан быть там.',mini:{index:10,type:'gear'}},
-  {yep:true,text:'Сашка, готова, буду инфоргом на поиске.',err:'Я не оставлю его одного.',mini:{index:11,type:'gear'}}
+  {yep:true,text:'Сашка, готова, буду инфоргом на поиске.',err:'Я не оставлю его одного.',mini:{index:11,type:'phone'}}
  ],
  beforeCards:500,
  wait:500

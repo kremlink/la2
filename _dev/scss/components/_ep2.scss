@@ -87,6 +87,9 @@
             @include abs($l:0,$r:0,$t:0,$b:0);
             border-radius:1em;
           }
+          img{
+            width:100%;
+          }
         }
       }
     }
@@ -370,10 +373,19 @@
       }
     }
     &.labyrinth{
+      background:url(../images/loader.png) center no-repeat;
+      &.ready{
+        background:none;
+        video{
+          opacity:1;
+        }
+      }
       video{
         position:absolute;
         width:100%;
         height:100%;
+        opacity:0;
+        @include trs('opacity #{$anim} ease-in-out');
       }
       .ovl{
         @include abs($l:-.07em,$r:-.07em,$t:0,$b:0);
@@ -395,6 +407,7 @@
         height:100%;
         position:relative;
         opacity:0;
+        z-index:1;
         pointer-events:none;
         @include trs('opacity #{$anim} ease-in-out');
         &.shown{

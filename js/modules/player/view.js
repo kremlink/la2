@@ -9,6 +9,8 @@ let app,
 events[`click ${data.events.toInt}`]='toInt';
 events[`click ${data.events.backward}`]='backwardClick';
 events[`click ${data.events.forward}`]='forwardClick';
+events[`touchstart ${data.events.backward}`]='backwardClick';
+events[`touchstart ${data.events.forward}`]='forwardClick';
 
 let sToMS=(rem)=>{
  let ss=Math.floor(rem)%60;
@@ -117,6 +119,7 @@ export let PlayerView=Backbone.View.extend({
  },
  backwardClick:function(){
   let curr=this.player.currentTime(),
+   currInd=-1,
    futur=curr-data.view.go[0]>0?curr-data.view.go[0]:0,
    f=false,
    index=-1;
@@ -126,6 +129,11 @@ export let PlayerView=Backbone.View.extend({
    app.get('aggregator').trigger('sound','btn');
    if(this.pData.timecodes[0].start<=curr)
    {
+    this.pData.timecodes.forEach((o,i)=>{
+     if(o.start<curr)
+      currInd=i;
+    });
+
     this.pData.timecodes.forEach((o,i)=>{
      if(o.start<futur)
      {
@@ -141,7 +149,8 @@ export let PlayerView=Backbone.View.extend({
     });
    }
 
-   this.setStepsChoose(index);
+   if(currInd!==index)
+    this.setStepsChoose(index);
 
    this.play({time:futur});
   }
@@ -175,6 +184,8 @@ export let PlayerView=Backbone.View.extend({
   this.player.controlBar.addChild('Button').el().classList.add('b-b');
   this.player.controlBar.addChild('Button').el().classList.add('f-b');
   this.player.controlBar.addChild('Button').el().classList.add('rem');
+
+  //console.log(this.$(data.events.backward));
 
   this.$rem=this.$(data.view.rem);
 

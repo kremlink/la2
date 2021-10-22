@@ -7,8 +7,10 @@ export const data={
   vid:'video',
   into:'.into',
   $smooth:'.smooth',
-  tmpl:'#i-2-28-template'
+  tmpl:'#i-2-28-template',
+  readyCls:'ready'
  },
+ preload:['images/2-28/2-28-overlay.jpg','images/2-28/4c.svg'],
  vidSrc:{
   tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= epIndex %>/int-mp4/<%= src %>.mp4',
   //tmpl:'../videos/<%= src %>.mp4',

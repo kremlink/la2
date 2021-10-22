@@ -13,6 +13,7 @@ export let LabyrinthView=BaseIntView.extend({
  },
  el:data.view.el,
  tmpl:null,
+ vLoaded:false,
  currData:{
   key:null,
   btnInd:0
@@ -56,7 +57,13 @@ export let LabyrinthView=BaseIntView.extend({
      this.render();
     }
    }
-  }).on('seeked',()=>this.$smooth.removeClass(this.shownCls));
+  })
+   .on('seeked',()=>this.$smooth.removeClass(this.shownCls))
+   .on('loadedmetadata',()=>{
+    if(!this.vLoaded)
+     app.get('lib.utils').imgsReady({src:data.preload,callback:()=>this.$el.addClass(data.view.readyCls)});
+    this.vLoaded=true;
+   });
  },
  smoothify:function(changeTime){
   let ctx=this.$smooth[0].getContext('2d'),

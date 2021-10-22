@@ -12,7 +12,7 @@
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 <script>window.jQuery||document.write('<script src="js/lib/jquery.js">\x3C/script>')</script>
         <link href="css/video-js.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/style.css?1" />
 <script src="js/lib/pack/0underscore.min.js"></script>
 <script src="js/lib/pack/backbone.min.js"></script>
 <script src="js/lib/pack/event.js"></script>
@@ -62,7 +62,7 @@
                         <div class="ov-cont">
                             <div class="h-b-h">Что делать при поиске в городе?</div>
                             <div class="h-b-text">
-                                Тебе будут последовательно предложен ряд действий. Прими решение, какие из них правильные для поиска в городе.
+                                Тебе будут последовательно предложен ряд действий. Прими решение, какие из них стоит применить для городского поиска.
                                 <br/><br/>
                                 Галочка — то, что нужно. Крестик — не подходит для города.
                                 <br/><br/>
@@ -115,7 +115,7 @@
                             <div class="h-b-text">
                                 Артём использовал шифр Цезаря. Он работает на принципе смещения алфавита.
                                 <br/><br/>
-                                Крути колесо шифра влево или вправо, пока не получишь что-то внятное.
+                                Крути колесо шифра влево или вправо, пока не разгадаешь зашифрованное сообщение.
                             </div>
                             <div class="h-b-infogr">
                                 <picture>
@@ -143,7 +143,7 @@
                         <div class="ov-cont">
                             <div class="h-b-h">Второй этап</div>
                             <div class="h-b-text">
-                                Набери ответ согласно подсказке, найденной на предыдущем этапе.
+                                Набери ответ, используя расшифрованное сообщение.
                             </div>
                             <div class="h-b-btn">
                                 <span>Далее</span>
@@ -179,7 +179,7 @@
                         <div class="ov-cont">
                             <div class="h-b-h">Этап 3</div>
                             <div class="h-b-text">
-                                Найденные тобой цифры образовали пары, являющиеся координатами в таблице.
+                                Найденные тобой цифры образовали пары, являющиеся координатами в таблице. Нажимай на ячейки таблицы, находящиеся на пересечении этих координат, чтобы получить шифр к сейфу.
                             </div>
                             <div class="h-b-btn">
                                 <span>Далее</span>
@@ -257,7 +257,7 @@
                         </div>
                     </div>
                     <div class="ov-inner int">
-                        <video playsinline preload="metadata"></video>
+                        <video poster="images/2-28/poster.jpg" playsinline preload="metadata"></video>
                         <canvas class="smooth"></canvas>
                         <div class="into"></div>
                     </div>
@@ -338,8 +338,8 @@
         </div>
     </div>
     <div class="start load">
-        <img src="images/startscreen-load-btn-h.png" alt=""/>
         <img src="images/startscreen-load-btn.png" alt=""/>
+        <img src="images/startscreen-load-btn-h.png" alt=""/>
     </div>
 </div>
 <!--<div class="s-ctrls">
@@ -357,8 +357,7 @@
 </div>
 <div class="orientation-pop">
     <div class="text">
-        Экран слишком мал :(<br/>
-        Переверните устройство или используйте компьютер, инспектор.
+        Поверните устройство в горизонтальное положение или используйте компьютер.
     </div>
 </div>
 <div class="special-btns"><div class="inner"></div></div>
