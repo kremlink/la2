@@ -106,14 +106,14 @@ export let config={
     neededDur:'1865',
     timecodes:[
      //{start:1,back:.9,invoked:false,checkpoint:true,data:{interactive:'checkpoint1',achievement:'Ачивка1 прокнула с чекпоинта'}},
-     /*{start:1,back:.8,invoked:false,data:{interactive:'Learn'}},
+     {start:1,back:.8,invoked:false,data:{interactive:'Learn'}},
      {start:25,end:25,back:25,invoked:false,data:{interactive:'Fork',alt:25,bg:'trevoga',real:'1-23'}},
      {start:45,end:45,back:45,invoked:false,data:{interactive:'Packing',bg:'trevoga'}},
-     {start:65,end:65,back:65,invoked:false,data:{interactive:'Team',bg:'action'}}*/
-     {start:1,back:.8,invoked:false,data:{interactive:'Learn'}},
+     {start:65,end:65,back:65,invoked:false,data:{interactive:'Team',bg:'action'}}
+     /*{start:1,back:.8,invoked:false,data:{interactive:'Learn'}},
      {start:1043.44,end:1044.44,noBg:true,back:1043,invoked:false,data:{interactive:'Fork',alt:1095.88,bg:'trevoga',real:'1-23'}},
      {start:1412.6,end:1413.6,back:1412,invoked:false,data:{interactive:'Packing',bg:'trevoga'}},
-     {start:1645.92,end:1646.92,back:1645.5,invoked:false,data:{interactive:'Team',bg:'action'}}
+     {start:1645.92,end:1646.92,back:1645.5,invoked:false,data:{interactive:'Team',bg:'action'}}*/
     ]
    },//[noAutoClose:true|repeatable:true|delayedPause:-1|noVidAutoPlay:true|]checkpoint:true|iniTimer:true
    '2':{

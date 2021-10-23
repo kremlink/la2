@@ -126,7 +126,7 @@ export let InfoPop=Backbone.View.extend({
    tab.addClass(data.view.shownCls);
    this.$blocks.eq(ind).addClass(data.view.shownCls);
    this.$blocks.eq(this.tabLen+ind).addClass(data.view.shownCls);
-   setTimeout(()=>this.scrollResize(),0);
+   setTimeout(()=>this.scrollResize(),100);
   }
  },
  scrollResize:function(){
@@ -134,7 +134,7 @@ export let InfoPop=Backbone.View.extend({
  },
  populate:function(r){
   this.$ach.html(this.achTemplate(r));
-  setTimeout(()=>this.scrollBar.resize(),0);
+  setTimeout(()=>this.scrollBar.resize(),100);
   this.$achCtr.text(`${r.achievements.filter((o)=>!o.disabled).length}/${r.achievements.length}`);
 
   this.r=r;
