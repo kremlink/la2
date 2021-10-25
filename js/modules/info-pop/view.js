@@ -119,14 +119,14 @@ export let InfoPop=Backbone.View.extend({
 
   if(!tab.hasClass(data.view.shownCls))
   {
-   if(e&&!~ext)
+   if(e)
     app.get('aggregator').trigger('sound','btn');
    this.$tabs.removeClass(data.view.shownCls);
    this.$blocks.removeClass(data.view.shownCls);
    tab.addClass(data.view.shownCls);
    this.$blocks.eq(ind).addClass(data.view.shownCls);
    this.$blocks.eq(this.tabLen+ind).addClass(data.view.shownCls);
-   setTimeout(()=>this.scrollResize(),100);
+   setTimeout(()=>this.scrollResize(),50);
   }
  },
  scrollResize:function(){
@@ -134,7 +134,7 @@ export let InfoPop=Backbone.View.extend({
  },
  populate:function(r){
   this.$ach.html(this.achTemplate(r));
-  setTimeout(()=>this.scrollBar.resize(),100);
+  setTimeout(()=>this.scrollBar.resize(),50);
   this.$achCtr.text(`${r.achievements.filter((o)=>!o.disabled).length}/${r.achievements.length}`);
 
   this.r=r;
