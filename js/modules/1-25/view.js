@@ -32,6 +32,7 @@ export let PackingView=BaseIntView.extend({
  phase2Lotties:[],
  mS:null,
  circles:{clicked:0,failed:0},
+ errChosen:false,
  initialize:function(opts){
   app=opts.app;
   //data=app.configure({start:dat}).start;
@@ -99,8 +100,15 @@ export let PackingView=BaseIntView.extend({
    {
     this.$items.eq(this.index).removeClass(this.shownCls+' '+data.view.item.putLCls+' '+data.view.item.putRCls);
     this.setCtr(this.index+1);
-    setTimeout(()=>{this.next();this.phase2();},data.beforePhase1);
+    setTimeout(()=>{this.next();},data.beforePhase1);
    }
+  }
+ },
+ next:function(){
+  BaseIntView.prototype.next.apply(this,arguments);
+  if(this.phase===3)
+  {
+   this.phase2();
   }
  },
  phase2:function(){
@@ -203,9 +211,12 @@ export let PackingView=BaseIntView.extend({
     this.$items.eq(this.index).addClass(cls);
     this.waiting=true;
     this.mS.setPoints(true);
-    this.$desc.eq(this.index).html(data.items[this.index].desc);
+    if(!this.errChosen)
+     this.$desc.eq(this.index).html(data.items[this.index].desc);
+    this.errChosen=false;
    }else
    {
+    this.errChosen=true;
     app.get('aggregator').trigger('sound','no');
     this.mS.setPoints(false);
     $(e.currentTarget).addClass(data.view.item.errCls);
@@ -217,6 +228,7 @@ export let PackingView=BaseIntView.extend({
   BaseIntView.prototype.toggle.apply(this,arguments);
   if(f)
   {
+   this.errChosen=false;
    this.waiting=false;
    this.index=0;
    this.$items.eq(this.index).addClass(this.shownCls);

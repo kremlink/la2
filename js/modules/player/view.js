@@ -27,6 +27,7 @@ export let PlayerView=Backbone.View.extend({
  pausable:{noInteractive:true,noInfoPop:true},
  firstTime:true,
  goOn:false,
+ dotsTmpl:_.template(data.view.dotsTmpl),
  initialize:function(opts){
   app=opts.app;
   data=app.configure({player:dat}).player;
@@ -121,7 +122,6 @@ export let PlayerView=Backbone.View.extend({
   let curr=this.player.currentTime(),
    currInd=-1,
    futur=curr-data.view.go[0]>0?curr-data.view.go[0]:0,
-   f=false,
    index=-1;
 
   if(!this.player.seeking())
@@ -136,16 +136,8 @@ export let PlayerView=Backbone.View.extend({
 
     this.pData.timecodes.forEach((o,i)=>{
      if(o.start<futur)
-     {
-      if(!f)
-      {
-       f=true;
-       index=i;
-      }
-     }else
-     {
+      index=i;else
       o.invoked=false;
-     }
     });
    }
 
@@ -166,9 +158,7 @@ export let PlayerView=Backbone.View.extend({
    app.get('aggregator').trigger('sound','btn');
    this.pData.timecodes.forEach((o,i)=>{
     if(o.start>curr&&o.start<futur)
-    {
      index=i;
-    }
    });
 
    this.play({time:~index?this.pData.timecodes[index].start:futur});
@@ -184,8 +174,6 @@ export let PlayerView=Backbone.View.extend({
   this.player.controlBar.addChild('Button').el().classList.add('b-b');
   this.player.controlBar.addChild('Button').el().classList.add('f-b');
   this.player.controlBar.addChild('Button').el().classList.add('rem');
-
-  //console.log(this.$(data.events.backward));
 
   this.$rem=this.$(data.view.rem);
 
@@ -231,12 +219,22 @@ export let PlayerView=Backbone.View.extend({
   });
 
   this.player.on('ended',()=>{
-   app.get('aggregator').trigger('player:ended',{cb:()=>location.href=data.redirect[epIndex]});
+   if(data.redirect[epIndex])
+    location.href=data.redirect[epIndex]
   });
 
   this.player.on('loadedmetadata',()=>{
+   let progr=$(this.player.controlBar.progressControl.el()),
+       dur=this.player.duration();
+
    if(this.firstTime)
+   {
+    this.pData.timecodes.forEach((o)=>{
+     progr.append(this.dotsTmpl({left:o.start*100/dur}));
+    });
+
     app.get('aggregator').trigger('player:ready');
+   }
    this.firstTime=false;
   });
 
@@ -281,6 +279,7 @@ export let PlayerView=Backbone.View.extend({
 
    if(this.goOn&&~goOnInd)
     this.setStepsChoose(goOnInd);
+   this.goOn=false;
   }
   if(this.player.paused())
   {

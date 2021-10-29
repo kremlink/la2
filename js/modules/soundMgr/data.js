@@ -5,6 +5,8 @@ export const data={
   'trevoga':{src:'trevoga',loop:true},
   'huliganskaya':{src:'huliganskaya',loop:true},
   'liric':{src:'liric',loop:true},
+  'trevoga_a':{src:'trevoga_a',loop:true},
+  'trevoga_b':{src:'trevoga_b',loop:true},
   'btn':{src:'click',loop:false},
   'btn-h':{src:'hover',loop:false},
   'yes':{src:'yes',loop:false},

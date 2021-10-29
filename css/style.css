@@ -2990,6 +2990,13 @@ body {
 .video-js .vjs-play-progress .vjs-time-tooltip {
   background: #b0aca4;
 }
+.video-js .dot {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid #f60;
+  pointer-events: none;
+}
 .video-js .vjs-mouse-display .vjs-time-tooltip {
   background: #413b32;
 }
@@ -2997,7 +3004,6 @@ body {
   background: rgba(255, 255, 255, 0.25);
 }
 .video-js .vjs-control.vjs-progress-control {
-  pointer-events: none;
   position: absolute;
   left: 0;
   top: 1.5em;
