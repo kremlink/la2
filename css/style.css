@@ -429,11 +429,13 @@ table {
 }
 
 html {
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 
 body {
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
   font: 1.575vw/1.25 "Montserrat", sans-serif;
   background: #000;
   -webkit-user-select: none;
@@ -453,10 +455,20 @@ body {
 }
 
 #wrap {
-  height: 100%;
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
-  min-width: 360px;
+}
+#wrap.inter .start-pop div {
+  display: none;
+}
+#wrap.inter .overlay-block {
+  z-index: 2;
+  visibility: visible;
+  background: #000;
 }
 
 /*@path:base\_exts.scss*/
@@ -2546,6 +2558,9 @@ body {
   opacity: 1;
   visibility: visible;
 }
+.inter .orientation-pop {
+  display: none;
+}
 .orientation-pop .bg {
   position: absolute;
   width: 100%;
@@ -2992,10 +3007,12 @@ body {
 }
 .video-js .dot {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  border-left: 1px solid #f60;
+  top: -0.4em;
+  bottom: -0.4em;
+  width: 0.2em;
   pointer-events: none;
+  border-top: 0.4em solid rgba(255, 255, 255, 0.25);
+  border-bottom: 0.4em solid rgba(255, 255, 255, 0.25);
 }
 .video-js .vjs-mouse-display .vjs-time-tooltip {
   background: #413b32;
@@ -3004,6 +3021,7 @@ body {
   background: rgba(255, 255, 255, 0.25);
 }
 .video-js .vjs-control.vjs-progress-control {
+  pointer-events: none;
   position: absolute;
   left: 0;
   top: 1.5em;

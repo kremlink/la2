@@ -40,7 +40,8 @@ let Interactives={
 let app,
     data=dat,
     events={},
-    epIndex;
+    epIndex,
+    ext;
 
 export let MainView=Backbone.View.extend({
  events:events,
@@ -55,6 +56,14 @@ export let MainView=Backbone.View.extend({
 
   app=opts.app;
   data=app.configure({main:dat}).main;
+
+  ext=app.get('ext');
+  if(ext)
+  {
+   this.intData={data:{data:{interactive:ext.type}}};
+   new Interactives[ext.type]({app:app,data:this.intData});
+   this.player={play:()=>{}};
+  }
 
   epIndex=app.get('epIndex');
 

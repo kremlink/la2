@@ -12,8 +12,8 @@ export const data={
  },
  preload:['images/2-28/2-28-overlay.jpg','images/2-28/4c.svg'],
  vidSrc:{
-  tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= epIndex %>/int-mp4/<%= src %>.mp4',
-  //tmpl:'../videos/<%= src %>.mp4',
+  //tmpl:'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/episode<%= epIndex %>/int-mp4/<%= src %>.mp4',
+  tmpl:'../videos/2-28-lost-480.mp4',
   'src':{
    '1080P':'2-28-lost-1080',
    '720P':'2-28-lost-720',

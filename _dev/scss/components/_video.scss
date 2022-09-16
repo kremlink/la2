@@ -193,9 +193,11 @@
       }
     }
     .dot{
-      @include abs($t:0,$b:0);
-      border-left:1px solid #f60;
+      @include abs($t:-.4em,$b:-.4em);
+      width:.2em;
       pointer-events:none;
+      border-top:.4em solid rgba(#fff,.25);
+      border-bottom:.4em solid rgba(#fff,.25);
     }
     .vjs-mouse-display .vjs-time-tooltip{
       background:$brn;
@@ -207,7 +209,7 @@
     .vjs-control{
       //text-shadow:0 6px 0 $brn;
       &.vjs-progress-control{
-        //pointer-events:none;//TODO:uncomment
+        pointer-events:none;//TODO:uncomment
         @include abs($l:0,$r:0,$t:1.5em);
         width:auto;
         height:auto;

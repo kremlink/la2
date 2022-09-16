@@ -8,6 +8,19 @@ import {utils} from './bf/lib/utils.js';
 //------------------------
 const dataApp=app.get('helpers.html').data('app'),
       modules=dataApp.modules;
+
+function iOS(){
+ return [
+   'iPad Simulator',
+   'iPhone Simulator',
+   'iPod Simulator',
+   'iPad',
+   'iPhone',
+   'iPod'
+  ].includes(navigator.platform)
+  // iPad on iOS 13 detection
+  ||(navigator.userAgent.includes("Mac")&&"ontouchend" in document)
+}
 //------------------------
 app.set({dest:'objects.aggregator',object:_.extend({},Backbone.Events)});
 
@@ -21,6 +34,9 @@ if(~modules.indexOf('index'))
  });
 
  app.set({dest:'objects.epIndex',object:dataApp.index});
+
+ if(iOS())
+  app.get('helpers.html').addClass('iOS');
 
  //app.set({dest:'objects._dev-sound',object:true});//TODO:remove
  //app.set({dest:'objects._dev-player',object:true});//TODO:remove

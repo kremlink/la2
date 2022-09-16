@@ -7,63 +7,63 @@ export let config={
  'index':{
   preload:{
    'shared':{
-    'images/':{imgs:['blood.svg','achiv-bg.svg']},
-    'images/info-pop/':{imgs:['Leshiy.jpg','Sashka.jpg','Bob.jpg','Kartoshka.jpg','Lisa.jpg','Max.jpg','Artyom.jpg','Andrey.jpg','Irina.jpg','Valya.jpg']}
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/':{imgs:['blood.svg','achiv-bg.svg']},
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/info-pop/':{imgs:['Leshiy.jpg','Sashka.jpg','Bob.jpg','Kartoshka.jpg','Lisa.jpg','Max.jpg','Artyom.jpg','Andrey.jpg','Irina.jpg','Valya.jpg']}
    },
    '1':{
-    'images/learn/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/learn/':{
      imgs:['study-save.png'],
      j:[4],
      tmpl:['study-bg[j].jpg']
     },
-    'images/1-23/':{imgs:['1-23-bg.jpg']},
-    'images/1-25/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/1-23/':{imgs:['1-23-bg.jpg']},
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/1-25/':{
      imgs:['1-25-bg.jpg','1-25-arrows.svg','1-25-intro-pic.png','1-25-intro-pic-m.png','add-bg.svg','point-empty.svg','point-full.svg'],
      j:[9],
      tmpl:['1-25-obj[j].png']
     },
-    'images/1-30/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/1-30/':{
      imgs:['1-30-bg.jpg','1-30-intro-pic.png','1-30-intro-pic-m.png','1-30-icon-foot.svg','1-30-icon-gear.svg','1-30-icon-map.svg','1-30-icon-phone.svg','no-frame.svg','yes-frame.svg'],
      j:[17],
      tmpl:['card[j].png']
     }
    },
    '2':{
-    'images/2-7/':{imgs:['2-7-bg1.jpg','2-7-bg2.jpg','2-7-bigframe.svg','2-7-botframe.svg','2-7-intro-pic.png','2-7-intro-pic-m.png','2-7-ring-in.svg','2-7-ring-out.svg','2-7-table.svg','2-7-topframe.svg','2-7-two-digit-focus.svg']},
-    'images/2-25/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/2-7/':{imgs:['2-7-bg1.jpg','2-7-bg2.jpg','2-7-bigframe.svg','2-7-botframe.svg','2-7-intro-pic.png','2-7-intro-pic-m.png','2-7-ring-in.svg','2-7-ring-out.svg','2-7-table.svg','2-7-topframe.svg','2-7-two-digit-focus.svg']},
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/2-25/':{
      imgs:['2-25-bg.jpg','map.svg','2-25-intro-pic.png','2-25-intro-pic-m.png'],
      j:[6],
      tmpl:['over[j].svg']
     },
-    'images/2-28/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/2-28/':{
      imgs:['poster.jpg','2-28-lost-bg.jpg','2-28-intro-pic.png','2-28-intro-pic-m.png','3b.svg','3c.svg','3l1.svg','3l2.svg','3r1.svg','3r2.svg','3ß.svg','4b.svg','4l.svg','4r.svg']
     },
-    'images/2-39/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/2-39/':{
      imgs:['2-39-bg.jpg','2-39-intro-pic.png','2-39-intro-pic-m.png']
     }
    },
    '3':{
-    'images/3-15/':{imgs:['bg.jpg','3-15-close.svg','3-15-intro-pic.png','3-15-intro-pic-m.png','3-15-scroll.png','3-15-topline.svg']},
-    'images/3-15-1/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/3-15/':{imgs:['bg.jpg','3-15-close.svg','3-15-intro-pic.png','3-15-intro-pic-m.png','3-15-scroll.png','3-15-topline.svg']},
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/3-15-1/':{
      imgs:['img_0.jpg'],
      j:[8],
      tmpl:['img_[j].jpg']
     },
-    'images/3-17/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/3-17/':{
      imgs:['3-17-bg.jpg','3-17-iintro-pic.png','3-17-intro-pic-m.png'],
      j:[10],
      tmpl:['img[j].jpg']
     }
    },
    '4':{
-    'images/2-25/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/2-25/':{
      imgs:['button.svg','map-bg.svg']
     },
-    'images/4-4/':{imgs:['bg.jpg']},
-    'images/4-6/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/4-4/':{imgs:['bg.jpg']},
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/4-6/':{
      imgs:['bg.jpg']
     },
-    'images/4-31/':{
+    'https://naidenzhiv-cache.cdnvideo.ru/naidenzhiv/season2/images/4-31/':{
      imgs:['4-31-bg.jpg','4-31-map.svg']
     }
    },
@@ -75,10 +75,10 @@ export let config={
  },
  'player':{
   redirect:{
-   '1':'episode2.php',
-   '2':'episode3.php',
-   '3':'episode4.php',
-   '4':'end.php'
+   '1':'episode2',
+   '2':'episode3',
+   '3':'episode4',
+   '4':'end'
   },
   quality:[
    {
@@ -134,7 +134,7 @@ export let config={
    '3':{
     src:'3',
     //src:'oceans',
-    neededDur:'1805',
+    neededDur:'1795',
     timecodes:[
      /*{start:1,end:1,back:1,invoked:false,data:{interactive:'Loop',bg:'action'}},
      {start:2,end:2,back:2,invoked:false,data:{interactive:'Browser',bg:'action'}},

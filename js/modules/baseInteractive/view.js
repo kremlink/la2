@@ -83,7 +83,7 @@ export let BaseIntView=Backbone.View.extend({
    if(this.theProg.$prog)
     this.theProg.$prog.addClass(this.shownCls);
   }
-  if(this.phase===2)
+  if(this.phase===this.lastPhase)
   {
    this.clrProg();
   }

@@ -6,7 +6,8 @@ import {data as dat} from './data.js';
 let app,
     data=dat,
     epIndex,
-    lsMgr;
+    lsMgr,
+    ext;
 
 let events={};
 events[`click ${data.events.start}`]='start';
@@ -14,7 +15,7 @@ events[`click ${data.events.load}`]='callInfoPop';
 //events[`click ${data.events.goOn}`]='goOn';
 events[`click ${data.events.clr}`]='clr';
 
-let smallCheck=()=>window.screen.width<data.minViewport&&matchMedia(data.orient).matches;
+let smallCheck=()=>matchMedia(data.orient).matches;
 
 export let Index=Backbone.View.extend({
  events:events,
@@ -28,15 +29,25 @@ export let Index=Backbone.View.extend({
   app.set({dest:'objects.isApple',object:/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream||navigator.platform.includes('Mac')});
 
   epIndex=app.get('epIndex');
+  ext=app.get('lib.utils.getParam')({what:'?',name:'ext'});
+  ext=app.set({dest:'objects.ext',object:ext?JSON.parse(unescape(ext)):null});
 
   new Metrika({app:app});
   this.main=new MainView({app:app});
 
-  this.$el.toggleClass(data.view.tooSmallCls,smallCheck());
-  $(window).on('resize',_.debounce(()=>{
-   this.$el.toggleClass(data.view.tooSmallCls,smallCheck());
-   app.get('aggregator').trigger('scroll:resize');
-  },200));
+  if(app.get('helpers.html').hasClass(data.view.iosCls))
+  {
+   window.addEventListener('orientationchange',()=>{
+    app.get('aggregator').trigger('scroll:resize');
+    this.$el.toggleClass(data.view.tooSmallCls,!smallCheck());
+   },false);
+  }else
+  {
+   $(window).on('resize',_.debounce(()=>{
+    this.$el.toggleClass(data.view.tooSmallCls,smallCheck());
+    app.get('aggregator').trigger('scroll:resize');
+   },200));
+  }
   document.addEventListener('contextmenu',e=>e.preventDefault());
   this.listenTo(app.get('aggregator'),'player:ready',this.loaded);
   //this.listenTo(app.get('aggregator'),'player:fs',this.fs);
@@ -79,7 +90,9 @@ export let Index=Backbone.View.extend({
    this.$el.addClass(data.view.goOnCls);
 
   $.when(wait).then(()=>{
-   this.main.addPlayer(new PlayerView({app:app,lsMgr:lsMgr}));
+   if(ext)
+    this.$el.addClass(ext.cls);else
+    this.main.addPlayer(new PlayerView({app:app,lsMgr:lsMgr}));
   });
  },
  /*goOn:function(){
@@ -94,6 +107,7 @@ export let Index=Backbone.View.extend({
   this.$el.removeClass(data.view.goOnCls);
  },
  loaded:function(){
+  this.$el.toggleClass(data.view.tooSmallCls,smallCheck());
   this.$el.addClass(data.view.loadedCls);
   //this.start();//TODO:remove
   //setTimeout(()=>this.main.player.pause(),500);//TODO:remove
